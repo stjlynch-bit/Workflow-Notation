@@ -37,7 +37,7 @@ HEADERS = {
     "User-Agent": "workflow-notation-research/1.0",
 }
 
-ROWS_PER_PAGE = 50  # max page size
+ROWS_PER_PAGE = 20  # default page size (n8n uses 'limit' param, max ~20)
 
 
 def api_get(url: str, retries: int = 3, backoff: float = 2.0) -> dict:
@@ -66,7 +66,7 @@ def discover_template_ids(max_templates: int | None = None) -> list[dict]:
 
     while True:
         url = (
-            f"{SEARCH_ENDPOINT}?rows={ROWS_PER_PAGE}&page={page}"
+            f"{SEARCH_ENDPOINT}?limit={ROWS_PER_PAGE}&page={page}"
             f"&price=0&sort=createdAt:desc"
         )
         print(f"Fetching search page {page}... ", end="", flush=True)
