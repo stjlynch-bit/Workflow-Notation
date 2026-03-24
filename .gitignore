@@ -1,0 +1,9 @@
+# Raw workflow data (re-downloadable via scripts)
+data/raw_workflows/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

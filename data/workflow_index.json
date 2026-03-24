@@ -1,0 +1,128 @@
+[
+  {
+    "filename": "dvasquez08__n8n-workflows__AI_Voice_Assistant__calendar-agent.json",
+    "name": "RD-Calendar Agent",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "AI Voice Assistant/calendar-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__AI_Voice_Assistant__contacts-agent.json",
+    "name": "Contact Agent Template",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "AI Voice Assistant/contacts-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__AI_Voice_Assistant__email-agent.json",
+    "name": "Email Agent Template",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "AI Voice Assistant/email-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__AI_Voice_Assistant__notion-agent.json",
+    "name": "RD-Notion Agent",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "AI Voice Assistant/notion-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__AI_Voice_Assistant__parent-voice-agent.json",
+    "name": "Voice Agent Template",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "AI Voice Assistant/parent-voice-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__AI_Voice_Assistant__research-agent.json",
+    "name": "Research Agent Template",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "AI Voice Assistant/research-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Azure_Employee_Onboarding.json",
+    "name": "Employee Onboarding",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Azure Employee Onboarding.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__BlueSky_Automation.json",
+    "name": "BlueSky Post",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "BlueSky Automation.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Lead_Capture_CRM.json",
+    "name": "Lead Capture CRM",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Lead Capture CRM.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Multi-Agent_AI_Assistant__calendar-agent.json",
+    "name": "Calendar Agent",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Multi-Agent AI Assistant/calendar-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Multi-Agent_AI_Assistant__notion-agent.json",
+    "name": "Notion Agent",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Multi-Agent AI Assistant/notion-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Multi-Agent_AI_Assistant__parent-agent.json",
+    "name": "Parent Agent",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Multi-Agent AI Assistant/parent-agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Notion_Daily_Briefing.json",
+    "name": "Notion Daily Briefing",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Notion Daily Briefing.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Social_Media_Manager__Social_Media_AI_Agent.json",
+    "name": "Social Media Manager AI Agent",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Social Media Manager/Social Media AI Agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Social_Media_Manager__Telegram_Social_Media_Manager.json",
+    "name": "Social Media Manager Telegram Trigger",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Social Media Manager/Telegram Social Media Manager.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Threads_Automation__Threads_Credentials_Setup.json",
+    "name": "Threads Credentials Setup",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Threads Automation/Threads Credentials Setup.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Threads_Automation__Threads_Posting_Automation.json",
+    "name": "Threads Posting Automation",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Threads Automation/Threads Posting Automation.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__Twitter-Auto-Reply-Agent.json",
+    "name": "Twitter Auto Replier",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "Twitter-Auto-Reply-Agent.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__X_Post_Generator.json",
+    "name": "My workflow 4",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "X Post Generator.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__You_Tube_Automation.json",
+    "name": "YouTube Automation",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "You Tube Automation.json"
+  },
+  {
+    "filename": "dvasquez08__n8n-workflows__newsletter-capture-automation.json",
+    "name": "Newsletter Capture Automation",
+    "source_repo": "dvasquez08/n8n-workflows",
+    "source_path": "newsletter-capture-automation.json"
+  }
+]

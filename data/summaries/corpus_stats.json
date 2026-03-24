@@ -1,0 +1,318 @@
+{
+  "total_workflows": 262,
+  "node_count": {
+    "min": 3,
+    "max": 301,
+    "mean": 13.07,
+    "median": 12
+  },
+  "connection_count": {
+    "min": 2,
+    "max": 264,
+    "mean": 12.23,
+    "median": 11
+  },
+  "max_depth": {
+    "min": 2,
+    "max": 54,
+    "mean": 6.66,
+    "median": 7
+  },
+  "workflows_with_conditionals": 10,
+  "workflows_with_loops": 4,
+  "workflows_with_branching": 27,
+  "workflows_with_error_handling": 2,
+  "service_integration_count": {
+    "min": 2,
+    "max": 40,
+    "mean": 8.69
+  },
+  "top_30_node_types": [
+    [
+      "@n8n/n8n-nodes-langchain.agent",
+      247
+    ],
+    [
+      "n8n-nodes-base.stickyNote",
+      227
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      216
+    ],
+    [
+      "n8n-nodes-base.googleSheets",
+      210
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.toolVectorStore",
+      206
+    ],
+    [
+      "n8n-nodes-base.webhook",
+      202
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      201
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      112
+    ],
+    [
+      "n8n-nodes-base.slack",
+      102
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      97
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      87
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      79
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      72
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      63
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStoreWeaviate",
+      52
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatHf",
+      37
+    ],
+    [
+      "n8n-nodes-base.set",
+      36
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.embeddingsHuggingFace",
+      33
+    ],
+    [
+      "n8n-nodes-base.executeWorkflowTrigger",
+      28
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStoreRedis",
+      23
+    ],
+    [
+      "n8n-nodes-base.httpRequest",
+      22
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      16
+    ],
+    [
+      "n8n-nodes-base.telegram",
+      15
+    ],
+    [
+      "n8n-nodes-base.telegramTrigger",
+      12
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.openAi",
+      11
+    ],
+    [
+      "n8n-nodes-base.scheduleTrigger",
+      11
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.toolWorkflow",
+      10
+    ],
+    [
+      "n8n-nodes-base.gmailTool",
+      9
+    ],
+    [
+      "n8n-nodes-base.googleSheetsTool",
+      9
+    ],
+    [
+      "n8n-nodes-base.switch",
+      9
+    ]
+  ],
+  "top_30_service_integrations": [
+    [
+      "@n8n/n8n-nodes-langchain.agent",
+      247
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      216
+    ],
+    [
+      "n8n-nodes-base.googleSheets",
+      210
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.toolVectorStore",
+      206
+    ],
+    [
+      "n8n-nodes-base.webhook",
+      202
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+      201
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      112
+    ],
+    [
+      "n8n-nodes-base.slack",
+      102
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      97
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      87
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      79
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      72
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      63
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStoreWeaviate",
+      52
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatHf",
+      37
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.embeddingsHuggingFace",
+      33
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.vectorStoreRedis",
+      23
+    ],
+    [
+      "n8n-nodes-base.httpRequest",
+      22
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      16
+    ],
+    [
+      "n8n-nodes-base.telegram",
+      15
+    ],
+    [
+      "n8n-nodes-base.telegramTrigger",
+      12
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.openAi",
+      11
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.toolWorkflow",
+      10
+    ],
+    [
+      "n8n-nodes-base.gmailTool",
+      9
+    ],
+    [
+      "n8n-nodes-base.googleSheetsTool",
+      9
+    ],
+    [
+      "n8n-nodes-base.googleCalendarTool",
+      9
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.chatTrigger",
+      7
+    ],
+    [
+      "n8n-nodes-base.googleDrive",
+      7
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.outputParserStructured",
+      7
+    ],
+    [
+      "n8n-nodes-base.discord",
+      7
+    ]
+  ],
+  "top_20_trigger_types": [
+    [
+      "n8n-nodes-base.webhook",
+      201
+    ],
+    [
+      "n8n-nodes-base.executeWorkflowTrigger",
+      25
+    ],
+    [
+      "n8n-nodes-base.telegramTrigger",
+      9
+    ],
+    [
+      "n8n-nodes-base.scheduleTrigger",
+      9
+    ],
+    [
+      "@n8n/n8n-nodes-langchain.chatTrigger",
+      6
+    ],
+    [
+      "n8n-nodes-base.manualTrigger",
+      4
+    ],
+    [
+      "n8n-nodes-base.formTrigger",
+      4
+    ],
+    [
+      "n8n-nodes-base.gmailTrigger",
+      2
+    ],
+    [
+      "n8n-nodes-base.googleDriveTrigger",
+      1
+    ],
+    [
+      "n8n-nodes-base.microsoftOutlookTrigger",
+      1
+    ]
+  ],
+  "unique_node_types_total": 93,
+  "unique_service_integrations_total": 72
+}
