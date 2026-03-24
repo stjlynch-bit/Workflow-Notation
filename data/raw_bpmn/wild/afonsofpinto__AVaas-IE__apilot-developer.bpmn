@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0zndshq" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:collaboration id="apilot_developer">
+    <bpmn:participant id="Participant_1xlw6gc" name="AvaaS" processRef="Process_0mydsos" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0mydsos" isExecutable="true">
+    <bpmn:startEvent id="Event_1a0u216">
+      <bpmn:outgoing>Flow_0ov26g4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_0sta353" default="Flow_0kigf7s">
+      <bpmn:incoming>Flow_125q4k0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cl9tr8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0kigf7s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_07o0hy7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Activity_1f25207" name="Input Information" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="model" label="Model name" type="string" />
+          <camunda:formField id="developer" label="Developer" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1cl9tr8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1s4dnv5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0qcvcj1" name="Get available APILOT models">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Host">apilot.com</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://${kong}:8000/apilots</camunda:inputParameter>
+            <camunda:outputParameter name="available_apilots">
+              <camunda:script scriptFormat="JavaScript">S(connector.getVariable("response"));</camunda:script>
+            </camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_07o0hy7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1co929z</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1c0arzv">
+      <bpmn:incoming>Flow_0kigf7s</bpmn:incoming>
+      <bpmn:incoming>Flow_0ff2mdg</bpmn:incoming>
+      <bpmn:incoming>Flow_1npyw47</bpmn:incoming>
+      <bpmn:outgoing>Flow_0uzktar</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Event_1f22z3v">
+      <bpmn:incoming>Flow_0uzktar</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_0wp0y3j" name="Input operation" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="enter" label="Enter new model" type="boolean" defaultValue="false" />
+          <camunda:formField id="remove" label="Remove model" type="boolean" defaultValue="false" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ov26g4</bpmn:incoming>
+      <bpmn:outgoing>Flow_125q4k0</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_11ywt0u" name="Input Remove Information" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="modelD" label="Model" type="string" />
+          <camunda:formField id="developerD" label="Developer" type="string" />
+          <camunda:formField id="available_apilots" label="Available APILOTs" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1co929z</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hg8m3u</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_06kd9sk" name="Enter new APILOT developer">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Host">apilot.com</camunda:entry>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://${kong}:8000/developers</camunda:inputParameter>
+            <camunda:inputParameter name="payload">{ "name":"${developer}" }</camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1s4dnv5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0erxzcz</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_03ljfth" name="Enter new model">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Host">apilot.com</camunda:entry>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">{
+  "id": 0,
+  "model": "${model}",
+  "developer": "${developer}"
+}</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://${kong}:8000/apilot</camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0erxzcz</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ff2mdg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_02g3vki" name="Remove model">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Host">apilot.com</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">{
+  "id": 0,
+  "model": "a",
+  "developer": "a"
+}</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://${kong}:8000/apilot/${modelD}/${developerD}</camunda:inputParameter>
+            <camunda:inputParameter name="method">DELETE</camunda:inputParameter>
+            <camunda:outputParameter name="p">${statusCode}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hg8m3u</bpmn:incoming>
+      <bpmn:outgoing>Flow_1npyw47</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_07o0hy7" name="remove" sourceRef="Gateway_0sta353" targetRef="Activity_0qcvcj1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${remove}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1co929z" sourceRef="Activity_0qcvcj1" targetRef="Activity_11ywt0u" />
+    <bpmn:sequenceFlow id="Flow_125q4k0" sourceRef="Activity_0wp0y3j" targetRef="Gateway_0sta353" />
+    <bpmn:sequenceFlow id="Flow_0kigf7s" sourceRef="Gateway_0sta353" targetRef="Gateway_1c0arzv" />
+    <bpmn:sequenceFlow id="Flow_0uzktar" sourceRef="Gateway_1c0arzv" targetRef="Event_1f22z3v" />
+    <bpmn:sequenceFlow id="Flow_0erxzcz" sourceRef="Activity_06kd9sk" targetRef="Activity_03ljfth" />
+    <bpmn:sequenceFlow id="Flow_1s4dnv5" sourceRef="Activity_1f25207" targetRef="Activity_06kd9sk" />
+    <bpmn:sequenceFlow id="Flow_1cl9tr8" name="add new" sourceRef="Gateway_0sta353" targetRef="Activity_1f25207">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${enter}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0ov26g4" sourceRef="Event_1a0u216" targetRef="Activity_0wp0y3j" />
+    <bpmn:sequenceFlow id="Flow_0ff2mdg" sourceRef="Activity_03ljfth" targetRef="Gateway_1c0arzv" />
+    <bpmn:sequenceFlow id="Flow_0hg8m3u" sourceRef="Activity_11ywt0u" targetRef="Activity_02g3vki" />
+    <bpmn:sequenceFlow id="Flow_1npyw47" sourceRef="Activity_02g3vki" targetRef="Gateway_1c0arzv" />
+  </bpmn:process>
+  <bpmn:message id="Message_1mufszs" name="Message_1nba5l8" />
+  <bpmn:message id="Message_05i897p" name="Message_36l307d" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="apilot_developer">
+      <bpmndi:BPMNShape id="Participant_1xlw6gc_di" bpmnElement="Participant_1xlw6gc" isHorizontal="true">
+        <dc:Bounds x="129" y="80" width="1240" height="350" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_07o0hy7_di" bpmnElement="Flow_07o0hy7">
+        <di:waypoint x="449" y="285" />
+        <di:waypoint x="449" y="370" />
+        <di:waypoint x="549" y="370" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="451" y="323" width="37" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1co929z_di" bpmnElement="Flow_1co929z">
+        <di:waypoint x="649" y="370" />
+        <di:waypoint x="810" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_125q4k0_di" bpmnElement="Flow_125q4k0">
+        <di:waypoint x="380" y="260" />
+        <di:waypoint x="424" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kigf7s_di" bpmnElement="Flow_0kigf7s">
+        <di:waypoint x="474" y="260" />
+        <di:waypoint x="1184" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uzktar_di" bpmnElement="Flow_0uzktar">
+        <di:waypoint x="1234" y="260" />
+        <di:waypoint x="1301" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0erxzcz_di" bpmnElement="Flow_0erxzcz">
+        <di:waypoint x="840" y="140" />
+        <di:waypoint x="930" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1s4dnv5_di" bpmnElement="Flow_1s4dnv5">
+        <di:waypoint x="649" y="140" />
+        <di:waypoint x="740" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cl9tr8_di" bpmnElement="Flow_1cl9tr8">
+        <di:waypoint x="449" y="235" />
+        <di:waypoint x="449" y="140" />
+        <di:waypoint x="549" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="473" y="143" width="43" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ov26g4_di" bpmnElement="Flow_0ov26g4">
+        <di:waypoint x="217" y="260" />
+        <di:waypoint x="280" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ff2mdg_di" bpmnElement="Flow_0ff2mdg">
+        <di:waypoint x="1030" y="140" />
+        <di:waypoint x="1209" y="140" />
+        <di:waypoint x="1209" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hg8m3u_di" bpmnElement="Flow_0hg8m3u">
+        <di:waypoint x="910" y="370" />
+        <di:waypoint x="1020" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1npyw47_di" bpmnElement="Flow_1npyw47">
+        <di:waypoint x="1120" y="370" />
+        <di:waypoint x="1209" y="370" />
+        <di:waypoint x="1209" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1a0u216_di" bpmnElement="Event_1a0u216">
+        <dc:Bounds x="181" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0sta353_di" bpmnElement="Gateway_0sta353" isMarkerVisible="true">
+        <dc:Bounds x="424" y="235" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f25207_di" bpmnElement="Activity_1f25207">
+        <dc:Bounds x="549" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qcvcj1_di" bpmnElement="Activity_0qcvcj1">
+        <dc:Bounds x="549" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1c0arzv_di" bpmnElement="Gateway_1c0arzv" isMarkerVisible="true">
+        <dc:Bounds x="1184" y="235" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1f22z3v_di" bpmnElement="Event_1f22z3v">
+        <dc:Bounds x="1301" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03ovllm_di" bpmnElement="Activity_0wp0y3j">
+        <dc:Bounds x="280" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11ywt0u_di" bpmnElement="Activity_11ywt0u">
+        <dc:Bounds x="810" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06kd9sk_di" bpmnElement="Activity_06kd9sk">
+        <dc:Bounds x="740" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_022feg4_di" bpmnElement="Activity_03ljfth">
+        <dc:Bounds x="930" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q4fq8k_di" bpmnElement="Activity_02g3vki">
+        <dc:Bounds x="1020" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

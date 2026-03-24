@@ -1,0 +1,162 @@
+<ns0:definitions xmlns:ns0="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <ns0:process id="Process_1" isExecutable="true">
+    <ns0:startEvent id="StartEvent_1">
+      <ns0:outgoing>Flow_1jikxp6</ns0:outgoing>
+    </ns0:startEvent>
+    <ns0:sequenceFlow id="Flow_1jikxp6" sourceRef="StartEvent_1" targetRef="Gateway_1onwrcl" />
+    <ns0:parallelGateway id="Gateway_1onwrcl">
+      <ns0:incoming>Flow_1jikxp6</ns0:incoming>
+      <ns0:outgoing>Flow_0o76dve</ns0:outgoing>
+      <ns0:outgoing>Flow_0c7gbm5</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:serviceTask id="Activity_1ybyekm" name="pick up white workpiece">
+      <ns0:incoming>new_object_artifact_sequence_flow_1293</ns0:incoming>
+      <ns0:outgoing>Flow_1fawicw</ns0:outgoing>
+      <ns0:property id="Property_0rbcb0v" name="__targetRef_placeholder" />
+      <ns0:dataInputAssociation id="object_artifact_datainputassociation293"><ns0:sourceRef>object_artifact_sensor_data_object_ref293</ns0:sourceRef><ns0:targetRef>Property_0rbcb0v</ns0:targetRef></ns0:dataInputAssociation></ns0:serviceTask>
+    <ns0:sequenceFlow id="Flow_0o76dve" sourceRef="Gateway_1onwrcl" targetRef="translated_object_artifact_sensor_task293" />
+    <ns0:serviceTask id="Activity_0cpa503" name="Move vacuum gripper">
+      <ns0:incoming>Flow_0c7gbm5</ns0:incoming>
+      <ns0:outgoing>Flow_1rkhkp8</ns0:outgoing>
+      </ns0:serviceTask>
+    <ns0:sequenceFlow id="Flow_0c7gbm5" sourceRef="Gateway_1onwrcl" targetRef="Activity_0cpa503" />
+    <ns0:dataObject id="DataObject_1mjif3c" />
+    <ns0:sequenceFlow id="Flow_1rkhkp8" sourceRef="Activity_0cpa503" targetRef="translatedSubprocess33" />
+    <ns0:boundaryEvent id="Event_1ucv2v8" name="120 sec" attachedToRef="translatedSubprocess33">
+      <ns0:outgoing>Flow_1lu0y5f</ns0:outgoing>
+      <ns0:timerEventDefinition id="TimerEventDefinition_06pu0wp" />
+    </ns0:boundaryEvent>
+    <ns0:sequenceFlow id="Flow_1lu0y5f" sourceRef="Event_1ucv2v8" targetRef="Event_1i5mlej" />
+    <ns0:endEvent id="Event_1i5mlej">
+      <ns0:incoming>Flow_1lu0y5f</ns0:incoming>
+      <ns0:terminateEventDefinition id="TerminateEventDefinition_0vlfu2x" />
+    </ns0:endEvent>
+    <ns0:sequenceFlow id="Flow_1gvcyo9" sourceRef="translatedSubprocess33" targetRef="Gateway_11xflam" />
+    <ns0:parallelGateway id="Gateway_11xflam">
+      <ns0:incoming>Flow_1gvcyo9</ns0:incoming>
+      <ns0:outgoing>Flow_18hhheg</ns0:outgoing>
+      <ns0:outgoing>Flow_07udire</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:sequenceFlow id="Flow_18hhheg" sourceRef="Gateway_11xflam" targetRef="translated_catch_event627" />
+    <ns0:serviceTask id="Activity_19ve472" name="burn workpiece">
+      <ns0:incoming>Flow_1e9w022</ns0:incoming>
+      <ns0:outgoing>Flow_1d4w1iu</ns0:outgoing>
+      </ns0:serviceTask>
+    <ns0:sequenceFlow id="Flow_1e9w022" sourceRef="translated_catch_event_gateway627" targetRef="Activity_19ve472" name="Yes" />
+    <ns0:dataObject id="DataObject_0chjafz" />
+    <ns0:serviceTask id="Activity_0pm7lzl" name="transport workpiece to oven">
+      <ns0:incoming>Flow_07udire</ns0:incoming>
+      <ns0:outgoing>Flow_1ozreu1</ns0:outgoing>
+      </ns0:serviceTask>
+    <ns0:sequenceFlow id="Flow_07udire" sourceRef="Gateway_11xflam" targetRef="Activity_0pm7lzl" />
+    <ns0:dataObject id="DataObject_0oszsb8" />
+    <ns0:parallelGateway id="Gateway_1m8s507">
+      <ns0:incoming>Flow_1ozreu1</ns0:incoming>
+      <ns0:incoming>Flow_1d4w1iu</ns0:incoming>
+      <ns0:outgoing>Flow_0xphhmq</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:sequenceFlow id="Flow_1ozreu1" sourceRef="Activity_0pm7lzl" targetRef="Gateway_1m8s507" />
+    <ns0:sequenceFlow id="Flow_1d4w1iu" sourceRef="Activity_19ve472" targetRef="Gateway_1m8s507" />
+    <ns0:serviceTask id="Activity_0khuwba" name="transport workpiece to turntable">
+      <ns0:incoming>Flow_0xphhmq</ns0:incoming>
+      <ns0:outgoing>Flow_13w4guj</ns0:outgoing>
+      </ns0:serviceTask>
+    <ns0:sequenceFlow id="Flow_0xphhmq" sourceRef="Gateway_1m8s507" targetRef="Activity_0khuwba" />
+    <ns0:dataObject id="DataObject_0m7pvkx" />
+    <ns0:parallelGateway id="Gateway_1mwnml8">
+      <ns0:incoming>Flow_13w4guj</ns0:incoming>
+      <ns0:incoming>Flow_1fawicw</ns0:incoming>
+      <ns0:outgoing>Flow_11hnefl</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:sequenceFlow id="Flow_13w4guj" sourceRef="Activity_0khuwba" targetRef="Gateway_1mwnml8" />
+    <ns0:sequenceFlow id="Flow_1fawicw" sourceRef="Activity_1ybyekm" targetRef="Gateway_1mwnml8" />
+    <ns0:dataObject id="DataObject_0a9ose2" />
+    <ns0:sequenceFlow id="Flow_11hnefl" sourceRef="Gateway_1mwnml8" targetRef="translated_end_event_actor_task670" />
+    <ns0:subProcess id="translatedSubprocess33"><ns0:incoming>Flow_1rkhkp8</ns0:incoming><ns0:outgoing>Flow_1gvcyo9</ns0:outgoing><ns0:startEvent id="new_start_event_subprocess33"><ns0:outgoing>new_sequence_flow_subprocess_133</ns0:outgoing></ns0:startEvent><ns0:task id="new_actor_task_subprocess33" name="Wait until vacuum gripper arrives"><ns0:incoming>new_sequence_flow_subprocess_133</ns0:incoming><ns0:outgoing>new_sequence_flow_subprocess_233</ns0:outgoing></ns0:task><ns0:sequenceFlow id="new_sequence_flow_subprocess_133" sourceRef="new_start_event_subprocess33" targetRef="new_actor_task_subprocess33" /><ns0:businessRuleTask id="new_sensor_task_subprocess33" name="Get sensor data"><ns0:incoming>new_sequence_flow_subprocess_233</ns0:incoming><ns0:outgoing>new_sequence_flow_subprocess_333</ns0:outgoing><ns0:incoming>new_sequence_flow_subprocess_433</ns0:incoming></ns0:businessRuleTask><ns0:sequenceFlow id="new_sequence_flow_subprocess_233" sourceRef="new_actor_task_subprocess33" targetRef="new_sensor_task_subprocess33" /><ns0:exclusiveGateway id="new_exclusive_gateway_subprocess33" name="lightbarrier triggered"><ns0:incoming>new_sequence_flow_subprocess_333</ns0:incoming><ns0:outgoing>new_sequence_flow_subprocess_433</ns0:outgoing><ns0:outgoing>new_sequence_flow_subprocess_533</ns0:outgoing></ns0:exclusiveGateway><ns0:sequenceFlow id="new_sequence_flow_subprocess_333" sourceRef="new_sensor_task_subprocess33" targetRef="new_exclusive_gateway_subprocess33" /><ns0:sequenceFlow id="new_sequence_flow_subprocess_433" name="No" sourceRef="new_exclusive_gateway_subprocess33" targetRef="new_actor_task_subprocess33" /><ns0:endEvent id="new_end_event_subprocess33"><ns0:incoming>new_sequence_flow_subprocess_533</ns0:incoming></ns0:endEvent><ns0:sequenceFlow id="new_sequence_flow_subprocess_533" name="Yes" sourceRef="new_exclusive_gateway_subprocess33" targetRef="new_end_event_subprocess33" /></ns0:subProcess><ns0:businessRuleTask id="translated_object_artifact_sensor_task293" name="Get warehouse data"><ns0:outgoing>new_object_artifact_sequence_flow_1293</ns0:outgoing><ns0:incoming>Flow_0o76dve</ns0:incoming><ns0:dataOutputAssociation id="object_artifact_dataoutputassociation293"><ns0:targetRef>object_artifact_sensor_data_object_ref293</ns0:targetRef></ns0:dataOutputAssociation></ns0:businessRuleTask><ns0:sequenceFlow id="new_object_artifact_sequence_flow_1293" sourceRef="translated_object_artifact_sensor_task293" targetRef="Activity_1ybyekm" /><ns0:dataObject id="object_sensor_data293" /><ns0:dataObjectReference id="object_artifact_sensor_data_object_ref293" name="sensor data" dataObjectRef="object_sensor_data293" /><ns0:businessRuleTask id="translated_catch_event627" name="Get Sensor Data"><ns0:outgoing>translated_catch_event_sequence_flow627</ns0:outgoing><ns0:incoming>translated_catch_event_sequence_flow627</ns0:incoming><ns0:incoming>Flow_18hhheg</ns0:incoming><ns0:outgoing>Flow_1e9w022</ns0:outgoing></ns0:businessRuleTask><ns0:exclusiveGateway id="translated_catch_event_gateway627" name="wait until light barrier"><ns0:incoming>translated_catch_event_sequence_flow627</ns0:incoming><ns0:outgoing>translated_catch_event_sequence_flow627</ns0:outgoing></ns0:exclusiveGateway><ns0:sequenceFlow id="translated_catch_event_sequence_flow627" sourceRef="translated_catch_event627" targetRef="translated_catch_event_gateway627" /><ns0:sequenceFlow id="translated_catch_event_sequence_flow627" sourceRef="translated_catch_event_gateway627" targetRef="translated_catch_event627" name="No" /><ns0:endEvent id="translated_end_event670"><ns0:incoming>translated_end_event_sequence_flow670</ns0:incoming></ns0:endEvent><ns0:serviceTask id="translated_end_event_actor_task670" name="inform lab at the end"><ns0:incoming>Flow_11hnefl</ns0:incoming><ns0:outgoing>translated_end_event_sequence_flow670</ns0:outgoing></ns0:serviceTask><ns0:sequenceFlow id="translated_end_event_sequence_flow670" sourceRef="translated_end_event_actor_task670" targetRef="translated_end_event670" /></ns0:process>
+  <ns2:BPMNDiagram id="BPMNDiagram_1">
+    <ns2:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <ns2:BPMNEdge id="Flow_1jikxp6_di" bpmnElement="Flow_1jikxp6">
+        <ns3:waypoint x="-1022" y="240" />
+        <ns3:waypoint x="-965" y="240" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_0o76dve_di" bpmnElement="Flow_0o76dve">
+        <ns3:waypoint x="-915" y="240.0" /><ns3:waypoint x="450" y="530.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_0c7gbm5_di" bpmnElement="Flow_0c7gbm5">
+        <ns3:waypoint x="-915" y="240" />
+        <ns3:waypoint x="-850" y="240" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1rkhkp8_di" bpmnElement="Flow_1rkhkp8">
+        <ns3:waypoint x="-750" y="240.0" /><ns3:waypoint x="-680" y="230.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1lu0y5f_di" bpmnElement="Flow_1lu0y5f">
+        <ns3:waypoint x="-394" y="380.0" /><ns3:waypoint x="-98" y="340.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1gvcyo9_di" bpmnElement="Flow_1gvcyo9">
+        <ns3:waypoint x="-180" y="230.0" /><ns3:waypoint x="45" y="240.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_18hhheg_di" bpmnElement="Flow_18hhheg">
+        <ns3:waypoint x="95" y="240.0" /><ns3:waypoint x="182" y="244.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1e9w022_di" bpmnElement="Flow_1e9w022">
+        <ns3:waypoint x="318" y="240.0" /><ns3:waypoint x="360" y="240.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_07udire_di" bpmnElement="Flow_07udire">
+        <ns3:waypoint x="70" y="265" />
+        <ns3:waypoint x="70" y="340" />
+        <ns3:waypoint x="290" y="340" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1ozreu1_di" bpmnElement="Flow_1ozreu1">
+        <ns3:waypoint x="390" y="340" />
+        <ns3:waypoint x="740" y="340" />
+        <ns3:waypoint x="740" y="265" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1d4w1iu_di" bpmnElement="Flow_1d4w1iu">
+        <ns3:waypoint x="460" y="240.0" /><ns3:waypoint x="715" y="240.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_0xphhmq_di" bpmnElement="Flow_0xphhmq">
+        <ns3:waypoint x="765" y="240" />
+        <ns3:waypoint x="810" y="240" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_13w4guj_di" bpmnElement="Flow_13w4guj">
+        <ns3:waypoint x="910" y="240" />
+        <ns3:waypoint x="965" y="240" />
+      </ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_1fawicw_di" bpmnElement="Flow_1fawicw">
+        <ns3:waypoint x="700" y="530.0" /><ns3:waypoint x="965" y="240.0" /></ns2:BPMNEdge>
+      <ns2:BPMNEdge id="Flow_11hnefl_di" bpmnElement="Flow_11hnefl">
+        <ns3:waypoint x="1015" y="240.0" /><ns3:waypoint x="1122" y="244.0" /></ns2:BPMNEdge>
+      <ns2:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <ns4:Bounds x="-1058" y="222" width="36" height="36" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Gateway_1ey5lml_di" bpmnElement="Gateway_1onwrcl">
+        <ns4:Bounds x="-965" y="215" width="50" height="50" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Activity_0cpa503_di" bpmnElement="Activity_0cpa503">
+        <ns4:Bounds x="-850" y="200" width="100" height="80" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Event_1pxsu25_di" bpmnElement="Event_1i5mlej">
+        <ns4:Bounds x="-98" y="322" width="36" height="36" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Gateway_1t9fxio_di" bpmnElement="Gateway_11xflam">
+        <ns4:Bounds x="45" y="215" width="50" height="50" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Activity_19ve472_di" bpmnElement="Activity_19ve472">
+        <ns4:Bounds x="360" y="200" width="100" height="80" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Gateway_1dxr0so_di" bpmnElement="Gateway_1m8s507">
+        <ns4:Bounds x="715" y="215" width="50" height="50" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Activity_0khuwba_di" bpmnElement="Activity_0khuwba">
+        <ns4:Bounds x="810" y="200" width="100" height="80" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Gateway_1mwnml8_di" bpmnElement="Gateway_1mwnml8">
+        <ns4:Bounds x="965" y="215" width="50" height="50" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Activity_0pm7lzl_di" bpmnElement="Activity_0pm7lzl">
+        <ns4:Bounds x="290" y="300" width="100" height="80" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Activity_1ybyekm_di" bpmnElement="Activity_1ybyekm">
+        <ns4:Bounds x="600" y="490" width="100" height="80" />
+      </ns2:BPMNShape>
+      <ns2:BPMNShape id="Event_0mhngs1_di" bpmnElement="Event_1ucv2v8">
+        <ns2:BPMNLabel>
+          <ns4:Bounds x="-430" y="404" width="39" height="14" />
+        </ns2:BPMNLabel>
+      <ns4:Bounds x="-430" y="362" width="36" height="36" /></ns2:BPMNShape>
+      <ns2:BPMNShape id="translatedSubprocess33_di" bpmnElement="translatedSubprocess33" isExpanded="true"><ns4:Bounds x="-680" y="80" width="500" height="300" /></ns2:BPMNShape><ns2:BPMNShape id="new_start_event_subprocess33_di" bpmnElement="new_start_event_subprocess33"><ns4:Bounds x="-640" y="155" width="36" height="36" /></ns2:BPMNShape><ns2:BPMNShape id="new_actor_task_subprocess33_di" bpmnElement="new_actor_task_subprocess33"><ns4:Bounds x="-530" y="130" width="100" height="80" /></ns2:BPMNShape><ns2:BPMNEdge id="new_sequence_flow_subprocess_133_di" bpmnElement="new_sequence_flow_subprocess_133"><ns3:waypoint x="-604" y="173.0" /><ns3:waypoint x="-530" y="170.0" /></ns2:BPMNEdge><ns2:BPMNShape id="new_sensor_task_subprocess33_di" bpmnElement="new_sensor_task_subprocess33"><ns4:Bounds x="-530" y="280" width="100" height="80" /></ns2:BPMNShape><ns2:BPMNEdge id="new_sequence_flow_subprocess_233_di" bpmnElement="new_sequence_flow_subprocess_233"><ns3:waypoint x="-480" y="210" /><ns3:waypoint x="-480" y="280" /></ns2:BPMNEdge><ns2:BPMNShape id="new_exclusive_gateway_subprocess33_di" bpmnElement="new_exclusive_gateway_subprocess33"><ns4:Bounds x="-380" y="305" width="36" height="36" /></ns2:BPMNShape><ns2:BPMNEdge id="new_sequence_flow_subprocess_333_di" bpmnElement="new_sequence_flow_subprocess_333"><ns3:waypoint x="-430" y="320.0" /><ns3:waypoint x="-380" y="323.0" /></ns2:BPMNEdge><ns2:BPMNEdge id="new_sequence_flow_subprocess_433_di" bpmnElement="new_sequence_flow_subprocess_433"><ns3:waypoint x="-362" y="305" /><ns3:waypoint x="-430" y="148.0" /></ns2:BPMNEdge><ns2:BPMNShape id="new_end_event_subprocess33_di" bpmnElement="new_end_event_subprocess33"><ns4:Bounds x="-280" y="305" width="36" height="36" /></ns2:BPMNShape><ns2:BPMNEdge id="new_sequence_flow_subprocess_533_di" bpmnElement="new_sequence_flow_subprocess_533"><ns3:waypoint x="-344" y="323.0" /><ns3:waypoint x="-280" y="323.0" /></ns2:BPMNEdge><ns2:BPMNShape id="translated_object_artifact_sensor_task293_di" bpmnElement="translated_object_artifact_sensor_task293"><ns4:Bounds x="450" y="490" width="100" height="80" /></ns2:BPMNShape><ns2:BPMNEdge id="new_object_artifact_sequence_flow_1293_di" bpmnElement="new_object_artifact_sequence_flow_1293"><ns3:waypoint x="550" y="530.0" /><ns3:waypoint x="600" y="530.0" /></ns2:BPMNEdge><ns2:BPMNShape id="object_artifact_sensor_data_object_ref293_di" bpmnElement="object_artifact_sensor_data_object_ref293"><ns4:Bounds x="630" y="404" width="36" height="50" /></ns2:BPMNShape><ns2:BPMNEdge id="object_artifact_dataoutputassociation293_di" bpmnElement="object_artifact_dataoutputassociation293" /><ns2:BPMNEdge id="object_artifact_datainputassociation293_di" bpmnElement="object_artifact_datainputassociation293" /><ns2:BPMNShape id="translated_catch_event_gateway627_di" bpmnElement="translated_catch_event_gateway627"><ns4:Bounds x="282" y="222" width="36" height="36" /></ns2:BPMNShape><ns2:BPMNShape id="translated_catch_event627_di" bpmnElement="translated_catch_event627"><ns4:Bounds x="182" y="204" width="80" height="80" /></ns2:BPMNShape><ns2:BPMNEdge id="translated_catch_event_sequence_flow627_di" bpmnElement="translated_catch_event_sequence_flow627"><ns3:waypoint x="262" y="244.0" /><ns3:waypoint x="282" y="240.0" /><ns3:waypoint x="300" y="222" /><ns3:waypoint x="222" y="204" /></ns2:BPMNEdge><ns2:BPMNEdge id="translated_catch_event_sequence_flow627_di" bpmnElement="translated_catch_event_sequence_flow627" /><ns2:BPMNShape id="translated_end_event670_di" bpmnElement="translated_end_event670"><ns4:Bounds x="1222" y="222" width="36" height="36" /></ns2:BPMNShape><ns2:BPMNShape id="translated_end_event_actor_task670_di" bpmnElement="translated_end_event_actor_task670"><ns4:Bounds x="1122" y="204" width="80" height="80" /></ns2:BPMNShape><ns2:BPMNEdge id="translated_end_event_sequence_flow670_di" bpmnElement="translated_end_event_sequence_flow670"><ns3:waypoint x="1202" y="244.0" /><ns3:waypoint x="1222" y="240.0" /></ns2:BPMNEdge></ns2:BPMNPlane>
+  </ns2:BPMNDiagram>
+</ns0:definitions>

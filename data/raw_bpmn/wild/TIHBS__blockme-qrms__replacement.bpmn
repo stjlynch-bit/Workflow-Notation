@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.28.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:process id="Process_1" isExecutable="true" camunda:historyTimeToLive="3">
+    <bpmn2:subProcess id="Activity_1liud3x" name="InvokeSCFunctionSubprocess&#10;">
+      <bpmn2:extensionElements>
+        <camunda:inputOutput />
+      </bpmn2:extensionElements>
+      <bpmn2:startEvent id="StartEvent_1">
+        <bpmn2:outgoing>Flow_0vvy7qm</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:serviceTask id="Activity_1e0x14p" name="Send Invoke Request" camunda:asyncBefore="true" camunda:class="scip.connector.task.SendInvokeRequestTask">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput />
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0vvy7qm</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0xvoq5t</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:endEvent id="Event_1or7fzu">
+        <bpmn2:incoming>Flow_11oe701</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:sequenceFlow id="Flow_0vvy7qm" sourceRef="StartEvent_1" targetRef="Activity_1e0x14p" />
+      <bpmn2:sequenceFlow id="Flow_0xvoq5t" sourceRef="Activity_1e0x14p" targetRef="Activity_0yg35xq" />
+      <bpmn2:receiveTask id="Activity_0yg35xq" name="Receive Invoke Response" camunda:asyncAfter="true" messageRef="Message_30nhvna">
+        <bpmn2:extensionElements>
+          <camunda:executionListener event="end">
+            <camunda:script scriptFormat="groovy">def logger = org.slf4j.LoggerFactory.getLogger('test');
+
+logger.info("\n\n****** InvokeSCFunction Task ******:\nReceived asynchronous response: " + execution.getVariable("return") + "\n");
+
+runtimeService.setVariable(execution.getId(), execution.getVariable("corrId") + "_result", execution.getVariable("return"));</camunda:script>
+          </camunda:executionListener>
+          <camunda:inputOutput />
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0xvoq5t</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_11oe701</bpmn2:outgoing>
+      </bpmn2:receiveTask>
+      <bpmn2:sequenceFlow id="Flow_11oe701" sourceRef="Activity_0yg35xq" targetRef="Event_1or7fzu" />
+      <bpmn2:subProcess id="Activity_1kgkamf" name="Catch and Rethrow Async SCIP Error" triggeredByEvent="true">
+        <bpmn2:startEvent id="Event_04k9w7c">
+          <bpmn2:extensionElements>
+            <camunda:executionListener event="end">
+              <camunda:script scriptFormat="groovy">def logger = org.slf4j.LoggerFactory.getLogger('test');
+
+logger.info("\n\n****** InvokeSCFunction Task ******:\nReceived asynchronous SCIP error: errorCode=" + execution.getVariable("errorCode") + "errorMessage=" + execution.getVariable("errorMessage") + "\n");
+
+runtimeService.setVariable(execution.getId(), execution.getVariable("corrId") + "_errorCode", execution.getVariable("errorCode"));</camunda:script>
+            </camunda:executionListener>
+          </bpmn2:extensionElements>
+          <bpmn2:outgoing>Flow_1a1ew47</bpmn2:outgoing>
+          <bpmn2:messageEventDefinition id="MessageEventDefinition_010t2j5" messageRef="Message_0m7hc0t" />
+        </bpmn2:startEvent>
+        <bpmn2:sequenceFlow id="Flow_1a1ew47" sourceRef="Event_04k9w7c" targetRef="Event_1f14a64" />
+        <bpmn2:endEvent id="Event_1f14a64">
+          <bpmn2:incoming>Flow_1a1ew47</bpmn2:incoming>
+          <bpmn2:errorEventDefinition id="ErrorEventDefinition_0rw7gnx" />
+        </bpmn2:endEvent>
+      </bpmn2:subProcess>
+      <bpmn2:boundaryEvent id="Event_0rx0lai" attachedToRef="Activity_1e0x14p">
+        <bpmn2:outgoing>Flow_14nlzt0</bpmn2:outgoing>
+        <bpmn2:errorEventDefinition id="ErrorEventDefinition_12bt91a" />
+      </bpmn2:boundaryEvent>
+      <bpmn2:sequenceFlow id="Flow_14nlzt0" sourceRef="Event_0rx0lai" targetRef="Event_0f44e0a" />
+      <bpmn2:endEvent id="Event_0f44e0a" name="Rethrow Sync SCIP Error">
+        <bpmn2:incoming>Flow_14nlzt0</bpmn2:incoming>
+        <bpmn2:errorEventDefinition id="ErrorEventDefinition_1s4c4sn" />
+      </bpmn2:endEvent>
+    </bpmn2:subProcess>
+  </bpmn2:process>
+  <bpmn2:message id="Message_30nhvna" name="result_${corrId}" />
+  <bpmn2:escalation id="Escalation_2upkc4h" name="Escalation_2upkc4h" escalationCode="Escalation_2upkc4h" />
+  <bpmn2:message id="Message_0m7hc0t" name="error_${corrId}" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Activity_1liud3x_di" bpmnElement="Activity_1liud3x" isExpanded="true">
+        <dc:Bounds x="160" y="80" width="590" height="320" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09tea8j_di" bpmnElement="Activity_1e0x14p">
+        <dc:Bounds x="270" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1or7fzu_di" bpmnElement="Event_1or7fzu">
+        <dc:Bounds x="602" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1plf2ub_di" bpmnElement="Activity_0yg35xq">
+        <dc:Bounds x="440" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0asjqzk_di" bpmnElement="Activity_1kgkamf" isExpanded="true">
+        <dc:Bounds x="440" y="250" width="210" height="120" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06nq6z9_di" bpmnElement="Event_04k9w7c">
+        <dc:Bounds x="480" y="302" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_05v8nkq_di" bpmnElement="Event_1f14a64">
+        <dc:Bounds x="572" y="302" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1a1ew47_di" bpmnElement="Flow_1a1ew47">
+        <di:waypoint x="516" y="320" />
+        <di:waypoint x="572" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_00580ec_di" bpmnElement="Event_0f44e0a">
+        <dc:Bounds x="362" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="346" y="315" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_02sxgkn_di" bpmnElement="Event_0rx0lai">
+        <dc:Bounds x="302" y="192" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0vvy7qm_di" bpmnElement="Flow_0vvy7qm">
+        <di:waypoint x="218" y="170" />
+        <di:waypoint x="270" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xvoq5t_di" bpmnElement="Flow_0xvoq5t">
+        <di:waypoint x="370" y="170" />
+        <di:waypoint x="440" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11oe701_di" bpmnElement="Flow_11oe701">
+        <di:waypoint x="540" y="170" />
+        <di:waypoint x="602" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14nlzt0_di" bpmnElement="Flow_14nlzt0">
+        <di:waypoint x="320" y="228" />
+        <di:waypoint x="320" y="290" />
+        <di:waypoint x="362" y="290" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

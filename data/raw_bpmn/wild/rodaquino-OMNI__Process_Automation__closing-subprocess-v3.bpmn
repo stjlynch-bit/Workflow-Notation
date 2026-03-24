@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                   xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   id="Definitions_Closing_V3"
+                   targetNamespace="http://austa.com.br/bpmn/v3"
+                   exporter="Camunda Modeler"
+                   exporterVersion="5.20.0">
+
+  <bpmn:process id="Process_Closing_V3" name="AUSTA V3 - Closing Subprocess" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:documentation>
+      AUSTA V3 Sales Completion - Phase 2: Closing
+      Features: 6-step handoff chain (celebration → CRM → financial → onboarding → handoff → implementation)
+      V2 Pattern: Message event for signed contract with 14-day timeout
+      Error Boundaries: Signature timeout, implementation failure
+    </bpmn:documentation>
+
+    <!-- START EVENT -->
+    <bpmn:startEvent id="Event_ClosingStart_V3" name="Start Closing">
+      <bpmn:outgoing>Flow_ToCoordinateSignature</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <!-- TASK 1: Coordinate Signature -->
+    <bpmn:userTask id="Task_CoordinateSignature_V3" name="Coordinate Contract Signature"
+                   camunda:assignee="${accountExecutive}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="signatureDate" label="Signature Date" type="date" />
+          <camunda:formField id="signatureLocation" label="Signature Location" type="enum">
+            <camunda:value id="client_hq" name="Client Headquarters" />
+            <camunda:value id="austa_hq" name="AUSTA Headquarters" />
+            <camunda:value id="digital" name="Digital Signature (DocuSign/Clicksign)" />
+            <camunda:value id="notary" name="Notary Office" />
+          </camunda:formField>
+          <camunda:formField id="clientSignatories" label="Client Signatories" type="string" />
+          <camunda:formField id="companySignatories" label="Company Signatories" type="string" />
+          <camunda:formField id="requiredDocuments" label="Required Documents" type="string" />
+          <camunda:formField id="witnesses" label="Witnesses" type="string" />
+        </camunda:formData>
+        <camunda:taskListener event="create">
+          <camunda:script scriptFormat="javascript">
+            task.setDueDate(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)); // 7 days
+          </camunda:script>
+        </camunda:taskListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_ToCoordinateSignature</bpmn:incoming>
+      <bpmn:outgoing>Flow_ToWaitSignature</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- MESSAGE EVENT: Wait for Signed Contract (V2 pattern) -->
+    <bpmn:intermediateCatchEvent id="Event_ReceiveSignedContract_V3" name="Wait for Signed Contract">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="signedContractReceived">${true}</camunda:outputParameter>
+          <camunda:outputParameter name="signedContractUrl">${signedContractUrl}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_ToWaitSignature</bpmn:incoming>
+      <bpmn:incoming>Flow_RetrySignature</bpmn:incoming>
+      <bpmn:outgoing>Flow_SignedToVictory</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_ContractSigned" />
+    </bpmn:intermediateCatchEvent>
+
+    <!-- BOUNDARY EVENT: Signature Timeout (14 days) -->
+    <bpmn:boundaryEvent id="Event_SignatureTimeout_V3" name="Signature Timeout (14 days)"
+                        cancelActivity="false" attachedToRef="Event_ReceiveSignedContract_V3">
+      <bpmn:outgoing>Flow_TimeoutToFollowUp</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDuration>P14D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+
+    <!-- TASK: Follow-up on Signature -->
+    <bpmn:userTask id="Task_FollowUpSignature_V3" name="Follow-up on Contract Signature"
+                   camunda:assignee="${accountExecutive}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="contactsMade" label="Contacts Made" type="long" />
+          <camunda:formField id="clientStatus" label="Client Status" type="enum">
+            <camunda:value id="signing_process" name="In Signing Process" />
+            <camunda:value id="internal_review" name="Internal Review" />
+            <camunda:value id="legal_pending" name="Legal Pending Issues" />
+            <camunda:value id="decision_change" name="Decision Change" />
+          </camunda:formField>
+          <camunda:formField id="newExpectedDate" label="New Expected Date" type="date" />
+          <camunda:formField id="actionNeeded" label="Action Needed" type="string" />
+          <camunda:formField id="continueWaiting" label="Continue Waiting?" type="boolean" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_TimeoutToFollowUp</bpmn:incoming>
+      <bpmn:outgoing>Flow_FollowUpToDecision</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- GATEWAY: Continue Waiting? -->
+    <bpmn:exclusiveGateway id="Gateway_ContinueWaiting_V3" name="Continue Waiting?" default="Flow_ToLoss">
+      <bpmn:incoming>Flow_FollowUpToDecision</bpmn:incoming>
+      <bpmn:outgoing>Flow_RetrySignature</bpmn:outgoing>
+      <bpmn:outgoing>Flow_ToLoss</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <!-- ========== HANDOFF CHAIN (6 STEPS) ========== -->
+
+    <!-- STEP 1: Celebrate Victory (metrics, recognition, lessons) -->
+    <bpmn:userTask id="Task_CelebrateVictory_V3" name="Celebrate Victory and Capture Metrics"
+                   camunda:assignee="${accountExecutive}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="finalContractValue" label="Final Contract Value (R$)" type="long">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="finalContractDuration" label="Contract Duration (months)" type="long" />
+          <camunda:formField id="netMargin" label="Net Margin (%)" type="long" />
+          <camunda:formField id="salesCommission" label="Sales Commission (R$)" type="long" />
+          <camunda:formField id="teamInvolved" label="Team Involved" type="string" />
+          <camunda:formField id="successFactors" label="Success Factors" type="string" />
+          <camunda:formField id="lessonsLearned" label="Lessons Learned" type="string" />
+          <camunda:formField id="caseStudy" label="Document as Case Study?" type="boolean" />
+          <camunda:formField id="clientTestimonial" label="Client Testimonial Obtained?" type="boolean" />
+        </camunda:formData>
+        <camunda:taskListener event="complete">
+          <camunda:script scriptFormat="javascript">
+            // Register victory metrics
+            execution.setVariable('dealClosed', true);
+            execution.setVariable('closingDate', new Date().getTime());
+
+            // Calculate sales cycle
+            var startDate = execution.getVariable('processStartDate');
+            var endDate = new Date();
+            var salesCycleDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            execution.setVariable('salesCycleDays', salesCycleDays);
+
+            // Update final MEDDIC score
+            execution.setVariable('finalMEDDICScore', 10);
+          </camunda:script>
+        </camunda:taskListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_SignedToVictory</bpmn:incoming>
+      <bpmn:outgoing>Flow_VictoryToCRM</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- STEP 2: Update CRM (closed-won stage) -->
+    <bpmn:serviceTask id="Task_UpdateCRM_V3" name="Update CRM with Final Data"
+                      camunda:type="external" camunda:topic="crm-update-closing">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="clientId">${clientId}</camunda:inputParameter>
+          <camunda:inputParameter name="contractId">${contractId}</camunda:inputParameter>
+          <camunda:inputParameter name="opportunityId">${opportunityId}</camunda:inputParameter>
+          <camunda:inputParameter name="stage">closed_won</camunda:inputParameter>
+          <camunda:inputParameter name="finalValue">${finalContractValue}</camunda:inputParameter>
+          <camunda:inputParameter name="closingDate">${closingDate}</camunda:inputParameter>
+          <camunda:inputParameter name="salesCycle">${salesCycleDays}</camunda:inputParameter>
+          <camunda:inputParameter name="signedContractUrl">${signedContractUrl}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_VictoryToCRM</bpmn:incoming>
+      <bpmn:outgoing>Flow_CRMToFinancial</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- STEP 3: Financial System Integration (contract value, payment terms) -->
+    <bpmn:serviceTask id="Task_IntegrateFinancial_V3" name="Integrate with Financial System"
+                      camunda:type="external" camunda:topic="financial-integration">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="contractId">${contractId}</camunda:inputParameter>
+          <camunda:inputParameter name="clientId">${clientId}</camunda:inputParameter>
+          <camunda:inputParameter name="monthlyValue">${finalContractValue}</camunda:inputParameter>
+          <camunda:inputParameter name="contractStartDate">${contractStartDate}</camunda:inputParameter>
+          <camunda:inputParameter name="contractDuration">${finalContractDuration}</camunda:inputParameter>
+          <camunda:inputParameter name="paymentTerms">${paymentTerms}</camunda:inputParameter>
+          <camunda:inputParameter name="billingCycle">monthly</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_CRMToFinancial</bpmn:incoming>
+      <bpmn:outgoing>Flow_FinancialToOnboarding</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- STEP 4: Onboarding Preparation (5-day deadline) -->
+    <bpmn:userTask id="Task_PrepareOnboarding_V3" name="Prepare Client Onboarding"
+                   camunda:candidateGroups="operations,implementation">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="implementationPlan" label="Implementation Plan" type="string" />
+          <camunda:formField id="implementationTeam" label="Implementation Team" type="string" />
+          <camunda:formField id="implementationSchedule" label="Implementation Schedule" type="string" />
+          <camunda:formField id="requiredResources" label="Required Resources" type="string" />
+          <camunda:formField id="trainingPlan" label="Training Plan" type="string" />
+          <camunda:formField id="operationStartDate" label="Operation Start Date" type="date">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="clientProjectManager" label="Client Project Manager" type="string" />
+          <camunda:formField id="austaProjectManager" label="AUSTA Project Manager" type="string" />
+          <camunda:formField id="milestones" label="Implementation Milestones" type="string" />
+        </camunda:formData>
+        <camunda:taskListener event="create">
+          <camunda:script scriptFormat="javascript">
+            task.setDueDate(new Date(Date.now() + 5 * 24 * 60 * 60 * 1000)); // 5-day deadline
+          </camunda:script>
+        </camunda:taskListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_FinancialToOnboarding</bpmn:incoming>
+      <bpmn:outgoing>Flow_OnboardingToHandoff</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- STEP 5: Handoff to Operations (knowledge transfer checklist) -->
+    <bpmn:userTask id="Task_PerformHandoff_V3" name="Perform Handoff to Operations"
+                   camunda:candidateGroups="sales-team,operations">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="negotiationSummary" label="Negotiation Summary" type="string" />
+          <camunda:formField id="clientExpectations" label="Client Expectations" type="string" />
+          <camunda:formField id="commitmentsMade" label="Commitments Made" type="string" />
+          <camunda:formField id="keyClientContacts" label="Key Client Contacts" type="string" />
+          <camunda:formField id="implementationNotes" label="Implementation Notes" type="string" />
+          <camunda:formField id="specialRequirements" label="Special Requirements" type="string" />
+          <camunda:formField id="riskFactors" label="Risk Factors" type="string" />
+          <camunda:formField id="knowledgeTransferComplete" label="Knowledge Transfer Complete?" type="boolean">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="handoffApproved" label="Handoff Approved by Operations?" type="boolean">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_OnboardingToHandoff</bpmn:incoming>
+      <bpmn:outgoing>Flow_ToHandoffDecision</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- GATEWAY: Handoff Complete? -->
+    <bpmn:exclusiveGateway id="Gateway_HandoffComplete_V3" name="Handoff Complete?" default="Flow_HandoffIncomplete">
+      <bpmn:incoming>Flow_ToHandoffDecision</bpmn:incoming>
+      <bpmn:outgoing>Flow_HandoffToImplementation</bpmn:outgoing>
+      <bpmn:outgoing>Flow_HandoffIncomplete</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <!-- TASK: Complete Handoff Requirements -->
+    <bpmn:userTask id="Task_CompleteHandoff_V3" name="Complete Handoff Requirements"
+                   camunda:candidateGroups="sales-team">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="missingItems" label="Missing Items" type="string" />
+          <camunda:formField id="additionalInfo" label="Additional Information" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_HandoffIncomplete</bpmn:incoming>
+      <bpmn:outgoing>Flow_CompleteToHandoff</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- STEP 6: Initiate Implementation -->
+    <bpmn:serviceTask id="Task_InitiateImplementation_V3" name="Initiate Implementation Process"
+                      camunda:type="external" camunda:topic="initiate-implementation">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="clientId">${clientId}</camunda:inputParameter>
+          <camunda:inputParameter name="contractId">${contractId}</camunda:inputParameter>
+          <camunda:inputParameter name="implementationPlan">${implementationPlan}</camunda:inputParameter>
+          <camunda:inputParameter name="implementationTeam">${implementationTeam}</camunda:inputParameter>
+          <camunda:inputParameter name="operationStartDate">${operationStartDate}</camunda:inputParameter>
+          <camunda:inputParameter name="austaProjectManager">${austaProjectManager}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_HandoffToImplementation</bpmn:incoming>
+      <bpmn:incoming>Flow_CompleteToHandoff</bpmn:incoming>
+      <bpmn:outgoing>Flow_ImplementationToSuccess</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- BOUNDARY EVENT: Implementation Failure -->
+    <bpmn:boundaryEvent id="Event_ImplementationFailure_V3" name="Implementation Failure"
+                        attachedToRef="Task_InitiateImplementation_V3">
+      <bpmn:outgoing>Flow_FailureToResolve</bpmn:outgoing>
+      <bpmn:errorEventDefinition errorRef="Error_ImplementationFailure" />
+    </bpmn:boundaryEvent>
+
+    <!-- TASK: Resolve Implementation Issues -->
+    <bpmn:userTask id="Task_ResolveImplementation_V3" name="Resolve Implementation Issues"
+                   camunda:candidateGroups="operations,sales-team,executives">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="implementationProblem" label="Implementation Problem" type="string" />
+          <camunda:formField id="clientImpact" label="Client Impact Assessment" type="string" />
+          <camunda:formField id="correctionPlan" label="Correction Plan" type="string" />
+          <camunda:formField id="resolutionTimeline" label="Resolution Timeline" type="string" />
+          <camunda:formField id="escalationNeeded" label="Escalation Needed?" type="boolean" />
+          <camunda:formField id="issueResolved" label="Issue Resolved?" type="boolean" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_FailureToResolve</bpmn:incoming>
+      <bpmn:outgoing>Flow_ResolveToSuccess</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- TASK: Loss Analysis -->
+    <bpmn:userTask id="Task_FinalLossAnalysis_V3" name="Final Lost Opportunity Analysis"
+                   camunda:assignee="${accountExecutive}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="finalLossReason" label="Final Loss Reason" type="enum">
+            <camunda:value id="client_withdrawal" name="Client Withdrawal" />
+            <camunda:value id="priority_change" name="Priority Change" />
+            <camunda:value id="legal_issues" name="Legal Issues" />
+            <camunda:value id="internal_problems" name="Internal Problems" />
+            <camunda:value id="competitor_last_minute" name="Competitor at Last Minute" />
+            <camunda:value id="signature_timeout" name="Signature Timeout" />
+          </camunda:formField>
+          <camunda:formField id="timeInvested" label="Time Invested (hours)" type="long" />
+          <camunda:formField id="resourcesSpent" label="Resources Spent (R$)" type="long" />
+          <camunda:formField id="phaseLearnings" label="Phase Learnings" type="string" />
+          <camunda:formField id="processImprovements" label="Process Improvements" type="string" />
+          <camunda:formField id="futureOpportunity" label="Future Opportunity?" type="boolean" />
+          <camunda:formField id="resumptionTimeline" label="Resumption Timeline" type="string" />
+        </camunda:formData>
+        <camunda:taskListener event="complete">
+          <camunda:script scriptFormat="javascript">
+            execution.setVariable('dealLost', true);
+            execution.setVariable('lossDate', new Date().getTime());
+
+            var startDate = execution.getVariable('processStartDate');
+            var endDate = new Date();
+            var salesCycleDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            execution.setVariable('salesCycleDays', salesCycleDays);
+          </camunda:script>
+        </camunda:taskListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_ToLoss</bpmn:incoming>
+      <bpmn:outgoing>Flow_LossToEnd</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- COMPENSATION HANDLER -->
+    <bpmn:boundaryEvent id="Event_CompensationTrigger_V3" name="Compensation Trigger"
+                        attachedToRef="Task_CelebrateVictory_V3">
+      <bpmn:compensateEventDefinition />
+    </bpmn:boundaryEvent>
+
+    <bpmn:userTask id="Task_CompensateClosing_V3" name="Rollback Closing Activities"
+                   isForCompensation="true"
+                   camunda:assignee="${accountExecutive}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="activitiesToRollback" label="Activities to Rollback" type="string" />
+          <camunda:formField id="systemsToRevert" label="Systems to Revert" type="string" />
+          <camunda:formField id="notificationsToSend" label="Notifications to Send" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+    </bpmn:userTask>
+
+    <!-- END EVENTS -->
+    <bpmn:endEvent id="Event_ClosingSuccess_V3" name="Closing Complete - Implementation Started">
+      <bpmn:extensionElements>
+        <camunda:executionListener event="start">
+          <camunda:script scriptFormat="javascript">
+            execution.setVariable('closingComplete', true);
+            execution.setVariable('implementationStarted', true);
+            execution.setVariable('closingEndDate', new Date().getTime());
+          </camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_ImplementationToSuccess</bpmn:incoming>
+      <bpmn:incoming>Flow_ResolveToSuccess</bpmn:incoming>
+      <bpmn:messageEventDefinition messageRef="Message_ClosingComplete" />
+    </bpmn:endEvent>
+
+    <bpmn:endEvent id="Event_ClosingFailed_V3" name="Closing Failed - Opportunity Lost">
+      <bpmn:extensionElements>
+        <camunda:executionListener event="start">
+          <camunda:script scriptFormat="javascript">
+            execution.setVariable('closingComplete', false);
+            execution.setVariable('closingFailed', true);
+            execution.setVariable('closingEndDate', new Date().getTime());
+          </camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_LossToEnd</bpmn:incoming>
+      <bpmn:terminateEventDefinition />
+    </bpmn:endEvent>
+
+    <!-- SEQUENCE FLOWS -->
+    <bpmn:sequenceFlow id="Flow_ToCoordinateSignature" sourceRef="Event_ClosingStart_V3" targetRef="Task_CoordinateSignature_V3" />
+    <bpmn:sequenceFlow id="Flow_ToWaitSignature" sourceRef="Task_CoordinateSignature_V3" targetRef="Event_ReceiveSignedContract_V3" />
+    <bpmn:sequenceFlow id="Flow_SignedToVictory" sourceRef="Event_ReceiveSignedContract_V3" targetRef="Task_CelebrateVictory_V3" />
+
+    <bpmn:sequenceFlow id="Flow_TimeoutToFollowUp" sourceRef="Event_SignatureTimeout_V3" targetRef="Task_FollowUpSignature_V3" />
+    <bpmn:sequenceFlow id="Flow_FollowUpToDecision" sourceRef="Task_FollowUpSignature_V3" targetRef="Gateway_ContinueWaiting_V3" />
+
+    <bpmn:sequenceFlow id="Flow_RetrySignature" name="Yes" sourceRef="Gateway_ContinueWaiting_V3" targetRef="Event_ReceiveSignedContract_V3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${continueWaiting == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+
+    <bpmn:sequenceFlow id="Flow_ToLoss" name="No" sourceRef="Gateway_ContinueWaiting_V3" targetRef="Task_FinalLossAnalysis_V3" />
+
+    <!-- Handoff Chain Flows -->
+    <bpmn:sequenceFlow id="Flow_VictoryToCRM" sourceRef="Task_CelebrateVictory_V3" targetRef="Task_UpdateCRM_V3" />
+    <bpmn:sequenceFlow id="Flow_CRMToFinancial" sourceRef="Task_UpdateCRM_V3" targetRef="Task_IntegrateFinancial_V3" />
+    <bpmn:sequenceFlow id="Flow_FinancialToOnboarding" sourceRef="Task_IntegrateFinancial_V3" targetRef="Task_PrepareOnboarding_V3" />
+    <bpmn:sequenceFlow id="Flow_OnboardingToHandoff" sourceRef="Task_PrepareOnboarding_V3" targetRef="Task_PerformHandoff_V3" />
+    <bpmn:sequenceFlow id="Flow_ToHandoffDecision" sourceRef="Task_PerformHandoff_V3" targetRef="Gateway_HandoffComplete_V3" />
+
+    <bpmn:sequenceFlow id="Flow_HandoffToImplementation" name="Yes" sourceRef="Gateway_HandoffComplete_V3" targetRef="Task_InitiateImplementation_V3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${knowledgeTransferComplete == true &amp;&amp; handoffApproved == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+
+    <bpmn:sequenceFlow id="Flow_HandoffIncomplete" name="No" sourceRef="Gateway_HandoffComplete_V3" targetRef="Task_CompleteHandoff_V3" />
+    <bpmn:sequenceFlow id="Flow_CompleteToHandoff" sourceRef="Task_CompleteHandoff_V3" targetRef="Task_InitiateImplementation_V3" />
+
+    <bpmn:sequenceFlow id="Flow_ImplementationToSuccess" sourceRef="Task_InitiateImplementation_V3" targetRef="Event_ClosingSuccess_V3" />
+    <bpmn:sequenceFlow id="Flow_FailureToResolve" sourceRef="Event_ImplementationFailure_V3" targetRef="Task_ResolveImplementation_V3" />
+    <bpmn:sequenceFlow id="Flow_ResolveToSuccess" sourceRef="Task_ResolveImplementation_V3" targetRef="Event_ClosingSuccess_V3" />
+
+    <bpmn:sequenceFlow id="Flow_LossToEnd" sourceRef="Task_FinalLossAnalysis_V3" targetRef="Event_ClosingFailed_V3" />
+
+    <!-- Association for Compensation -->
+    <bpmn:association id="Association_Compensation_V3" associationDirection="One"
+                      sourceRef="Event_CompensationTrigger_V3" targetRef="Task_CompensateClosing_V3" />
+
+  </bpmn:process>
+
+  <!-- ERROR DEFINITIONS -->
+  <bpmn:error id="Error_ImplementationFailure" name="ImplementationFailure" errorCode="IMPLEMENTATION_FAILURE" />
+
+  <!-- MESSAGE DEFINITIONS -->
+  <bpmn:message id="Message_ContractSigned" name="ContractSigned" />
+  <bpmn:message id="Message_ClosingComplete" name="ClosingComplete" />
+
+  <!-- BPMN DIAGRAM (minimal for validation) -->
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Closing_V3">
+    <bpmndi:BPMNPlane id="BPMNPlane_Closing_V3" bpmnElement="Process_Closing_V3">
+      <!-- Diagram shapes omitted for brevity - would be added by Camunda Modeler -->
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</bpmn:definitions>

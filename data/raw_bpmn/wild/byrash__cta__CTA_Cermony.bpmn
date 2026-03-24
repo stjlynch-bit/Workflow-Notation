@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_02yee6j" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.22.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_1xls0ud" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:extensionElements>
+      <camunda:executionListener event="end">
+        <camunda:script scriptFormat="JavaScript">if(statusCode != 200){
+throw new Error("Error from REST, response Code: " + statusCode)
+}else{
+
+}</camunda:script>
+      </camunda:executionListener>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="Event_0jo295u">
+      <bpmn:outgoing>Flow_1plf4i7</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:subProcess id="Activity_12hrght">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="filledFormId">#{S(data).prop("filledFormId").value()}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1plf4i7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0omp1oi</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" camunda:collection="${S(data).prop(&#34;signers&#34;).elements()}" camunda:elementVariable="signerGroup" />
+      <bpmn:startEvent id="Event_14ohi9m">
+        <bpmn:outgoing>Flow_0xz9arr</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:parallelGateway id="Gateway_0fd8wpk">
+        <bpmn:incoming>Flow_12ltdtr</bpmn:incoming>
+        <bpmn:outgoing>Flow_14agtqk</bpmn:outgoing>
+      </bpmn:parallelGateway>
+      <bpmn:sequenceFlow id="Flow_14agtqk" sourceRef="Gateway_0fd8wpk" targetRef="Event_08j1ikq" />
+      <bpmn:endEvent id="Event_08j1ikq">
+        <bpmn:incoming>Flow_14agtqk</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:subProcess id="Activity_0m6ukf6" name="CTA">
+        <bpmn:extensionElements />
+        <bpmn:incoming>Flow_0xz9arr</bpmn:incoming>
+        <bpmn:outgoing>Flow_12ltdtr</bpmn:outgoing>
+        <bpmn:multiInstanceLoopCharacteristics camunda:collection="${S(signerGroup).elements()}" camunda:elementVariable="signer" />
+        <bpmn:startEvent id="Event_1nzb884">
+          <bpmn:outgoing>Flow_0q927v9</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:serviceTask id="Activity_0kn3k7n" name="CTA">
+          <bpmn:extensionElements>
+            <camunda:connector>
+              <camunda:inputOutput>
+                <camunda:inputParameter name="method">POST</camunda:inputParameter>
+                <camunda:inputParameter name="url">http://host.docker.internal:8080/api/signer/cta/${filledFormId}</camunda:inputParameter>
+                <camunda:inputParameter name="payload">#{S(signer).toString()}</camunda:inputParameter>
+                <camunda:inputParameter name="headers">
+                  <camunda:map>
+                    <camunda:entry key="Content-Type">application/json</camunda:entry>
+                    <camunda:entry key="Access-Control-Allow-Origin">*</camunda:entry>
+                  </camunda:map>
+                </camunda:inputParameter>
+                <camunda:outputParameter name="statusCode">#{statusCode}</camunda:outputParameter>
+              </camunda:inputOutput>
+              <camunda:connectorId>http-connector</camunda:connectorId>
+            </camunda:connector>
+            <camunda:executionListener event="end">
+              <camunda:script scriptFormat="JavaScript">if(statusCode != 200){
+throw new Error("CTA REST, response Code: " + statusCode)
+}else{
+
+}</camunda:script>
+            </camunda:executionListener>
+            <camunda:executionListener event="start">
+              <camunda:script scriptFormat="JavaScript">console.log('Calling CTA')</camunda:script>
+            </camunda:executionListener>
+          </bpmn:extensionElements>
+          <bpmn:incoming>Flow_0q927v9</bpmn:incoming>
+          <bpmn:outgoing>Flow_1dzq0ma</bpmn:outgoing>
+        </bpmn:serviceTask>
+        <bpmn:boundaryEvent id="Event_13l3ua9" cancelActivity="false" attachedToRef="Activity_0y58nwr">
+          <bpmn:outgoing>Flow_0erofrs</bpmn:outgoing>
+          <bpmn:timerEventDefinition id="TimerEventDefinition_1usarb0">
+            <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+          </bpmn:timerEventDefinition>
+        </bpmn:boundaryEvent>
+        <bpmn:sequenceFlow id="Flow_0q927v9" sourceRef="Event_1nzb884" targetRef="Activity_0kn3k7n" />
+        <bpmn:endEvent id="Event_0r5w00f">
+          <bpmn:incoming>Flow_1gicxqy</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:serviceTask id="Activity_0m979cm" name="Reminder">
+          <bpmn:extensionElements>
+            <camunda:connector>
+              <camunda:inputOutput>
+                <camunda:inputParameter name="method">POST</camunda:inputParameter>
+                <camunda:inputParameter name="url">http://host.docker.internal:8080/api/signer/reminder</camunda:inputParameter>
+                <camunda:inputParameter name="payload">#{S(signer).toString()}</camunda:inputParameter>
+                <camunda:inputParameter name="headers">
+                  <camunda:map>
+                    <camunda:entry key="Content-Type">application/json</camunda:entry>
+                    <camunda:entry key="Access-Control-Allow-Origin">*</camunda:entry>
+                  </camunda:map>
+                </camunda:inputParameter>
+                <camunda:outputParameter name="statusCode">#{statusCode}</camunda:outputParameter>
+              </camunda:inputOutput>
+              <camunda:connectorId>http-connector</camunda:connectorId>
+            </camunda:connector>
+            <camunda:executionListener event="end">
+              <camunda:script scriptFormat="JavaScript">if(statusCode != 200){
+throw new Error("Reminder REST, response Code: " + statusCode)
+}else{
+
+}</camunda:script>
+            </camunda:executionListener>
+          </bpmn:extensionElements>
+          <bpmn:incoming>Flow_0erofrs</bpmn:incoming>
+          <bpmn:outgoing>Flow_1pnqtiz</bpmn:outgoing>
+        </bpmn:serviceTask>
+        <bpmn:endEvent id="Event_1fr2ixc">
+          <bpmn:incoming>Flow_1pnqtiz</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_1pnqtiz" sourceRef="Activity_0m979cm" targetRef="Event_1fr2ixc" />
+        <bpmn:sequenceFlow id="Flow_0erofrs" sourceRef="Event_13l3ua9" targetRef="Activity_0m979cm" />
+        <bpmn:sequenceFlow id="Flow_1dzq0ma" sourceRef="Activity_0kn3k7n" targetRef="Activity_0y58nwr" />
+        <bpmn:receiveTask id="Activity_0y58nwr" name="Wait for CTA Completion" messageRef="Message_0ljtc5e">
+          <bpmn:incoming>Flow_1dzq0ma</bpmn:incoming>
+          <bpmn:outgoing>Flow_1gicxqy</bpmn:outgoing>
+        </bpmn:receiveTask>
+        <bpmn:sequenceFlow id="Flow_1gicxqy" sourceRef="Activity_0y58nwr" targetRef="Event_0r5w00f" />
+      </bpmn:subProcess>
+      <bpmn:sequenceFlow id="Flow_0xz9arr" sourceRef="Event_14ohi9m" targetRef="Activity_0m6ukf6" />
+      <bpmn:sequenceFlow id="Flow_12ltdtr" sourceRef="Activity_0m6ukf6" targetRef="Gateway_0fd8wpk" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_1plf4i7" sourceRef="Event_0jo295u" targetRef="Activity_12hrght" />
+    <bpmn:boundaryEvent id="Event_1kp20c1" attachedToRef="Activity_12hrght">
+      <bpmn:outgoing>Flow_1ba5nd1</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_087uhcx">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1ba5nd1" sourceRef="Event_1kp20c1" targetRef="Activity_1n6sk9h" />
+    <bpmn:serviceTask id="Activity_1n6sk9h" name="Recall Signing Cermony">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://host.docker.internal:8080/api/recall/cta</camunda:inputParameter>
+            <camunda:inputParameter name="payload">${S(data).prop("signers").toString()}</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+                <camunda:entry key="Access-Control-Allow-Origin">*</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:outputParameter name="statusCode">#{statusCode}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+        <camunda:executionListener event="end">
+          <camunda:script scriptFormat="JavaScript">if(statusCode != 200){
+throw new Error("Recall REST, response Code: " + statusCode)
+}else{
+
+}</camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ba5nd1</bpmn:incoming>
+      <bpmn:outgoing>Flow_18omb1x</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1qf5dbj">
+      <bpmn:incoming>Flow_0omp1oi</bpmn:incoming>
+      <bpmn:incoming>Flow_18omb1x</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:subProcess id="Activity_0374ovk" triggeredByEvent="true">
+      <bpmn:startEvent id="Event_01vhzu2">
+        <bpmn:outgoing>Flow_1axthuk</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_0urdwp2" camunda:errorCodeVariable="statusCode" />
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1axthuk" sourceRef="Event_01vhzu2" targetRef="Activity_1yt8u3m" />
+      <bpmn:userTask id="Activity_1yt8u3m" name="Handle Error" camunda:assignee="demo">
+        <bpmn:incoming>Flow_1axthuk</bpmn:incoming>
+        <bpmn:outgoing>Flow_1x95np6</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="Event_0mbhn4b">
+        <bpmn:incoming>Flow_1x95np6</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1x95np6" sourceRef="Activity_1yt8u3m" targetRef="Event_0mbhn4b" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0omp1oi" sourceRef="Activity_12hrght" targetRef="Event_1qf5dbj" />
+    <bpmn:sequenceFlow id="Flow_18omb1x" sourceRef="Activity_1n6sk9h" targetRef="Event_1qf5dbj" />
+  </bpmn:process>
+  <bpmn:message id="Message_2cdv30o" />
+  <bpmn:message id="Message_0ljtc5e" name="msg_#{S(signer).prop(&#34;order&#34;).stringValue()}_#{S(signer).prop(&#34;name&#34;).stringValue()}_#{S(signer).prop(&#34;role&#34;).stringValue()}" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1xls0ud">
+      <bpmndi:BPMNShape id="Event_0jo295u_di" bpmnElement="Event_0jo295u">
+        <dc:Bounds x="152" y="512" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12hrght_di" bpmnElement="Activity_12hrght" isExpanded="true">
+        <dc:Bounds x="260" y="430" width="480" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14ohi9m_di" bpmnElement="Event_14ohi9m">
+        <dc:Bounds x="292" y="492" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1vtc4vk_di" bpmnElement="Gateway_0fd8wpk">
+        <dc:Bounds x="575" y="485" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_08j1ikq_di" bpmnElement="Event_08j1ikq">
+        <dc:Bounds x="671" y="492" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0m6ukf6_di" bpmnElement="Activity_0m6ukf6" isExpanded="false">
+        <dc:Bounds x="430" y="470" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_14agtqk_di" bpmnElement="Flow_14agtqk">
+        <di:waypoint x="625" y="510" />
+        <di:waypoint x="671" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xz9arr_di" bpmnElement="Flow_0xz9arr">
+        <di:waypoint x="328" y="510" />
+        <di:waypoint x="430" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12ltdtr_di" bpmnElement="Flow_12ltdtr">
+        <di:waypoint x="530" y="510" />
+        <di:waypoint x="575" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0hoa6jb_di" bpmnElement="Activity_1n6sk9h" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <dc:Bounds x="740" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qf5dbj_di" bpmnElement="Event_1qf5dbj">
+        <dc:Bounds x="832" y="492" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0374ovk_di" bpmnElement="Activity_0374ovk" isExpanded="true">
+        <dc:Bounds x="310" y="80" width="320" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1t2gwfs_di" bpmnElement="Event_01vhzu2">
+        <dc:Bounds x="332" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02l8n75_di" bpmnElement="Activity_1yt8u3m">
+        <dc:Bounds x="420" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0mbhn4b_di" bpmnElement="Event_0mbhn4b">
+        <dc:Bounds x="572" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1axthuk_di" bpmnElement="Flow_1axthuk">
+        <di:waypoint x="368" y="170" />
+        <di:waypoint x="420" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1x95np6_di" bpmnElement="Flow_1x95np6">
+        <di:waypoint x="520" y="170" />
+        <di:waypoint x="572" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_05t7vwu_di" bpmnElement="Event_1kp20c1">
+        <dc:Bounds x="668" y="412" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1plf4i7_di" bpmnElement="Flow_1plf4i7">
+        <di:waypoint x="188" y="530" />
+        <di:waypoint x="260" y="530" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ba5nd1_di" bpmnElement="Flow_1ba5nd1">
+        <di:waypoint x="686" y="412" />
+        <di:waypoint x="686" y="330" />
+        <di:waypoint x="740" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0omp1oi_di" bpmnElement="Flow_0omp1oi">
+        <di:waypoint x="740" y="510" />
+        <di:waypoint x="832" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18omb1x_di" bpmnElement="Flow_18omb1x">
+        <di:waypoint x="790" y="370" />
+        <di:waypoint x="790" y="431" />
+        <di:waypoint x="850" y="431" />
+        <di:waypoint x="850" y="492" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_0guq1l9">
+    <bpmndi:BPMNPlane id="BPMNPlane_09p4fnf" bpmnElement="Activity_0m6ukf6">
+      <bpmndi:BPMNShape id="Event_1nzb884_di" bpmnElement="Event_1nzb884">
+        <dc:Bounds x="180" y="220" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_15sxzek" bpmnElement="Activity_0kn3k7n" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="330" y="198" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0r5w00f_di" bpmnElement="Event_0r5w00f">
+        <dc:Bounds x="712" y="220" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0719mhs" bpmnElement="Activity_0m979cm" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="640" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0jjnd4k" bpmnElement="Event_1fr2ixc">
+        <dc:Bounds x="782" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09c6k08_di" bpmnElement="Activity_0y58nwr" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <dc:Bounds x="520" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1jsuazp" bpmnElement="Event_13l3ua9">
+        <dc:Bounds x="582" y="180" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0q927v9_di" bpmnElement="Flow_0q927v9">
+        <di:waypoint x="216" y="238" />
+        <di:waypoint x="330" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0bajs0f" bpmnElement="Flow_1pnqtiz">
+        <di:waypoint x="740" y="120" />
+        <di:waypoint x="782" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0erofrs_di" bpmnElement="Flow_0erofrs">
+        <di:waypoint x="600" y="180" />
+        <di:waypoint x="600" y="120" />
+        <di:waypoint x="640" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dzq0ma_di" bpmnElement="Flow_1dzq0ma">
+        <di:waypoint x="430" y="238" />
+        <di:waypoint x="520" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gicxqy_di" bpmnElement="Flow_1gicxqy">
+        <di:waypoint x="620" y="238" />
+        <di:waypoint x="712" y="238" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

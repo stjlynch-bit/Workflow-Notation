@@ -1,0 +1,147 @@
+<ns0:definitions xmlns:ns0="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns1="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_001" targetNamespace="http://bpmn.io/schema/bpmn">
+  <ns0:process id="Process_001" isExecutable="false">
+    <ns0:startEvent id="Default_init">
+      <ns0:outgoing>Flow_Default_init_In6</ns0:outgoing>
+    </ns0:startEvent>
+    <ns0:task id="In6" name="Inform_Reseravation_Data">
+      <ns0:incoming>Flow_Default_init_In6</ns0:incoming>
+      <ns0:outgoing>Flow_In6_Par2</ns0:outgoing>
+    </ns0:task>
+    <ns0:parallelGateway id="Par2">
+      <ns0:incoming>Flow_In6_Par2</ns0:incoming>
+      <ns0:outgoing>Flow_Par2_Ch2</ns0:outgoing>
+      <ns0:outgoing>Flow_Par2_Par5</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:task id="Ch2" name="Choose_Accomodations">
+      <ns0:incoming>Flow_Par2_Ch2</ns0:incoming>
+      <ns0:outgoing>Flow_Ch2_Bi7</ns0:outgoing>
+    </ns0:task>
+    <ns0:task id="Bi7" name="Billing">
+      <ns0:incoming>Flow_Ch2_Bi7</ns0:incoming>
+      <ns0:outgoing>Flow_Bi7_PARCLOSE9</ns0:outgoing>
+    </ns0:task>
+    <ns0:parallelGateway id="Par5">
+      <ns0:incoming>Flow_Par2_Par5</ns0:incoming>
+      <ns0:outgoing>Flow_Par5_Sc4</ns0:outgoing>
+      <ns0:outgoing>Flow_Par5_Bo3</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:task id="Sc4" name="Schedule_Schuba_Diving">
+      <ns0:incoming>Flow_Par5_Sc4</ns0:incoming>
+      <ns0:outgoing>Flow_Sc4_PARCLOSE8</ns0:outgoing>
+    </ns0:task>
+    <ns0:task id="Bo3" name="Book_Diving_Equipment">
+      <ns0:incoming>Flow_Par5_Bo3</ns0:incoming>
+      <ns0:outgoing>Flow_Bo3_PARCLOSE8</ns0:outgoing>
+    </ns0:task>
+    <ns0:parallelGateway id="PARCLOSE8">
+      <ns0:incoming>Flow_Sc4_PARCLOSE8</ns0:incoming>
+      <ns0:incoming>Flow_Bo3_PARCLOSE8</ns0:incoming>
+      <ns0:outgoing>Flow_PARCLOSE8_PARCLOSE9</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:parallelGateway id="PARCLOSE9">
+      <ns0:incoming>Flow_Bi7_PARCLOSE9</ns0:incoming>
+      <ns0:incoming>Flow_PARCLOSE8_PARCLOSE9</ns0:incoming>
+      <ns0:outgoing>Flow_PARCLOSE9_END</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:endEvent id="END">
+      <ns0:incoming>Flow_PARCLOSE9_END</ns0:incoming>
+    </ns0:endEvent>
+    <ns0:sequenceFlow id="Flow_Default_init_In6" sourceRef="Default_init" targetRef="In6" />
+    <ns0:sequenceFlow id="Flow_In6_Par2" sourceRef="In6" targetRef="Par2" />
+    <ns0:sequenceFlow id="Flow_Par2_Ch2" sourceRef="Par2" targetRef="Ch2" />
+    <ns0:sequenceFlow id="Flow_Par2_Par5" sourceRef="Par2" targetRef="Par5" />
+    <ns0:sequenceFlow id="Flow_Ch2_Bi7" sourceRef="Ch2" targetRef="Bi7" />
+    <ns0:sequenceFlow id="Flow_Bi7_PARCLOSE9" sourceRef="Bi7" targetRef="PARCLOSE9" />
+    <ns0:sequenceFlow id="Flow_Par5_Sc4" sourceRef="Par5" targetRef="Sc4" />
+    <ns0:sequenceFlow id="Flow_Par5_Bo3" sourceRef="Par5" targetRef="Bo3" />
+    <ns0:sequenceFlow id="Flow_Sc4_PARCLOSE8" sourceRef="Sc4" targetRef="PARCLOSE8" />
+    <ns0:sequenceFlow id="Flow_Bo3_PARCLOSE8" sourceRef="Bo3" targetRef="PARCLOSE8" />
+    <ns0:sequenceFlow id="Flow_PARCLOSE8_PARCLOSE9" sourceRef="PARCLOSE8" targetRef="PARCLOSE9" />
+    <ns0:sequenceFlow id="Flow_PARCLOSE9_END" sourceRef="PARCLOSE9" targetRef="END" />
+  </ns0:process>
+  <ns1:BPMNDiagram id="BPMNDiagram_1">
+    <ns1:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_001">
+      <ns1:BPMNShape id="_BPMNShape_Default_init" bpmnElement="Default_init">
+        <ns2:Bounds x="100" y="100" width="36" height="36" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_In6" bpmnElement="In6">
+        <ns2:Bounds x="250" y="100" width="100" height="80" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_Par2" bpmnElement="Par2">
+        <ns2:Bounds x="400" y="100" width="50" height="50" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_Ch2" bpmnElement="Ch2">
+        <ns2:Bounds x="550" y="100" width="100" height="80" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_Bi7" bpmnElement="Bi7">
+        <ns2:Bounds x="700" y="100" width="100" height="80" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_Par5" bpmnElement="Par5">
+        <ns2:Bounds x="850" y="100" width="50" height="50" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_Sc4" bpmnElement="Sc4">
+        <ns2:Bounds x="1000" y="100" width="100" height="80" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_Bo3" bpmnElement="Bo3">
+        <ns2:Bounds x="1150" y="100" width="100" height="80" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_PARCLOSE8" bpmnElement="PARCLOSE8">
+        <ns2:Bounds x="1300" y="100" width="50" height="50" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_PARCLOSE9" bpmnElement="PARCLOSE9">
+        <ns2:Bounds x="1450" y="100" width="50" height="50" />
+      </ns1:BPMNShape>
+      <ns1:BPMNShape id="_BPMNShape_END" bpmnElement="END">
+        <ns2:Bounds x="1600" y="100" width="36" height="36" />
+      </ns1:BPMNShape>
+      <ns1:BPMNEdge id="Flow_Default_init_In6_di" bpmnElement="Flow_Default_init_In6">
+        <ns3:waypoint x="136" y="118" />
+        <ns3:waypoint x="250" y="140" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_In6_Par2_di" bpmnElement="Flow_In6_Par2">
+        <ns3:waypoint x="350" y="140" />
+        <ns3:waypoint x="400" y="125" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Par2_Ch2_di" bpmnElement="Flow_Par2_Ch2">
+        <ns3:waypoint x="450" y="125" />
+        <ns3:waypoint x="550" y="140" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Par2_Par5_di" bpmnElement="Flow_Par2_Par5">
+        <ns3:waypoint x="450" y="125" />
+        <ns3:waypoint x="850" y="125" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Ch2_Bi7_di" bpmnElement="Flow_Ch2_Bi7">
+        <ns3:waypoint x="650" y="140" />
+        <ns3:waypoint x="700" y="140" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Bi7_PARCLOSE9_di" bpmnElement="Flow_Bi7_PARCLOSE9">
+        <ns3:waypoint x="800" y="140" />
+        <ns3:waypoint x="1450" y="125" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Par5_Sc4_di" bpmnElement="Flow_Par5_Sc4">
+        <ns3:waypoint x="900" y="125" />
+        <ns3:waypoint x="1000" y="140" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Par5_Bo3_di" bpmnElement="Flow_Par5_Bo3">
+        <ns3:waypoint x="900" y="125" />
+        <ns3:waypoint x="1150" y="140" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Sc4_PARCLOSE8_di" bpmnElement="Flow_Sc4_PARCLOSE8">
+        <ns3:waypoint x="1100" y="140" />
+        <ns3:waypoint x="1300" y="125" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_Bo3_PARCLOSE8_di" bpmnElement="Flow_Bo3_PARCLOSE8">
+        <ns3:waypoint x="1250" y="140" />
+        <ns3:waypoint x="1300" y="125" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_PARCLOSE8_PARCLOSE9_di" bpmnElement="Flow_PARCLOSE8_PARCLOSE9">
+        <ns3:waypoint x="1350" y="125" />
+        <ns3:waypoint x="1450" y="125" />
+      </ns1:BPMNEdge>
+      <ns1:BPMNEdge id="Flow_PARCLOSE9_END_di" bpmnElement="Flow_PARCLOSE9_END">
+        <ns3:waypoint x="1500" y="125" />
+        <ns3:waypoint x="1600" y="118" />
+      </ns1:BPMNEdge>
+    </ns1:BPMNPlane>
+  </ns1:BPMNDiagram>
+</ns0:definitions>

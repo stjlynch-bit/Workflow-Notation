@@ -1,0 +1,813 @@
+{
+  "audit_summary": {
+    "total_indexed_files": 4530,
+    "unique_content_hashes": 4530,
+    "content_duplicates": 0,
+    "sample_analyzed": 304,
+    "parse_failures": 0,
+    "unique_structural_patterns_in_sample": 300,
+    "structural_duplicates_in_sample": 4,
+    "structural_uniqueness_rate": 98.7,
+    "extrapolated_unique_patterns": 4470
+  },
+  "source_breakdown": {
+    "camunda/bpmn-for-research": {
+      "description": "Curated academic BPMN dataset from Camunda (3,700+ models)",
+      "count": 3739,
+      "percentage": 82.5
+    },
+    "bpmn-miwg/bpmn-miwg-test-suite": {
+      "description": "OMG BPMN Model Interchange Working Group reference test cases",
+      "count": 773,
+      "percentage": 17.1
+    },
+    "timKraeworking/BPMN_Anomaly_Dataset": {
+      "description": "BPMN models for anomaly detection research",
+      "count": 0,
+      "percentage": 0.0
+    },
+    "bpmn-io/bpmn-js-examples": {
+      "description": "Official bpmn.io example models",
+      "count": 18,
+      "percentage": 0.4
+    }
+  },
+  "camunda_exercises": {
+    "Credit scoring (English)": {
+      "count": 36,
+      "languages": [
+        "English"
+      ]
+    },
+    "Dispatch of goods (English)": {
+      "count": 68,
+      "languages": [
+        "English"
+      ]
+    },
+    "Recourse (English)": {
+      "count": 48,
+      "languages": [
+        "English"
+      ]
+    },
+    "Recourse (German)": {
+      "count": 1043,
+      "languages": [
+        "German"
+      ]
+    },
+    "Credit scoring (German)": {
+      "count": 830,
+      "languages": [
+        "German"
+      ]
+    },
+    "Self-service restaurant (German)": {
+      "count": 522,
+      "languages": [
+        "German"
+      ]
+    },
+    "Self-service restaurant (English)": {
+      "count": 50,
+      "languages": [
+        "English"
+      ]
+    },
+    "Dispatch of goods (German)": {
+      "count": 1142,
+      "languages": [
+        "German"
+      ]
+    }
+  },
+  "camunda_scenario_groups": {
+    "Credit scoring": {
+      "total_files": 866,
+      "variants": {
+        "Credit scoring (English)": 36,
+        "Credit scoring (German)": 830
+      }
+    },
+    "Dispatch of goods": {
+      "total_files": 1210,
+      "variants": {
+        "Dispatch of goods (English)": 68,
+        "Dispatch of goods (German)": 1142
+      }
+    },
+    "Recourse": {
+      "total_files": 1091,
+      "variants": {
+        "Recourse (English)": 48,
+        "Recourse (German)": 1043
+      }
+    },
+    "Self-service restaurant": {
+      "total_files": 572,
+      "variants": {
+        "Self-service restaurant (German)": 522,
+        "Self-service restaurant (English)": 50
+      }
+    }
+  },
+  "miwg_analysis": {
+    "total_miwg_files": 773,
+    "distinct_reference_processes": 23,
+    "distinct_tools": 35,
+    "tools_list": [
+      "ADONIS 17.0",
+      "ARIS 10.2025.07",
+      "Activiti Designer 5.14.1",
+      "Aeneis 5.7.89.2400",
+      "BIC Cloud Design 6.2.0",
+      "BPMN-Modeler for Confluence Enterprise 3.38.0",
+      "Bizagi Modeler 2.8.0.8",
+      "Bonita BPM 7.2.3",
+      "Camunda Eclipse Plugin 3.0.0",
+      "Cardanit (prev. BeePMN) 4.9.1",
+      "Enterprise Architect 12.0.1207",
+      "Enterprise Explorer 1.0.0",
+      "GenMyModel 0.47",
+      "IBM BlueWorks Live April 2014",
+      "IBM Process Designer 8.0.1",
+      "MID Innovator 16.1.1.31016",
+      "MID bpanda 2019.05.0.8393",
+      "ModelFoundry 1.1.1",
+      "Modelio 3.5",
+      "OMNITRACKER BPMN 12.3",
+      "Open-BPMN 1.2.8_2",
+      "SAP Signavio Process Manager 19.9.0",
+      "Trisotech BPMN Visio Add in 5.0.1",
+      "Trisotech Workflow Modeler 12.13.0",
+      "Visual Paradigm 11.1",
+      "W4 BPMN+ Composer V.10.4",
+      "W4 BPMN+ Composer V.9.4",
+      "Work in Progress",
+      "Yaoqiang BPMN Editor 4.0",
+      "actiBPM 3.E-8",
+      "bpmn.io (Camunda Modeler) 18.6.1",
+      "iGrafx FlowCharter 2013 15.1.1.1580",
+      "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+      "ibo Prometheus 3.9.0.0",
+      "itp-commerce Process Modeler for Microsoft Visio 6"
+    ],
+    "reference_processes": {
+      "A.1.0": {
+        "tool_variant_count": 34,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Activiti Designer 5.14.1",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "IBM BlueWorks Live April 2014",
+          "IBM Process Designer 8.0.1",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "A.1.1": {
+        "tool_variant_count": 3,
+        "tools": [
+          "Work in Progress",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "A.1.2": {
+        "tool_variant_count": 3,
+        "tools": [
+          "Work in Progress",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "A.2.0": {
+        "tool_variant_count": 34,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Activiti Designer 5.14.1",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "IBM BlueWorks Live April 2014",
+          "IBM Process Designer 8.0.1",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "A.2.1": {
+        "tool_variant_count": 18,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bonita BPM 7.2.3",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "A.3.0": {
+        "tool_variant_count": 33,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Activiti Designer 5.14.1",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "IBM Process Designer 8.0.1",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "A.4.0": {
+        "tool_variant_count": 30,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "A.4.1": {
+        "tool_variant_count": 28,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "B.1.0": {
+        "tool_variant_count": 30,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "B.2.0": {
+        "tool_variant_count": 30,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bizagi Modeler 2.8.0.8",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Enterprise Architect 12.0.1207",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "actiBPM 3.E-8",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "iGrafx FlowCharter 2013 15.1.1.1580",
+          "iGrafx Process 2013 for Six Sigma 15.0.4.1565",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "C.1.0": {
+        "tool_variant_count": 25,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "Visual Paradigm 11.1",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "Yaoqiang BPMN Editor 4.0",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "ibo Prometheus 3.9.0.0",
+          "itp-commerce Process Modeler for Microsoft Visio 6"
+        ]
+      },
+      "C.1.1": {
+        "tool_variant_count": 22,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "ibo Prometheus 3.9.0.0"
+        ]
+      },
+      "C.2.0": {
+        "tool_variant_count": 23,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "ibo Prometheus 3.9.0.0"
+        ]
+      },
+      "C.3.0": {
+        "tool_variant_count": 23,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "Aeneis 5.7.89.2400",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Bonita BPM 7.2.3",
+          "Camunda Eclipse Plugin 3.0.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "GenMyModel 0.47",
+          "MID Innovator 16.1.1.31016",
+          "MID bpanda 2019.05.0.8393",
+          "ModelFoundry 1.1.1",
+          "Modelio 3.5",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech BPMN Visio Add in 5.0.1",
+          "Trisotech Workflow Modeler 12.13.0",
+          "W4 BPMN+ Composer V.10.4",
+          "W4 BPMN+ Composer V.9.4",
+          "bpmn.io (Camunda Modeler) 18.6.1",
+          "ibo Prometheus 3.9.0.0"
+        ]
+      },
+      "C.4.0": {
+        "tool_variant_count": 13,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "W4 BPMN+ Composer V.10.4",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.5.0": {
+        "tool_variant_count": 13,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "W4 BPMN+ Composer V.10.4",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.6.0": {
+        "tool_variant_count": 12,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BIC Cloud Design 6.2.0",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "Enterprise Explorer 1.0.0",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.7.0": {
+        "tool_variant_count": 10,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.8.0": {
+        "tool_variant_count": 10,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.8.1": {
+        "tool_variant_count": 10,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "BPMN-Modeler for Confluence Enterprise 3.38.0",
+          "Cardanit (prev. BeePMN) 4.9.1",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.9.0": {
+        "tool_variant_count": 8,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.9.1": {
+        "tool_variant_count": 8,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      },
+      "C.9.2": {
+        "tool_variant_count": 8,
+        "tools": [
+          "ADONIS 17.0",
+          "ARIS 10.2025.07",
+          "MID Innovator 16.1.1.31016",
+          "OMNITRACKER BPMN 12.3",
+          "Open-BPMN 1.2.8_2",
+          "SAP Signavio Process Manager 19.9.0",
+          "Trisotech Workflow Modeler 12.13.0",
+          "bpmn.io (Camunda Modeler) 18.6.1"
+        ]
+      }
+    }
+  },
+  "size_distribution": {
+    "total_files": 4530,
+    "min_bytes": 682,
+    "max_bytes": 906947,
+    "mean_bytes": 38744,
+    "median_bytes": 32782,
+    "stdev_bytes": 35547,
+    "percentiles": {
+      "p10": 21802,
+      "p25": 28092,
+      "p50": 32783,
+      "p75": 39854,
+      "p90": 55907,
+      "p99": 175817
+    },
+    "size_histogram": {
+      "0KB-1KB": 12,
+      "1KB-2KB": 3,
+      "2KB-5KB": 23,
+      "5KB-10KB": 102,
+      "10KB-20KB": 239,
+      "20KB-50KB": 3458,
+      "50KB-100KB": 574,
+      "100KB-200KB": 81,
+      "200KB-500KB": 34,
+      "500KB-1000KB": 4
+    }
+  },
+  "node_count_distribution": {
+    "min": 1,
+    "max": 104,
+    "mean": 24.3,
+    "median": 22.0,
+    "stdev": 11.4
+  },
+  "element_type_counts": {
+    "sequenceFlow": 5854,
+    "task": 2350,
+    "messageFlow": 742,
+    "endEvent": 722,
+    "exclusiveGateway": 700,
+    "intermediateCatchEvent": 586,
+    "lane": 581,
+    "startEvent": 505,
+    "participant": 468,
+    "laneSet": 388,
+    "parallelGateway": 255,
+    "eventBasedGateway": 146,
+    "userTask": 133,
+    "intermediateThrowEvent": 121,
+    "boundaryEvent": 69,
+    "association": 58,
+    "serviceTask": 52,
+    "subProcess": 51,
+    "textAnnotation": 46,
+    "dataObject": 42,
+    "dataObjectReference": 41,
+    "sendTask": 40,
+    "callActivity": 23,
+    "inclusiveGateway": 20,
+    "dataStoreReference": 19,
+    "manualTask": 13,
+    "group": 8,
+    "businessRuleTask": 6,
+    "receiveTask": 4
+  },
+  "structural_duplicate_examples": [
+    {
+      "structural_hash": "a6feb93a9ff8b08e...",
+      "count": 2,
+      "files": [
+        "bpmn-miwg__bpmn-miwg-test-suite__BPMN-Modeler_for_Confluence_Enterprise_3.38.0_C.8.1-roundtrip.bpmn",
+        "bpmn-miwg__bpmn-miwg-test-suite__Trisotech_Workflow_Modeler_12.13.0_C.8.1-roundtrip.bpmn"
+      ]
+    },
+    {
+      "structural_hash": "a1121c93bac7e8c9...",
+      "count": 2,
+      "files": [
+        "bpmn-miwg__bpmn-miwg-test-suite__Cardanit__prev._BeePMN__4.9.1_C.1.0-roundtrip.bpmn",
+        "bpmn-miwg__bpmn-miwg-test-suite__SAP_Signavio_Process_Manager_19.9.0_C.1.0-roundtrip.bpmn"
+      ]
+    },
+    {
+      "structural_hash": "547701c465c096d4...",
+      "count": 2,
+      "files": [
+        "bpmn-miwg__bpmn-miwg-test-suite__Open-BPMN_1.2.8_2_B.1.0.bpmn",
+        "bpmn-miwg__bpmn-miwg-test-suite__bpmn.io__Camunda_Modeler__18.6.1_B.1.0-roundtrip.bpmn"
+      ]
+    },
+    {
+      "structural_hash": "cb17f95d6746e09c...",
+      "count": 2,
+      "files": [
+        "bpmn-miwg__bpmn-miwg-test-suite__Yaoqiang_BPMN_Editor_4.0_A.3.0-roundtrip.bpmn",
+        "bpmn-miwg__bpmn-miwg-test-suite__actiBPM_3.E-8_A.3.0-roundtrip.bpmn"
+      ]
+    }
+  ],
+  "representativeness": {
+    "process_diversity": "LOW - 82.5% of corpus is student solutions to 4 exercises",
+    "tool_diversity": "GOOD - MIWG covers 35 tools/vendors",
+    "language_bias": "German-heavy in Camunda set (~75% German, ~5% English)",
+    "recommendations": [
+      "Consider weighting or sub-sampling Camunda exercise variants to reduce redundancy",
+      "Add BPMN models from additional domains beyond the 4 Camunda exercises",
+      "The MIWG set is well-suited for testing cross-tool compatibility",
+      "Consider adding real-world industry process models for better representativeness"
+    ]
+  }
+}

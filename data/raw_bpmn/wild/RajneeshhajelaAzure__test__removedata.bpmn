@@ -1,0 +1,113 @@
+Open VSCode and write prompt via GitHub copilot
+
+Create for preparing BPMN related file Save data in same folder C:\Users\2411800\OneDrive - Cognizant\Desktop\VibeCoding_11_Aug\BPMN-Flow_1,0
+
+We will use this api
+Products https://fakestoreapi.com/products
+Carts https://fakestoreapi.com/carts
+Users https://fakestoreapi.com/users
+and will check duplicate cart in our camunda execution flow
+
+and as a next step
+
+Prepare a BPMN 2.0 XML file that models a Duplicate cart workflow with the steps approved or rejected if cart is duplicate..
+
+Include clear IDs and names for each element
+The BPMN should be compatible with standard BPMN editors (like bpmn.io)
+(remember when we import in bizagi modeler then it should execute that side properly with event task condition and all and it should be in proper format)
+we will use same with Comunda also if require.. so write code same on the base of Bizagi and comunda)
+
+Products https://fakestoreapi.com/products
+Carts https://fakestoreapi.com/carts
+Users https://fakestoreapi.com/users
+
+remember :
+Set History TTL in BPMN Model
+set a global default TTL in your Camunda engine configuration==============================================
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             id="duplicateCartWorkflow"
+             targetNamespace="http://example.com/bpmn"
+             exporter="Camunda Modeler"
+             exporterVersion="4.11.0">
+
+    <process id="duplicateCartProcess" name="Duplicate Cart Workflow" isExecutable="true">
+        <startEvent id="startEvent" name="Start"/>
+        <userTask id="checkCartTask" name="Check Cart Duplication"/>
+        <exclusiveGateway id="gateway" name="Is Cart Duplicate?"/>
+        <userTask id="approveCartTask" name="Approve Cart"/>
+        <userTask id="rejectCartTask" name="Reject Cart"/>
+        <endEvent id="endEvent" name="End"/>
+
+        <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="checkCartTask"/>
+        <sequenceFlow id="flow2" sourceRef="checkCartTask" targetRef="gateway"/>
+        <sequenceFlow id="flow3" sourceRef="gateway" targetRef="approveCartTask" name="Yes"/>
+        <sequenceFlow id="flow4" sourceRef="gateway" targetRef="rejectCartTask" name="No"/>
+        <sequenceFlow id="flow5" sourceRef="approveCartTask" targetRef="endEvent"/>
+        <sequenceFlow id="flow6" sourceRef="rejectCartTask" targetRef="endEvent"/>
+
+        <textAnnotation id="annotation1">
+            <text>Set History TTL in BPMN Model</text>
+        </textAnnotation>
+        <textAnnotation id="annotation2">
+            <text>Set a global default TTL in your Camunda engine configuration</text>
+        </textAnnotation>
+        
+        <association id="association1" sourceRef="annotation1" targetRef="checkCartTask"/>
+        <association id="association2" sourceRef="annotation2" targetRef="checkCartTask"/>
+    </process>
+
+    <bpmndi:BPMNDiagram id="BPMNDiagram_duplicateCartWorkflow">
+        <bpmndi:BPMNPlane bpmnElement="duplicateCartProcess">
+            <bpmndi:BPMNShape id="shape_startEvent" bpmnElement="startEvent">
+                <dc:Bounds x="100" y="100" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_checkCartTask" bpmnElement="checkCartTask">
+                <dc:Bounds x="200" y="100" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_gateway" bpmnElement="gateway">
+                <dc:Bounds x="350" y="100" width="50" height="50"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_approveCartTask" bpmnElement="approveCartTask">
+                <dc:Bounds x="450" y="50" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_rejectCartTask" bpmnElement="rejectCartTask">
+                <dc:Bounds x="450" y="150" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_endEvent" bpmnElement="endEvent">
+                <dc:Bounds x="600" y="100" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+
+            <bpmndi:BPMNEdge id="edge_flow1" bpmnElement="flow1">
+                <di:waypoint x="136" y="118"/>
+                <di:waypoint x="200" y="118"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_flow2" bpmnElement="flow2">
+                <di:waypoint x="300" y="140"/>
+                <di:waypoint x="350" y="140"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_flow3" bpmnElement="flow3">
+                <di:waypoint x="400" y="140"/>
+                <di:waypoint x="450" y="90"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_flow4" bpmnElement="flow4">
+                <di:waypoint x="400" y="140"/>
+                <di:waypoint x="450" y="190"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_flow5" bpmnElement="flow5">
+                <di:waypoint x="550" y="90"/>
+                <di:waypoint x="600" y="118"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_flow6" bpmnElement="flow6">
+                <di:waypoint x="550" y="190"/>
+                <di:waypoint x="600" y="118"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

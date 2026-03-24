@@ -1,0 +1,139 @@
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+                  id="Definitions_1"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+    <bpmn:process id="create_sale_listing" name="Create Sale Listing Process" isExecutable="true" camunda:historyTimeToLive="180">
+        <bpmn:startEvent id="StartEvent_1" name="Start">
+            <bpmn:extensionElements>
+                <camunda:formData>
+                    <camunda:formField id="token" label="Token" type="string" />
+                    <camunda:formField id="listing" label="Listing" type="string" />
+                </camunda:formData>
+            </bpmn:extensionElements>
+            <bpmn:outgoing>Flow_1</bpmn:outgoing>
+        </bpmn:startEvent>
+
+        <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_AuthenticateUser"/>
+
+        <bpmn:serviceTask id="Task_AuthenticateUser" name="Authenticate User" camunda:delegateExpression="${authenticateUserDelegate}">
+            <bpmn:extensionElements>
+                <camunda:inputOutput>
+                    <camunda:inputParameter name="token">${execution.getVariable("token")}</camunda:inputParameter>
+                </camunda:inputOutput>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1</bpmn:incoming>
+            <bpmn:outgoing>Flow_2</bpmn:outgoing>
+        </bpmn:serviceTask>
+
+        <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_AuthenticateUser" targetRef="Task_ConvertDTO"/>
+
+        <bpmn:serviceTask id="Task_ConvertDTO" name="Convert DTO to Model" camunda:delegateExpression="${rentListingConvertorDelegate}">
+            <bpmn:extensionElements>
+                <camunda:inputOutput>
+                    <camunda:inputParameter name="listing">${execution.getVariable("listing")}</camunda:inputParameter>
+                </camunda:inputOutput>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_2</bpmn:incoming>
+            <bpmn:outgoing>Flow_3</bpmn:outgoing>
+        </bpmn:serviceTask>
+
+        <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_ConvertDTO" targetRef="Task_AddListing"/>
+
+        <bpmn:serviceTask id="Task_AddListing" name="Add Listing" camunda:delegateExpression="${rentStrategyDelegate}">
+            <bpmn:extensionElements>
+                <camunda:inputOutput>
+                    <camunda:inputParameter name="rentListing">${execution.getVariable("rentListing")}</camunda:inputParameter>
+                    <camunda:inputParameter name="authorizedUser">${execution.getVariable("authorizedUser")}</camunda:inputParameter>
+                </camunda:inputOutput>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_3</bpmn:incoming>
+            <bpmn:outgoing>Flow_4</bpmn:outgoing>
+        </bpmn:serviceTask>
+
+        <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_AddListing" targetRef="Task_NotifyUser"/>
+
+        <bpmn:userTask id="Task_NotifyUser" name="Notify User of Success">
+            <bpmn:extensionElements>
+                <camunda:formData>
+                    <camunda:formField id="notification" label="Notification" type="string" defaultValue="Listing added successfully!" />
+                    <camunda:formField id="rentListingResponse" label="Rent Listing" type="string" />
+                </camunda:formData>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_4</bpmn:incoming>
+            <bpmn:outgoing>Flow_5</bpmn:outgoing>
+        </bpmn:userTask>
+
+        <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_NotifyUser" targetRef="Task_SendToVerification"/>
+
+        <bpmn:serviceTask id="Task_SendToVerification" name="Send Listing to Verification" camunda:delegateExpression="${listingsServiceDelegate}">
+            <bpmn:extensionElements>
+                <camunda:inputOutput>
+                    <camunda:inputParameter name="rentListing">${execution.getVariable("rentListing")}</camunda:inputParameter>
+                    <camunda:inputParameter name="authorizedUser">${execution.getVariable("authorizedUser")}</camunda:inputParameter>
+                </camunda:inputOutput>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_5</bpmn:incoming>
+            <bpmn:outgoing>Flow_6</bpmn:outgoing>
+        </bpmn:serviceTask>
+
+        <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_SendToVerification" targetRef="EndEvent_1"/>
+
+        <bpmn:endEvent id="EndEvent_1" name="End">
+            <bpmn:incoming>Flow_6</bpmn:incoming>
+        </bpmn:endEvent>
+    </bpmn:process>
+
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="createRentListingProcess">
+            <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+                <dc:Bounds x="173" y="102" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+                <di:waypoint xsi:type="dc:Point" x="209" y="120"/>
+                <di:waypoint xsi:type="dc:Point" x="273" y="120"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="Task_AuthenticateUser_di" bpmnElement="Task_AuthenticateUser">
+                <dc:Bounds x="273" y="80" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+                <di:waypoint xsi:type="dc:Point" x="373" y="120"/>
+                <di:waypoint xsi:type="dc:Point" x="473" y="120"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="Task_ConvertDTO_di" bpmnElement="Task_ConvertDTO">
+                <dc:Bounds x="473" y="80" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+                <di:waypoint xsi:type="dc:Point" x="573" y="120"/>
+                <di:waypoint xsi:type="dc:Point" x="673" y="120"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="Task_AddListing_di" bpmnElement="Task_AddListing">
+                <dc:Bounds x="673" y="80" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+                <di:waypoint xsi:type="dc:Point" x="773" y="120"/>
+                <di:waypoint xsi:type="dc:Point" x="873" y="120"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="Task_NotifyUser_di" bpmnElement="Task_NotifyUser">
+                <dc:Bounds x="873" y="80" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+                <di:waypoint xsi:type="dc:Point" x="973" y="120"/>
+                <di:waypoint xsi:type="dc:Point" x="1073" y="120"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="Task_SendToVerification_di" bpmnElement="Task_SendToVerification">
+                <dc:Bounds x="1073" y="80" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+                <di:waypoint xsi:type="dc:Point" x="1173" y="120"/>
+                <di:waypoint xsi:type="dc:Point" x="1273" y="120"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+                <dc:Bounds x="1273" y="102" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>

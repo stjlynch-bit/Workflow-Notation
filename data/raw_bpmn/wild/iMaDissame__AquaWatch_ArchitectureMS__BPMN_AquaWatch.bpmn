@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI" 
+                  id="Definitions_AquaWatch" 
+                  targetNamespace="http://aquawatch.ma/bpmn">
+
+  <!-- PROCESSUS PRINCIPAL: Prédiction Qualité de l'Eau -->
+  <bpmn:process id="Process_Prediction" name="Processus de Prédiction de Qualité de l'Eau" isExecutable="true">
+    
+    <!-- Événements -->
+    <bpmn:startEvent id="Start_1" name="Utilisateur demande prédiction">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    
+    <bpmn:endEvent id="End_1" name="Résultat affiché">
+      <bpmn:incoming>Flow_15</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Tâches -->
+    <bpmn:userTask id="Task_SelectStation" name="Sélectionner station">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_SaisirParametres" name="Saisir paramètres (pH, turbidité, O2, température)">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:serviceTask id="Task_EnvoyerGateway" name="Envoyer requête via Gateway (:8080)">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_STModelReception" name="STModel reçoit requête (:8083)">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_AppelFlask" name="Appeler Flask ML API (:5000)">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_6</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_CalculScore" name="Calculer score qualité (0-100)">
+      <bpmn:incoming>Flow_6</bpmn:incoming>
+      <bpmn:outgoing>Flow_7</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- Gateway de décision -->
+    <bpmn:exclusiveGateway id="Gateway_Qualite" name="Score qualité?">
+      <bpmn:incoming>Flow_7</bpmn:incoming>
+      <bpmn:outgoing>Flow_8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_9</bpmn:outgoing>
+      <bpmn:outgoing>Flow_10</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:task id="Task_Good" name="Statut: GOOD (score ≥ 80)">
+      <bpmn:incoming>Flow_8</bpmn:incoming>
+      <bpmn:outgoing>Flow_11</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:task id="Task_Moderate" name="Statut: MODERATE (60-79)">
+      <bpmn:incoming>Flow_9</bpmn:incoming>
+      <bpmn:outgoing>Flow_12</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:task id="Task_Bad" name="Statut: BAD (score &lt; 60)">
+      <bpmn:incoming>Flow_10</bpmn:incoming>
+      <bpmn:outgoing>Flow_13</bpmn:outgoing>
+    </bpmn:task>
+
+    <!-- Gateway de jonction -->
+    <bpmn:exclusiveGateway id="Gateway_Join" name="">
+      <bpmn:incoming>Flow_11</bpmn:incoming>
+      <bpmn:incoming>Flow_12</bpmn:incoming>
+      <bpmn:incoming>Flow_13</bpmn:incoming>
+      <bpmn:outgoing>Flow_14</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:exclusiveGateway id="Gateway_Alerte" name="Alerte nécessaire?">
+      <bpmn:incoming>Flow_14</bpmn:incoming>
+      <bpmn:outgoing>Flow_14a</bpmn:outgoing>
+      <bpmn:outgoing>Flow_14b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:serviceTask id="Task_CreerAlerte" name="Créer alerte (Alert Service :8084)">
+      <bpmn:incoming>Flow_14a</bpmn:incoming>
+      <bpmn:outgoing>Flow_14c</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:exclusiveGateway id="Gateway_Join2" name="">
+      <bpmn:incoming>Flow_14b</bpmn:incoming>
+      <bpmn:incoming>Flow_14c</bpmn:incoming>
+      <bpmn:outgoing>Flow_14d</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:serviceTask id="Task_Sauvegarder" name="Sauvegarder historique prédiction">
+      <bpmn:incoming>Flow_14d</bpmn:incoming>
+      <bpmn:outgoing>Flow_15</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- Flux -->
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_1" targetRef="Task_SelectStation"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_SelectStation" targetRef="Task_SaisirParametres"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_SaisirParametres" targetRef="Task_EnvoyerGateway"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_EnvoyerGateway" targetRef="Task_STModelReception"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_STModelReception" targetRef="Task_AppelFlask"/>
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_AppelFlask" targetRef="Task_CalculScore"/>
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_CalculScore" targetRef="Gateway_Qualite"/>
+    <bpmn:sequenceFlow id="Flow_8" name="score ≥ 80" sourceRef="Gateway_Qualite" targetRef="Task_Good"/>
+    <bpmn:sequenceFlow id="Flow_9" name="60-79" sourceRef="Gateway_Qualite" targetRef="Task_Moderate"/>
+    <bpmn:sequenceFlow id="Flow_10" name="score &lt; 60" sourceRef="Gateway_Qualite" targetRef="Task_Bad"/>
+    <bpmn:sequenceFlow id="Flow_11" sourceRef="Task_Good" targetRef="Gateway_Join"/>
+    <bpmn:sequenceFlow id="Flow_12" sourceRef="Task_Moderate" targetRef="Gateway_Join"/>
+    <bpmn:sequenceFlow id="Flow_13" sourceRef="Task_Bad" targetRef="Gateway_Join"/>
+    <bpmn:sequenceFlow id="Flow_14" sourceRef="Gateway_Join" targetRef="Gateway_Alerte"/>
+    <bpmn:sequenceFlow id="Flow_14a" name="MODERATE ou BAD" sourceRef="Gateway_Alerte" targetRef="Task_CreerAlerte"/>
+    <bpmn:sequenceFlow id="Flow_14b" name="GOOD" sourceRef="Gateway_Alerte" targetRef="Gateway_Join2"/>
+    <bpmn:sequenceFlow id="Flow_14c" sourceRef="Task_CreerAlerte" targetRef="Gateway_Join2"/>
+    <bpmn:sequenceFlow id="Flow_14d" sourceRef="Gateway_Join2" targetRef="Task_Sauvegarder"/>
+    <bpmn:sequenceFlow id="Flow_15" sourceRef="Task_Sauvegarder" targetRef="End_1"/>
+
+  </bpmn:process>
+
+  <!-- DIAGRAMME BPMN avec coordonnées -->
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Prediction">
+      
+      <!-- Start Event -->
+      <bpmndi:BPMNShape id="Start_1_di" bpmnElement="Start_1">
+        <dc:Bounds x="152" y="232" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="126" y="275" width="88" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Sélectionner station -->
+      <bpmndi:BPMNShape id="Task_SelectStation_di" bpmnElement="Task_SelectStation">
+        <dc:Bounds x="240" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Saisir paramètres -->
+      <bpmndi:BPMNShape id="Task_SaisirParametres_di" bpmnElement="Task_SaisirParametres">
+        <dc:Bounds x="390" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Envoyer Gateway -->
+      <bpmndi:BPMNShape id="Task_EnvoyerGateway_di" bpmnElement="Task_EnvoyerGateway">
+        <dc:Bounds x="540" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: STModel Reception -->
+      <bpmndi:BPMNShape id="Task_STModelReception_di" bpmnElement="Task_STModelReception">
+        <dc:Bounds x="690" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Appel Flask -->
+      <bpmndi:BPMNShape id="Task_AppelFlask_di" bpmnElement="Task_AppelFlask">
+        <dc:Bounds x="840" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Calcul Score -->
+      <bpmndi:BPMNShape id="Task_CalculScore_di" bpmnElement="Task_CalculScore">
+        <dc:Bounds x="990" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Gateway: Qualité -->
+      <bpmndi:BPMNShape id="Gateway_Qualite_di" bpmnElement="Gateway_Qualite" isMarkerVisible="true">
+        <dc:Bounds x="1145" y="225" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1135" y="195" width="70" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: GOOD -->
+      <bpmndi:BPMNShape id="Task_Good_di" bpmnElement="Task_Good">
+        <dc:Bounds x="1250" y="100" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: MODERATE -->
+      <bpmndi:BPMNShape id="Task_Moderate_di" bpmnElement="Task_Moderate">
+        <dc:Bounds x="1250" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: BAD -->
+      <bpmndi:BPMNShape id="Task_Bad_di" bpmnElement="Task_Bad">
+        <dc:Bounds x="1250" y="320" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Gateway: Join -->
+      <bpmndi:BPMNShape id="Gateway_Join_di" bpmnElement="Gateway_Join" isMarkerVisible="true">
+        <dc:Bounds x="1405" y="225" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Gateway: Alerte -->
+      <bpmndi:BPMNShape id="Gateway_Alerte_di" bpmnElement="Gateway_Alerte" isMarkerVisible="true">
+        <dc:Bounds x="1505" y="225" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1488" y="195" width="84" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Créer Alerte -->
+      <bpmndi:BPMNShape id="Task_CreerAlerte_di" bpmnElement="Task_CreerAlerte">
+        <dc:Bounds x="1600" y="320" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Gateway: Join2 -->
+      <bpmndi:BPMNShape id="Gateway_Join2_di" bpmnElement="Gateway_Join2" isMarkerVisible="true">
+        <dc:Bounds x="1755" y="225" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+
+      <!-- Task: Sauvegarder -->
+      <bpmndi:BPMNShape id="Task_Sauvegarder_di" bpmnElement="Task_Sauvegarder">
+        <dc:Bounds x="1860" y="210" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+
+      <!-- End Event -->
+      <bpmndi:BPMNShape id="End_1_di" bpmnElement="End_1">
+        <dc:Bounds x="2012" y="232" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1993" y="275" width="74" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+
+      <!-- EDGES (Flux) -->
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="188" y="250"/>
+        <di:waypoint x="240" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="340" y="250"/>
+        <di:waypoint x="390" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="490" y="250"/>
+        <di:waypoint x="540" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="640" y="250"/>
+        <di:waypoint x="690" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="790" y="250"/>
+        <di:waypoint x="840" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="940" y="250"/>
+        <di:waypoint x="990" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1090" y="250"/>
+        <di:waypoint x="1145" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1170" y="225"/>
+        <di:waypoint x="1170" y="140"/>
+        <di:waypoint x="1250" y="140"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1180" y="123" width="50" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
+        <di:waypoint x="1195" y="250"/>
+        <di:waypoint x="1250" y="250"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1208" y="233" width="29" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
+        <di:waypoint x="1170" y="275"/>
+        <di:waypoint x="1170" y="360"/>
+        <di:waypoint x="1250" y="360"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1180" y="343" width="50" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
+        <di:waypoint x="1350" y="140"/>
+        <di:waypoint x="1430" y="140"/>
+        <di:waypoint x="1430" y="225"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12">
+        <di:waypoint x="1350" y="250"/>
+        <di:waypoint x="1405" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13">
+        <di:waypoint x="1350" y="360"/>
+        <di:waypoint x="1430" y="360"/>
+        <di:waypoint x="1430" y="275"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
+        <di:waypoint x="1455" y="250"/>
+        <di:waypoint x="1505" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_14a_di" bpmnElement="Flow_14a">
+        <di:waypoint x="1530" y="275"/>
+        <di:waypoint x="1530" y="360"/>
+        <di:waypoint x="1600" y="360"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1535" y="380" width="90" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_14b_di" bpmnElement="Flow_14b">
+        <di:waypoint x="1555" y="250"/>
+        <di:waypoint x="1755" y="250"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1640" y="233" width="30" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_14c_di" bpmnElement="Flow_14c">
+        <di:waypoint x="1700" y="360"/>
+        <di:waypoint x="1780" y="360"/>
+        <di:waypoint x="1780" y="275"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_14d_di" bpmnElement="Flow_14d">
+        <di:waypoint x="1805" y="250"/>
+        <di:waypoint x="1860" y="250"/>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_15_di" bpmnElement="Flow_15">
+        <di:waypoint x="1960" y="250"/>
+        <di:waypoint x="2012" y="250"/>
+      </bpmndi:BPMNEdge>
+
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</bpmn:definitions>

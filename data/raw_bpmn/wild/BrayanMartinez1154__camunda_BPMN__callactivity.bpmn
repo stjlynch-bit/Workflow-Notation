@@ -1,0 +1,303 @@
+<ns0:definitions xmlns:ns0="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns1="http://camunda.org/schema/modeler/1.0" xmlns:ns2="http://camunda.org/schema/1.0/bpmn" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns5="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns6="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1cjl0vx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.33.1" ns1:executionPlatform="Camunda Platform" ns1:executionPlatformVersion="7.22.0">
+  <ns0:collaboration id="Collaboration_1412ebh">
+    <ns0:participant id="Participant_0j4g3ob" processRef="Verificar_info" />
+  </ns0:collaboration>
+  <ns0:process id="Verificar_info" name="Verificar Info" isExecutable="true" ns2:historyTimeToLive="P30D">
+    <ns0:laneSet id="LaneSet_0wfz7lj">
+      <ns0:lane id="Lane_1qsj65l" name="Profesional Encargado">
+        <ns0:flowNodeRef>Gateway_1qdnk6s</ns0:flowNodeRef>
+        <ns0:flowNodeRef>Gateway_0zu30s2</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_4</ns0:flowNodeRef>
+        <ns0:flowNodeRef>Event_1r89faz</ns0:flowNodeRef>
+        <ns0:flowNodeRef>Gateway_0jefle2</ns0:flowNodeRef>
+        <ns0:flowNodeRef>StartEvent_1</ns0:flowNodeRef>
+        <ns0:flowNodeRef>Event_0a6hdd8</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_2</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_3</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_8</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_1</ns0:flowNodeRef>
+      </ns0:lane>
+      <ns0:lane id="Lane_0nujm78" name="Coordinador tesoreria">
+        <ns0:flowNodeRef>Gateway_0ttcu5j</ns0:flowNodeRef>
+        <ns0:flowNodeRef>Event_09x8gqw</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_7</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_5</ns0:flowNodeRef>
+        <ns0:flowNodeRef>tarea4_6</ns0:flowNodeRef>
+      </ns0:lane>
+    </ns0:laneSet>
+    <ns0:startEvent id="StartEvent_1" name="Inicio de verificacion">
+      <ns0:outgoing>Flow_0bn840o</ns0:outgoing>
+    </ns0:startEvent>
+    <ns0:userTask id="tarea4_1" name="Iniciar verificacion">
+      <ns0:extensionElements>
+        <ns2:formData>
+          <ns2:formField id="codigo" label="Código del estudiante" type="string" />
+          <ns2:formField id="solicitud_id" label="ID de la solicitud" type="string" />
+        </ns2:formData>
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_0bn840o</ns0:incoming>
+      <ns0:outgoing>Flow_1sv6paj</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="tarea4_2" name="Verificar Estado Academico">
+      <ns0:extensionElements>
+        <ns2:formData>
+          <ns2:formField id="cumple_requisitos" label="¿Cumple con los requisitos?" type="boolean" defaultValue="false" />
+        </ns2:formData>
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_1kpdws5</ns0:incoming>
+      <ns0:outgoing>Flow_19yplel</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="tarea4_3" name="Aprobar Estado Academico">
+      <ns0:extensionElements>
+        <ns2:executionListener class="com.universidad.andes.listeners.AprobarEstadoListener" event="end" />
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_13702ip</ns0:incoming>
+      <ns0:outgoing>Flow_1d3iqft</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="tarea4_5" name="Verificar Deudas">
+      <ns0:extensionElements>
+        <ns2:formData>
+          <ns2:formField id="tiene_deudas" label="¿Tiene deudas pendientes?" type="boolean" defaultValue="false" />
+        </ns2:formData>
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_0s51npt</ns0:incoming>
+      <ns0:outgoing>Flow_0ltokk4</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:userTask id="tarea4_6" name="Aprobar Estado Financiero">
+      <ns0:extensionElements>
+        <ns2:executionListener class="com.universidad.andes.listeners.AprobarEstadoFinancieroListener" event="end" />
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_1skwuot</ns0:incoming>
+      <ns0:outgoing>Flow_0wcpvia</ns0:outgoing>
+    </ns0:userTask>
+    <ns0:sendTask id="tarea4_4" name="Notificar Rechazo por Requisitos" ns2:class="com.universidad.andes.servicios.NotificacionService">
+      <ns0:extensionElements>
+        <ns2:executionListener class="com.universidad.andes.listeners.SetVerificacionFallidaListener" event="start" />
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_0hrjlv9</ns0:incoming>
+      <ns0:outgoing>Flow_0klk58o</ns0:outgoing>
+    </ns0:sendTask>
+    <ns0:sendTask id="tarea4_7" name="Notificar rechazo por Deuda" ns2:class="com.universidad.andes.servicios.NotificacionService">
+      <ns0:extensionElements>
+        <ns2:executionListener class="com.universidad.andes.listeners.SetVerificacionFallidaListener" event="start" />
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_0z8nuco</ns0:incoming>
+      <ns0:outgoing>Flow_0ktde5s</ns0:outgoing>
+    </ns0:sendTask>
+    <ns0:serviceTask id="tarea4_8" name="Estados verificados" ns2:class="com.universidad.andes.servicios.VerificacionExitosaService">
+      <ns0:extensionElements>
+        <ns2:executionListener class="com.universidad.andes.listeners.SetVerificacionExitosaListener" event="start" />
+      </ns0:extensionElements>
+      <ns0:incoming>Flow_15fp5hr</ns0:incoming>
+      <ns0:outgoing>Flow_1c4k76v</ns0:outgoing>
+    </ns0:serviceTask>
+    <ns0:parallelGateway id="Gateway_1qdnk6s">
+      <ns0:incoming>Flow_1sv6paj</ns0:incoming>
+      <ns0:outgoing>Flow_1kpdws5</ns0:outgoing>
+      <ns0:outgoing>Flow_0s51npt</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:exclusiveGateway id="Gateway_0zu30s2" name="¿Cumple requisitos?">
+      <ns0:incoming>Flow_19yplel</ns0:incoming>
+      <ns0:outgoing>Flow_13702ip</ns0:outgoing>
+      <ns0:outgoing>Flow_0hrjlv9</ns0:outgoing>
+    </ns0:exclusiveGateway>
+    <ns0:parallelGateway id="Gateway_0jefle2">
+      <ns0:incoming>Flow_1d3iqft</ns0:incoming>
+      <ns0:incoming>Flow_0wcpvia</ns0:incoming>
+      <ns0:outgoing>Flow_15fp5hr</ns0:outgoing>
+    </ns0:parallelGateway>
+    <ns0:exclusiveGateway id="Gateway_0ttcu5j" name="¿Tiene deudas?">
+      <ns0:incoming>Flow_0ltokk4</ns0:incoming>
+      <ns0:outgoing>Flow_0z8nuco</ns0:outgoing>
+      <ns0:outgoing>Flow_1skwuot</ns0:outgoing>
+    </ns0:exclusiveGateway>
+    <ns0:endEvent id="Event_1r89faz" name="Solicitud cancelada">
+      <ns0:incoming>Flow_0klk58o</ns0:incoming>
+      <ns0:terminateEventDefinition id="TerminateEventDefinition_0v559ts" />
+    </ns0:endEvent>
+    <ns0:endEvent id="Event_09x8gqw" name="Solicitud cancelada">
+      <ns0:incoming>Flow_0ktde5s</ns0:incoming>
+      <ns0:terminateEventDefinition id="TerminateEventDefinition_1emne9h" />
+    </ns0:endEvent>
+    <ns0:endEvent id="Event_0a6hdd8" name="Verificacion terminada">
+      <ns0:incoming>Flow_1c4k76v</ns0:incoming>
+    </ns0:endEvent>
+    <ns0:sequenceFlow id="Flow_0bn840o" sourceRef="StartEvent_1" targetRef="tarea4_1" />
+    <ns0:sequenceFlow id="Flow_1sv6paj" sourceRef="tarea4_1" targetRef="Gateway_1qdnk6s" />
+    <ns0:sequenceFlow id="Flow_1kpdws5" sourceRef="Gateway_1qdnk6s" targetRef="tarea4_2" />
+    <ns0:sequenceFlow id="Flow_0s51npt" sourceRef="Gateway_1qdnk6s" targetRef="tarea4_5" />
+    <ns0:sequenceFlow id="Flow_19yplel" sourceRef="tarea4_2" targetRef="Gateway_0zu30s2" />
+    <ns0:sequenceFlow id="Flow_13702ip" name="Si" sourceRef="Gateway_0zu30s2" targetRef="tarea4_3">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">${cumple_requisitos == true}</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow_0hrjlv9" name="No" sourceRef="Gateway_0zu30s2" targetRef="tarea4_4">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">${cumple_requisitos == false}</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow_1d3iqft" sourceRef="tarea4_3" targetRef="Gateway_0jefle2" />
+    <ns0:sequenceFlow id="Flow_0klk58o" sourceRef="tarea4_4" targetRef="Event_1r89faz" />
+    <ns0:sequenceFlow id="Flow_0wcpvia" sourceRef="tarea4_6" targetRef="Gateway_0jefle2" />
+    <ns0:sequenceFlow id="Flow_15fp5hr" sourceRef="Gateway_0jefle2" targetRef="tarea4_8" />
+    <ns0:sequenceFlow id="Flow_0ltokk4" sourceRef="tarea4_5" targetRef="Gateway_0ttcu5j" />
+    <ns0:sequenceFlow id="Flow_0z8nuco" name="Si" sourceRef="Gateway_0ttcu5j" targetRef="tarea4_7">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">${tiene_deudas == true}</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow_1skwuot" name="No" sourceRef="Gateway_0ttcu5j" targetRef="tarea4_6">
+      <ns0:conditionExpression xsi:type="bpmn:tFormalExpression">${tiene_deudas == false}</ns0:conditionExpression>
+    </ns0:sequenceFlow>
+    <ns0:sequenceFlow id="Flow_0ktde5s" sourceRef="tarea4_7" targetRef="Event_09x8gqw" />
+    <ns0:sequenceFlow id="Flow_1c4k76v" sourceRef="tarea4_8" targetRef="Event_0a6hdd8" />
+  </ns0:process>
+  <ns4:BPMNDiagram id="BPMNDiagram_1">
+    <ns4:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1412ebh">
+      <ns4:BPMNShape id="Participant_0j4g3ob_di" bpmnElement="Participant_0j4g3ob" isHorizontal="true">
+        <ns5:Bounds x="132" y="80" width="1788" height="810" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Lane_0nujm78_di" bpmnElement="Lane_0nujm78" isHorizontal="true">
+        <ns5:Bounds x="162" y="570" width="1758" height="320" />
+        <ns4:BPMNLabel />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Lane_1qsj65l_di" bpmnElement="Lane_1qsj65l" isHorizontal="true">
+        <ns5:Bounds x="162" y="80" width="1758" height="490" />
+        <ns4:BPMNLabel />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <ns5:Bounds x="232" y="302" width="36" height="36" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="217" y="345" width="68" height="27" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_0c8vgzo_di" bpmnElement="tarea4_1">
+        <ns5:Bounds x="320" y="280" width="100" height="80" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_1p1a2fe_di" bpmnElement="tarea4_2">
+        <ns5:Bounds x="640" y="280" width="100" height="80" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_1myqe6s_di" bpmnElement="tarea4_3">
+        <ns5:Bounds x="980" y="280" width="100" height="80" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_1rxytkm_di" bpmnElement="tarea4_5">
+        <ns5:Bounds x="640" y="700" width="100" height="80" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_1dah5pt_di" bpmnElement="tarea4_6">
+        <ns5:Bounds x="980" y="700" width="100" height="80" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_10ca6qa_di" bpmnElement="tarea4_4">
+        <ns5:Bounds x="980" y="160" width="100" height="80" />
+        <ns4:BPMNLabel />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_1lnhk76_di" bpmnElement="tarea4_7">
+        <ns5:Bounds x="1020" y="570" width="100" height="80" />
+        <ns4:BPMNLabel />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Activity_1sg0r5y_di" bpmnElement="tarea4_8">
+        <ns5:Bounds x="1520" y="280" width="100" height="80" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Gateway_0s6b5k1_di" bpmnElement="Gateway_1qdnk6s">
+        <ns5:Bounds x="495" y="295" width="50" height="50" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Gateway_0zu30s2_di" bpmnElement="Gateway_0zu30s2" isMarkerVisible="true">
+        <ns5:Bounds x="835" y="295" width="50" height="50" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="763" y="286" width="54" height="27" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Gateway_0sen4oo_di" bpmnElement="Gateway_0jefle2">
+        <ns5:Bounds x="1275" y="295" width="50" height="50" />
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Gateway_0ttcu5j_di" bpmnElement="Gateway_0ttcu5j" isMarkerVisible="true">
+        <ns5:Bounds x="835" y="715" width="50" height="50" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="740" y="723" width="80" height="14" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Event_0cnpeeu_di" bpmnElement="Event_1r89faz">
+        <ns5:Bounds x="1182" y="182" width="36" height="36" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="1175" y="225" width="51" height="27" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNShape>
+      <ns4:BPMNShape id="Event_0a6hdd8_di" bpmnElement="Event_0a6hdd8">
+        <ns5:Bounds x="1772" y="302" width="36" height="36" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="1762" y="345" width="56" height="27" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNShape>
+      <ns4:BPMNEdge id="Flow_0bn840o_di" bpmnElement="Flow_0bn840o">
+        <ns6:waypoint x="268" y="320" />
+        <ns6:waypoint x="320" y="320" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_1sv6paj_di" bpmnElement="Flow_1sv6paj">
+        <ns6:waypoint x="420" y="320" />
+        <ns6:waypoint x="495" y="320" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_1kpdws5_di" bpmnElement="Flow_1kpdws5">
+        <ns6:waypoint x="545" y="320" />
+        <ns6:waypoint x="640" y="320" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_0s51npt_di" bpmnElement="Flow_0s51npt">
+        <ns6:waypoint x="520" y="345" />
+        <ns6:waypoint x="520" y="740" />
+        <ns6:waypoint x="640" y="740" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_19yplel_di" bpmnElement="Flow_19yplel">
+        <ns6:waypoint x="740" y="320" />
+        <ns6:waypoint x="835" y="320" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_13702ip_di" bpmnElement="Flow_13702ip">
+        <ns6:waypoint x="885" y="320" />
+        <ns6:waypoint x="980" y="320" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="928" y="302" width="10" height="14" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_0hrjlv9_di" bpmnElement="Flow_0hrjlv9">
+        <ns6:waypoint x="860" y="295" />
+        <ns6:waypoint x="860" y="200" />
+        <ns6:waypoint x="980" y="200" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="868" y="245" width="15" height="14" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_1d3iqft_di" bpmnElement="Flow_1d3iqft">
+        <ns6:waypoint x="1080" y="320" />
+        <ns6:waypoint x="1275" y="320" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_0klk58o_di" bpmnElement="Flow_0klk58o">
+        <ns6:waypoint x="1080" y="200" />
+        <ns6:waypoint x="1182" y="200" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_0wcpvia_di" bpmnElement="Flow_0wcpvia">
+        <ns6:waypoint x="1080" y="740" />
+        <ns6:waypoint x="1300" y="740" />
+        <ns6:waypoint x="1300" y="345" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_15fp5hr_di" bpmnElement="Flow_15fp5hr">
+        <ns6:waypoint x="1325" y="320" />
+        <ns6:waypoint x="1520" y="320" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_0ltokk4_di" bpmnElement="Flow_0ltokk4">
+        <ns6:waypoint x="740" y="740" />
+        <ns6:waypoint x="835" y="740" />
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_0z8nuco_di" bpmnElement="Flow_0z8nuco">
+        <ns6:waypoint x="860" y="715" />
+        <ns6:waypoint x="860" y="610" />
+        <ns6:waypoint x="1020" y="610" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="870" y="740" width="10" height="14" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_1skwuot_di" bpmnElement="Flow_1skwuot">
+        <ns6:waypoint x="885" y="740" />
+        <ns6:waypoint x="980" y="740" />
+        <ns4:BPMNLabel>
+          <ns5:Bounds x="925" y="722" width="15" height="14" />
+        </ns4:BPMNLabel>
+      </ns4:BPMNEdge>
+      <ns4:BPMNEdge id="Flow_1c4k76v_di" bpmnElement="Flow_1c4k76v">
+        <ns6:waypoint x="1620" y="320" />
+        <ns6:waypoint x="1772" y="320" />
+      </ns4:BPMNEdge>
+    </ns4:BPMNPlane>
+  </ns4:BPMNDiagram>
+</ns0:definitions>

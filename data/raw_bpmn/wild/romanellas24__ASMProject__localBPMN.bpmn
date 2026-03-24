@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_175zem2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.33.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:collaboration id="Collaboration_0t35c33">
+    <bpmn:participant id="Participant_0gul30o" name="Restaurant" processRef="Process_0zwsa7l" />
+    <bpmn:participant id="Participant_0fkzh14" name="Company (i.e. ACMEAT)" />
+    <bpmn:messageFlow id="Flow_1dxq62t" sourceRef="Participant_0fkzh14" targetRef="Event_0nnkxid" />
+    <bpmn:messageFlow id="Flow_0l2uyb1" sourceRef="Activity_13yju81" targetRef="Participant_0fkzh14" />
+    <bpmn:messageFlow id="Flow_1934d0h" sourceRef="Activity_0s3aij3" targetRef="Participant_0fkzh14" />
+    <bpmn:messageFlow id="Flow_1a0s7aw" sourceRef="Activity_0ghopjl" targetRef="Participant_0fkzh14" />
+    <bpmn:messageFlow id="Flow_1jgwasc" sourceRef="Activity_0dlo3xt" targetRef="Participant_0fkzh14" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0zwsa7l" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1v3unat">
+      <bpmn:lane id="Lane_0tf58d1" name="System">
+        <bpmn:flowNodeRef>Activity_1qike10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1f28fi7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09e3iyg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0nnkxid</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_08ewk8p</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_13yju81</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1hxkjcg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1wdfxe0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_06wde3p</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1cis9rp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_197ju0u</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09bqv8i</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0y27l2w</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_103gq3y</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0sg11rb</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0h46yer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0ox4g5b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1p1nob8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0yesnsv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1rsxiwv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0xe38v2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0y51oup</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0ovgng4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0s3aij3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0ghopjl</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1ojlmpp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0antlh0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_03cihvt</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_10mefa1" name="Cook">
+        <bpmn:flowNodeRef>Gateway_0pz9zwy</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_02ue3tw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0oz4iuv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0ryc9te</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="Flow_1xxp00g" sourceRef="Activity_0y51oup" targetRef="Event_0xe38v2" />
+    <bpmn:sequenceFlow id="Flow_1tklkra" sourceRef="Event_1rsxiwv" targetRef="Activity_0yesnsv" />
+    <bpmn:sequenceFlow id="Flow_1ow3sho" sourceRef="Activity_0ox4g5b" targetRef="Event_1p1nob8" />
+    <bpmn:sequenceFlow id="Flow_112rxr2" sourceRef="Activity_0oz4iuv" targetRef="Activity_0y51oup" />
+    <bpmn:sequenceFlow id="Flow_1dj1pi9" sourceRef="Activity_0yesnsv" targetRef="Activity_0oz4iuv" />
+    <bpmn:sequenceFlow id="Flow_0b9bn52" sourceRef="Activity_0h46yer" targetRef="Activity_0ox4g5b" />
+    <bpmn:sequenceFlow id="Flow_18j2s3c" sourceRef="Event_0sg11rb" targetRef="Activity_0h46yer" />
+    <bpmn:sequenceFlow id="Flow_15nf38g" sourceRef="Gateway_103gq3y" targetRef="Event_0sg11rb" />
+    <bpmn:sequenceFlow id="Flow_03yp4sj" sourceRef="Gateway_103gq3y" targetRef="Event_1rsxiwv" />
+    <bpmn:sequenceFlow id="Flow_1qmbecq" sourceRef="Activity_09bqv8i" targetRef="Gateway_103gq3y" />
+    <bpmn:sequenceFlow id="Flow_0oa0opj" sourceRef="Gateway_197ju0u" targetRef="Activity_09bqv8i" />
+    <bpmn:sequenceFlow id="Flow_0ixp1z8" sourceRef="Activity_1cis9rp" targetRef="Gateway_197ju0u" />
+    <bpmn:sequenceFlow id="Flow_1b5ctrc" sourceRef="Activity_06wde3p" targetRef="Activity_1cis9rp" />
+    <bpmn:sequenceFlow id="Flow_0vk87t4" name="Accepted" sourceRef="Gateway_0pz9zwy" targetRef="Activity_06wde3p">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=accepted</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_17oopfo" name="Not accepted" sourceRef="Gateway_0pz9zwy" targetRef="Activity_1wdfxe0">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=not(accepted)</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wuguwc" sourceRef="Activity_1f28fi7" targetRef="Activity_1qike10" />
+    <bpmn:sequenceFlow id="Flow_0siz6sg" sourceRef="Event_0ryc9te" targetRef="Activity_1f28fi7" />
+    <bpmn:sequenceFlow id="Flow_178pjwk" sourceRef="Activity_02ue3tw" targetRef="Gateway_0pz9zwy" />
+    <bpmn:sequenceFlow id="Flow_0q01pj6" sourceRef="Activity_09e3iyg" targetRef="Activity_02ue3tw" />
+    <bpmn:sequenceFlow id="Flow_1iqo72g" sourceRef="Activity_08ewk8p" targetRef="Activity_09e3iyg" />
+    <bpmn:sequenceFlow id="Flow_1xnvbqh" sourceRef="Event_0nnkxid" targetRef="Activity_08ewk8p" />
+    <bpmn:boundaryEvent id="Event_0ryc9te" attachedToRef="Activity_02ue3tw">
+      <bpmn:outgoing>Flow_0siz6sg</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1q9gxfo">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT3M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="Gateway_0pz9zwy">
+      <bpmn:documentation>Is order accepted</bpmn:documentation>
+      <bpmn:incoming>Flow_178pjwk</bpmn:incoming>
+      <bpmn:outgoing>Flow_17oopfo</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0vk87t4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_1qike10" name="Update cook dashboard deleting order timed out">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;update_cook_order_timed_out-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wuguwc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hee4mq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1f28fi7" name="Set order status to &#34;Timed Out&#34;">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;set_order_status_timed_out-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0siz6sg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wuguwc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_09e3iyg" name="Notify Cook">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;notify_cook_new_order-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1iqo72g</bpmn:incoming>
+      <bpmn:outgoing>Flow_0q01pj6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="Event_0nnkxid">
+      <bpmn:extensionElements />
+      <bpmn:outgoing>Flow_1xnvbqh</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0oh71lm" messageRef="Message_2eo2c79" />
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_02ue3tw" name="evaluate order">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="accept_or_not_order" />
+        <zeebe:userTask />
+        <zeebe:assignmentDefinition candidateGroups="=[&#34;restaurant:&#34; + restaurant]" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0q01pj6</bpmn:incoming>
+      <bpmn:outgoing>Flow_178pjwk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_08ewk8p" name="Create order in status &#34;Pending&#34;">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;create_pending_order-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xnvbqh</bpmn:incoming>
+      <bpmn:outgoing>Flow_1iqo72g</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_13yju81" name="communicate Order timed out" zeebe:modelerTemplate="io.camunda.connectors.HttpJson.v2" zeebe:modelerTemplateVersion="11" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjAzMzUgOC45OTk5N0MxNy4wMzM1IDEzLjQ0NzUgMTMuNDI4MSAxNy4wNTI5IDguOTgwNjUgMTcuMDUyOUM0LjUzMzE2IDE3LjA1MjkgMC45Mjc3NjUgMTMuNDQ3NSAwLjkyNzc2NSA4Ljk5OTk3QzAuOTI3NzY1IDQuNTUyNDggNC41MzMxNiAwLjk0NzA4MyA4Ljk4MDY1IDAuOTQ3MDgzQzEzLjQyODEgMC45NDcwODMgMTcuMDMzNSA0LjU1MjQ4IDE3LjAzMzUgOC45OTk5N1oiIGZpbGw9IiM1MDU1NjIiLz4KPHBhdGggZD0iTTQuOTMxMjYgMTQuMTU3MUw2Ljc4MTA2IDMuNzE0NzFIMTAuMTM3NUMxMS4xOTE3IDMuNzE0NzEgMTEuOTgyNCAzLjk4MzIzIDEyLjUwOTUgNC41MjAyN0MxMy4wNDY1IDUuMDQ3MzYgMTMuMzE1IDUuNzMzNTggMTMuMzE1IDYuNTc4OTJDMTMuMzE1IDcuNDQ0MTQgMTMuMDcxNCA4LjE1NTIyIDEyLjU4NDEgOC43MTIxNUMxMi4xMDY3IDkuMjU5MTMgMTEuNDU1MyA5LjYzNzA1IDEwLjYyOTggOS44NDU5TDEyLjA2MTkgMTQuMTU3MUgxMC4zMzE1TDkuMDMzNjQgMTAuMDI0OUg3LjI0MzUxTDYuNTEyNTQgMTQuMTU3MUg0LjkzMTI2Wk03LjQ5NzExIDguNTkyODFIOS4yNDI0OEM5Ljk5ODMyIDguNTkyODEgMTAuNTkwMSA4LjQyMzc0IDExLjAxNzcgOC4wODU2MUMxMS40NTUzIDcuNzM3NTMgMTEuNjc0MSA3LjI2NTEzIDExLjY3NDEgNi42Njg0MkMxMS42NzQxIDYuMTkxMDYgMTEuNTI0OSA1LjgxODExIDExLjIyNjUgNS41NDk1OUMxMC45MjgyIDUuMjcxMTMgMTAuNDU1OCA1LjEzMTkgOS44MDkzNiA1LjEzMTlIOC4xMDg3NEw3LjQ5NzExIDguNTkyODFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="noAuth" target="authentication.type" />
+          <zeebe:input source="POST" target="method" />
+          <zeebe:input source="https://acmeat.romanellas.cloud/Order/api/Order/FinishOrder" target="url" />
+          <zeebe:input source="=false" target="storeResponse" />
+          <zeebe:input source="=20" target="connectionTimeoutInSeconds" />
+          <zeebe:input source="=20" target="readTimeoutInSeconds" />
+          <zeebe:input source="={&#10;  orderId: body.id,&#10;  reason: &#34;TIMED_OUT&#34;&#10;}" target="body" />
+          <zeebe:input source="=false" target="ignoreNullValues" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="11" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.HttpJson.v2" />
+          <zeebe:header key="resultVariable" />
+          <zeebe:header key="resultExpression" />
+          <zeebe:header key="errorExpression" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hee4mq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lsd1sd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0hee4mq" sourceRef="Activity_1qike10" targetRef="Activity_13yju81" />
+    <bpmn:endEvent id="Event_1hxkjcg">
+      <bpmn:incoming>Flow_1lsd1sd</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1lsd1sd" sourceRef="Activity_13yju81" targetRef="Event_1hxkjcg" />
+    <bpmn:serviceTask id="Activity_1wdfxe0" name="Set Order Status to &#34;Rejected&#34;">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;set_order_status_rejected-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17oopfo</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ce68or</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_06wde3p" name="Set order in status &#34;Accepted&#34;">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;set_order_status_accepted-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0vk87t4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1b5ctrc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1cis9rp" name="Save order in mapping (order local id - order company id)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;save_order_mapping-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1b5ctrc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ixp1z8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="Gateway_197ju0u">
+      <bpmn:incoming>Flow_0ixp1z8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0oa0opj</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0heya3e</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="Activity_09bqv8i" name="Add order to dashboard">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;notify_cook_order_todo-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0oa0opj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qmbecq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0y27l2w">
+      <bpmn:incoming>Flow_1bji0j4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:eventBasedGateway id="Gateway_103gq3y">
+      <bpmn:incoming>Flow_1qmbecq</bpmn:incoming>
+      <bpmn:outgoing>Flow_03yp4sj</bpmn:outgoing>
+      <bpmn:outgoing>Flow_15nf38g</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="Event_0sg11rb">
+      <bpmn:incoming>Flow_15nf38g</bpmn:incoming>
+      <bpmn:outgoing>Flow_18j2s3c</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0odynvm" messageRef="Message_0t8mqc7" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="Activity_0h46yer" name="Delete Order">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;delete_order_company-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_18j2s3c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0b9bn52</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_0oz4iuv" name="Prepare and deliver order">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="prepare_order" />
+        <zeebe:assignmentDefinition candidateGroups="=[&#34;restaurant:&#34;+restaurant]" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1dj1pi9</bpmn:incoming>
+      <bpmn:outgoing>Flow_112rxr2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0ox4g5b" name="Notify Order deleted to cook">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;notify_order_deleted-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0b9bn52</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ow3sho</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1p1nob8">
+      <bpmn:incoming>Flow_1ow3sho</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0yesnsv" name="Notify cook can start to prepare">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;notify_cook_can_prepare-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1tklkra</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dj1pi9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="Event_1rsxiwv">
+      <bpmn:incoming>Flow_03yp4sj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tklkra</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0orhu0m">
+        <bpmn:timeDate xsi:type="bpmn:tFormalExpression">=date and time(deliveryTimeZoned) - duration("PT1H")</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="Event_0xe38v2">
+      <bpmn:incoming>Flow_1xxp00g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0y51oup" name="Set order status to &#34;Completed&#34;">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="=&#34;set_order_status_completed-&#34; + restaurant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_112rxr2</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xxp00g</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0ovgng4">
+      <bpmn:incoming>Flow_1po4g9v</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0s3aij3" name="communicate Order rejected" zeebe:modelerTemplate="io.camunda.connectors.HttpJson.v2" zeebe:modelerTemplateVersion="11" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjAzMzUgOC45OTk5N0MxNy4wMzM1IDEzLjQ0NzUgMTMuNDI4MSAxNy4wNTI5IDguOTgwNjUgMTcuMDUyOUM0LjUzMzE2IDE3LjA1MjkgMC45Mjc3NjUgMTMuNDQ3NSAwLjkyNzc2NSA4Ljk5OTk3QzAuOTI3NzY1IDQuNTUyNDggNC41MzMxNiAwLjk0NzA4MyA4Ljk4MDY1IDAuOTQ3MDgzQzEzLjQyODEgMC45NDcwODMgMTcuMDMzNSA0LjU1MjQ4IDE3LjAzMzUgOC45OTk5N1oiIGZpbGw9IiM1MDU1NjIiLz4KPHBhdGggZD0iTTQuOTMxMjYgMTQuMTU3MUw2Ljc4MTA2IDMuNzE0NzFIMTAuMTM3NUMxMS4xOTE3IDMuNzE0NzEgMTEuOTgyNCAzLjk4MzIzIDEyLjUwOTUgNC41MjAyN0MxMy4wNDY1IDUuMDQ3MzYgMTMuMzE1IDUuNzMzNTggMTMuMzE1IDYuNTc4OTJDMTMuMzE1IDcuNDQ0MTQgMTMuMDcxNCA4LjE1NTIyIDEyLjU4NDEgOC43MTIxNUMxMi4xMDY3IDkuMjU5MTMgMTEuNDU1MyA5LjYzNzA1IDEwLjYyOTggOS44NDU5TDEyLjA2MTkgMTQuMTU3MUgxMC4zMzE1TDkuMDMzNjQgMTAuMDI0OUg3LjI0MzUxTDYuNTEyNTQgMTQuMTU3MUg0LjkzMTI2Wk03LjQ5NzExIDguNTkyODFIOS4yNDI0OEM5Ljk5ODMyIDguNTkyODEgMTAuNTkwMSA4LjQyMzc0IDExLjAxNzcgOC4wODU2MUMxMS40NTUzIDcuNzM3NTMgMTEuNjc0MSA3LjI2NTEzIDExLjY3NDEgNi42Njg0MkMxMS42NzQxIDYuMTkxMDYgMTEuNTI0OSA1LjgxODExIDExLjIyNjUgNS41NDk1OUMxMC45MjgyIDUuMjcxMTMgMTAuNDU1OCA1LjEzMTkgOS44MDkzNiA1LjEzMTlIOC4xMDg3NEw3LjQ5NzExIDguNTkyODFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="noAuth" target="authentication.type" />
+          <zeebe:input source="POST" target="method" />
+          <zeebe:input source="https://acmeat.romanellas.cloud/Order/api/Order/FinishOrder" target="url" />
+          <zeebe:input source="=false" target="storeResponse" />
+          <zeebe:input source="=20" target="connectionTimeoutInSeconds" />
+          <zeebe:input source="=20" target="readTimeoutInSeconds" />
+          <zeebe:input source="={&#10;  orderId: body.id,&#10;  reason: &#34;REJECTED&#34;&#10;}" target="body" />
+          <zeebe:input source="=false" target="ignoreNullValues" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="11" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.HttpJson.v2" />
+          <zeebe:header key="resultVariable" />
+          <zeebe:header key="resultExpression" />
+          <zeebe:header key="errorExpression" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ce68or</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bji0j4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0ce68or" sourceRef="Activity_1wdfxe0" targetRef="Activity_0s3aij3" />
+    <bpmn:sequenceFlow id="Flow_1bji0j4" sourceRef="Activity_0s3aij3" targetRef="Event_0y27l2w" />
+    <bpmn:serviceTask id="Activity_0ghopjl" name="communicate Order accepted" zeebe:modelerTemplate="io.camunda.connectors.HttpJson.v2" zeebe:modelerTemplateVersion="11" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjAzMzUgOC45OTk5N0MxNy4wMzM1IDEzLjQ0NzUgMTMuNDI4MSAxNy4wNTI5IDguOTgwNjUgMTcuMDUyOUM0LjUzMzE2IDE3LjA1MjkgMC45Mjc3NjUgMTMuNDQ3NSAwLjkyNzc2NSA4Ljk5OTk3QzAuOTI3NzY1IDQuNTUyNDggNC41MzMxNiAwLjk0NzA4MyA4Ljk4MDY1IDAuOTQ3MDgzQzEzLjQyODEgMC45NDcwODMgMTcuMDMzNSA0LjU1MjQ4IDE3LjAzMzUgOC45OTk5N1oiIGZpbGw9IiM1MDU1NjIiLz4KPHBhdGggZD0iTTQuOTMxMjYgMTQuMTU3MUw2Ljc4MTA2IDMuNzE0NzFIMTAuMTM3NUMxMS4xOTE3IDMuNzE0NzEgMTEuOTgyNCAzLjk4MzIzIDEyLjUwOTUgNC41MjAyN0MxMy4wNDY1IDUuMDQ3MzYgMTMuMzE1IDUuNzMzNTggMTMuMzE1IDYuNTc4OTJDMTMuMzE1IDcuNDQ0MTQgMTMuMDcxNCA4LjE1NTIyIDEyLjU4NDEgOC43MTIxNUMxMi4xMDY3IDkuMjU5MTMgMTEuNDU1MyA5LjYzNzA1IDEwLjYyOTggOS44NDU5TDEyLjA2MTkgMTQuMTU3MUgxMC4zMzE1TDkuMDMzNjQgMTAuMDI0OUg3LjI0MzUxTDYuNTEyNTQgMTQuMTU3MUg0LjkzMTI2Wk03LjQ5NzExIDguNTkyODFIOS4yNDI0OEM5Ljk5ODMyIDguNTkyODEgMTAuNTkwMSA4LjQyMzc0IDExLjAxNzcgOC4wODU2MUMxMS40NTUzIDcuNzM3NTMgMTEuNjc0MSA3LjI2NTEzIDExLjY3NDEgNi42Njg0MkMxMS42NzQxIDYuMTkxMDYgMTEuNTI0OSA1LjgxODExIDExLjIyNjUgNS41NDk1OUMxMC45MjgyIDUuMjcxMTMgMTAuNDU1OCA1LjEzMTkgOS44MDkzNiA1LjEzMTlIOC4xMDg3NEw3LjQ5NzExIDguNTkyODFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="noAuth" target="authentication.type" />
+          <zeebe:input source="POST" target="method" />
+          <zeebe:input source="https://acmeat.romanellas.cloud/Order/api/Order/FinishOrder" target="url" />
+          <zeebe:input source="=false" target="storeResponse" />
+          <zeebe:input source="=20" target="connectionTimeoutInSeconds" />
+          <zeebe:input source="=20" target="readTimeoutInSeconds" />
+          <zeebe:input source="={&#10;  orderId: body.id,&#10;  reason: &#34;ACCEPTED&#34;&#10;}" target="body" />
+          <zeebe:input source="=false" target="ignoreNullValues" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="11" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.HttpJson.v2" />
+          <zeebe:header key="resultVariable" />
+          <zeebe:header key="resultExpression" />
+          <zeebe:header key="errorExpression" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0heya3e</bpmn:incoming>
+      <bpmn:outgoing>Flow_1po4g9v</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0heya3e" sourceRef="Gateway_197ju0u" targetRef="Activity_0ghopjl" />
+    <bpmn:sequenceFlow id="Flow_1po4g9v" sourceRef="Activity_0ghopjl" targetRef="Event_0ovgng4" />
+    <bpmn:sequenceFlow id="Flow_0kj6hef" sourceRef="Event_0antlh0" targetRef="Activity_1ojlmpp" />
+    <bpmn:sequenceFlow id="Flow_1kke7ep" sourceRef="Activity_1ojlmpp" targetRef="Event_03cihvt" />
+    <bpmn:subProcess id="Activity_1ojlmpp">
+      <bpmn:incoming>Flow_0kj6hef</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kke7ep</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="=split(&#34;saporedipasta,osteriamareebosco,ilvicolettosegreto,laforchettaribelle,cantinafiordisale,braciebasilico&#34;, &#34;,&#34;)" inputElement="restaurant" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_1xum5yc">
+        <bpmn:outgoing>Flow_0acqm4n</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:businessRuleTask id="Activity_1sfco24" name="Is local closed">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="=&#34;is_local_closed-&#34; + restaurant" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0acqm4n</bpmn:incoming>
+        <bpmn:outgoing>Flow_1fiyz8c</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+      <bpmn:sequenceFlow id="Flow_0acqm4n" sourceRef="Event_1xum5yc" targetRef="Activity_1sfco24" />
+      <bpmn:exclusiveGateway id="Gateway_0ivk9mv">
+        <bpmn:incoming>Flow_1fiyz8c</bpmn:incoming>
+        <bpmn:outgoing>Flow_0xxfvz4</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1rluuo8</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1fiyz8c" sourceRef="Activity_1sfco24" targetRef="Gateway_0ivk9mv" />
+      <bpmn:endEvent id="Event_0gk6x6z">
+        <bpmn:incoming>Flow_0xxfvz4</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0xxfvz4" name="closed" sourceRef="Gateway_0ivk9mv" targetRef="Event_0gk6x6z">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=closed</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:serviceTask id="Activity_0i8qsea" name="prepare menú object">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="=&#34;prepare_menu_send-&#34; + restaurant" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1rluuo8</bpmn:incoming>
+        <bpmn:outgoing>Flow_0yyb0ej</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_1rluuo8" sourceRef="Gateway_0ivk9mv" targetRef="Activity_0i8qsea">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=not(closed)</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:serviceTask id="Activity_0dlo3xt" name="send to acmeat" zeebe:modelerTemplate="io.camunda.connectors.HttpJson.v2" zeebe:modelerTemplateVersion="11" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjAzMzUgOC45OTk5N0MxNy4wMzM1IDEzLjQ0NzUgMTMuNDI4MSAxNy4wNTI5IDguOTgwNjUgMTcuMDUyOUM0LjUzMzE2IDE3LjA1MjkgMC45Mjc3NjUgMTMuNDQ3NSAwLjkyNzc2NSA4Ljk5OTk3QzAuOTI3NzY1IDQuNTUyNDggNC41MzMxNiAwLjk0NzA4MyA4Ljk4MDY1IDAuOTQ3MDgzQzEzLjQyODEgMC45NDcwODMgMTcuMDMzNSA0LjU1MjQ4IDE3LjAzMzUgOC45OTk5N1oiIGZpbGw9IiM1MDU1NjIiLz4KPHBhdGggZD0iTTQuOTMxMjYgMTQuMTU3MUw2Ljc4MTA2IDMuNzE0NzFIMTAuMTM3NUMxMS4xOTE3IDMuNzE0NzEgMTEuOTgyNCAzLjk4MzIzIDEyLjUwOTUgNC41MjAyN0MxMy4wNDY1IDUuMDQ3MzYgMTMuMzE1IDUuNzMzNTggMTMuMzE1IDYuNTc4OTJDMTMuMzE1IDcuNDQ0MTQgMTMuMDcxNCA4LjE1NTIyIDEyLjU4NDEgOC43MTIxNUMxMi4xMDY3IDkuMjU5MTMgMTEuNDU1MyA5LjYzNzA1IDEwLjYyOTggOS44NDU5TDEyLjA2MTkgMTQuMTU3MUgxMC4zMzE1TDkuMDMzNjQgMTAuMDI0OUg3LjI0MzUxTDYuNTEyNTQgMTQuMTU3MUg0LjkzMTI2Wk03LjQ5NzExIDguNTkyODFIOS4yNDI0OEM5Ljk5ODMyIDguNTkyODEgMTAuNTkwMSA4LjQyMzc0IDExLjAxNzcgOC4wODU2MUMxMS40NTUzIDcuNzM3NTMgMTEuNjc0MSA3LjI2NTEzIDExLjY3NDEgNi42Njg0MkMxMS42NzQxIDYuMTkxMDYgMTEuNTI0OSA1LjgxODExIDExLjIyNjUgNS41NDk1OUMxMC45MjgyIDUuMjcxMTMgMTAuNDU1OCA1LjEzMTkgOS44MDkzNiA1LjEzMTlIOC4xMDg3NEw3LjQ5NzExIDguNTkyODFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="noAuth" target="authentication.type" />
+            <zeebe:input source="POST" target="method" />
+            <zeebe:input source="https://acmeat.romanellas.cloud/Local/api/Local/ApplyDailyUpdate" target="url" />
+            <zeebe:input source="=false" target="storeResponse" />
+            <zeebe:input source="=20" target="connectionTimeoutInSeconds" />
+            <zeebe:input source="=20" target="readTimeoutInSeconds" />
+            <zeebe:input source="={&#10;    localUrl: restaurant + &#34;.romanellas.cloud&#34;,&#10;    dishes: for d in menu.dishes return {&#10;        id: d.id,&#10;        description: d.description,&#10;        name: d.name,&#10;        price: d.price,&#10;        menuId: 0&#10;    },&#10;    date: menu.date&#10;}" target="body" />
+            <zeebe:input source="=false" target="ignoreNullValues" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="elementTemplateVersion" value="11" />
+            <zeebe:header key="elementTemplateId" value="io.camunda.connectors.HttpJson.v2" />
+            <zeebe:header key="resultVariable" />
+            <zeebe:header key="resultExpression" />
+            <zeebe:header key="errorExpression" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0yyb0ej</bpmn:incoming>
+        <bpmn:outgoing>Flow_1xj17hh</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_0yyb0ej" sourceRef="Activity_0i8qsea" targetRef="Activity_0dlo3xt" />
+      <bpmn:endEvent id="Event_109kzu6">
+        <bpmn:incoming>Flow_1xj17hh</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1xj17hh" sourceRef="Activity_0dlo3xt" targetRef="Event_109kzu6" />
+    </bpmn:subProcess>
+    <bpmn:startEvent id="Event_0antlh0" name="0:50 a.m.">
+      <bpmn:outgoing>Flow_0kj6hef</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_13qha47">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">0 50 7 * * *</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_03cihvt">
+      <bpmn:incoming>Flow_1kke7ep</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_2eo2c79" name="CreateOrderMessage" />
+  <bpmn:error id="Error_0atstml" name="Unhautorized" errorCode="401" />
+  <bpmn:error id="Error_0ddcj3n" name="Generic_bad_data" errorCode="400" />
+  <bpmn:message id="Message_0t8mqc7" name="DeleteOrderMessage">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=&#34;delete(&#34; + string(body.id) + &#34;-&#34; + body.companyName + &#34;)&#34;" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0t35c33">
+      <bpmndi:BPMNShape id="Participant_0gul30o_di" bpmnElement="Participant_0gul30o" isHorizontal="true">
+        <dc:Bounds x="132" y="240" width="4766" height="730" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_10mefa1_di" bpmnElement="Lane_10mefa1" isHorizontal="true">
+        <dc:Bounds x="162" y="630" width="4736" height="340" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0tf58d1_di" bpmnElement="Lane_0tf58d1" isHorizontal="true">
+        <dc:Bounds x="162" y="240" width="4736" height="390" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1hw9o1c" bpmnElement="Gateway_0pz9zwy" isMarkerVisible="true">
+        <dc:Bounds x="775" y="775" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="866" y="796" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03maboe_di" bpmnElement="Activity_1qike10">
+        <dc:Bounds x="1010" y="450" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0c7aygi" bpmnElement="Activity_1f28fi7">
+        <dc:Bounds x="830" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0a4til5" bpmnElement="Activity_09e3iyg">
+        <dc:Bounds x="540" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0nnkxid_di" bpmnElement="Event_0nnkxid">
+        <dc:Bounds x="242" y="472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0oojohi" bpmnElement="Activity_02ue3tw">
+        <dc:Bounds x="540" y="760" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08ewk8p_di" bpmnElement="Activity_08ewk8p">
+        <dc:Bounds x="360" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13yju81_di" bpmnElement="Activity_13yju81">
+        <dc:Bounds x="1190" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1hxkjcg_di" bpmnElement="Event_1hxkjcg">
+        <dc:Bounds x="1372" y="472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0wlsnhx" bpmnElement="Activity_1wdfxe0">
+        <dc:Bounds x="1500" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0sxx25h" bpmnElement="Activity_06wde3p">
+        <dc:Bounds x="1980" y="450" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_14c62lt" bpmnElement="Activity_1cis9rp">
+        <dc:Bounds x="2180" y="450" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ndxgit" bpmnElement="Gateway_197ju0u">
+        <dc:Bounds x="2355" y="465" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09bqv8i_di" bpmnElement="Activity_09bqv8i">
+        <dc:Bounds x="2520" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0y27l2w_di" bpmnElement="Event_0y27l2w">
+        <dc:Bounds x="1832" y="472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_103gq3y_di" bpmnElement="Gateway_103gq3y">
+        <dc:Bounds x="2825" y="465" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sg11rb_di" bpmnElement="Event_0sg11rb">
+        <dc:Bounds x="2946" y="362" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0y4ogbp_di" bpmnElement="Activity_0h46yer">
+        <dc:Bounds x="3060" y="340" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lu97e9_di" bpmnElement="Activity_0oz4iuv">
+        <dc:Bounds x="3090" y="760" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ucq7kr_di" bpmnElement="Activity_0ox4g5b">
+        <dc:Bounds x="3240" y="340" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1p1nob8_di" bpmnElement="Event_1p1nob8">
+        <dc:Bounds x="3422" y="362" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1x10dsu_di" bpmnElement="Activity_0yesnsv">
+        <dc:Bounds x="3090" y="530" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1rsxiwv_di" bpmnElement="Event_1rsxiwv">
+        <dc:Bounds x="2946" y="552" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xe38v2_di" bpmnElement="Event_0xe38v2">
+        <dc:Bounds x="3542" y="552" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0osympo_di" bpmnElement="Activity_0y51oup">
+        <dc:Bounds x="3300" y="530" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ovgng4_di" bpmnElement="Event_0ovgng4">
+        <dc:Bounds x="2712" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0jfpxnv" bpmnElement="Activity_0s3aij3">
+        <dc:Bounds x="1660" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1y52rwd" bpmnElement="Activity_0ghopjl">
+        <dc:Bounds x="2520" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ojlmpp_di" bpmnElement="Activity_1ojlmpp" isExpanded="true">
+        <dc:Bounds x="3910" y="290" width="830" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1xum5yc_di" bpmnElement="Event_1xum5yc">
+        <dc:Bounds x="3932" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1y4xxxj" bpmnElement="Activity_1sfco24">
+        <dc:Bounds x="4020" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0aifq1n" bpmnElement="Gateway_0ivk9mv" isMarkerVisible="true">
+        <dc:Bounds x="4175" y="445" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0pi00nx" bpmnElement="Event_0gk6x6z">
+        <dc:Bounds x="4302" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05ieobj" bpmnElement="Activity_0i8qsea">
+        <dc:Bounds x="4260" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0qynt4b" bpmnElement="Activity_0dlo3xt">
+        <dc:Bounds x="4430" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_109kzu6_di" bpmnElement="Event_109kzu6">
+        <dc:Bounds x="4602" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0acqm4n_di" bpmnElement="Flow_0acqm4n">
+        <di:waypoint x="3968" y="470" />
+        <di:waypoint x="4020" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fiyz8c_di" bpmnElement="Flow_1fiyz8c">
+        <di:waypoint x="4120" y="470" />
+        <di:waypoint x="4175" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xxfvz4_di" bpmnElement="Flow_0xxfvz4">
+        <di:waypoint x="4225" y="470" />
+        <di:waypoint x="4302" y="470" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4248" y="452" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rluuo8_di" bpmnElement="Flow_1rluuo8">
+        <di:waypoint x="4200" y="445" />
+        <di:waypoint x="4200" y="360" />
+        <di:waypoint x="4260" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yyb0ej_di" bpmnElement="Flow_0yyb0ej">
+        <di:waypoint x="4360" y="360" />
+        <di:waypoint x="4430" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xj17hh_di" bpmnElement="Flow_1xj17hh">
+        <di:waypoint x="4530" y="360" />
+        <di:waypoint x="4602" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_11zj1a5_di" bpmnElement="Event_0antlh0">
+        <dc:Bounds x="3752" y="412" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3748" y="455" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03cihvt_di" bpmnElement="Event_03cihvt">
+        <dc:Bounds x="4822" y="412" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05x6mp8" bpmnElement="Event_0ryc9te">
+        <dc:Bounds x="622" y="742" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xxp00g_di" bpmnElement="Flow_1xxp00g">
+        <di:waypoint x="3400" y="570" />
+        <di:waypoint x="3542" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tklkra_di" bpmnElement="Flow_1tklkra">
+        <di:waypoint x="2982" y="570" />
+        <di:waypoint x="3090" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ow3sho_di" bpmnElement="Flow_1ow3sho">
+        <di:waypoint x="3340" y="380" />
+        <di:waypoint x="3422" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_112rxr2_di" bpmnElement="Flow_112rxr2">
+        <di:waypoint x="3190" y="800" />
+        <di:waypoint x="3245" y="800" />
+        <di:waypoint x="3245" y="570" />
+        <di:waypoint x="3300" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dj1pi9_di" bpmnElement="Flow_1dj1pi9">
+        <di:waypoint x="3140" y="610" />
+        <di:waypoint x="3140" y="760" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0b9bn52_di" bpmnElement="Flow_0b9bn52">
+        <di:waypoint x="3160" y="380" />
+        <di:waypoint x="3240" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18j2s3c_di" bpmnElement="Flow_18j2s3c">
+        <di:waypoint x="2982" y="380" />
+        <di:waypoint x="3060" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15nf38g_di" bpmnElement="Flow_15nf38g">
+        <di:waypoint x="2850" y="465" />
+        <di:waypoint x="2850" y="380" />
+        <di:waypoint x="2946" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03yp4sj_di" bpmnElement="Flow_03yp4sj">
+        <di:waypoint x="2850" y="515" />
+        <di:waypoint x="2850" y="570" />
+        <di:waypoint x="2946" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qmbecq_di" bpmnElement="Flow_1qmbecq">
+        <di:waypoint x="2620" y="490" />
+        <di:waypoint x="2825" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oa0opj_di" bpmnElement="Flow_0oa0opj">
+        <di:waypoint x="2405" y="490" />
+        <di:waypoint x="2520" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ixp1z8_di" bpmnElement="Flow_0ixp1z8">
+        <di:waypoint x="2280" y="490" />
+        <di:waypoint x="2355" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1b5ctrc_di" bpmnElement="Flow_1b5ctrc">
+        <di:waypoint x="2080" y="490" />
+        <di:waypoint x="2180" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vk87t4_di" bpmnElement="Flow_0vk87t4">
+        <di:waypoint x="825" y="800" />
+        <di:waypoint x="2030" y="790" />
+        <di:waypoint x="2030" y="530" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="894" y="777" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17oopfo_di" bpmnElement="Flow_17oopfo">
+        <di:waypoint x="800" y="775" />
+        <di:waypoint x="800" y="720" />
+        <di:waypoint x="1550" y="720" />
+        <di:waypoint x="1550" y="530" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="908" y="702" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wuguwc_di" bpmnElement="Flow_1wuguwc">
+        <di:waypoint x="930" y="490" />
+        <di:waypoint x="1010" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0siz6sg_di" bpmnElement="Flow_0siz6sg">
+        <di:waypoint x="658" y="760" />
+        <di:waypoint x="770" y="760" />
+        <di:waypoint x="770" y="490" />
+        <di:waypoint x="830" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_178pjwk_di" bpmnElement="Flow_178pjwk">
+        <di:waypoint x="640" y="800" />
+        <di:waypoint x="775" y="800" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q01pj6_di" bpmnElement="Flow_0q01pj6">
+        <di:waypoint x="590" y="530" />
+        <di:waypoint x="590" y="760" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1iqo72g_di" bpmnElement="Flow_1iqo72g">
+        <di:waypoint x="460" y="490" />
+        <di:waypoint x="540" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xnvbqh_di" bpmnElement="Flow_1xnvbqh">
+        <di:waypoint x="278" y="490" />
+        <di:waypoint x="360" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hee4mq_di" bpmnElement="Flow_0hee4mq">
+        <di:waypoint x="1110" y="490" />
+        <di:waypoint x="1190" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lsd1sd_di" bpmnElement="Flow_1lsd1sd">
+        <di:waypoint x="1290" y="490" />
+        <di:waypoint x="1372" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ce68or_di" bpmnElement="Flow_0ce68or">
+        <di:waypoint x="1600" y="490" />
+        <di:waypoint x="1660" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bji0j4_di" bpmnElement="Flow_1bji0j4">
+        <di:waypoint x="1760" y="490" />
+        <di:waypoint x="1832" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0heya3e_di" bpmnElement="Flow_0heya3e">
+        <di:waypoint x="2380" y="465" />
+        <di:waypoint x="2380" y="360" />
+        <di:waypoint x="2520" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1po4g9v_di" bpmnElement="Flow_1po4g9v">
+        <di:waypoint x="2620" y="360" />
+        <di:waypoint x="2712" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kj6hef_di" bpmnElement="Flow_0kj6hef">
+        <di:waypoint x="3788" y="430" />
+        <di:waypoint x="3910" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kke7ep_di" bpmnElement="Flow_1kke7ep">
+        <di:waypoint x="4740" y="430" />
+        <di:waypoint x="4822" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_0fkzh14_di" bpmnElement="Participant_0fkzh14" isHorizontal="true">
+        <dc:Bounds x="132" y="80" width="4766" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1dxq62t_di" bpmnElement="Flow_1dxq62t">
+        <di:waypoint x="260" y="140" />
+        <di:waypoint x="260" y="472" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l2uyb1_di" bpmnElement="Flow_0l2uyb1">
+        <di:waypoint x="1240" y="450" />
+        <di:waypoint x="1240" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1934d0h_di" bpmnElement="Flow_1934d0h">
+        <di:waypoint x="1710" y="450" />
+        <di:waypoint x="1710" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1a0s7aw_di" bpmnElement="Flow_1a0s7aw">
+        <di:waypoint x="2570" y="320" />
+        <di:waypoint x="2570" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jgwasc_di" bpmnElement="Flow_1jgwasc">
+        <di:waypoint x="4480" y="320" />
+        <di:waypoint x="4480" y="140" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

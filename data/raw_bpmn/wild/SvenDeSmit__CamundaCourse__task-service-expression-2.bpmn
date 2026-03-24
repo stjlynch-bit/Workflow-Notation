@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0wm3rap" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_1ys8hs8" name="task-service-expression-2" isExecutable="true" camunda:versionTag="v1.0">
+    <bpmn:startEvent id="StartEvent_1" name="Process started">
+      <bpmn:outgoing>Flow_1deindh</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1deindh" sourceRef="StartEvent_1" targetRef="Activity_1qbhc4w" />
+    <bpmn:sequenceFlow id="Flow_1ioizxe" sourceRef="Activity_1qbhc4w" targetRef="Activity_0nlr9op" />
+    <bpmn:sequenceFlow id="Flow_01us4cb" sourceRef="Activity_0nlr9op" targetRef="Activity_0i3xbyq" />
+    <bpmn:endEvent id="Event_18or1up" name="Process ended">
+      <bpmn:incoming>Flow_0c55tun</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0c55tun" sourceRef="Activity_0i3xbyq" targetRef="Event_18or1up" />
+    <bpmn:userTask id="Activity_1qbhc4w" name="See process variables">
+      <bpmn:incoming>Flow_1deindh</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ioizxe</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0i3xbyq" name="See process variables now">
+      <bpmn:incoming>Flow_01us4cb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c55tun</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0nlr9op" name="Add process variable" camunda:expression="${execution.setVariable(&#34;name&#34;,&#34;Sven&#34;)}">
+      <bpmn:incoming>Flow_1ioizxe</bpmn:incoming>
+      <bpmn:outgoing>Flow_01us4cb</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1ys8hs8">
+      <bpmndi:BPMNEdge id="Flow_1deindh_di" bpmnElement="Flow_1deindh">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ioizxe_di" bpmnElement="Flow_1ioizxe">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01us4cb_di" bpmnElement="Flow_01us4cb">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c55tun_di" bpmnElement="Flow_0c55tun">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="752" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="159" y="142" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18or1up_di" bpmnElement="Event_18or1up">
+        <dc:Bounds x="752" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="733" y="142" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ii5yce_di" bpmnElement="Activity_1qbhc4w">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0775ls8_di" bpmnElement="Activity_0i3xbyq">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1w2915t_di" bpmnElement="Activity_0nlr9op">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js" exporterVersion="9.4.0">
+  <bpmn:collaboration id="Collaboration_Sistema_Pedidos">
+    <bpmn:participant id="Participant_Usuario" name="Usuario Básico" processRef="Process_Usuario_Pedidos" />
+    <bpmn:participant id="Participant_Admin" name="Administrador" processRef="Process_Admin_Gestion" />
+    <bpmn:participant id="Participant_Sistema" name="Sistema" processRef="Process_Sistema_Automatico" />
+  </bpmn:collaboration>
+
+  <!-- Proceso del Usuario Básico -->
+  <bpmn:process id="Process_Usuario_Pedidos" name="Gestión de Pedidos - Usuario" isExecutable="true">
+    <bpmn:startEvent id="Start_Usuario" name="Usuario inicia sesión">
+      <bpmn:outgoing>Flow_Usuario_Dashboard</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:userTask id="Task_Explorar_Catalogo" name="Explorar catálogo de productos">
+      <bpmn:incoming>Flow_Usuario_Dashboard</bpmn:incoming>
+      <bpmn:outgoing>Flow_Seleccionar_Producto</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_Crear_Pedido" name="Crear pedido">
+      <bpmn:incoming>Flow_Seleccionar_Producto</bpmn:incoming>
+      <bpmn:outgoing>Flow_Validar_Presupuesto</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:exclusiveGateway id="Gateway_Presupuesto" name="¿Presupuesto disponible?">
+      <bpmn:incoming>Flow_Validar_Presupuesto</bpmn:incoming>
+      <bpmn:outgoing>Flow_Presupuesto_OK</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Presupuesto_Insuficiente</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:userTask id="Task_Confirmar_Pedido" name="Confirmar pedido">
+      <bpmn:incoming>Flow_Presupuesto_OK</bpmn:incoming>
+      <bpmn:outgoing>Flow_Pedido_Enviado</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:endEvent id="End_Presupuesto_Insuficiente" name="Pedido rechazado por presupuesto">
+      <bpmn:incoming>Flow_Presupuesto_Insuficiente</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:userTask id="Task_Consultar_Estado" name="Consultar estado de pedidos">
+      <bpmn:incoming>Flow_Pedido_Enviado</bpmn:incoming>
+      <bpmn:incoming>Flow_Notificacion_Recibida</bpmn:incoming>
+      <bpmn:outgoing>Flow_Estado_Consultado</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:endEvent id="End_Usuario" name="Usuario finaliza">
+      <bpmn:incoming>Flow_Estado_Consultado</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Flujos del Usuario -->
+    <bpmn:sequenceFlow id="Flow_Usuario_Dashboard" sourceRef="Start_Usuario" targetRef="Task_Explorar_Catalogo" />
+    <bpmn:sequenceFlow id="Flow_Seleccionar_Producto" sourceRef="Task_Explorar_Catalogo" targetRef="Task_Crear_Pedido" />
+    <bpmn:sequenceFlow id="Flow_Validar_Presupuesto" sourceRef="Task_Crear_Pedido" targetRef="Gateway_Presupuesto" />
+    <bpmn:sequenceFlow id="Flow_Presupuesto_OK" name="Sí" sourceRef="Gateway_Presupuesto" targetRef="Task_Confirmar_Pedido">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${presupuesto_disponible >= total_pedido}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_Presupuesto_Insuficiente" name="No" sourceRef="Gateway_Presupuesto" targetRef="End_Presupuesto_Insuficiente">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${presupuesto_disponible &lt; total_pedido}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_Pedido_Enviado" sourceRef="Task_Confirmar_Pedido" targetRef="Task_Consultar_Estado" />
+    <bpmn:sequenceFlow id="Flow_Estado_Consultado" sourceRef="Task_Consultar_Estado" targetRef="End_Usuario" />
+    <bpmn:sequenceFlow id="Flow_Notificacion_Recibida" sourceRef="Event_Recibir_Notificacion" targetRef="Task_Consultar_Estado" />
+
+    <!-- Evento de notificación -->
+    <bpmn:intermediateCatchEvent id="Event_Recibir_Notificacion" name="Recibir notificación">
+      <bpmn:messageEventDefinition id="MessageEventDefinition_Notificacion" />
+    </bpmn:intermediateCatchEvent>
+  </bpmn:process>
+
+  <!-- Proceso del Administrador -->
+  <bpmn:process id="Process_Admin_Gestion" name="Gestión Administrativa" isExecutable="true">
+    <bpmn:startEvent id="Start_Admin" name="Admin revisa pedidos">
+      <bpmn:outgoing>Flow_Admin_Dashboard</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:userTask id="Task_Revisar_Pedidos" name="Revisar pedidos pendientes">
+      <bpmn:incoming>Flow_Admin_Dashboard</bpmn:incoming>
+      <bpmn:outgoing>Flow_Seleccionar_Pedido</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_Evaluar_Pedido" name="Evaluar pedido específico">
+      <bpmn:incoming>Flow_Seleccionar_Pedido</bpmn:incoming>
+      <bpmn:outgoing>Flow_Tomar_Decision</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:exclusiveGateway id="Gateway_Decision" name="Decisión del admin">
+      <bpmn:incoming>Flow_Tomar_Decision</bpmn:incoming>
+      <bpmn:outgoing>Flow_Aprobar</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Rechazar</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:serviceTask id="Task_Aprobar_Pedido" name="Aprobar pedido" camunda:delegateExpression="${aprobarPedidoDelegate}">
+      <bpmn:incoming>Flow_Aprobar</bpmn:incoming>
+      <bpmn:outgoing>Flow_Actualizar_Presupuesto</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_Rechazar_Pedido" name="Rechazar pedido" camunda:delegateExpression="${rechazarPedidoDelegate}">
+      <bpmn:incoming>Flow_Rechazar</bpmn:incoming>
+      <bpmn:outgoing>Flow_Notificar_Rechazo</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_Actualizar_Presupuesto" name="Actualizar presupuesto de categoría">
+      <bpmn:incoming>Flow_Actualizar_Presupuesto</bpmn:incoming>
+      <bpmn:outgoing>Flow_Notificar_Aprobacion</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:userTask id="Task_Monitorear_Dashboard" name="Monitorear dashboard financiero">
+      <bpmn:incoming>Flow_Notificar_Aprobacion</bpmn:incoming>
+      <bpmn:incoming>Flow_Notificar_Rechazo</bpmn:incoming>
+      <bpmn:outgoing>Flow_Continuar_Gestion</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:exclusiveGateway id="Gateway_Continuar" name="¿Más pedidos?">
+      <bpmn:incoming>Flow_Continuar_Gestion</bpmn:incoming>
+      <bpmn:outgoing>Flow_Hay_Mas_Pedidos</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Finalizar_Admin</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:endEvent id="End_Admin" name="Admin finaliza">
+      <bpmn:incoming>Flow_Finalizar_Admin</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Flujos del Administrador -->
+    <bpmn:sequenceFlow id="Flow_Admin_Dashboard" sourceRef="Start_Admin" targetRef="Task_Revisar_Pedidos" />
+    <bpmn:sequenceFlow id="Flow_Seleccionar_Pedido" sourceRef="Task_Revisar_Pedidos" targetRef="Task_Evaluar_Pedido" />
+    <bpmn:sequenceFlow id="Flow_Tomar_Decision" sourceRef="Task_Evaluar_Pedido" targetRef="Gateway_Decision" />
+    <bpmn:sequenceFlow id="Flow_Aprobar" name="Aprobar" sourceRef="Gateway_Decision" targetRef="Task_Aprobar_Pedido" />
+    <bpmn:sequenceFlow id="Flow_Rechazar" name="Rechazar" sourceRef="Gateway_Decision" targetRef="Task_Rechazar_Pedido" />
+    <bpmn:sequenceFlow id="Flow_Actualizar_Presupuesto" sourceRef="Task_Aprobar_Pedido" targetRef="Task_Actualizar_Presupuesto" />
+    <bpmn:sequenceFlow id="Flow_Notificar_Aprobacion" sourceRef="Task_Actualizar_Presupuesto" targetRef="Task_Monitorear_Dashboard" />
+    <bpmn:sequenceFlow id="Flow_Notificar_Rechazo" sourceRef="Task_Rechazar_Pedido" targetRef="Task_Monitorear_Dashboard" />
+    <bpmn:sequenceFlow id="Flow_Continuar_Gestion" sourceRef="Task_Monitorear_Dashboard" targetRef="Gateway_Continuar" />
+    <bpmn:sequenceFlow id="Flow_Hay_Mas_Pedidos" name="Sí" sourceRef="Gateway_Continuar" targetRef="Task_Revisar_Pedidos" />
+    <bpmn:sequenceFlow id="Flow_Finalizar_Admin" name="No" sourceRef="Gateway_Continuar" targetRef="End_Admin" />
+  </bpmn:process>
+
+  <!-- Proceso del Sistema Automático -->
+  <bpmn:process id="Process_Sistema_Automatico" name="Procesos Automáticos del Sistema" isExecutable="true">
+    <bpmn:startEvent id="Start_Sistema" name="Evento del sistema">
+      <bpmn:outgoing>Flow_Sistema_Inicio</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:serviceTask id="Task_Validar_Presupuesto" name="Validar presupuesto disponible">
+      <bpmn:incoming>Flow_Sistema_Inicio</bpmn:incoming>
+      <bpmn:outgoing>Flow_Crear_Notificacion</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_Crear_Notificacion" name="Crear notificación automática">
+      <bpmn:incoming>Flow_Crear_Notificacion</bpmn:incoming>
+      <bpmn:outgoing>Flow_Enviar_Notificacion</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:sendTask id="Task_Enviar_Notificacion" name="Enviar notificación al usuario">
+      <bpmn:incoming>Flow_Enviar_Notificacion</bpmn:incoming>
+      <bpmn:outgoing>Flow_Actualizar_Dashboard</bpmn:outgoing>
+    </bpmn:sendTask>
+
+    <bpmn:serviceTask id="Task_Actualizar_Dashboard" name="Actualizar dashboard en tiempo real">
+      <bpmn:incoming>Flow_Actualizar_Dashboard</bpmn:incoming>
+      <bpmn:outgoing>Flow_Sistema_Fin</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:endEvent id="End_Sistema" name="Sistema completa proceso">
+      <bpmn:incoming>Flow_Sistema_Fin</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Flujos del Sistema -->
+    <bpmn:sequenceFlow id="Flow_Sistema_Inicio" sourceRef="Start_Sistema" targetRef="Task_Validar_Presupuesto" />
+    <bpmn:sequenceFlow id="Flow_Crear_Notificacion" sourceRef="Task_Validar_Presupuesto" targetRef="Task_Crear_Notificacion" />
+    <bpmn:sequenceFlow id="Flow_Enviar_Notificacion" sourceRef="Task_Crear_Notificacion" targetRef="Task_Enviar_Notificacion" />
+    <bpmn:sequenceFlow id="Flow_Actualizar_Dashboard" sourceRef="Task_Enviar_Notificacion" targetRef="Task_Actualizar_Dashboard" />
+    <bpmn:sequenceFlow id="Flow_Sistema_Fin" sourceRef="Task_Actualizar_Dashboard" targetRef="End_Sistema" />
+  </bpmn:process>
+
+  <!-- Flujos de mensaje entre participantes -->
+  <bpmn:messageFlow id="Flow_Pedido_A_Admin" sourceRef="Task_Confirmar_Pedido" targetRef="Task_Revisar_Pedidos" />
+  <bpmn:messageFlow id="Flow_Decision_A_Sistema" sourceRef="Task_Aprobar_Pedido" targetRef="Start_Sistema" />
+  <bpmn:messageFlow id="Flow_Decision_Rechazo_A_Sistema" sourceRef="Task_Rechazar_Pedido" targetRef="Start_Sistema" />
+  <bpmn:messageFlow id="Flow_Notificacion_A_Usuario" sourceRef="Task_Enviar_Notificacion" targetRef="Event_Recibir_Notificacion" />
+
+</bpmn:definitions>

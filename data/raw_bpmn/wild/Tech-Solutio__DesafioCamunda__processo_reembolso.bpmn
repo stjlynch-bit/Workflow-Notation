@@ -1,0 +1,15 @@
+// 1. BPMN (bpmn/processo_reembolso.bpmn)
+// Arquivo BPMN a ser editado no Camunda Modeler. Exemplo de esqueleto:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+    targetNamespace="http://camunda.org/examples">
+
+  <bpmn:process id="Processo_Reembolso" name="Processo de Reembolso" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_Reembolso" name="Solicitar Reembolso" />
+    <!-- Candidato deve modelar as etapas intermediárias -->
+    <bpmn:endEvent id="EndEvent_Encerrado" name="Encerrar" />
+  </bpmn:process>
+</bpmn:definitions>

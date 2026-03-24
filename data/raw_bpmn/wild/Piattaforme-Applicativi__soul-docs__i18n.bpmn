@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_03v6i1u" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.9.0">
+  <bpmn:collaboration id="Collaboration_0253qzd">
+    <bpmn:participant id="Participant_0bf4d8x" name="Sviluppatore" processRef="Process_1a9qfu8" />
+    <bpmn:textAnnotation id="TextAnnotation_0n2nwlx">
+      <bpmn:text>Si può utilizzare l'AI con strumenti come Copilot per tradurre automaticamente</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_0euiwtp">
+      <bpmn:text>Si deve usare la forma {t`Stringa ..`} per marcare le label</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1cfac56" associationDirection="None" sourceRef="Activity_1tsy2m0" targetRef="TextAnnotation_0euiwtp" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1a9qfu8" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_16zijrv">
+      <bpmn:outgoing>Flow_0ymekpa</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_1f60yo4" name="S2 - Aggiorna i file delle lingue">
+      <bpmn:incoming>Flow_1n1rs6h</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fhnkc2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1tsy2m0" name="S1 - Scrive messaggi e label in italiano">
+      <bpmn:incoming>Flow_0ymekpa</bpmn:incoming>
+      <bpmn:outgoing>Flow_1n1rs6h</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0ymekpa" sourceRef="StartEvent_16zijrv" targetRef="Activity_1tsy2m0" />
+    <bpmn:sequenceFlow id="Flow_00r2tt4" sourceRef="Activity_06gbm7o" targetRef="Event_0sy39o4" />
+    <bpmn:sequenceFlow id="Flow_1n1rs6h" sourceRef="Activity_1tsy2m0" targetRef="Activity_1f60yo4" />
+    <bpmn:sequenceFlow id="Flow_1fhnkc2" sourceRef="Activity_1f60yo4" targetRef="Activity_06gbm7o" />
+    <bpmn:serviceTask id="Activity_06gbm7o" name="S3 - Compilazione dei file po in formato js">
+      <bpmn:incoming>Flow_1fhnkc2</bpmn:incoming>
+      <bpmn:outgoing>Flow_00r2tt4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0sy39o4">
+      <bpmn:incoming>Flow_00r2tt4</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0253qzd">
+      <bpmndi:BPMNShape id="Participant_0bf4d8x_di" bpmnElement="Participant_0bf4d8x" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="740" height="265" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_16zijrv">
+        <dc:Bounds x="222" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sbn1w9_di" bpmnElement="Activity_1f60yo4">
+        <dc:Bounds x="470" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0k8r9h0_di" bpmnElement="Activity_1tsy2m0">
+        <dc:Bounds x="310" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f3tomd_di" bpmnElement="Activity_06gbm7o">
+        <dc:Bounds x="640" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sy39o4_di" bpmnElement="Event_0sy39o4">
+        <dc:Bounds x="802" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ymekpa_di" bpmnElement="Flow_0ymekpa">
+        <di:waypoint x="258" y="220" />
+        <di:waypoint x="310" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00r2tt4_di" bpmnElement="Flow_00r2tt4">
+        <di:waypoint x="740" y="220" />
+        <di:waypoint x="802" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1n1rs6h_di" bpmnElement="Flow_1n1rs6h">
+        <di:waypoint x="410" y="220" />
+        <di:waypoint x="470" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fhnkc2_di" bpmnElement="Flow_1fhnkc2">
+        <di:waypoint x="570" y="220" />
+        <di:waypoint x="640" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0n2nwlx_di" bpmnElement="TextAnnotation_0n2nwlx">
+        <dc:Bounds x="500" y="100" width="190" height="50" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0euiwtp_di" bpmnElement="TextAnnotation_0euiwtp">
+        <dc:Bounds x="260" y="97" width="150" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1cfac56_di" bpmnElement="Association_1cfac56">
+        <di:waypoint x="341" y="180" />
+        <di:waypoint x="329" y="152" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
