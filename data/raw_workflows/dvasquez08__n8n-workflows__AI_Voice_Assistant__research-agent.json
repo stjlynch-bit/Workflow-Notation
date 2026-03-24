@@ -1,0 +1,186 @@
+{
+  "name": "Research Agent Template",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        -64
+      ],
+      "id": "67eb5736-3488-4da3-bb88-327881c6be69",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "=You are a specialized research agent. Your primary function is to use your tools to provide accurate and up-to-date information.\nYou have two tools at your disposal:\n\nWikipedia Tool: Use this tool for all general web searches and to find information on any topic.\n\nYour workflow is as follows:\n\nFor all research questions, use the Wikipedia Tool.\n\nYou must always respond with the most relevant and precise information gathered from your tools.\n\nNever make up information. If a query cannot be answered, state that you were unable to find the information."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -64,
+        -64
+      ],
+      "id": "65b251ae-7cf3-4c98-9585-b5b57a58f9d5",
+      "name": "AI Agent",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        192
+      ],
+      "id": "0cc2a47d-4a7e-43c1-8357-a823181e7b7a",
+      "name": "Gemini 2.5 Flash",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "GOOGLE_API_CRED_ID",
+          "name": "Google API Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        80,
+        192
+      ],
+      "id": "1f278f4e-c353-4834-9628-7af40574bc37",
+      "name": "Wikipedia"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f04d6987-adda-4c48-a379-5f0e67faaac3",
+              "name": "success",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        -208
+      ],
+      "id": "a540ac69-50d8-4d7e-bf02-53c8a7bbf661",
+      "name": "Success"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8694cea2-c1c1-43cb-8276-6ca0105b94f2",
+              "name": "error",
+              "value": "Could not complete tasks, please try again",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        -48
+      ],
+      "id": "a0090425-4b33-4f5c-b1ec-6c4924e39b1f",
+      "name": "Error"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.5 Flash": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Edmonton",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "TEMPLATE_VERSION_ID",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_INSTANCE_ID"
+  },
+  "id": "RESEARCH_WORKFLOW_ID",
+  "tags": [],
+  "_source": {
+    "github_repo": "dvasquez08/n8n-workflows",
+    "github_path": "AI Voice Assistant/research-agent.json",
+    "branch": "main"
+  }
+}

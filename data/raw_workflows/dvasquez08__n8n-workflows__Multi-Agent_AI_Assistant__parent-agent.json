@@ -1,0 +1,301 @@
+{
+  "name": "Parent Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        -112
+      ],
+      "id": "7116c276-e866-4827-b05f-efe1b1590603",
+      "name": "Telegram Trigger",
+      "webhookId": "YOUR_WEB_HOOK_ID"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "=# Overview\nYou are the primary orchestration agent. Your job is to interpret the user’s intent and route the request to the correct sub-agent tool.\n\nYou do NOT perform the task yourself.\nYou do NOT write emails, summaries, notes, or content.\nYou ONLY decide which tool(s) to call and pass the correct context.\n\nMaintain a friendly, professional, concise tone.\nLight humor is acceptable, but execution always comes first.\n\n## Available Tools\n\n- calendarAgent  \n  Use this tool to take action in calendar (create, update, delete, or retrieve events).\n\n- notionAgent  \n  Use this tool for ALL Notion-related actions, including:\n  - Retrieving databases or pages\n  - Getting items from a database\n  - Reading dates, titles, or properties\n  - Creating new pages or items in a database\n\n## Routing Rules\n\n- If the request involves **calendar events or availability**, route to `calendarAgent`\n- If the request involves **Notion databases, pages, tasks, records, or dates**, route to `notionAgent`\n\n## Notion-Specific Rules\n\n- You NEVER interact with Notion directly.\n- You NEVER reason about database structure.\n- You ALWAYS forward Notion intent to the `notionAgent`.\n\nExamples of Notion requests that MUST be routed:\n- “What’s in my Notion task database?”\n- “Show me upcoming items and their dates”\n- “Add a new item to my Notion database”\n- “Create a task for tomorrow in Notion”\n\n## Multi-Step Actions\n\nSome requests require multiple agents. Execute them in order.\n\nYou MUST retrieve contact information first for:\n- Sending or drafting emails\n- Creating calendar events with attendees\n\nExample:\n1. Use `calendarAgent` to retrieve events\n2. Pass the event to `calendarAgent`\n\n## Calendar Rules\n\n- When asked to schedule, reschedule, update, or check availability, ALWAYS call `calendarAgent`\n- Do not ask for an event title unless specified\n- If no title is provided, generate one from {{ $json.message.text }} or {{ $json.text }}\n- If an event includes another person, do not ask for their email unless required\n- If no duration is specified, assume 1 hour\n- Resolve relative dates using {{ $now }} and {{ $today }}\n- NEVER ask for the year — infer it from {{ $now }}\n\n## Behavior Constraints\n\n- Do not ask clarifying questions unless absolutely required to route correctly\n- Do not perform the task yourself\n- Do not hallucinate tool results\n- If no tool action is required, respond briefly and politely\n\n## Final Notes\n\nYou are the router, not the worker.\nWhen in doubt, delegate."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        768,
+        -112
+      ],
+      "id": "0d7bb405-1a6f-44b0-b2f1-b6e01d54c73c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        560,
+        320
+      ],
+      "id": "54c2d55d-78cd-4e87-b321-0308e99bb2be",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool for all Notion related tasks",
+        "workflowId": {
+          "__rl": true,
+          "value": "REPLACE_WORKFLOW_ID",
+          "mode": "list"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1184,
+        320
+      ],
+      "id": "7c5adc42-c65e-4a10-af79-f37f39abc4b1",
+      "name": "Notion Agent"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool for any calendar related actions.",
+        "workflowId": {
+          "__rl": true,
+          "value": "REPLACE_WORKFLOW_ID",
+          "mode": "list"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1056,
+        320
+      ],
+      "id": "c9c7d991-7df1-4245-96d3-d4ac8b36fd5c",
+      "name": "Calendar Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        416,
+        320
+      ],
+      "id": "fbfa6ebe-ea9e-4e4c-a5ae-30bbb39ff6a7",
+      "name": "Gemini 2.5 Pro"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        -112
+      ],
+      "id": "1797ac5f-10bf-4907-8be6-b838a49f474f",
+      "name": "AI Reply",
+      "webhookId": "35e88eb6-5b17-4b09-b9b5-de33778946af"
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## LLM Model and Memory\nGemini 2.5 is selected for the model, a simple memory is set so that the AI agent remembers the past 5 chat messages to have a cohesive conversation",
+        "height": 400,
+        "width": 384,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        384,
+        224
+      ],
+      "id": "85150e5f-d67b-40b1-aabf-21fb25046694",
+      "name": "Sticky Note",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## AI Agent and Telegram Bot\nThe flow is triggered when a Telegram message is sent. The text is sent to the AI agent to analyze and choose which tool it needs to call upon in order to complete the request.",
+        "height": 304,
+        "width": 960,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        384,
+        -224
+      ],
+      "id": "8022c963-b91c-42c5-ab50-0d0d9592945b",
+      "name": "Sticky Note1",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# AI Assistant | Parent Agent",
+        "height": 80,
+        "width": 480,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        624,
+        -352
+      ],
+      "id": "65d2c21e-ca2e-43da-9ad2-86e3e415f551",
+      "name": "Sticky Note2",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Sub-Workflow Agents\nThere are two agents here. Each is called depending on what task is requested. The Notion agent and the calendar agent. ",
+        "height": 400,
+        "width": 384,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        976,
+        224
+      ],
+      "id": "5834fcc9-9664-4f85-ae09-e5cebf89f149",
+      "name": "Sticky Note3",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Setup Guide\n1. Create your Telegram bot, and setup your credentials for the Telegram nodes using the Token for your bot.\n\n2. For the Chat model, feel free to swap with another LLM model of your choosing, or enter your credentials for the Google Gemini API.\n\n3. Import the templates for the sub-workflows. After that, select them in the 'Workflow' dropdown for each  tool for calling another workflow.",
+        "height": 400,
+        "width": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        224
+      ],
+      "typeVersion": 1,
+      "id": "bc7803c9-14cc-4fe0-93ce-44e7f8227751",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "AI Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.5 Pro": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fbdba2fd-bef1-40bc-a888-9d92696660ff",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5d1532068cd59d0a505656debc1e996beb28cc747b2113028384dc732cb70630"
+  },
+  "id": "3Qy9C8sxfdPZqown",
+  "tags": [],
+  "_source": {
+    "github_repo": "dvasquez08/n8n-workflows",
+    "github_path": "Multi-Agent AI Assistant/parent-agent.json",
+    "branch": "main"
+  }
+}

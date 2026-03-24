@@ -1,0 +1,443 @@
+{
+  "name": "Contact Agent Template",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "DATA_TABLE_ID",
+          "mode": "list",
+          "cachedResultName": "contacts-table",
+          "cachedResultUrl": "/projects/PROJECT_ID/datatables/DATA_TABLE_ID"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        496
+      ],
+      "id": "a14c7f96-13bb-4c6c-8bff-e956304be170",
+      "name": "Get Contacts"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "DATA_TABLE_ID",
+          "mode": "list",
+          "cachedResultName": "contacts-table",
+          "cachedResultUrl": "/projects/PROJECT_ID/datatables/DATA_TABLE_ID"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "name",
+              "keyValue": "={{ $fromAI('Name') }}"
+            },
+            {
+              "keyName": "emailAddress",
+              "keyValue": "={{ $fromAI('emailAddress') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1,
+      "position": [
+        48,
+        496
+      ],
+      "id": "3b9873df-40d2-4279-9b3b-0abdd325ce7f",
+      "name": "Delete Contact"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "DATA_TABLE_ID",
+          "mode": "list",
+          "cachedResultName": "contacts-table",
+          "cachedResultUrl": "/projects/PROJECT_ID/datatables/DATA_TABLE_ID"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "name",
+              "keyValue": "={{ $fromAI('Name') }}"
+            },
+            {
+              "keyName": "emailAddress",
+              "keyValue": "={{ $fromAI('emailAddress') }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $fromAI('Name') }}",
+            "emailAddress": "={{ $fromAI('emailAddress') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "emailAddress",
+              "displayName": "emailAddress",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        640
+      ],
+      "id": "39246d98-6f46-4535-b32a-646c7e27558a",
+      "name": "Update Contact"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "DATA_TABLE_ID",
+          "mode": "list",
+          "cachedResultName": "contacts-table",
+          "cachedResultUrl": "/projects/PROJECT_ID/datatables/DATA_TABLE_ID"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $fromAI('Name') }}",
+            "emailAddress": "={{ $fromAI('emailAddress') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "emailAddress",
+              "displayName": "emailAddress",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1,
+      "position": [
+        48,
+        640
+      ],
+      "id": "40d55e01-d9d2-471d-9948-0d6ea9e98bc1",
+      "name": "Create Contact"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -416,
+        208
+      ],
+      "id": "3a5907bd-307a-40b1-af2a-2d3c4f98b07b",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "=# Overview\nYou are a contact management assistant. Your responsibilities include looking up contacts, adding new contacts, or updating a contact's information.\n\n**Contact Management**  \n   - Use \"Get Contacts\" to retrieve contact information. \n   - Use \"Add or Update Contact\" to store new contact information or modify existing entries. \n   - Use \"Delete Contacts\" to remove an existing contact from the data table"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -144,
+        208
+      ],
+      "id": "ea2a3df9-3b8e-4d43-8e33-278fa2b98fe5",
+      "name": "AI Agent",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "922d0289-9c9a-49dc-a457-2ccda3132fc2",
+              "name": "success",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        32
+      ],
+      "id": "523da02b-5e3a-4270-8a78-9481b4a303d0",
+      "name": "Success"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "127ab439-955a-4279-8e7e-240775ee7865",
+              "name": "Error",
+              "value": "Could not complete tasks, please try again",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        224
+      ],
+      "id": "7b1f1740-af0a-47b2-b28f-71ed208bd692",
+      "name": "Error"
+    },
+    {
+      "parameters": {
+        "content": "## Output\nSuccess node sends the output, the error node sends the manually entered error message if the agent cannot complete the task.",
+        "height": 448,
+        "width": 528,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        208,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "42ed4541-8f11-4d08-afa8-a2965926d8d0",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Sub-agent\nThe sub-agent takes the query from the parent agent, then uses its tools to complete the task that it has been given, and replies with the output.",
+        "height": 288,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        96
+      ],
+      "typeVersion": 1,
+      "id": "c4c83c55-cc30-4a5d-a9bd-8242a15551d7",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Tools\nGemini 2.5 Flash is set as the LLM model. Whenever the parent requests the contact agent for contact information, it will use these tools to retrieve, edit, or remove contacts from the n8n data sets.",
+        "height": 464,
+        "width": 720,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        416
+      ],
+      "typeVersion": 1,
+      "id": "a7beb46f-e6c2-42f6-b592-55eb535450f8",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Contact Agent",
+        "height": 80,
+        "width": 640,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "332be97d-0106-43f1-ae4f-48d9076fb3d4",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        496
+      ],
+      "id": "28d1e46f-f5f6-484b-aef1-cd8d9434f00e",
+      "name": "Gemini 2.5 Flash",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "GOOGLE_API_CRED_ID",
+          "name": "Google API Credentials"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get Contacts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Contact": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Contact": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.5 Flash": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Edmonton",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "TEMPLATE_VERSION_ID",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_INSTANCE_ID"
+  },
+  "id": "CONTACT_WORKFLOW_ID",
+  "tags": [],
+  "_source": {
+    "github_repo": "dvasquez08/n8n-workflows",
+    "github_path": "AI Voice Assistant/contacts-agent.json",
+    "branch": "main"
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "name": "CRM Area",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "chatInput"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -60,
+        20
+      ],
+      "id": "02db4bc5-410f-49cc-aaee-502d9eac93e6",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are a helpful CRM assitant that adds, updates and searchs my Airtable CRM.\n\nYou will recieve a user query and your job is to call the proper CRM tool in order to fulfill the user request.\n\nTools available:\nCreate new contact\nSearch contacts\nUpdate contacts"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        180,
+        20
+      ],
+      "id": "0292e891-7b08-44fe-a51e-997251315161",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        40,
+        320
+      ],
+      "id": "9aaa73c9-8769-465b-aaf8-2028a0e28982",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "7j4lbhAYCw0j7E79",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Search for contacts in airtable",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        320
+      ],
+      "id": "c017a0fa-8fc8-43be-a0c1-e9fdb52c091d",
+      "name": "search contacts",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "NnrfEbrfu2rmMtBF",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Creates new contacts in airtable CRM",
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $fromAI('contactName','name of new contact being added') }}",
+            "Email": "={{ $fromAI('email','email of new contact being added') }}",
+            "Company Name": "={{ $fromAI('companyName','company name new contact being added') }}",
+            "Notes": "={{ $fromAI('notes','notes about new contact being added') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        320
+      ],
+      "id": "5673b8d6-7fd3-44e3-8488-c41bae87d72d",
+      "name": "create contacts",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "NnrfEbrfu2rmMtBF",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $fromAI('newName','new name of contact being updated') }}",
+            "Email": "={{ $fromAI('newEmail','new cemail of contact being updated') }}",
+            "Company Name": "={{ $fromAI('newCompanyName','new company name of contact being updated') }}",
+            "Notes": "={{ $fromAI('newNotes','new notes about contact being updated') }}",
+            "id": "={{ $fromAI('recordID','record ID of contact being updated in airtable') }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        560,
+        320
+      ],
+      "id": "b9c0fae2-1492-4fc1-b1f8-4c07c57dc41e",
+      "name": "update contacts",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "NnrfEbrfu2rmMtBF",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search contacts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create contacts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update contacts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1206b02e-a86d-48db-81b9-8cf663d4a2cd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3f8e6faeba90056c231f54f257dcada4c772ef7ee3d5f5581b08eed79bf41939"
+  },
+  "id": "ZfXU8GV1suDLYsMR",
+  "tags": [
+    {
+      "createdAt": "2025-02-05T17:16:28.458Z",
+      "updatedAt": "2025-02-05T17:16:28.458Z",
+      "id": "0RIfRWMge6eq4BAL",
+      "name": "Area"
+    },
+    {
+      "createdAt": "2025-02-05T17:16:28.430Z",
+      "updatedAt": "2025-02-05T17:16:28.430Z",
+      "id": "4troTyUeZQIEtPY3",
+      "name": "CRM"
+    },
+    {
+      "createdAt": "2025-02-05T17:03:48.741Z",
+      "updatedAt": "2025-02-05T17:03:48.741Z",
+      "id": "YAaE1YASE8E4VmCx",
+      "name": "GCA"
+    }
+  ],
+  "_source": {
+    "github_repo": "VESoft/n8n-agent-templates-Workflows---Templates-de-todito-",
+    "github_path": "CRM_Area (2).json",
+    "branch": "main"
+  }
+}

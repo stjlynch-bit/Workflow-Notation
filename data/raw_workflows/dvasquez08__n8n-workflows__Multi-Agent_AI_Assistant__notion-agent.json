@@ -1,0 +1,324 @@
+{
+  "name": "Notion Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        640
+      ],
+      "id": "e84102ce-1458-4dcc-8683-4a7fcae58257",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "# Overview\nYou are a Notion workspace assistant. Your sole responsibility is to read from and write to Notion using the available Notion tools.\n\nYou do NOT provide explanations, summaries, or opinions unless explicitly asked.\nYour job is to correctly translate the parent agent’s intent into Notion tool actions.\n\n## Notion Tools\nYou have access to two tools:\n\n- \"Get Pages\"\n  - Use this tool whenever the parent agent needs to:\n    - Retrieve Notion pages\n    - Search for existing pages\n    - Check if a page already exists\n    - Read page properties or content\n\n- \"Create Page\"\n  - Use this tool whenever the parent agent needs to:\n    - Create a new Notion page\n    - Add a task, note, record, or document\n    - Log information into Notion\n    - Save structured or unstructured data\n\n## Decision Rules\n- If the request involves **reading, finding, checking, or querying** Notion → use **Get Pages**\n- If the request involves **writing, saving, creating, or logging** information → use **Create Page**\n- If the request is ambiguous, first use **Get Pages** to check for existing relevant pages before creating anything new.\n- Never create duplicate pages if relevant data already exists unless explicitly instructed.\n\n## Data Handling\n- Always map the parent agent’s request into structured Notion properties when possible.\n- Preserve titles, dates, statuses, tags, and relationships accurately.\n- If required fields are missing, infer reasonable defaults rather than asking questions.\n\n## Behavior Constraints\n- Do not ask the user clarifying questions.\n- Do not invent data.\n- Do not perform actions outside of Notion.\n- Do not respond conversationally.\n- Only act through the Notion tools when Notion interaction is required.\n\n## Final Notes\n- You exist to support the parent agent, not replace it.\n- Be precise, deterministic, and consistent.\n- If no Notion action is required, return no output.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        640
+      ],
+      "id": "33dabc8b-025b-42ef-9332-10ff9b0280a1",
+      "name": "AI Agent",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "success-assign-id",
+              "name": "response",
+              "value": "={{$json.output}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        512
+      ],
+      "id": "8537baae-6b5e-4241-a3c0-b1ef38f0760c",
+      "name": "Success"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "error-assign-id",
+              "name": "response",
+              "value": "Unable to complete Notion task, please try again",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        656
+      ],
+      "id": "5a3eaed8-60f5-456a-a6a4-0571a88c32d6",
+      "name": "Error Message"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "REPLACE_NOTION_DATABASE_ID",
+          "mode": "list"
+        },
+        "filterType": "manual",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Done|checkbox",
+              "condition": "equals"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notionTool",
+      "typeVersion": 2.2,
+      "position": [
+        304,
+        992
+      ],
+      "id": "de019634-9fd5-454d-acdb-998a250c6710",
+      "name": "Get Pages"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "REPLACE_NOTION_DATABASE_ID",
+          "mode": "list"
+        },
+        "title": "={{ $fromAI(\"title\") }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Category|multi_select",
+              "multiSelectValue": "={{ $fromAI(\"category\") }}"
+            },
+            {
+              "key": "Date|date",
+              "includeTime": false,
+              "date": "={{ $fromAI(\"date\") }}",
+              "timezone": "America/Edmonton"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notionTool",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        992
+      ],
+      "id": "0a4c97f6-4612-4990-88d4-d7caaa357eb0",
+      "name": "Create Page"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        112,
+        992
+      ],
+      "id": "93176211-dad7-4ca9-a84a-64aabf1f6969",
+      "name": "Gemini 2.5 Pro"
+    },
+    {
+      "parameters": {
+        "content": "## Sub-agent \nThe sub-agent takes the query from the parent agent, then uses its tools to complete the task that it has been given, and replies with it's output.",
+        "height": 320,
+        "width": 688,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        480
+      ],
+      "id": "1ed699f9-38be-493b-b0ae-34655df12e47",
+      "name": "Sticky Note",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Output \nSuccess node sends the output, the error node sends the manually entered error message is the agent cannot complete the task.",
+        "height": 464,
+        "width": 560,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        640,
+        336
+      ],
+      "id": "5b9d9e66-cb64-4b54-801f-11d1dd74e93c",
+      "name": "Sticky Note1",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# Notion Agent",
+        "height": 80,
+        "width": 688,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        336
+      ],
+      "id": "cbc966e8-484d-48dc-a78a-0e5bfe6e0489",
+      "name": "Sticky Note2",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Tools \nGemini 2.5 Pro set for the LLM model. When the sub-agent receives its query, it will call the specific Notion tools in order to create a page, or get pages from the Notion database that has been configured.",
+        "height": 400,
+        "width": 560,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        48,
+        864
+      ],
+      "id": "468930ab-d9da-4e64-a050-54c945e967a2",
+      "name": "Sticky Note3",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Setup Guide \n1. Make sure that you add your preferred LLM model, or add your credentials for your Gemini API Key\n\n2. Plug in your credentials for the Notion node. Once this is done, close and re-open the nodes and it should pull the information from your database. Make sure that the properties match with what you have on your Notion database.",
+        "height": 400,
+        "width": 416
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -384,
+        864
+      ],
+      "typeVersion": 1,
+      "id": "cc4bc82a-5a02-45ac-a9fc-2bf786d27615",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Pages": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Page": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.5 Pro": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Edmonton",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "b808fdc3-fa65-4b37-b9ed-93d2ffab7b36",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5d1532068cd59d0a505656debc1e996beb28cc747b2113028384dc732cb70630"
+  },
+  "id": "zDXNCLKuogckzSsK",
+  "tags": [],
+  "_source": {
+    "github_repo": "dvasquez08/n8n-workflows",
+    "github_path": "Multi-Agent AI Assistant/notion-agent.json",
+    "branch": "main"
+  }
+}

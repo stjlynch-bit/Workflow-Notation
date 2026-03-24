@@ -1,0 +1,242 @@
+{
+  "name": "Get Meetings",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "chatInput"
+            },
+            {
+              "name": "accessToken"
+            },
+            {
+              "name": "telegramID"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -640,
+        -40
+      ],
+      "id": "fc564255-fe5d-4be1-8e0d-91f63a02499c",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=User Query:\n{{ $json.chatInput }}\n\nAccess Token:\n{{ $json.accessToken }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You search for zoom meetings based on the user query.\n\nToday's date is {{ $now }}\n\nThe variables you need to fill in are fromDate, toDate and accessToken.\n\nThe accessToken is provided to you by the user.\n\nYou need to determine based on the user query when you need to search events from and to.\n\nZoom only allows for searching events up to one month out.\n\nThe fromDate and toDate you decide, based on the user's request, you'll need to pass in this format: YYYY-MM-DD\n\nYou are to output in the following JSON object format:\n\n{\n\"accessToken\":\"Access token here\",\n\"fromDate\":\"from Date here\",\n\"toDate\":\"to Date here\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -380,
+        -40
+      ],
+      "id": "430a5ac3-f476-47b6-b915-ef0690039b2b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"accessToken\": \"Access token here\",\n\t\"fromDate\": \"From date here\",\n  \"toDate\": \"To date here\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -220,
+        180
+      ],
+      "id": "9d095abb-0122-4d91-8aa1-fe01772b8bb8",
+      "name": "structured output"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -520,
+        180
+      ],
+      "id": "f1c80097-05dd-414c-aeb3-1acf353fe9d3",
+      "name": "gpt 4o",
+      "credentials": {
+        "openAiApi": {
+          "id": "9azA55avyYwOSI3p",
+          "name": "OpenAi account 12"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.zoom.us/v2/users/me/meetings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "type",
+              "value": "upcoming"
+            },
+            {
+              "name": "page_size",
+              "value": "15"
+            },
+            {
+              "name": "from",
+              "value": "={{ $json.output.fromDate }}"
+            },
+            {
+              "name": "to",
+              "value": "={{ $json.output.toDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Input Trigger').item.json.accessToken }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -40,
+        -40
+      ],
+      "id": "397251a1-c6b4-472b-8b70-20dbccd5e21f",
+      "name": "Gets Zoom Meetings"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.telegramID }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -380,
+        180
+      ],
+      "id": "6c9104ee-448f-49e3-8497-8cff811e312b",
+      "name": "Window Buffer Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "structured output": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt 4o": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Gets Zoom Meetings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7f748fcd-6803-4ce7-b92c-0812cd36ca3d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "19954721cad48ea56aa7928cde145d83fde57fd99df7821bc6e32e387cfc0338"
+  },
+  "id": "IEF14NQz2WyLmDPJ",
+  "tags": [
+    {
+      "createdAt": "2025-02-04T23:14:29.586Z",
+      "updatedAt": "2025-02-04T23:14:29.586Z",
+      "id": "Swv7crmRBufO4U2s",
+      "name": "GCA"
+    },
+    {
+      "createdAt": "2025-02-05T02:53:43.383Z",
+      "updatedAt": "2025-02-05T02:53:43.383Z",
+      "id": "gtEo10NDBug3DA6T",
+      "name": "Tool"
+    },
+    {
+      "createdAt": "2025-02-05T02:53:41.471Z",
+      "updatedAt": "2025-02-05T02:53:41.471Z",
+      "id": "tqBNkRTbUpIU6GL7",
+      "name": "Zoom"
+    }
+  ],
+  "_source": {
+    "github_repo": "VESoft/n8n-agent-templates-Workflows---Templates-de-todito-",
+    "github_path": "Get_Meetings.json",
+    "branch": "main"
+  }
+}

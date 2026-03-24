@@ -1,0 +1,3202 @@
+{
+  "name": "n8n - Podcast Upload",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.transistor.fm/v1/episodes?fields[episode][]=title&fields[episode][]=number&fields[episode][]=published_at",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "=show_id",
+              "value": "lit-snippets"
+            },
+            {
+              "name": "status",
+              "value": "scheduled"
+            },
+            {
+              "name": "pagination[page]",
+              "value": "1"
+            },
+            {
+              "name": "pagination[per]",
+              "value": "1"
+            },
+            {
+              "name": "order",
+              "value": "desc"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ef5cb029-a2f0-4a50-95e0-98c241cb5c26",
+      "name": "Fetch Last Episode Number & Date from Transistor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -720,
+        1100
+      ],
+      "notes": "Fetches the last scheduled episode's number and publication date from Transistor.fm API. This data will be used to set the next episode's number and calculate its scheduling date."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59f771d7-5381-49ea-a939-941cedd8bd82",
+              "name": "Keywords",
+              "value": "[   {     \"keywords\": [     KEYWORDS HERE    ]   } ]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e2ba374e-32b0-45d1-afef-2785f8b70b61",
+      "name": "Set Keywords Array",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -852,
+        1514
+      ],
+      "notes": "This node sets a predefined array of SEO-friendly keywords that are related to the podcast episode. These keywords will be used for improving discoverability."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e22f0b2a-da9c-4edd-9638-bcf529622272",
+              "name": "Writing Sample",
+              "value": "WRITING SAMPLE HERE",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a33adb44-79ea-45b0-8be6-1786c6974c6b",
+      "name": "Set Writing Sample",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -652,
+        1514
+      ],
+      "notesInFlow": false,
+      "notes": "This node stores predefined writing samples (e.g., author introductions or notes) to guide the model on how to write."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "folder",
+        "operation": "list",
+        "path": "/Lit Snippets",
+        "returnAll": true,
+        "filters": {}
+      },
+      "id": "c502ecdf-7d07-4cb4-9420-b92b5597af6e",
+      "name": "List Files for Transcript",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        -452,
+        1514
+      ],
+      "notes": "This node lists all files in the '/Lit Snippets' Dropbox folder to locate the **Transcript file** for further processing."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46450acf-ac4f-4be4-8d5e-ab5f4ad51c17",
+              "leftValue": "={{ $('Download Transcript File').item.json.pathLower }}",
+              "rightValue": "transcript.txt",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1ad70da3-f231-44eb-bd35-5250e0753ee7",
+      "name": "Filter for Transcript File",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -532,
+        1714
+      ],
+      "notes": "This node filters files to ensure that only the **Transcript** file is passed for further processing. It checks if the file name ends with 'transcript.txt', pulling the 'pathLower' from the 'Download Transcript File' node."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the current episode's date and number from the 'Fetch Last Episode Number & Date from Transistor' node\nconst previousEpisode = $(\"Fetch Last Episode Number & Date from Transistor\").first().json.data[0];\nconst previousEpisodeDate = previousEpisode.attributes.published_at;\nconst currentEpisodeNumber = previousEpisode.attributes.number;\n\n// Calculate the next episode number\nconst nextEpisodeNumber = currentEpisodeNumber + 1;\n\n// Calculate the next scheduled day by adding 1 day to the previous episode date\nconst date = new Date(previousEpisodeDate);\ndate.setDate(date.getDate() + 1);\n\n// Format the date to ISO string and remove the milliseconds part\nconst nextScheduledDay = date.toISOString().split('.')[0] + 'Z';\n\n// Return both the next episode number and next scheduled day\nreturn {\n  json: {\n    nextEpisodeNumber: nextEpisodeNumber,\n    nextScheduledDay: nextScheduledDay\n  }\n};"
+      },
+      "id": "17f9628f-2737-46cd-b260-7542b5a3e638",
+      "name": "Calculate Next Episode Number & Date",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        1100
+      ],
+      "notes": "This node calculates the next episode's number and scheduled date based on data from the 'Fetch Last Episode Number & Date from Transistor' node."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "download",
+        "path": "={{ $('List Files for Transcript').item.json.pathLower }}",
+        "binaryPropertyName": "media"
+      },
+      "id": "f828ad70-3ad3-4cc0-9348-dc32655eecb7",
+      "name": "Download Transcript File",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        -752,
+        1714
+      ],
+      "notes": "This node downloads the Transcript file, using the file path from the 'List Files for Transcript' node."
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "binaryPropertyName": "media",
+        "destinationKey": "text",
+        "options": {}
+      },
+      "id": "2a5ddc1f-379b-456a-a3fa-97c060d233c8",
+      "name": "Convert Transcript to Text",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -312,
+        1714
+      ],
+      "notes": "This node converts the Transcript file downloaded from Dropbox (using 'Download Transcript File' node) into a text format for further processing. It extracts the content from the binary property 'media' and stores the extracted text."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('Review & Finalize Episode Title').item.json.message.content }}\n\n[Final Title]="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "81a85878-3f09-4724-ad5a-29b6856ad5e4",
+      "name": "Generate Final Podcast Title",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1039,
+        886
+      ],
+      "notes": "This node finalizes the podcast episode title by outputting the best-rated title from the review process."
+    },
+    {
+      "parameters": {
+        "jsCode": "// List of keywords\nconst keywords = [\n    KEYWORDS HERE IN AN ARRAY\n\n];\n\n// Function to randomize array\nfunction shuffleArray(array) {\n    for (let i = array.length - 1; i > 0; i--) {\n        const j = Math.floor(Math.random() * (i + 1));\n        [array[i], array[j]] = [array[j], array[i]];\n    }\n    return array;\n}\n\n// Shuffle the keywords\nconst shuffledKeywords = shuffleArray(keywords);\n\n// Get 5 random keywords\nconst randomKeywords = shuffledKeywords.slice(0, 5);\n\n// Return the 5 random keywords\nreturn {\n  json: {\n    randomKeywords: randomKeywords\n  }\n};\n"
+      },
+      "id": "60719da0-e802-4ecf-80fc-c56009376c87",
+      "name": "Randomize Keywords",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        1440
+      ],
+      "notes": "This Code node shuffles the array of keywords and returns 5 random keywords for use in the podcast episode's metadata or description. These keywords help optimize the content for busy book lovers and podcast listeners."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d365045d-5e18-4d9c-95c5-7f61896567f2",
+              "name": "message.content",
+              "value": "={{ $('Finalize Genre Tags').item.json.message.content.split(\",\") }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f073441a-a51f-4393-862c-0b67c41db3db",
+      "name": "Split Genre Tags to Array",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1458,
+        1860
+      ],
+      "notes": "This node splits the finalized genre tags from the 'Finalize Genre Tags' node into an array format for further processing."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "folder",
+        "operation": "list",
+        "path": "/Lit Snippets",
+        "returnAll": true,
+        "filters": {}
+      },
+      "id": "a48ac7e2-53ee-41e9-9df4-89fffee14711",
+      "name": "List Files for URLs",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        660
+      ],
+      "notes": "This node lists all files within the '/Lit Snippets' folder in Dropbox to prepare for generating shareable URLs and mapping them into the spreadsheet and Transistor upload process."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dropboxapi.com/2/sharing/list_shared_links",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "path",
+              "value": "={{ $('List Files for URLs').item.json.pathLower }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b73e7b8-50be-4b18-afed-237fc0898091",
+      "name": "Get Dropbox URLs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2780,
+        660
+      ],
+      "notes": "This node sends a POST request to Dropbox's API to retrieve the shared links for each file listed in the '/Lit Snippets' folder, which will be used later to generate download URLs for mapping into the spreadsheet and upload process."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to determine the file type based on URL\nfunction getFileType(url) {\n  if (url.includes('TRANSCRIPT.txt')) return 'Transcript';\n  if (url.includes('.ogg')) return 'Audio File';\n  if (url.includes('YT.png')) return 'YouTube Image';\n  if (url.includes('.png')) return 'Podcast Image';\n  return 'Unknown';\n}\n\n// Iterate over each item and return individual items for each link\nlet output = [];\nitems.forEach(item => {\n  if (item.json && item.json.links) {\n    item.json.links.forEach(linkObj => {\n      if (linkObj.url) {\n        // Replace 'www' with 'dl' and '&dl=0' with '&raw=1'\n        let modifiedUrl = linkObj.url\n          .replace('www.dropbox.com', 'dl.dropbox.com')\n          .replace('&dl=0', '&raw=1');\n        \n        // Determine the file type\n        let fileType = getFileType(modifiedUrl);\n        \n        // Create a new item with the categorized URL\n        let newItem = {\n          json: {\n            originalItem: item.json // Optional: Include other original data if needed\n          }\n        };\n        \n        // Set the key based on the file type\n        newItem.json[fileType + ' URL'] = modifiedUrl;\n        \n        // Push the new item to the output\n        output.push(newItem);\n      }\n    });\n  }\n});\nreturn output;"
+      },
+      "id": "ed6e7caf-6cac-468e-9e7a-e55532254e4d",
+      "name": "Convert Dropbox URLs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2980,
+        820
+      ],
+      "notes": "This node processes and converts Dropbox URLs into downloadable links by modifying the URL to replace 'www.dropbox.com' with 'dl.dropbox.com' and change '&dl=0' to '&raw=1'."
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.transistor.fm/v1/episodes/{{ $('Upload to Transistor').item.json.data.id }}/publish",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "episode[status]",
+              "value": "scheduled"
+            },
+            {
+              "name": "episode[published_at]",
+              "value": "={{ $('Calculate Next Episode Number & Date').item.json.nextScheduledDay }}"
+            },
+            {
+              "name": "fields[episode][]",
+              "value": "status"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "336a2440-f575-4301-a7f1-11775c6b668d",
+      "name": "Schedule on Transistor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3100,
+        1225
+      ],
+      "notes": "Sets the episode status to 'scheduled' and sets the publish date on Transistor."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "path",
+              "value": "={{ $('List Files for Transcript').item.json.pathLower }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96bfaf09-952f-463e-befa-646ba2ab1e63",
+      "name": "Generate Share Links",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -252,
+        1514
+      ],
+      "onError": "continueErrorOutput",
+      "notes": "This node generates share links for the Transcript files, using the file paths from the 'List Files for Transcript' node."
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Transcript URL"
+            },
+            {
+              "fieldToAggregate": "Audio File URL"
+            },
+            {
+              "fieldToAggregate": "YouTube Image URL"
+            },
+            {
+              "fieldToAggregate": "Podcast Image URL"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6d2b7fdb-8021-481e-9eae-5c1c03642f8c",
+      "name": "Aggregate URLs",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        820
+      ],
+      "alwaysOutputData": false,
+      "notes": "Aggregates different types of URLs (transcript, audio, YouTube image, podcast image) into a single object for streamlined handling in further steps."
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1j75FVbTPUlNhI6Omu5ZiVSef8NXaO2HNoXWVoSXFKog",
+          "mode": "list",
+          "cachedResultName": "Lit Snippets",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1j75FVbTPUlNhI6Omu5ZiVSef8NXaO2HNoXWVoSXFKog/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1500332410,
+          "mode": "list",
+          "cachedResultName": "Episodes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1j75FVbTPUlNhI6Omu5ZiVSef8NXaO2HNoXWVoSXFKog/edit#gid=1500332410"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Episode Number": "={{ $('Calculate Next Episode Number & Date').first().json.nextEpisodeNumber }}",
+            "Episode Title": "={{ $('Generate Final Podcast Title').item.json.message.content }}",
+            "Episode Excerpt": "={{ $('Generate Excerpt').item.json.message.content }}",
+            "Episode Description": "={{ $('Finalize Description Spacing').item.json.message.content }}",
+            "Episode Transcript": "={{ $('Convert Transcript to Text').item.json.text }}",
+            "Episode Keywords": "={{ $('Generate Specific Episode Keywords').item.json.message.content }}",
+            "Website Genre Tags": "={{ $('Finalize Genre Tags').item.json.message.content }}",
+            "Episode Image": "={{ $('Aggregate URLs').item.json[\"Podcast Image URL\"][0] }}",
+            "Episode Date": "={{ $('Date to Correct Format').first().json.formattedDate }}",
+            "Book Title": "={{ $('Append Metadata to Sheets').first().json['Book Title'] }}"
+          },
+          "matchingColumns": [
+            "Book Title"
+          ],
+          "schema": [
+            {
+              "id": "Episode Number",
+              "displayName": "Episode Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Date",
+              "displayName": "Episode Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Status",
+              "displayName": "Episode Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Type",
+              "displayName": "Episode Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Series",
+              "displayName": "Episode Series",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Title",
+              "displayName": "Book Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Book Author",
+              "displayName": "Book Author",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Series",
+              "displayName": "Book Series",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Category",
+              "displayName": "Book Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Main Genre",
+              "displayName": "Book Main Genre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Description",
+              "displayName": "Book Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Brief",
+              "displayName": "Book Brief",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Title",
+              "displayName": "Episode Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Excerpt",
+              "displayName": "Episode Excerpt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Description",
+              "displayName": "Episode Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Transcript",
+              "displayName": "Episode Transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Keywords",
+              "displayName": "Episode Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website Genre Tags",
+              "displayName": "Website Genre Tags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Image",
+              "displayName": "Episode Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Episode Blog Post Link",
+              "displayName": "Episode Blog Post Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "YouTube Image",
+              "displayName": "YouTube Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "YouTube Link",
+              "displayName": "YouTube Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Amazon Link",
+              "displayName": "Amazon Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Audible Link",
+              "displayName": "Audible Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2a0324d7-994a-4557-b894-7ee070456e57",
+      "name": "Update Episode Data on Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2660,
+        1225
+      ],
+      "alwaysOutputData": false,
+      "notes": "Updates episode details like title, description, transcript, and keywords in the Google Sheets document."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.transistor.fm/v1/episodes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "episode[show_id]",
+              "value": "lit-snippets"
+            },
+            {
+              "name": "episode[title]",
+              "value": "={{ $('Generate Final Podcast Title').item.json.message.content }}"
+            },
+            {
+              "name": "episode[summary]",
+              "value": "={{ $('Generate Excerpt').item.json.message.content }}"
+            },
+            {
+              "name": "episode[description]",
+              "value": "={{ $('Finalize Description Spacing').item.json.message.content }}"
+            },
+            {
+              "name": "episode[audio_url]",
+              "value": "={{ $('Aggregate URLs').item.json['Audio File URL'][0] }}"
+            },
+            {
+              "name": "episode[transcript_text]",
+              "value": "={{ $('Convert Transcript to Text').item.json.text }}"
+            },
+            {
+              "name": "episode[explicit]",
+              "value": "false"
+            },
+            {
+              "name": "episode[image_url]",
+              "value": "={{ $('Aggregate URLs').item.json['Podcast Image URL'][0] }}"
+            },
+            {
+              "name": "episode[keywords]",
+              "value": "={{ $('Generate Specific Episode Keywords').item.json.message.content }}"
+            },
+            {
+              "name": "episode[number]",
+              "value": "={{ $('Calculate Next Episode Number & Date').item.json.nextEpisodeNumber }}"
+            },
+            {
+              "name": "episode[type]",
+              "value": "full"
+            },
+            {
+              "name": "episode[alternate_url]"
+            },
+            {
+              "name": "episode[video_url]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5fb0dbc5-6488-48f6-9cd0-76be47811801",
+      "name": "Upload to Transistor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2880,
+        1225
+      ],
+      "notes": "Uploads episode data (title, description, audio URL, transcript, keywords, etc.) to Transistor API to create a new episode"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "folder",
+        "operation": "list",
+        "path": "=/Lit Snippets",
+        "returnAll": true,
+        "filters": {}
+      },
+      "id": "269635bd-02bd-45cd-ace2-fbc5ae7fb654",
+      "name": "List Dropbox Files for Alt Text",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        1640
+      ],
+      "notes": "Lists all files in Dropbox to locate the podcast episode image for alt text generation."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "download",
+        "path": "={{ $('List Dropbox Files for Alt Text').item.json.pathLower }}",
+        "binaryPropertyName": "media"
+      },
+      "id": "252d60d6-aec7-4623-8b38-302a60770982",
+      "name": "Download Image for Alt Text",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        2780,
+        1640
+      ],
+      "notes": "Downloads the episode image from Dropbox for alt text generation."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46450acf-ac4f-4be4-8d5e-ab5f4ad51c17",
+              "leftValue": "={{ $('Download Image for Alt Text').item.json.pathLower }}",
+              "rightValue": ".png",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            },
+            {
+              "id": "21318df5-9663-4816-a3c1-4b56e049fbbe",
+              "leftValue": "={{ $('Download Image for Alt Text').item.json.pathLower }}",
+              "rightValue": "yt",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a8715056-b12a-49ad-b4ad-457b7e72aebc",
+      "name": "Filter Image for Alt Text",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        3000,
+        1640
+      ],
+      "notes": "Filters for the podcast episode image (PNG format) to ensure the correct image is used for alt text generation."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "folder",
+        "operation": "list",
+        "path": "/Lit Snippets",
+        "returnAll": true,
+        "filters": {}
+      },
+      "id": "6ec76c45-cb8d-4616-9519-05b159ebfa42",
+      "name": "List Dropbox Files for Image Caption",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        1880
+      ],
+      "notes": "Lists all files in Dropbox to locate the podcast episode image for caption generation."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "download",
+        "path": "={{ $('List Dropbox Files for Image Caption').item.json.pathLower }}",
+        "binaryPropertyName": "media"
+      },
+      "id": "66f7791d-ffcd-45c7-b932-73b29566abff",
+      "name": "Download Image for Caption",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        2780,
+        1880
+      ],
+      "notes": "Downloads the episode image from Dropbox for caption generation."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46450acf-ac4f-4be4-8d5e-ab5f4ad51c17",
+              "leftValue": "={{ $('Download Image for Caption').item.json.pathLower }}",
+              "rightValue": ".png",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "85c1aba5-1916-4d43-8278-74b537f942ce",
+      "name": "Filter Image for Caption",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        3000,
+        1880
+      ],
+      "notes": "Filters for the podcast episode image (PNG format) to ensure the correct image is used for caption generation."
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "Output a descriptive one line SEO-optimized statement for this image, without quotation marks. Using the [Keywords] list as inspiration, craft at least one relevant keyword phrase for the statement.\n\nAvoid the following words: delve, transform, unlock\n\n**IMPORTANT!!* Avoid quotation marks!\n\n[Keywords]=book summary podcast, quick book summaries, short book discussions, daily book summaries, brief book breakdowns, concise book overviews, fast book breakdowns, daily book podcast, book analysis podcast, daily literature summaries, podcast for busy readers, ADHD-friendly book summaries, books for busy minds, rapid book breakdowns, male and female hosts discuss books, conversational book summaries, two friends talk books, time-saving book insights, get the gist of books, decide what to read next, daily book insights, book insights in minutes, daily book breakdowns podcast, daily book breakdowns for busy book lovers, daily pod for busy book lovers, quick book breakdowns for the time-crunched",
+        "inputType": "base64",
+        "binaryPropertyName": "media",
+        "options": {}
+      },
+      "id": "dac865e5-06bb-4594-8868-18f99106652e",
+      "name": "Generate Image Caption",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        3200,
+        1880
+      ],
+      "notes": "Generates an SEO-optimized caption for the podcast episode image using OpenAI."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8d203a1e-87ce-4e4e-a946-13244d682fa8",
+              "name": "signup01",
+              "value": "<div class=\"kg-card kg-signup-card kg-layout-split kg-width-full \" data-lexical-signup-form=\"\" style=\"background-color: #242320; display: none;\"> <div class=\"kg-signup-card-content\"> <picture><img class=\"kg-signup-card-image\" src=\"https://lit-snippets.ghost.io/content/images/2024/09/Sign-Up---Complete-1.png\" alt=\"\"></picture> <div class=\"kg-signup-card-text kg-align-center\"> <h2 class=\"kg-signup-card-heading\" style=\"color: #FFFFFF;\"><span style=\"white-space: pre-wrap;\">Get the Gist, Skip the Rest</span></h2> <p class=\"kg-signup-card-subheading\" style=\"color: #FFFFFF;\"><span style=\"white-space: pre-wrap;\">Daily concise book breakdowns for the time-crunched</span></p> <form class=\"kg-signup-card-form\" data-members-form=\"signup\"> <div class=\"kg-signup-card-fields\"> <input class=\"kg-signup-card-input\" id=\"email\" data-members-email=\"\" type=\"email\" required=\"true\" placeholder=\"Your email\"> <button class=\"kg-signup-card-button \" style=\"background-color: #34A3B0;color: #FFFFFF;\" type=\"submit\"> <span class=\"kg-signup-card-button-default\">Get the Gist</span> <span class=\"kg-signup-card-button-loading\"><svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24\" width=\"24\" viewBox=\"0 0 24 24\"> <g stroke-linecap=\"round\" stroke-width=\"2\" fill=\"currentColor\" stroke=\"none\" stroke-linejoin=\"round\" class=\"nc-icon-wrapper\"> <g class=\"nc-loop-dots-4-24-icon-o\"> <circle cx=\"4\" cy=\"12\" r=\"3\"></circle> <circle cx=\"12\" cy=\"12\" r=\"3\"></circle> <circle cx=\"20\" cy=\"12\" r=\"3\"></circle> </g> <style data-cap=\"butt\"> .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s} .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite} .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)} .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)} .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px} @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}} </style> </g> </svg></span> </button> </div> <div class=\"kg-signup-card-success\" style=\"color: #FFFFFF;\"> Email sent! Check your inbox to complete your signup. </div> <div class=\"kg-signup-card-error\" style=\"color: #FFFFFF;\" data-members-error=\"\"></div> </form> <p class=\"kg-signup-card-disclaimer\" style=\"color: #FFFFFF;\"><span style=\"white-space: pre-wrap;\">No spam. Unsubscribe anytime.</span></p> </div> </div> </div> ",
+              "type": "string"
+            },
+            {
+              "id": "886dfb3a-fa23-47e3-a8ca-f09b18754d9d",
+              "name": "signup02",
+              "value": "<div class=\"kg-card kg-signup-card kg-layout-split kg-width-full \" data-lexical-signup-form=\"\" style=\"background-color: #AAA09C; display: none;\"> <div class=\"kg-signup-card-content\"> <picture><img class=\"kg-signup-card-image\" src=\"https://lit-snippets.ghost.io/content/images/2024/09/Sign-Up---Complete-02.png\" alt=\"\"></picture> <div class=\"kg-signup-card-text kg-align-center\"> <h2 class=\"kg-signup-card-heading\" style=\"color: #FFFFFF;\"><span style=\"white-space: pre-wrap;\">Get Instant Book Insights</span></h2> <p class=\"kg-signup-card-subheading\" style=\"color: #FFFFFF;\"><span style=\"white-space: pre-wrap;\">Join our daily newsletter for quick book breakdowns</span></p> <form class=\"kg-signup-card-form\" data-members-form=\"signup\"> <div class=\"kg-signup-card-fields\"> <input class=\"kg-signup-card-input\" id=\"email\" data-members-email=\"\" type=\"email\" required=\"true\" placeholder=\"Your email\"> <button class=\"kg-signup-card-button \" style=\"background-color: #4B8A97;color: #FFFFFF;\" type=\"submit\"> <span class=\"kg-signup-card-button-default\">Get the Gist</span> <span class=\"kg-signup-card-button-loading\"><svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24\" width=\"24\" viewBox=\"0 0 24 24\"> <g stroke-linecap=\"round\" stroke-width=\"2\" fill=\"currentColor\" stroke=\"none\" stroke-linejoin=\"round\" class=\"nc-icon-wrapper\"> <g class=\"nc-loop-dots-4-24-icon-o\"> <circle cx=\"4\" cy=\"12\" r=\"3\"></circle> <circle cx=\"12\" cy=\"12\" r=\"3\"></circle> <circle cx=\"20\" cy=\"12\" r=\"3\"></circle> </g> <style data-cap=\"butt\"> .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s} .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite} .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)} .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)} .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px} @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}} </style> </g> </svg></span> </button> </div> <div class=\"kg-signup-card-success\" style=\"color: #FFFFFF;\"> Email sent! Check your inbox to complete your signup. </div> <div class=\"kg-signup-card-error\" style=\"color: #FFFFFF;\" data-members-error=\"\"></div> </form> <p class=\"kg-signup-card-disclaimer\" style=\"color: #FFFFFF;\"><span style=\"white-space: pre-wrap;\">No spam. Unsubscribe anytime.</span></p> </div> </div> </div>",
+              "type": "string"
+            },
+            {
+              "id": "6566ad43-a824-4d6a-afbb-75af313f9e21",
+              "name": "signup03",
+              "value": "<div class=\"kg-card kg-signup-card kg-layout-split kg-width-full \" data-lexical-signup-form=\"\" style=\"background-color: #F0EAE7; display: none;\"> <div class=\"kg-signup-card-content\"> <picture><img class=\"kg-signup-card-image\" src=\"https://lit-snippets.ghost.io/content/images/2024/09/Sign-Up---Complete-03.png\" alt=\"\"></picture> <div class=\"kg-signup-card-text kg-align-center\"> <h2 class=\"kg-signup-card-heading\" style=\"color: #000000;\"><span style=\"white-space: pre-wrap;\">Get Fast Book Breakdowns</span></h2> <p class=\"kg-signup-card-subheading\" style=\"color: #000000;\"><span style=\"white-space: pre-wrap;\">Make reading easy for your busy mind</span></p> <form class=\"kg-signup-card-form\" data-members-form=\"signup\"> <div class=\"kg-signup-card-fields\"> <input class=\"kg-signup-card-input\" id=\"email\" data-members-email=\"\" type=\"email\" required=\"true\" placeholder=\"Your email\"> <button class=\"kg-signup-card-button \" style=\"background-color: #BF7B77;color: #FFFFFF;\" type=\"submit\"> <span class=\"kg-signup-card-button-default\">Get the Gist</span> <span class=\"kg-signup-card-button-loading\"><svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24\" width=\"24\" viewBox=\"0 0 24 24\"> <g stroke-linecap=\"round\" stroke-width=\"2\" fill=\"currentColor\" stroke=\"none\" stroke-linejoin=\"round\" class=\"nc-icon-wrapper\"> <g class=\"nc-loop-dots-4-24-icon-o\"> <circle cx=\"4\" cy=\"12\" r=\"3\"></circle> <circle cx=\"12\" cy=\"12\" r=\"3\"></circle> <circle cx=\"20\" cy=\"12\" r=\"3\"></circle> </g> <style data-cap=\"butt\"> .nc-loop-dots-4-24-icon-o{--animation-duration:0.8s} .nc-loop-dots-4-24-icon-o *{opacity:.4;transform:scale(.75);animation:nc-loop-dots-4-anim var(--animation-duration) infinite} .nc-loop-dots-4-24-icon-o :nth-child(1){transform-origin:4px 12px;animation-delay:-.3s;animation-delay:calc(var(--animation-duration)/-2.666)} .nc-loop-dots-4-24-icon-o :nth-child(2){transform-origin:12px 12px;animation-delay:-.15s;animation-delay:calc(var(--animation-duration)/-5.333)} .nc-loop-dots-4-24-icon-o :nth-child(3){transform-origin:20px 12px} @keyframes nc-loop-dots-4-anim{0%,100%{opacity:.4;transform:scale(.75)}50%{opacity:1;transform:scale(1)}} </style> </g> </svg></span> </button> </div> <div class=\"kg-signup-card-success\" style=\"color: #000000;\"> Email sent! Check your inbox to complete your signup. </div> <div class=\"kg-signup-card-error\" style=\"color: #000000;\" data-members-error=\"\"></div> </form> <p class=\"kg-signup-card-disclaimer\" style=\"color: #000000;\"><span style=\"white-space: pre-wrap;\">No spam. Unsubscribe anytime.</span></p> </div> </div> </div>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7be28e9e-2919-4b3d-85f3-09434fa8f021",
+      "name": "Set Signup Forms",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4380,
+        660
+      ],
+      "notes": "Sets the HTML for each signup form (3 total) to be randomly selected later in the workflow."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the signup forms\nconst signupForms = [\n  items[0].json.signup01,\n  items[0].json.signup02,\n  items[0].json.signup03\n];\n\n// Randomly select one form\nconst randomIndex = Math.floor(Math.random() * signupForms.length);\nconst randomSignupForm = signupForms[randomIndex];\n\n// Return the randomly selected signup form\nreturn [\n  {\n    json: {\n      randomSignupForm: randomSignupForm\n    }\n  }\n];\n"
+      },
+      "id": "ed5a3ac0-10a6-40e1-8aac-1ee09f3e7729",
+      "name": "Select Signup Form",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4580,
+        660
+      ],
+      "notes": "Randomly selects one of the three signup forms to include in the Ghost blog post."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9196694a-5d34-4f17-b6e9-ab1b97cea9c9",
+              "name": "emailintro01",
+              "value": "<p>Discover the best bits of today’s book in this quick and engaging breakdown. Head straight to the <a href=\"http://www.litsnippets.com\">site</a> to listen—click here to catch today’s episode.</p>",
+              "type": "string"
+            },
+            {
+              "id": "6a640252-a332-4e63-a62f-5d0b10057f75",
+              "name": "emailintro02",
+              "value": "<p>We had a blast breaking down today’s book and can’t wait for you to hear it. Hop into today’s episode by <a href=\"http://www.litsnippets.com\">clicking here</a> and hear what we’ve got lined up.</p>",
+              "type": "string"
+            },
+            {
+              "id": "8fc050bb-6f65-4715-afe2-acc27d8a0e06",
+              "name": "emailintro03",
+              "value": "<p>This might just be your next favorite book—tune in to see what grabbed us. Jump straight into today’s breakdown by <a href=\"http://www.litsnippets.com\">clicking here</a> to listen.</p>",
+              "type": "string"
+            },
+            {
+              "id": "5606a65a-1a2d-4395-8d08-59b0e6129af1",
+              "name": "emailintro04",
+              "value": "<p>We’ve wrapped up the best bits of today’s book in a quick, focused summary. Make sure to check out the episode—<a href=\"http://www.litsnippets.com\">click here</a> to start listening.</p>",
+              "type": "string"
+            },
+            {
+              "id": "67fd12dd-115e-4e2c-ade3-1b18eaa47ec5",
+              "name": "emailintro05",
+              "value": "<p>This one was fun to break down, with some great insights we can’t wait to share. Click here to head straight to the <a href=\"http://www.litsnippets.com\">site</a> and enjoy the discussion.</p>",
+              "type": "string"
+            },
+            {
+              "id": "8a960c01-2def-413b-be7f-149902c2377d",
+              "name": "emailintro06",
+              "value": "<p>Discover the best bits of today’s book in this quick and engaging breakdown. Ready for today’s episode? <a href=\"http://www.litsnippets.com\">Click here</a> and hop right in.</p>",
+              "type": "string"
+            },
+            {
+              "id": "c8dbb204-8ea0-4077-bd64-5ab77f55fcbe",
+              "name": "emailintro07",
+              "value": "<p>This one’s designed to fit into your busy schedules—quick and to the point. Don’t forget to catch today’s episode—<a href=\"http://www.litsnippets.com\">click here</a> to listen.</p>",
+              "type": "string"
+            },
+            {
+              "id": "2dbed6a2-9523-43e7-bb2a-1bb59c3b54f6",
+              "name": "emailintro08",
+              "value": "<p>Discover the best bits of today’s book in this quick and engaging breakdown. <a href=\"http://www.litsnippets.com\">Listen</a> on our site, or tune in with your favorite podcast player.</p>",
+              "type": "string"
+            },
+            {
+              "id": "4bd99ff8-6f9f-4f36-8e00-26088f790597",
+              "name": "emailintro09",
+              "value": "<p>This summary is packed with value, giving you key takeaways in no time. <a href=\"http://www.litsnippets.com\">Listen</a> on our site, or tune in with your favorite podcast player.</p>",
+              "type": "string"
+            },
+            {
+              "id": "ea97dbe1-01c0-4737-bbe8-150301c91bd0",
+              "name": "emailintro10",
+              "value": "<p>This might just be your next favorite book—tune in to see what grabbed us. Jump straight into today’s breakdown by <a href=\"http://www.litsnippets.com\">clicking here</a> to listen.</p>",
+              "type": "string"
+            },
+            {
+              "id": "82462f72-4e87-478a-8b20-8f07ff4bbb2f",
+              "name": "emailintro11",
+              "value": "<p>This might just be your next favorite book—tune in to see what grabbed us. Jump straight into today’s breakdown by <a href=\"http://www.litsnippets.com\">clicking here</a> to listen.</p>",
+              "type": "string"
+            },
+            {
+              "id": "2eb2dd86-f434-440d-917e-d6c8e1ece5a9",
+              "name": "emailintro12",
+              "value": "<p>We love sharing these book breakdowns with you, and we’re so glad you’re here. <a href=\"http://www.litsnippets.com\">Listen</a> to today’s episode, or catch it on your favorite podcast app.</p>",
+              "type": "string"
+            },
+            {
+              "id": "68236875-5cd7-4250-867c-5da7a736fc88",
+              "name": "emailintro13",
+              "value": "<p>This one was a blast to put together and we hope you enjoy it as much as we did. Hop into today’s episode by <a href=\"http://www.litsnippets.com\">clicking here</a> and hear what we’ve got lined up.</p>",
+              "type": "string"
+            },
+            {
+              "id": "6ae15689-d41c-4b4a-9fe4-54abce4bc362",
+              "name": "emailintro14",
+              "value": "<p>This summary is packed with value, giving you key takeaways in no time. Ready to hear more? Here’s the <a href=\"http://www.litsnippets.com\">link</a> to enjoy today’s episode.</p>",
+              "type": "string"
+            },
+            {
+              "id": "c718b85b-b2ea-4b96-99a5-754793aae471",
+              "name": "emailintro15",
+              "value": "<p>We’ve highlighted the most intriguing parts of today’s book—there’s a lot to explore! Want to hear more? Head to our <a href=\"http://www.litsnippets.com\">site</a> and click here to start listening.</p>",
+              "type": "string"
+            },
+            {
+              "id": "54320b93-d5ab-45ca-bc5f-8f06bac60979",
+              "name": "emailintro16",
+              "value": "<p>This one was a blast to put together and we hope you enjoy it as much as we did. Here’s the <a href=\"http://www.litsnippets.com\">link</a>—click and enjoy today’s episode.</p>",
+              "type": "string"
+            },
+            {
+              "id": "f641fa0d-36c9-41a7-b954-e36034eac834",
+              "name": "emailintro17",
+              "value": "<p>We’ve packed this episode with insights, so you won’t waste a second listening. To listen to today’s episode, here’s your <a href=\"http://www.litsnippets.com\">link</a> to dive into today’s book breakdown—click and enjoy.</p>",
+              "type": "string"
+            },
+            {
+              "id": "64ce4f9b-c0cb-4804-803f-82c88196b891",
+              "name": "emailintro18",
+              "value": "<p>We can’t wait to share the biggest ideas from today’s book—there’s a lot to love here. Just a reminder—<a href=\"http://www.litsnippets.com\">click here</a> to listen to today’s episode and enjoy the breakdown.</p>",
+              "type": "string"
+            },
+            {
+              "id": "bc212bd8-c806-4850-819c-4ae86889333a",
+              "name": "emailintro19",
+              "value": "<p>We’re excited to dive into the key takeaways from today’s book—it’s full of great ideas. Jump straight into today’s breakdown by <a href=\"http://www.litsnippets.com\">clicking here</a> to listen.</p>",
+              "type": "string"
+            },
+            {
+              "id": "ed6c1606-bd7d-495c-8f9c-622a97b181c1",
+              "name": "emailintro20",
+              "value": "<p>We think you might discover your next favorite read in today’s episode. Here’s the <a href=\"http://www.litsnippets.com\">link</a>—click and enjoy today’s episode.</p>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "93542303-9e02-44ff-98d3-ddb57759c6f3",
+      "name": "Set Email Intros",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4780,
+        660
+      ],
+      "notes": "Sets the HTML for each email intro (20 total) to be randomly selected later in the workflow."
+    },
+    {
+      "parameters": {
+        "jsCode": "const emailIntros = Object.values($('Set Email Intros').item.json);\nconst randomIndex = Math.floor(Math.random() * emailIntros.length);\nconst selectedIntro = emailIntros[randomIndex];\nreturn {\n  json: { content: selectedIntro }\n};"
+      },
+      "id": "38655d3e-9619-428d-bceb-66ab4412879c",
+      "name": "Select Email Intro",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4400,
+        880
+      ],
+      "notes": "Randomly selects one of the email intros from the previous 'Set Email Intros' node to include in the Ghost blog post."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "folder",
+        "operation": "list",
+        "path": "/Lit Snippets",
+        "limit": 4,
+        "filters": {}
+      },
+      "id": "4a82c8a2-fe90-41da-8e7e-171ddbcf46c1",
+      "name": "List YT Image",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        4600,
+        880
+      ],
+      "notes": "Lists files in the Dropbox folder to locate the YouTube image."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "download",
+        "path": "={{ $('List YT Image').item.json.pathLower }}",
+        "binaryPropertyName": "media"
+      },
+      "id": "12631c31-af0c-43fe-b92d-633ae97619c6",
+      "name": "Download YT Image",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "position": [
+        4800,
+        880
+      ],
+      "notes": "Downloads the YouTube image from Dropbox."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "46450acf-ac4f-4be4-8d5e-ab5f4ad51c17",
+              "leftValue": "={{ $('Download YT Image').item.json.pathLower }}",
+              "rightValue": "yt.png",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "668511ec-57cd-482b-be72-a3e9a8a7991f",
+      "name": "Filter YT Image",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        4380,
+        1120
+      ],
+      "notes": "Filters for the YouTube image (PNG format) to ensure the correct image is selected."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dropboxapi.com/2/sharing/list_shared_links",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "path",
+              "value": "={{ $('Filter YT Image').item.json.pathLower }}"
+            },
+            {
+              "name": "direct_only",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1aa153c2-9274-4c86-b3bd-287d0ab94aeb",
+      "name": "Get YT Image URL",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4580,
+        1120
+      ],
+      "notes": "Gets the shareable URL for the YouTube image from the Dropbox API."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7b865693-b45f-4869-8710-9373fe52bfb8",
+              "name": "Ghost Post Body with Expressions",
+              "value": "={\n  \"posts\": [\n    {\n      \"title\": \"{{ $('Update Episode Data on Google Sheets').first().json['Episode Title'] }}\",\n      \"html\": \"<!--kg-card-begin: html--><!--kg-card-begin: html--><div style=\\\"display: none; mso-hide: all;\\\">{{ $('Upload to Transistor').first().json.data.attributes.embed_html }}</div><!--kg-card-end: html--><!--kg-card-begin: html--><div class=\\\"email-only-content\\\">{{ $('Select Email Intro').first().json.content }}</div><p><hr></p><!--kg-card-end: html-->{{ $('Select Signup Form').first().json.randomSignupForm }}<p>{{ $('Update Episode Data on Google Sheets').first().json['Episode Description'] }}</p><!--kg-card-end: html-->\",\n      \"feature_image\": \"{{ $('Update Episode Data on Google Sheets').first().json['Episode Image'] }}\",\n      \"tags\": [\n        {\n          \"name\": \"{{ $('Split Genre Tags to Array').first().json.message.content[0] }}\"\n        },\n        {\n          \"name\": \"{{ $('Split Genre Tags to Array').first().json.message.content[1] }}\"\n        }\n      ],\n      \"primary_tag\": {\n        \"name\": \"{{ $('Split Genre Tags to Array').first().json.message.content[0] }}\"\n      },\n      \"visibility\": \"public\",\n      \"custom_excerpt\": \"{{ $('Generate Excerpt').first().json.message.content }}\",\n      \"accent_color\": \"#34A3B0\",\n      \"feature_image_alt\": \"{{ $('Generate Image Alt Text').first().json.content }}\",\n      \"feature_image_caption\": \"{{ $('Generate Image Caption').first().json.content }}\",\n      \"codeinjection_head\": \"<meta name=\\\"twitter:card\\\" content=\\\"player\\\"><meta name=\\\"twitter:player\\\" content=\\\"{{ $('Upload to Transistor').first().json.data.attributes.media_url }}\\\">\"\n    }\n  ]\n}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "37f308e9-fa3d-4844-8962-abdb3f45b239",
+      "name": "Set Ghost Post Body",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4780,
+        1120
+      ],
+      "notes": "Sets the JSON body for the Ghost blog post, including expressions to pull in data from previous nodes."
+    },
+    {
+      "parameters": {
+        "jsCode": "function base64url(source) {\n    // Encode in base64url format\n    return Buffer.from(source).toString('base64')\n        .replace(/=/g, '')\n        .replace(/\\+/g, '-')\n        .replace(/\\//g, '_');\n}\n\nfunction createJwt() { \n    // Your Admin API key parts\n    const id = '';\n    const secret = '';\n\n    // Create JWT Header\n    const header = base64url(JSON.stringify({\n        alg: 'HS256',\n        kid: id,\n        typ: 'JWT'\n    }));\n\n    // Create JWT Payload (5 minutes expiration)\n    const now = Math.floor(Date.now() / 1000);\n    const payload = base64url(JSON.stringify({\n        iat: now,\n        exp: now + 5 * 60,  // Token valid for 5 minutes\n        aud: '/v3/admin/'\n    }));\n\n    // Convert the hex secret into binary buffer\n    const secretBuffer = Buffer.from(secret, 'hex');\n\n    // Create the string to sign (header + payload)\n    const data = `${header}.${payload}`;\n\n    // Create HMAC SHA256 signature\n    const signature = require('crypto')\n        .createHmac('sha256', secretBuffer)\n        .update(data)\n        .digest('base64')\n        .replace(/=/g, '')\n        .replace(/\\+/g, '-')\n        .replace(/\\//g, '_');\n\n    // Combine header, payload, and signature to form the JWT\n    const jwt = `${header}.${payload}.${signature}`;\n    \n    // Return the JWT properly formatted for Ghost API\n    return [\n        {\n            json: {\n                token: `Ghost ${jwt}`\n            }\n        }\n    ];\n};\n\n// Call the createJwt function and return its result\nreturn createJwt();\n"
+      },
+      "id": "9f1a2eea-6ca0-4e8b-ae18-ea179029b05b",
+      "name": "Generate JWT",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4560,
+        1500
+      ],
+      "notes": "Generates a JWT (JSON Web Token) for authentication with the Ghost Admin API."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://lit-snippets.ghost.io/ghost/api/admin/posts/?source=html",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('Generate JWT').item.json.token }}"
+            },
+            {
+              "name": "Accept-Version",
+              "value": "v5.x"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Validate Ghost JSON').item.json.message.content }}",
+        "options": {}
+      },
+      "id": "6ad04209-8808-446b-ba59-f31d026c6ba0",
+      "name": "Upload to Ghost",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4300,
+        1680
+      ],
+      "notes": "Uploads the episode data to Ghost CMS to create a new blog post."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Initial Description]={{ $('Generate Episode Description').item.json.message.content }}\n\n[Writing Sample]={{ $('Set Writing Sample').item.json['Writing Sample'] }}\n\nReview the [Initial Description] and remove any of the following overused words or phrases and replace them with alternatives that match tone and style of the [Writing Sample]:\n\nRemove: testament, dive, delve, leverage, embark, unlock the secrets, unveil the secrets, delve into, take a dive into, dive into, navigate, mastering, elevate, unleash, harness, enhance, revolutionize, foster, captivating\n\nEnsure there are paragraph tags as instructed above.\n\nREMOVE ASTERICKS! REMOVE ANY * SYMBOLS and other markdown formatting.\n\nFor example: *This sentence should not have asterisks.* should instead be This sentence should not have asterisks.\n\nOutput HTML ONLY (without a codeblock) [Cleaned Description]="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd8d2059-add9-4e5c-8a4f-277f02b2a891",
+      "name": "Clean Up & Refine Episode Description",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1440,
+        1260
+      ],
+      "notes": "This node reviews the initial episode description, removes overused words, cleans up any markdown formatting, and ensures the writing matches the tone of the writing sample. It outputs the cleaned HTML description."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Author]={{ $('Append Metadata to Sheets').item.json['Book Author'] }}\n\n[Book Title]={{ $('Append Metadata to Sheets').item.json['Book Title'] }}\n\n[Amazon Link]={{ $('Append Metadata to Sheets').item.json['Amazon Link'] }}\n\n[Keywords]={{ $('Set Keywords Array').item.json.Keywords[0].keywords }}\n\n[Transcript]={{ $('Convert Transcript to Text').item.json.text }}\n\n[Brief]={{ $('Append Metadata to Sheets').item.json['Book Brief'] }}\n\nHTML ONLY!\n\nBegin the description with a single sentence encouraging the reader to support the Lit Snippets podcast by purchasing the book on Amazon and make a word or phrase in the sentence link to [Amazon Link]. Ensure the link is clickable and opens in a new window by using the HTML tag attribute: target=\"_blank\". Also use one keyword phrase from [Keywords] in the sentence. On the next line below the sentence, add three dashes (---) to delineate the call to action from the actual episode description.\n\nLike this:\n\n<p> </p>\n<p>---</p>\n<p> </p>\n\nNext, output three key takeaways that inform the listener what is discussed in that particular episode using the [Transcript] as reference. Use the python tool to choose randomly from [Key Takeaways Title].\n\n[Key Takeaways Title]=What We Got Out Of It, The Big Stuff That Stood Out, Our Quick Hits, The Good Bits, Stuff That Grabbed Us, Highlights We Loved, Things That Clicked, Main Ideas in a Flash, The Best Parts, The Gist, Need-To-Know Nuggets\n\nPreface the title of this section with an appropriate emoji followed by a pipe, like this:\n\nAppropriate emoji for the subject matter | [Key Takeaways Title]\n\nNow, convert the [Brief] to a description in **PARAGRAPHS** in easy to understand language. Replace all references to the words \"excerpt\" and \"sources\" with a word that indicates that this is a book, a genre, a piece of fiction, a literary work or a non-fiction work, etc. Mention the [Author] several times, both full name and last name only.\n\nAt some point in the description, insert a **DIRECT QUOTE** from the [Transcript] that is interest-provoking. To make it stand out in the text, surround it with paragraph tags and preface it with two pipe symbols and **indent it by five spaces**, like this:\n\n<p> </p>\n<p>      || \"Direct quote goes here.\"</p>\n<p> </p>\n\nFor spacing include an empty paragraph between each paragraph: <p> </p>\n\n**Write only in short paragraphs** with no additional commentary! Short, easy to digest paragraphs only. \n\nAfter the description, before the footer add three dashes (---) to delineate the call to action from the actual episode description, just as you did above.\n\nLike this:\n\n<p> </p>\n<p>---</p>\n<p> </p>\n\nFinally, in the same writing style, write a CONCISE, BRIEF footer with a disclaimer that states that this podcast is generated and therefore can be prone to inaccuracies and spoilers and to listen for entertainment purposes only. Write as a third party. Also notify the listener that as an Amazon Associate, Lit Snippets earns from qualifying purchases when they click links to buy books from our podcast and express gratitude for the support.\n\n**REMEMBER**: The only tags you may use, if needed, is:\n\n- `<p>` tags for paragraphs\n- `<a>` tags for hyperlinks (Ensure links are clickable and opens in a new window by using the HTML tag attribute: target=\"_blank\".)\n- `<ul>` and `<li>` tags for bulleted lists\n\nHTML ONLY! You understand that this must render in various podcast players and therefore you only output the text and the HTML tags. **I REPEAT: HTML ONLY**, without a codeblock.\n\n**IMPORTANT!!** For spacing include an empty paragraph between each paragraph: <p> </p> Including dividers, like this:\n<p> </p>\n<p>---</p>\n<p> </p>\n\nOutput as [Initial Description]="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f0c7fdb1-70e6-46ce-9cfc-52b0708f2e3e",
+      "name": "Generate Episode Description",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1060,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Cleaned Description]={{ $('Clean Up & Refine Episode Description').item.json.message.content }}\n\nYou understand that there must an empty paragraph (<p> </p>) between **EVERY** paragraph, including dividers like this and the quote paragraph:\n\n<p> </p>\n<p>---</p>\n<p> </p>\n\nYou understand that this requirement is for proper spacing in podcast apps. With that in mind, you choose to **CAREFULLY** output the [Cleaned Description] again, check whether there are empty paragraphs between each paragraph and if not, add them."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "59eedfad-08c6-4a6f-bce7-bc9dcfd17680",
+      "name": "Finalize Description Spacing",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        760,
+        1440
+      ],
+      "notes": "This node verifies that the cleaned episode description includes proper paragraph spacing with empty <p> </p> tags between all paragraphs, dividers, and quotes for optimal rendering in podcast apps. If spacing is missing, it will be added."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Brief]={{ $('Append Metadata to Sheets').item.json['Book Brief'] }}\n\n[Random Keyword Phrases]={{ $('Randomize Keywords').item.json.randomKeywords }}\n\n[Author]={{ $('Append Metadata to Sheets').item.json['Book Author'] }}\n\n[Title]={{ $('Append Metadata to Sheets').item.json['Book Title'] }}\n\n\nUsing the [Brief], come up with five keyword phrases that are SPECIFIC to this podcast episode that a potential viewer would be searching for and append them to [Random Keyword Phrases], without additional commentary. Ensure the phrases are targeted, specific and include one mention of the [Author] and the [Title]. Throughout, separately include the words: podcast, episode, deep dive.\n\nAvoid the word \"review\".\n\n**IMPORTANT**: You understand that people search for SPECIFIC phrases to find what they are looking for. Therefore, you choose phrases that a person looking for a books podcast would search for using SIMPLE words.\n\nExample: keyword phrase, keyword phrase, keyword phrase, keyword phrase"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90f40651-2dfc-4ab7-a608-92f1f133d983",
+      "name": "Generate Specific Episode Keywords",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1360,
+        1440
+      ],
+      "notes": "This node uses GPT-4 to generate five specific keyword phrases related to the episode based on the book's brief, title, and author, and appends them to the existing random keyword phrases for better search targeting."
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://lit-snippets.ghost.io/ghost/api/admin/posts/{{ $('Upload to Ghost').item.json.posts[0].id }}/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('Generate JWT').item.json.token }}"
+            },
+            {
+              "name": "Accept-Version",
+              "value": "v5.x"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"posts\": [\n        {\n            \"updated_at\": \"{{ $('Upload to Ghost').item.json.posts[0].updated_at }}\",\n            \"status\": \"scheduled\",\n            \"published_at\": \"{{ $('Calculate Next Episode Number & Date').first().json.nextScheduledDay }}\"\n        }\n    ]\n}\n",
+        "options": {}
+      },
+      "id": "8257d75e-56f6-4305-91cf-1632a2a06425",
+      "name": "Schedule on Ghost",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4520,
+        1680
+      ],
+      "notes": "Schedules the Ghost blog post using the calculated publication date and time."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Please make all necessary corrections to make this JSON valid, including escaping invalid characters.\n\n {{ $('Set Ghost Post Body').item.json['Ghost Post Body with Expressions'] }}\n\nThen output as valid JSON WITHOUT ADDITIONAL COMMENTARY!\n\nIMPORTANT: You understand that your ouput will be mapped in an automation and therefore only output the corrected JSON in it's entirety with NO commentary and without a codeblock! Just the same JSON you just received, but valid."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "345d55fa-3eb3-4b0f-a90b-7f735d373cae",
+      "name": "Validate Ghost JSON",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        4220,
+        1500
+      ],
+      "notes": "Uses OpenAI to ensure that the Ghost blog post JSON body is correctly formatted and valid."
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "=",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1500332410,
+          "mode": "list",
+          "cachedResultName": "Episodes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1j75FVbTPUlNhI6Omu5ZiVSef8NXaO2HNoXWVoSXFKog/edit#gid=1500332410"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Book Title": "={{ $('Append Metadata to Sheets').first().json['Book Title'] }}",
+            "Episode Status": "Scheduled"
+          },
+          "matchingColumns": [
+            "Book Title"
+          ],
+          "schema": [
+            {
+              "id": "Episode Number",
+              "displayName": "Episode Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Date",
+              "displayName": "Episode Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Status",
+              "displayName": "Episode Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Episode Type",
+              "displayName": "Episode Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Series",
+              "displayName": "Episode Series",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Title",
+              "displayName": "Book Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Author",
+              "displayName": "Book Author",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Series",
+              "displayName": "Book Series",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Category",
+              "displayName": "Book Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Main Genre",
+              "displayName": "Book Main Genre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Description",
+              "displayName": "Book Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Book Brief",
+              "displayName": "Book Brief",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Title",
+              "displayName": "Episode Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Excerpt",
+              "displayName": "Episode Excerpt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Description",
+              "displayName": "Episode Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Transcript",
+              "displayName": "Episode Transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Keywords",
+              "displayName": "Episode Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Website Genre Tags",
+              "displayName": "Website Genre Tags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Image",
+              "displayName": "Episode Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Blog Post Link",
+              "displayName": "Episode Blog Post Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "YouTube Image",
+              "displayName": "YouTube Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "YouTube Link",
+              "displayName": "YouTube Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Amazon Link",
+              "displayName": "Amazon Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Audible Link",
+              "displayName": "Audible Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f33d988e-fe4f-4270-871d-d7448943e76d",
+      "name": "Set to Scheduled",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        5000,
+        1500
+      ],
+      "notes": "Updates the episode status to 'Scheduled' in the Google Sheet."
+    },
+    {
+      "parameters": {
+        "content": "# **Metadata Input & Initialization** ",
+        "height": 306.68511237693593,
+        "width": 560.6786967056294,
+        "color": 5
+      },
+      "id": "ab1fcfad-7b83-4c03-beb5-886381861397",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Episode Number & Date** ",
+        "height": 300.01047293548714,
+        "width": 687.5769432192288,
+        "color": 5
+      },
+      "id": "d20fdc35-7617-4cd1-a010-6b85c2931572",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -820,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Transcript Processing** ",
+        "height": 506.0536166516198,
+        "width": 944.9414922788679,
+        "color": 5
+      },
+      "id": "7f86c133-0ade-4c9d-8529-fcce6d718b7c",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **GENERATION**",
+        "height": 1768.1661665726874,
+        "width": 1443.6743584277583,
+        "color": 7
+      },
+      "id": "9a7ce3ea-2ebe-44e9-8343-1d71896faf4e",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Episode Title Generation**",
+        "height": 458.59337313058774,
+        "width": 842.2031419706032,
+        "color": 3
+      },
+      "id": "6479f03c-0a3b-49c8-b15f-2af6b3b2b4a2",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Episode Description & Keywords**",
+        "height": 493.6907333663553,
+        "width": 1170.4837757331056,
+        "color": 3
+      },
+      "id": "86cf0fbe-7fd7-447d-b60f-7b973590194c",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Genre Tagging**",
+        "height": 342.888190402714,
+        "width": 1173.6923404770134,
+        "color": 3
+      },
+      "id": "029b5c9e-485f-421c-b1df-d8947f465f93",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        580,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **URL Generation**",
+        "height": 432.3637583804715,
+        "width": 844.8077575801647,
+        "color": 6
+      },
+      "id": "043316a9-1f3c-4d8c-bddd-8761e451ec82",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2500,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Transistor Upload & Scheduling**",
+        "height": 292.77621995423897,
+        "width": 1029.053829425777,
+        "color": 6
+      },
+      "id": "64fb0fc9-3385-4510-a9b6-deb91cd90231",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Image Processing**",
+        "height": 577.5237147033008,
+        "width": 1144.8634006516806,
+        "color": 6
+      },
+      "id": "340f8bf9-7f49-40d6-ae5c-be565fc769f5",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2380,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Ghost Blog Post Preparation**",
+        "height": 765.1340250123835,
+        "width": 876.6312480854959,
+        "color": 4
+      },
+      "id": "a607b465-40cf-4e2d-b32f-85328734e11d",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4192.620140377948,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Ghost Upload & Scheduling**",
+        "height": 470.060488798092,
+        "width": 733.9849344497544,
+        "color": 4
+      },
+      "id": "b46ed559-163a-4c9a-9ec5-34f3bff33c00",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **Finalization**",
+        "height": 430.8621950869813,
+        "width": 266.7725418632315,
+        "color": 4
+      },
+      "id": "12e6b0f6-daf4-4def-a483-83366f0fcb8c",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4920,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **INITIALIZATION**",
+        "height": 1535,
+        "width": 1320,
+        "color": 7
+      },
+      "id": "901052bc-7401-4fdc-b131-884cdf8fb9fa",
+      "name": "Sticky Note13",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1140,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **PROCESSING**",
+        "height": 1762.9388456016804,
+        "width": 1465,
+        "color": 7
+      },
+      "id": "e9334042-b506-4221-bc11-db6b8902a738",
+      "name": "Sticky Note14",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# **FINALIZATION**",
+        "height": 1520,
+        "width": 1465,
+        "color": 7
+      },
+      "id": "ee2e44e3-9feb-4f8e-aa13-fd64f81e6a03",
+      "name": "Sticky Note15",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3880,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1500332410,
+          "mode": "list",
+          "cachedResultName": "Episodes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1j75FVbTPUlNhI6Omu5ZiVSef8NXaO2HNoXWVoSXFKog/edit#gid=1500332410"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Episode Series": "={{ $('Receive Episode Metadata via Webhook').item.json.body.episodeSeries }}",
+            "Book Category": "={{ $('Receive Episode Metadata via Webhook').item.json.body.category }}",
+            "Book Author": "={{ $('Receive Episode Metadata via Webhook').item.json.body.author }}",
+            "Book Title": "={{ $('Receive Episode Metadata via Webhook').item.json.body.title }}",
+            "Book Description": "={{ $('Receive Episode Metadata via Webhook').item.json.body.description }}",
+            "Book Brief": "={{ $('Receive Episode Metadata via Webhook').item.json.body.brief }}",
+            "Amazon Link": "={{ $('Receive Episode Metadata via Webhook').item.json.body.amazonLink }}",
+            "Book Series": "={{ $('Receive Episode Metadata via Webhook').item.json.body.bookSeries }}",
+            "Episode Type": "Normal",
+            "Book Main Genre": "={{ $('Receive Episode Metadata via Webhook').item.json.body.mainGenre }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Episode Number",
+              "displayName": "Episode Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Date",
+              "displayName": "Episode Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Status",
+              "displayName": "Episode Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Type",
+              "displayName": "Episode Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Episode Series",
+              "displayName": "Episode Series",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Title",
+              "displayName": "Book Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Author",
+              "displayName": "Book Author",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Series",
+              "displayName": "Book Series",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Category",
+              "displayName": "Book Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Main Genre",
+              "displayName": "Book Main Genre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Description",
+              "displayName": "Book Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Book Brief",
+              "displayName": "Book Brief",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Episode Title",
+              "displayName": "Episode Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Excerpt",
+              "displayName": "Episode Excerpt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Description",
+              "displayName": "Episode Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Transcript",
+              "displayName": "Episode Transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Keywords",
+              "displayName": "Episode Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Website Genre Tags",
+              "displayName": "Website Genre Tags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Image",
+              "displayName": "Episode Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Episode Blog Post Link",
+              "displayName": "Episode Blog Post Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "YouTube Image",
+              "displayName": "YouTube Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "YouTube Link",
+              "displayName": "YouTube Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Amazon Link",
+              "displayName": "Amazon Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Audible Link",
+              "displayName": "Audible Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "af521098-10c3-4b44-8ddb-d64b3ae9200c",
+      "name": "Append Metadata to Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -420,
+        680
+      ],
+      "notes": "Appends initial episode metadata to a Google Sheet for tracking and reference."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Using the brief: {{ $('Append Metadata to Sheets').item.json['Book Brief'] }} and the transcript: {{ $('Convert Transcript to Text').item.json.text }}, write a SHORT two sentence curiousity provoking statement that is written to elicit curiosity in the potential listener. This excerpt is seen in the podcast RSS feed and the top of the email newsletter that podcast subscribers receive.\n\n**IMPORTANT**: \n\n1. No more than two sentences!\n2. Less than 250 characters!\n3. STRONGLY Curiousity-provoking\n4. Avoid phrases like join us, dive in, etc. The excerpt is a statement not an invitation.\n5. Reference specificly from the transcript and brief.\n\nYou know that if the excerpt is strong enough, it will produce a high click-through rate. So focus on getting the click using human emotion.\n\nYou also understand that this statement must be **BRIEF*, concise, that you must keep statement as powerful yet short as possible."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "de39ac99-9e1b-4a8e-a9ea-53835a51d7fa",
+      "name": "Generate Excerpt",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        700,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Output alt text for this image in one concise sentence.\n\n**IMPORTANT! The sentence must be brief, short, concise!",
+        "inputType": "base64",
+        "binaryPropertyName": "media",
+        "options": {}
+      },
+      "id": "24edabc4-9341-4e0b-bbed-ec5d9cd1da08",
+      "name": "Generate Image Alt Text",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        3200,
+        1640
+      ],
+      "notes": "Generates SEO-optimized alt text for the podcast episode image using OpenAI."
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "",
+          "mode": "id"
+        },
+        "start": "={{ $('Calculate Next Episode Number & Date').first().json.nextScheduledDay }}",
+        "end": "={{ DateTime.fromISO($('Calculate Next Episode Number & Date').first().json.nextScheduledDay).plus({ minutes: 30 }).toUTC().toFormat(\"yyyy-MM-dd'T'HH:mm:ss'Z'\") }}",
+        "additionalFields": {
+          "color": "7",
+          "description": "={{ $('Append Metadata to Sheets').first().json['Book Description'] }}",
+          "summary": "={{ $('Calculate Next Episode Number & Date').first().json.nextEpisodeNumber }} - {{ $('Append Metadata to Sheets').first().json['Book Title'] }}"
+        }
+      },
+      "id": "82de4eb3-fd25-4549-be07-f493cf87253f",
+      "name": "Add Episode to Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.1,
+      "position": [
+        5000,
+        1700
+      ],
+      "notes": "Adds the podcast episode  to Google Calendar."
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Calculate Next Episode Number & Date').item.json.nextScheduledDay }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "id": "3d0648e6-d0a5-465c-88e9-c131b2fceffb",
+      "name": "Date to Correct Format",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        1100
+      ],
+      "notes": "Change the date to the same format as on the spreadsheet."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('Generate Genre Tags').item.json.message.content }}\n\n[Genre Tags]="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "23fcc1ff-1fe8-467c-89d7-114914b790d5",
+      "name": "Finalize Genre Tags",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1098,
+        1860
+      ],
+      "notes": "This node finalizes the selected genre tags based on the input generated in the previous 'Generate Genre Tags' node, ensuring the tags are refined for the episode."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Main Genre]={{ $('Append Metadata to Sheets').item.json['Book Main Genre'] }}\n\n[Book Title]={{ $('Append Metadata to Sheets').item.json['Book Title'] }}\n\n[Book Description]={{ $('Append Metadata to Sheets').item.json['Book Description'] }}\n\n[Book Brief]={{ $('Append Metadata to Sheets').item.json['Book Brief'] }}\n\n\nThe [Main Genre] has been chosen for this episode. Thinking step by step, assess this list of available tags and determine 1 other tag that would be appropriate for this book. For each choice you make, state your reasoning.\n\nAvailable Tags:\n\n- Biographical\n- Business\n- Computer/Internet\n- Crafts\n- Crime/Thriller\n- Fantasy\n- Food\n- General Fiction\n- Historical Fiction\n- History\n- Home/Garden\n- Humor\n- Instructional\n- Juvenile\n- Literary Classics\n- Math/Science/Tech\n- Mixed Collections\n- Mystery\n- Nature\n- Philosophy\n- Politics/Sociology/Religion\n- Recreation\n- Romance\n- Science Fiction\n- Self-Help\n- Travel/Adventure\n- Urban Fantasy\n- Western\n- Young Adult\n\nChoose only from the above tags.\n\nOutput as [Genre Tags] in a comma separate paragraph, for example:\n\n[Genre Tags]=Main Genre, Secondary Genre,\n\nLet's think step by step."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c0e62a6-3a50-45df-b092-fdc67d561444",
+      "name": "Generate Genre Tags",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        738,
+        1860
+      ],
+      "notes": "This node generates appropriate genre tags for the podcast episode based on the book's main genre and its content, using available genre tags from the list."
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f257e980-ca21-499f-8b1a-007cc021c410",
+        "options": {}
+      },
+      "id": "505bbb60-c49d-4b9d-a6f0-60271c18311d",
+      "name": "Receive Episode Metadata via Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -660,
+        680
+      ],
+      "webhookId": "f257e980-ca21-499f-8b1a-007cc021c410",
+      "notesInFlow": true,
+      "notes": "Triggers the workflow by receiving episode metadata (title, description, author, etc.) from GPT via a POST request. Used to start the upload process to Transistor FM and Ghost."
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Keywords]={{ $('Set Keywords Array').item.json.Keywords[0].keywords }}\n\n[Titles]={{ $('Generate Episode Title Options').item.json.message.content }}\n\nWhile THINKING OUT LOUD, carefully and honestly review each title and determine if it adheres to the above instructions and if it would attract the ideal listener for that episode in the following steps:\n\n1. Review each title. Your review should be in paragraph form.\n\n2. Based on your review, rate each title from 1-10, with 10 being best, including decimals.\n\nChoose the best title/keyword phrase pair based on your rating, without additional commentary.\n\nIMPORTANT: You understand that there should not be any markdown formatting in the title as podcast players cannot render markdown in the title field.\n\nLet's think step by step.\n\nOutput, avoiding markdown, as [Final Title]="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b8c5e8a7-b1fe-4797-b44d-d107a7fb94c3",
+      "name": "Review & Finalize Episode Title",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1219,
+        686
+      ],
+      "notes": "This node uses OpenAI to review the generated episode titles from the 'Generate Episode Title Options' node. It rates each title based on its ability to attract the ideal listener and selects the best title. It avoids markdown formatting as podcast players cannot render markdown in the title field."
+    },
+    {
+      "parameters": {
+        "content": "# **Most Important Tip**\n\n**If you get stuck:** Take this entire workflow by pressing **Ctrl + A** (or **Command + A** on Mac) to select everything, then **Ctrl + C** (or **Command + C** on Mac) to copy it, and **Ctrl + V** (or **Command + V** on Mac) to paste it into ChatGPT or Google Gemini AI Studio. Ask the AI to explain step by step what this workflow does. It will help you understand each part and guide you through any confusing sections.\n\n---\n\n### **Featured in:** [Break Your Chains with AI Automation (n8n)](https://www.youtube.com/watch?v=2g-p8BtsIIk)\n\n---\n\n### **Key Points to Get the Most Out of This Workflow**\n\n#### **1. Focus on the OpenAI Nodes**\nThe true value of this workflow is in the prompts used within the OpenAI nodes. Take a close look at these nodes to see how I’ve crafted the prompts. Feel free to copy, adapt, and use these prompts as you see fit. This is where you’ll learn the most about how to get the AI to do what you need.\n\n#### **2. Every Node Has a Note**\nEvery single node in this workflow has a note attached to it. The notes explain what each node does, why it’s there, and how it fits into the overall process. Be sure to read these notes as you move through the workflow to get a clear understanding of each step.\n\n#### **3. Use the Workflow as a Template**\nDon’t be afraid to rip apart this automation! Use it as a starting point, experiment with changes, and repurpose parts of it for your own projects. The best way to learn is by getting hands-on and adapting the workflow to your needs.\n\n#### **4. Check the Help Documentation**\nIf you’re ever confused about a specific node, each one has a link to its help document. Click the link, and you’ll be taken to the official documentation, which can give you more technical details and examples. You can also copy this information and ask ChatGPT to help clarify what it means.\n\n#### **5. Nodes Highlighted in Red**\nThe nodes that are red indicate missing credentials. Make sure to set up the necessary connections, and check the quick start guide included in your purchase for more information on how to do this.\n\n#### **6. Quick Start Guide**\nThere’s a quick start guide included in your purchase. Feel free to reference that for more details. You can also consult the official [n8n Documentation](https://docs.n8n.io) for more in-depth information on how to set up and customize your workflows.\n\n---\n\n### **Final Tip**\nFeel free to explore, experiment, and customize this workflow. The more you interact with it, the more you’ll learn about building effective automations. Happy automating!\n",
+        "height": 1355.3283408564157,
+        "width": 862.2158149210929,
+        "color": 2
+      },
+      "id": "3802f8c0-e617-4996-9ef0-47345dd71396",
+      "name": "Sticky Note16",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2080,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=[Title]={{ $('Append Metadata to Sheets').item.json['Book Title'] }}\n\nRefer to the {{ $('Set Keywords Array').item.json.Keywords[0].keywords }} list and then output the [Title] with a keyword phrase that is designed to resonate with the ideal viewer for this episode, the person who is interested in this book and/or genre, but who is also busy and likes the idea of a short but engagingly conversational podcast episode. Avoid markdown.\n\nExamples:\n\n[Title] • Book Breakdown for Busy Minds\n[Title] • Quick Book Insights\n[Title] • Get the Gist, Quick\n[Title] • The Gist For Busy Book Lovers\n[Title] • Our Quick Book Breakdown\n[Title] • A Super Fast Deep Dive\n[Title] • A Breakdown for Busy Readers\n[Title] • Our Quick Take on Your Next Read\n\nOutput 10 options, avoid using the exact examples above, use them for inspiration."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ec6056f6-2a80-40dd-8d10-85b28a1c08d4",
+      "name": "Generate Episode Title Options",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        839,
+        686
+      ],
+      "notes": "This node uses OpenAI to generate 10 title options based on the book title pulled from the 'Append Episode Metadata to Google Sheets' node and the keyword list from the 'Set Keywords Array' node. These title options are tailored to resonate with busy listeners who prefer quick, engaging content."
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Fetch Last Episode Number & Date from Transistor": {
+      "main": [
+        [
+          {
+            "node": "Calculate Next Episode Number & Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Keywords Array": {
+      "main": [
+        [
+          {
+            "node": "Set Writing Sample",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Writing Sample": {
+      "main": [
+        [
+          {
+            "node": "List Files for Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Files for Transcript": {
+      "main": [
+        [
+          {
+            "node": "Generate Share Links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter for Transcript File": {
+      "main": [
+        [
+          {
+            "node": "Convert Transcript to Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate Next Episode Number & Date": {
+      "main": [
+        [
+          {
+            "node": "Date to Correct Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Transcript File": {
+      "main": [
+        [
+          {
+            "node": "Filter for Transcript File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Transcript to Text": {
+      "main": [
+        [
+          {
+            "node": "Generate Episode Title Options",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Final Podcast Title": {
+      "main": [
+        [
+          {
+            "node": "Generate Excerpt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Randomize Keywords": {
+      "main": [
+        [
+          {
+            "node": "Generate Specific Episode Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Genre Tags to Array": {
+      "main": [
+        [
+          {
+            "node": "List Files for URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Files for URLs": {
+      "main": [
+        [
+          {
+            "node": "Get Dropbox URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Dropbox URLs": {
+      "main": [
+        [
+          {
+            "node": "Convert Dropbox URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Dropbox URLs": {
+      "main": [
+        [
+          {
+            "node": "Aggregate URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Share Links": {
+      "main": [
+        [
+          {
+            "node": "Download Transcript File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download Transcript File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule on Transistor": {
+      "main": [
+        [
+          {
+            "node": "List Dropbox Files for Alt Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate URLs": {
+      "main": [
+        [
+          {
+            "node": "Update Episode Data on Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Episode Data on Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Upload to Transistor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Transistor": {
+      "main": [
+        [
+          {
+            "node": "Schedule on Transistor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Dropbox Files for Alt Text": {
+      "main": [
+        [
+          {
+            "node": "Download Image for Alt Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image for Alt Text": {
+      "main": [
+        [
+          {
+            "node": "Filter Image for Alt Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Image for Alt Text": {
+      "main": [
+        [
+          {
+            "node": "Generate Image Alt Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Dropbox Files for Image Caption": {
+      "main": [
+        [
+          {
+            "node": "Download Image for Caption",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image for Caption": {
+      "main": [
+        [
+          {
+            "node": "Filter Image for Caption",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Image for Caption": {
+      "main": [
+        [
+          {
+            "node": "Generate Image Caption",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image Caption": {
+      "main": [
+        [
+          {
+            "node": "Set Signup Forms",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Signup Forms": {
+      "main": [
+        [
+          {
+            "node": "Select Signup Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Signup Form": {
+      "main": [
+        [
+          {
+            "node": "Set Email Intros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email Intros": {
+      "main": [
+        [
+          {
+            "node": "Select Email Intro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Email Intro": {
+      "main": [
+        [
+          {
+            "node": "List YT Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List YT Image": {
+      "main": [
+        [
+          {
+            "node": "Download YT Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download YT Image": {
+      "main": [
+        [
+          {
+            "node": "Filter YT Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter YT Image": {
+      "main": [
+        [
+          {
+            "node": "Get YT Image URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get YT Image URL": {
+      "main": [
+        [
+          {
+            "node": "Set Ghost Post Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Ghost Post Body": {
+      "main": [
+        [
+          {
+            "node": "Validate Ghost JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate JWT": {
+      "main": [
+        [
+          {
+            "node": "Upload to Ghost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Up & Refine Episode Description": {
+      "main": [
+        [
+          {
+            "node": "Finalize Description Spacing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Episode Description": {
+      "main": [
+        [
+          {
+            "node": "Clean Up & Refine Episode Description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finalize Description Spacing": {
+      "main": [
+        [
+          {
+            "node": "Randomize Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Specific Episode Keywords": {
+      "main": [
+        [
+          {
+            "node": "Generate Genre Tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Ghost": {
+      "main": [
+        [
+          {
+            "node": "Schedule on Ghost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Ghost JSON": {
+      "main": [
+        [
+          {
+            "node": "Generate JWT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule on Ghost": {
+      "main": [
+        [
+          {
+            "node": "Set to Scheduled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append Metadata to Sheets": {
+      "main": [
+        [
+          {
+            "node": "Fetch Last Episode Number & Date from Transistor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Excerpt": {
+      "main": [
+        [
+          {
+            "node": "Generate Episode Description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image Alt Text": {
+      "main": [
+        [
+          {
+            "node": "List Dropbox Files for Image Caption",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set to Scheduled": {
+      "main": [
+        [
+          {
+            "node": "Add Episode to Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date to Correct Format": {
+      "main": [
+        [
+          {
+            "node": "Set Keywords Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finalize Genre Tags": {
+      "main": [
+        [
+          {
+            "node": "Split Genre Tags to Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Genre Tags": {
+      "main": [
+        [
+          {
+            "node": "Finalize Genre Tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Episode Metadata via Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append Metadata to Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review & Finalize Episode Title": {
+      "main": [
+        [
+          {
+            "node": "Generate Final Podcast Title",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Episode Title Options": {
+      "main": [
+        [
+          {
+            "node": "Review & Finalize Episode Title",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8ec803ce-115c-4a8e-9ea5-971bdd964546",
+  "meta": {
+    "instanceId": "278d1589dffe3f56efc35ba43f05b689a36bc3ac1dce2268f1adf751e5a78283"
+  },
+  "id": "QcyVuHRfp4bClr5n",
+  "tags": [
+    {
+      "name": "Podcast",
+      "id": "kjdDqABWSRIayEQN",
+      "createdAt": "2024-10-19T05:39:42.277Z",
+      "updatedAt": "2024-10-19T05:39:42.277Z"
+    }
+  ],
+  "_source": {
+    "github_repo": "VESoft/n8n-agent-templates-Workflows---Templates-de-todito-",
+    "github_path": "n8n___Podcast_Upload.json",
+    "branch": "main"
+  }
+}
