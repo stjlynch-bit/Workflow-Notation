@@ -1,0 +1,276 @@
+source,target,relation,dataset,file
+Event_0n31ekk,Activity_1hqdp4c,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Event_0293csj,Activity_1oznqsu,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_04jnl13,Gateway_1stb1id,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_1stb1id,Activity_1322mx1,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Event_17mynd8,Gateway_1stb1id,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_1sn6om8,Gateway_0qj2ned,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_04jnl13,Gateway_0qj2ned,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_1snicsd,Gateway_04jnl13,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_1p7t48r,Gateway_0znmuia,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_1snicsd,Activity_1p7t48r,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_0znmuia,Event_04zakrx,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_1oznqsu,Event_125phvx,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Event_1do2nw0,Gateway_1snicsd,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_1hqdp4c,Gateway_0znmuia,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Event_0pmk2lk,Activity_0o2vsuw,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_0o2vsuw,Event_0293csj,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Gateway_0qj2ned,Event_0n31ekk,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_1322mx1,Activity_1sn6om8,sequenceFlow,APQC PCF BPMN Models,SCM.bpmn
+Activity_00vgrpc,Gateway_0hkka7g,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Gateway_1iv9aaw,Activity_00vgrpc,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_0e3bgkq,Gateway_1nnbvik,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_0sx8apj,Event_0vf2fmw,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_1qtooi2,Gateway_1nnbvik,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Gateway_1nnbvik,Activity_0sx8apj,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Event_0kyev6a,Activity_1qtooi2,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_1npp5cp,Gateway_0hkka7g,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Gateway_0hkka7g,Activity_1omk3l5,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Gateway_1iv9aaw,Activity_0adrpoj,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Gateway_1iv9aaw,Activity_1npp5cp,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_1omk3l5,Activity_0e3bgkq,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_0adrpoj,Gateway_0hkka7g,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_0bwn7oa,Gateway_1iv9aaw,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_175lajt,Activity_0bwn7oa,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+StartEvent_17p0qn7,Activity_175lajt,sequenceFlow,APQC PCF BPMN Models,Order goods.bpmn
+Activity_14qkqeh,Event_1nja5ut,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_12dupl5,Event_1enowbb,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_17m8tcq,Event_1rcryx1,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_057srg4,Event_12dupl5,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_057srg4,Event_17m8tcq,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_1mtzh3i,Activity_0n2nhjd,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_1tx5h3u,Activity_0nmom1w,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_0n2nhjd,Gateway_057srg4,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_1a6eu8u,Activity_1mtzh3i,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_0nmom1w,Event_1a6eu8u,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_0080sup,Event_0d7wyaj,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_0080sup,Event_1tx5h3u,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_1pqhzfy,Gateway_0080sup,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_1ez7epi,Activity_1pqhzfy,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_0gdmyzm,Gateway_1ez7epi,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_1ljxi5r,Gateway_1ez7epi,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_0jdm3rn,Activity_0gdmyzm,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_1mmyflx,Activity_1ljxi5r,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_1cwt9wg,Event_1mmyflx,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_0pqi5br,Gateway_1cwt9wg,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_058qa0c,Gateway_1cwt9wg,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_1rm7u4u,Activity_0pqi5br,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Gateway_1rm7u4u,Activity_058qa0c,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+StartEvent_1sap25l,Gateway_1rm7u4u,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Event_1enowbb,Activity_14qkqeh,sequenceFlow,APQC PCF BPMN Models,Sell goods.bpmn
+Activity_0dcoyii,Activity_115b7zs,sequenceFlow,APQC PCF BPMN Models,APQC.bpmn
+Activity_115b7zs,Activity_0c6p4vm,sequenceFlow,APQC PCF BPMN Models,APQC.bpmn
+Activity_0c6p4vm,Activity_036bpj6,sequenceFlow,APQC PCF BPMN Models,APQC.bpmn
+Activity_036bpj6,Activity_0kt1uq2,sequenceFlow,APQC PCF BPMN Models,APQC.bpmn
+StartEvent_0n1ygyd,Gateway_0lz8qa7,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0lz8qa7,Activity_0zn2f81,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0lz8qa7,Activity_0i2p5tl,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_0zn2f81,Gateway_1yes665,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_0i2p5tl,Gateway_1yes665,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_1yes665,Gateway_0nfyil5,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0nfyil5,Activity_1xw0lr7,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Event_1shvq3c,Activity_12n2tom,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_1xw0lr7,Gateway_091bq0w,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_12n2tom,Gateway_091bq0w,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_091bq0w,Gateway_0s7u8w1,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0s7u8w1,Activity_0cmtzhc,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0s7u8w1,Activity_1v2unxx,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0s7u8w1,Activity_1huciua,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_0cmtzhc,Gateway_1yg8f9z,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_1v2unxx,Gateway_1yg8f9z,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_1huciua,Gateway_1yg8f9z,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0nfyil5,Activity_1c1yzhx,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_1c1yzhx,Gateway_1ccsg5u,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Event_1rnssdp,Activity_0rdn4dr,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_0rdn4dr,Gateway_1ccsg5u,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_1ccsg5u,Event_0dvv4tp,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_1yg8f9z,Event_01oj7wp,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Event_01oj7wp,Gateway_1ftbnu1,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_1ftbnu1,Activity_0fa3lqj,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_1ftbnu1,Gateway_0c030n8,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_0fa3lqj,Gateway_0c030n8,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0c030n8,Gateway_0jr2bz0,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0jr2bz0,Event_1wpvigq,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_0jr2bz0,Event_1op4qw2,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Event_1wpvigq,Gateway_07lro0l,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Event_1op4qw2,Gateway_07lro0l,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Gateway_07lro0l,Event_1wwsazx,sequenceFlow,APQC PCF BPMN Models,Receive goods.bpmn
+Activity_0fkuj7p,Activity_01bmwm1,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_01bmwm1,Activity_0n6bdk7,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_0nkd7ha,Activity_1avvjbw,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_1x3lz5m,Activity_0nkd7ha,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_0n6bdk7,Event_1a2eoof,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_1avvjbw,Event_1sjykxk,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_15uuxvz,Activity_0fkuj7p,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_0euamx7,Activity_10z4sx5,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_10z4sx5,Activity_08wg65m,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_14tyt33,Activity_0t69lm8,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_08xcb98,Activity_14tyt33,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_08wg65m,Event_0mvr7b3,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_0t69lm8,Event_0ebz2zu,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_1z12rq4,Activity_0euamx7,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_1322mx1,Activity_1sn6om8,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_0qj2ned,Event_0n31ekk,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_0o2vsuw,Event_0293csj,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_0pmk2lk,Activity_0o2vsuw,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_1hqdp4c,Gateway_0znmuia,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_1do2nw0,Gateway_1snicsd,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_1oznqsu,Event_125phvx,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_0znmuia,Event_04zakrx,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_1snicsd,Activity_1p7t48r,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_1p7t48r,Gateway_0znmuia,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_1snicsd,Gateway_04jnl13,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_04jnl13,Gateway_0qj2ned,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Activity_1sn6om8,Gateway_0qj2ned,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_17mynd8,Gateway_1stb1id,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_1stb1id,Activity_1322mx1,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Gateway_04jnl13,Gateway_1stb1id,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_0293csj,Activity_1oznqsu,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_0n31ekk,Activity_1hqdp4c,sequenceFlow,APQC PCF BPMN Models,Supply chain management.bpmn
+Event_0ilaifz,Activity_11rimq7,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Activity_11rimq7,Activity_0sboyfp,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Activity_0sboyfp,Activity_1k53va1,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Activity_1k53va1,Gateway_0nxgbtr,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Gateway_0nxgbtr,Activity_0nhu8p1,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Activity_0nhu8p1,Gateway_1m1kdzq,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Gateway_1m1kdzq,Event_17fefe6,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Gateway_0nxgbtr,Gateway_1m1kdzq,sequenceFlow,APQC PCF BPMN Models,dual.bpmn
+Event_0dx8c5n,Activity_0daeeom,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0daeeom,Activity_03u3i2v,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_03u3i2v,Activity_0w6uhfj,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0w6uhfj,Event_055s0oc,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+StartEvent_1rjmqzw,Activity_0hcm1jh,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Event_0229ks6,Activity_13ldbol,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_13ldbol,Activity_1yyzvs7,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1yyzvs7,Activity_0i79rgc,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0i79rgc,Event_19w0x38,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Event_0d45szn,Activity_0dyvwru,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0dyvwru,Activity_1azbn08,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1azbn08,Activity_15gfll1,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_15gfll1,Gateway_0f7pxzu,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_0f7pxzu,Activity_1ru71qh,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1ru71qh,Gateway_0lydaqm,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_0lydaqm,Event_0w0npf1,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_0f7pxzu,Gateway_0lydaqm,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_17hdx9m,Activity_1no59om,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_17hdx9m,Activity_0r7gpqp,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_17hdx9m,Activity_0aimexh,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Event_0xtdqfp,Activity_0ogsqer,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0ogsqer,Activity_1jzjqtp,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1jzjqtp,Activity_1irsq1b,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1irsq1b,Activity_1wkev33,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1wkev33,Event_12ecnqz,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_17hdx9m,Activity_126hbbd,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Event_0ilaifz,Activity_11rimq7,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_11rimq7,Activity_0sboyfp,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0sboyfp,Activity_1k53va1,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1k53va1,Gateway_0nxgbtr,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_0nxgbtr,Activity_0nhu8p1,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0nhu8p1,Gateway_1m1kdzq,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_1m1kdzq,Event_17fefe6,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_0nxgbtr,Gateway_1m1kdzq,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_17hdx9m,Activity_1wzjumv,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0hcm1jh,Gateway_17hdx9m,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1no59om,Gateway_1o533ty,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0aimexh,Gateway_1o533ty,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_0r7gpqp,Gateway_1o533ty,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_126hbbd,Gateway_1o533ty,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Activity_1wzjumv,Gateway_1o533ty,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Gateway_1o533ty,Event_0gqho1z,sequenceFlow,APQC PCF BPMN Models,process.bpmn
+Event_0d45szn,Activity_0dyvwru,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Activity_0dyvwru,Activity_1azbn08,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Activity_1azbn08,Activity_15gfll1,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Activity_15gfll1,Gateway_0f7pxzu,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Gateway_0f7pxzu,Activity_1ru71qh,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Activity_1ru71qh,Gateway_0lydaqm,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Gateway_0lydaqm,Event_0w0npf1,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Gateway_0f7pxzu,Gateway_0lydaqm,sequenceFlow,APQC PCF BPMN Models,staking.bpmn
+Event_0dx8c5n,Activity_0daeeom,sequenceFlow,APQC PCF BPMN Models,flexible.bpmn
+Activity_0daeeom,Activity_03u3i2v,sequenceFlow,APQC PCF BPMN Models,flexible.bpmn
+Activity_03u3i2v,Activity_0w6uhfj,sequenceFlow,APQC PCF BPMN Models,flexible.bpmn
+Activity_0w6uhfj,Event_055s0oc,sequenceFlow,APQC PCF BPMN Models,flexible.bpmn
+Event_0xtdqfp,Activity_0ogsqer,sequenceFlow,APQC PCF BPMN Models,liquidity.bpmn
+Activity_0ogsqer,Activity_1jzjqtp,sequenceFlow,APQC PCF BPMN Models,liquidity.bpmn
+Activity_1jzjqtp,Activity_1irsq1b,sequenceFlow,APQC PCF BPMN Models,liquidity.bpmn
+Activity_1irsq1b,Activity_1wkev33,sequenceFlow,APQC PCF BPMN Models,liquidity.bpmn
+Activity_1wkev33,Event_12ecnqz,sequenceFlow,APQC PCF BPMN Models,liquidity.bpmn
+Event_0229ks6,Activity_13ldbol,sequenceFlow,APQC PCF BPMN Models,locked.bpmn
+Activity_13ldbol,Activity_1yyzvs7,sequenceFlow,APQC PCF BPMN Models,locked.bpmn
+Activity_1yyzvs7,Activity_0i79rgc,sequenceFlow,APQC PCF BPMN Models,locked.bpmn
+Activity_0i79rgc,Event_19w0x38,sequenceFlow,APQC PCF BPMN Models,locked.bpmn
+Event_1wpssqp,Activity_0j7lpf3,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_0lcqzor,Event_0qcoe9f,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Event_0jk8ue5,Activity_1bsyusc,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_1bsyusc,Activity_198xfj6,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_1bsyusc,Activity_150as0o,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_198xfj6,Gateway_0z9f8t2,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_150as0o,Gateway_0z9f8t2,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Gateway_0z9f8t2,Event_0tbf614,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Event_117cvyk,Gateway_1f6kbxb,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Gateway_1f6kbxb,Activity_0y5ag88,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Gateway_1f6kbxb,Activity_0u063ne,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_0y5ag88,Activity_04174c5,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_0u063ne,Activity_04174c5,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Activity_04174c5,Event_19j0ouu,sequenceFlow,APQC PCF BPMN Models,01-tasks.bpmn
+Event_1l4khg7,Activity_09j9lde,sequenceFlow,APQC PCF BPMN Models,02-start-events.bpmn
+Event_1l4khg7,Activity_1fzotc7,sequenceFlow,APQC PCF BPMN Models,02-start-events.bpmn
+Activity_09j9lde,Gateway_0ip6j7k,sequenceFlow,APQC PCF BPMN Models,02-start-events.bpmn
+Activity_1fzotc7,Gateway_0ip6j7k,sequenceFlow,APQC PCF BPMN Models,02-start-events.bpmn
+Gateway_0ip6j7k,Event_1ufbgzq,sequenceFlow,APQC PCF BPMN Models,02-start-events.bpmn
+Event_18i2guj,Gateway_1rfeufq,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1rfeufq,Activity_0oyz6uc,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1rfeufq,Activity_07fuv22,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_0oyz6uc,Gateway_1t6gjyx,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_07fuv22,Gateway_1t6gjyx,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1t6gjyx,Activity_03hi8h6,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1t6gjyx,Activity_0qpcsoj,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_03hi8h6,Gateway_00xq604,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_0qpcsoj,Gateway_00xq604,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_00xq604,Event_1yo4zh2,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Event_1jgfhkg,Activity_03bs6pb,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_03bs6pb,Gateway_0ozk4pf,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_0ozk4pf,Activity_1wtgaub,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_1wtgaub,Event_0mgi79c,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1imvpfy,Activity_0js2w0y,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1imvpfy,Activity_1yp36ws,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_0js2w0y,Gateway_1yjn9cq,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_1yp36ws,Gateway_1yjn9cq,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_1yjn9cq,Event_0t6svww,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Event_1l5jewc,Gateway_0x6l0oh,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_0x6l0oh,Activity_1x8qcst,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Gateway_0x6l0oh,Activity_1y4itj9,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_1x8qcst,Gateway_18g19vw,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_1y4itj9,Gateway_18g19vw,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Event_0whr0b9,Activity_1ha5rcy,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_1ha5rcy,Activity_1xp8e9x,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Activity_1xp8e9x,Event_05i7p2i,sequenceFlow,APQC PCF BPMN Models,05-gateways.bpmn
+Event_08mq5h6,Activity_0jgktnr,sequenceFlow,APQC PCF BPMN Models,06-activities-semantics.bpmn
+Activity_0jgktnr,Event_0dc5nuu,sequenceFlow,APQC PCF BPMN Models,06-activities-semantics.bpmn
+Event_0wflf0f,Activity_0ku2qy2,sequenceFlow,APQC PCF BPMN Models,06-activities-semantics.bpmn
+Activity_0ku2qy2,Event_00yf3mn,sequenceFlow,APQC PCF BPMN Models,06-activities-semantics.bpmn
+Event_0mnq3nz,Gateway_0b1v7n6,sequenceFlow,APQC PCF BPMN Models,03-end-events.bpmn
+Gateway_0b1v7n6,Activity_0cao5n8,sequenceFlow,APQC PCF BPMN Models,03-end-events.bpmn
+Gateway_0b1v7n6,Activity_09z12as,sequenceFlow,APQC PCF BPMN Models,03-end-events.bpmn
+Activity_0cao5n8,Event_0si72oa,sequenceFlow,APQC PCF BPMN Models,03-end-events.bpmn
+Activity_09z12as,Event_0si72oa,sequenceFlow,APQC PCF BPMN Models,03-end-events.bpmn
+Event_1q3wfft,Activity_04t17yd,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_04t17yd,Event_0be9r4k,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_13to5t9,Activity_1m4ub1p,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_1m4ub1p,Event_0mup38u,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_0mup38u,Activity_0do1813,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_0mup38u,Activity_01eylpt,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_0do1813,Gateway_0idiw09,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_01eylpt,Gateway_0idiw09,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Gateway_0idiw09,Event_1exnxmz,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_1pmb1rj,Gateway_17uiekg,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Gateway_17uiekg,Activity_0ndeors,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Gateway_17uiekg,Activity_0xghuq3,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_0ndeors,Event_1cdk4vd,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_0xghuq3,Event_1cdk4vd,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_1cdk4vd,Activity_14tedex,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_14tedex,Event_14b6h6d,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_1ecswlk,Activity_1f6ox4b,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_1f6ox4b,Event_0b1ev1n,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Event_1jx1vto,Activity_07863d7,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_07863d7,Activity_1ytv7ab,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn
+Activity_1ytv7ab,Event_0hil1oh,sequenceFlow,APQC PCF BPMN Models,04-intermediate-events.bpmn

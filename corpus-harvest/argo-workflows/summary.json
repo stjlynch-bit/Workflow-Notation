@@ -1,0 +1,4968 @@
+{
+  "dataset_name": "Argo Workflows Examples",
+  "format": "YAML",
+  "domain": "machine",
+  "download_status": "success",
+  "total_workflow_files": 207,
+  "total_workflows_parsed": 218,
+  "total_connections": 516,
+  "workflows": [
+    {
+      "file": "examples/archive-location.yaml",
+      "name": "examples/archive-location.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/arguments-artifacts.yaml",
+      "name": "examples/arguments-artifacts.yaml",
+      "templates": [
+        {
+          "name": "kubectl-input-artifact",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/arguments-parameters-from-configmap.yaml",
+      "name": "examples/arguments-parameters-from-configmap.yaml",
+      "templates": [
+        {
+          "name": "print-message-from-configmap",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/arguments-parameters.yaml",
+      "name": "examples/arguments-parameters.yaml",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-disable-archive.yaml",
+      "name": "examples/artifact-disable-archive.yaml",
+      "templates": [
+        {
+          "name": "artifact-disable-archive",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-artifact",
+            "consume-artifact"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-files",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-gc-workflow.yaml",
+      "name": "examples/artifact-gc-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-passing-explicit-plugin.yaml",
+      "name": "examples/artifact-passing-explicit-plugin.yaml",
+      "templates": [
+        {
+          "name": "artifact-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-artifact",
+            "consume-artifact"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-passing-subpath.yaml",
+      "name": "examples/artifact-passing-subpath.yaml",
+      "templates": [
+        {
+          "name": "artifact-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-artifact",
+            "list-artifact",
+            "consume-artifact"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-dir",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-passing.yaml",
+      "name": "examples/artifact-passing.yaml",
+      "templates": [
+        {
+          "name": "artifact-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-artifact",
+            "consume-artifact"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-path-placeholders.yaml",
+      "name": "examples/artifact-path-placeholders.yaml",
+      "templates": [
+        {
+          "name": "head-lines",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifact-repository-ref.yaml",
+      "name": "examples/artifact-repository-ref.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifactory-artifact.yaml",
+      "name": "examples/artifactory-artifact.yaml",
+      "templates": [
+        {
+          "name": "artifact-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-artifact",
+            "consume-artifact"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/artifacts-workflowtemplate.yaml",
+      "name": "artifacts",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/buildkit-template.yaml",
+      "name": "buildkit",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "clone",
+              "dependencies": []
+            },
+            {
+              "name": "build",
+              "dependencies": []
+            },
+            {
+              "name": "image",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "clone",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "build",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "image",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/ci-output-artifact.yaml",
+      "name": "examples/ci-output-artifact.yaml",
+      "templates": [
+        {
+          "name": "ci-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "build",
+            "test",
+            "release"
+          ]
+        },
+        {
+          "name": "build-golang-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "run-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "release-artifact",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/ci-workflowtemplate.yaml",
+      "name": "ci",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "cache-restore",
+              "dependencies": []
+            },
+            {
+              "name": "clone",
+              "dependencies": []
+            },
+            {
+              "name": "deps",
+              "dependencies": [
+                "clone",
+                "cache-restore"
+              ]
+            },
+            {
+              "name": "build",
+              "dependencies": [
+                "deps"
+              ]
+            },
+            {
+              "name": "test",
+              "dependencies": [
+                "build"
+              ]
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "cache-restore",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "cache-store",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "clone",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "deps",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "build",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "test",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/ci.yaml",
+      "name": "examples/ci.yaml",
+      "templates": [
+        {
+          "name": "ci-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "build",
+            "test"
+          ]
+        },
+        {
+          "name": "build-golang-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "run-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/cluster-wftmpl-dag.yaml",
+      "name": "examples/cluster-workflow-template/cluster-wftmpl-dag.yaml",
+      "templates": [
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/clustertemplates.yaml",
+      "name": "cluster-workflow-template-print-message",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/clustertemplates.yaml",
+      "name": "cluster-workflow-template-random-fail-template",
+      "templates": [
+        {
+          "name": "random-fail-template",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/clustertemplates.yaml",
+      "name": "cluster-workflow-template-inner-steps",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "inner-steps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "inner-hello1",
+            "inner-hello2a",
+            "inner-hello2b"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/clustertemplates.yaml",
+      "name": "cluster-workflow-template-inner-dag",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "inner-diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "inner-A",
+              "dependencies": []
+            },
+            {
+              "name": "inner-B",
+              "dependencies": []
+            },
+            {
+              "name": "inner-C",
+              "dependencies": []
+            },
+            {
+              "name": "inner-D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/clustertemplates.yaml",
+      "name": "cluster-workflow-template-submittable",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/mixed-cluster-namespaced-wftmpl-steps.yaml",
+      "name": "examples/cluster-workflow-template/mixed-cluster-namespaced-wftmpl-steps.yaml",
+      "templates": [
+        {
+          "name": "hello-hello-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1",
+            "hello2a",
+            "hello2b"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/cluster-workflow-template/workflow-template-ref-with-entrypoint-arg-passing.yaml",
+      "name": "examples/cluster-workflow-template/workflow-template-ref-with-entrypoint-arg-passing.yaml",
+      "templates": []
+    },
+    {
+      "file": "examples/cluster-workflow-template/workflow-template-ref.yaml",
+      "name": "examples/cluster-workflow-template/workflow-template-ref.yaml",
+      "templates": []
+    },
+    {
+      "file": "examples/coinflip-recursive.yaml",
+      "name": "examples/coinflip-recursive.yaml",
+      "templates": [
+        {
+          "name": "coinflip",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flip-coin",
+            "heads",
+            "tails"
+          ]
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/coinflip.yaml",
+      "name": "examples/coinflip.yaml",
+      "templates": [
+        {
+          "name": "coinflip",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flip-coin",
+            "heads",
+            "tails"
+          ]
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/colored-logs.yaml",
+      "name": "examples/colored-logs.yaml",
+      "templates": [
+        {
+          "name": "print-colors",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/conditional-artifacts.yaml",
+      "name": "examples/conditional-artifacts.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flip-coin",
+            "heads",
+            "tails"
+          ]
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/conditional-parameters.yaml",
+      "name": "examples/conditional-parameters.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flip-coin",
+            "heads",
+            "tails"
+          ]
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/conditionals-complex.yaml",
+      "name": "examples/conditionals-complex.yaml",
+      "templates": [
+        {
+          "name": "coinflip",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flip-coin",
+            "heads",
+            "tails",
+            "flip-again",
+            "complex-condition",
+            "heads-regex",
+            "tails-regex"
+          ]
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads-tails-or-twice-tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/conditionals.yaml",
+      "name": "examples/conditionals.yaml",
+      "templates": [
+        {
+          "name": "conditional-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "print-hello-govaluate",
+            "print-hello-expr",
+            "print-hello-expr-json"
+          ]
+        },
+        {
+          "name": "argosay",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/configmaps/simple-parameters-configmap.yaml",
+      "name": "simple-parameters",
+      "templates": []
+    },
+    {
+      "file": "examples/container-set-template/graph-workflow.yaml",
+      "name": "examples/container-set-template/graph-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/container-set-template/outputs-result-workflow.yaml",
+      "name": "examples/container-set-template/outputs-result-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "a",
+              "dependencies": []
+            },
+            {
+              "name": "b",
+              "dependencies": [
+                "a"
+              ]
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "group",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "verify",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/container-set-template/parallel-workflow.yaml",
+      "name": "examples/container-set-template/parallel-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/container-set-template/sequence-workflow.yaml",
+      "name": "examples/container-set-template/sequence-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/container-set-template/workspace-workflow.yaml",
+      "name": "examples/container-set-template/workspace-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/continue-on-fail.yaml",
+      "name": "examples/continue-on-fail.yaml",
+      "templates": [
+        {
+          "name": "workflow-ignore",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "intentional-fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cron-backfill.yaml",
+      "name": "job",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cron-backfill.yaml",
+      "name": "daily-job",
+      "templates": []
+    },
+    {
+      "file": "examples/cron-backfill.yaml",
+      "name": "backfill-v1",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "day"
+          ]
+        },
+        {
+          "name": "create-job",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/cron-backfill.yaml",
+      "name": "backfill-v2",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "create-job"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/cron-when.yaml",
+      "name": "sleep-when",
+      "templates": []
+    },
+    {
+      "file": "examples/cron-workflow-multiple-schedules.yaml",
+      "name": "hello-world-multiple-schedules",
+      "templates": []
+    },
+    {
+      "file": "examples/cron-workflow.yaml",
+      "name": "hello-world",
+      "templates": []
+    },
+    {
+      "file": "examples/custom-metrics.yaml",
+      "name": "examples/custom-metrics.yaml",
+      "templates": [
+        {
+          "name": "steps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "random-int",
+            "flakey"
+          ]
+        },
+        {
+          "name": "random-int",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "flakey",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/daemon-nginx.yaml",
+      "name": "examples/daemon-nginx.yaml",
+      "templates": [
+        {
+          "name": "daemon-nginx-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "nginx-server",
+            "nginx-client"
+          ]
+        },
+        {
+          "name": "nginx-server",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "nginx-client",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/daemon-step.yaml",
+      "name": "examples/daemon-step.yaml",
+      "templates": [
+        {
+          "name": "daemon-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "influx",
+            "init-database",
+            "producer-1",
+            "producer-2",
+            "producer-3",
+            "consumer"
+          ]
+        },
+        {
+          "name": "influxdb",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "influxdb-client",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/daemoned-stateful-set-with-service.yaml",
+      "name": "examples/daemoned-stateful-set-with-service.yaml",
+      "templates": [
+        {
+          "name": "create-wait-and-test",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "create-service",
+            "create-stateful-set",
+            "wait-stateful-set",
+            "test"
+          ]
+        },
+        {
+          "name": "delete",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "delete-service",
+            "delete-stateful-set"
+          ]
+        },
+        {
+          "name": "create-service",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "create-stateful-set",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "wait-stateful-set",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "test",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "delete-service",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "delete-stateful-set",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-coinflip.yaml",
+      "name": "examples/dag-coinflip.yaml",
+      "templates": [
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "coinflip",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flip-coin",
+            "heads",
+            "tails"
+          ]
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-conditional-artifacts.yaml",
+      "name": "examples/dag-conditional-artifacts.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "flip-coin",
+              "dependencies": []
+            },
+            {
+              "name": "heads",
+              "dependencies": []
+            },
+            {
+              "name": "tails",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-conditional-parameters.yaml",
+      "name": "examples/dag-conditional-parameters.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "flip-coin",
+              "dependencies": []
+            },
+            {
+              "name": "heads",
+              "dependencies": []
+            },
+            {
+              "name": "tails",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "flip-coin",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "tails",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-continue-on-fail.yaml",
+      "name": "examples/dag-continue-on-fail.yaml",
+      "templates": [
+        {
+          "name": "workflow",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            },
+            {
+              "name": "E",
+              "dependencies": []
+            },
+            {
+              "name": "F",
+              "dependencies": []
+            },
+            {
+              "name": "G",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "intentional-fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-custom-metrics.yaml",
+      "name": "examples/dag-custom-metrics.yaml",
+      "templates": [
+        {
+          "name": "dag-task",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "TEST-ONE",
+              "dependencies": []
+            },
+            {
+              "name": "TEST-TWO",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-daemon-retry-strategy.yaml",
+      "name": "examples/dag-daemon-retry-strategy.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "server",
+              "dependencies": []
+            },
+            {
+              "name": "client",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "server",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "client",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-daemon-task.yaml",
+      "name": "examples/dag-daemon-task.yaml",
+      "templates": [
+        {
+          "name": "daemon-example",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "influx",
+              "dependencies": []
+            },
+            {
+              "name": "init-database",
+              "dependencies": []
+            },
+            {
+              "name": "producer-1",
+              "dependencies": []
+            },
+            {
+              "name": "producer-2",
+              "dependencies": []
+            },
+            {
+              "name": "producer-3",
+              "dependencies": []
+            },
+            {
+              "name": "consumer",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "influxdb",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "influxdb-client",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-diamond-steps.yaml",
+      "name": "examples/dag-diamond-steps.yaml",
+      "templates": [
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "echo-thrice",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "echo"
+          ]
+        },
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-diamond.yaml",
+      "name": "examples/dag-diamond.yaml",
+      "templates": [
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-disable-failFast.yaml",
+      "name": "examples/dag-disable-failFast.yaml",
+      "templates": [
+        {
+          "name": "a",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "b",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "c",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "d",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "statis",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            },
+            {
+              "name": "E",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-enhanced-depends.yaml",
+      "name": "examples/dag-enhanced-depends.yaml",
+      "templates": [
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "should-execute-1",
+              "dependencies": []
+            },
+            {
+              "name": "should-execute-2",
+              "dependencies": []
+            },
+            {
+              "name": "should-not-execute",
+              "dependencies": []
+            },
+            {
+              "name": "should-execute-3",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "pass",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-inline-clusterworkflowtemplate.yaml",
+      "name": "dag-inline",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "a",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-inline-cronworkflow.yaml",
+      "name": "dag-inline",
+      "templates": []
+    },
+    {
+      "file": "examples/dag-inline-workflow.yaml",
+      "name": "examples/dag-inline-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "a",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-inline-workflowtemplate.yaml",
+      "name": "dag-inline",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "a",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-multiroot.yaml",
+      "name": "examples/dag-multiroot.yaml",
+      "templates": [
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "multiroot",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-nested.yaml",
+      "name": "examples/dag-nested.yaml",
+      "templates": [
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "nested-diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-targets.yaml",
+      "name": "examples/dag-targets.yaml",
+      "templates": [
+        {
+          "name": "dag-target",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            },
+            {
+              "name": "E",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dag-task-level-timeout.yaml",
+      "name": "examples/dag-task-level-timeout.yaml",
+      "templates": [
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/data-transformations.yaml",
+      "name": "examples/data-transformations.yaml",
+      "templates": [
+        {
+          "name": "data-transformations",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "list-log-files",
+            "process-logs"
+          ]
+        },
+        {
+          "name": "list-log-files",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "process-logs",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/default-pdb-support.yaml",
+      "name": "examples/default-pdb-support.yaml",
+      "templates": [
+        {
+          "name": "pdbcreate",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/dns-config.yaml",
+      "name": "examples/dns-config.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-code-output-variable.yaml",
+      "name": "examples/exit-code-output-variable.yaml",
+      "templates": [
+        {
+          "name": "exit-code-output-variable",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "failing-container",
+            "echo-container"
+          ]
+        },
+        {
+          "name": "failing-container",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "echo-container",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-handler-dag-level.yaml",
+      "name": "examples/exit-handler-dag-level.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "exit",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-handler-slack.yaml",
+      "name": "examples/exit-handler-slack.yaml",
+      "templates": [
+        {
+          "name": "say-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "exit-handler",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-handler-step-level.yaml",
+      "name": "examples/exit-handler-step-level.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1",
+            "hello2a",
+            "hello2b"
+          ]
+        },
+        {
+          "name": "exit",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-handler-with-artifacts.yaml",
+      "name": "examples/exit-handler-with-artifacts.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "step-1"
+          ]
+        },
+        {
+          "name": "output",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "exit",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-handler-with-param.yaml",
+      "name": "examples/exit-handler-with-param.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "step-1"
+          ]
+        },
+        {
+          "name": "output",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "exit",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/exit-handlers.yaml",
+      "name": "examples/exit-handlers.yaml",
+      "templates": [
+        {
+          "name": "intentional-fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "exit-handler",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "notify",
+            "celebrate",
+            "cry"
+          ]
+        },
+        {
+          "name": "send-email",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "celebrate",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "cry",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/expression-destructure-json-complex.yaml",
+      "name": "examples/expression-destructure-json-complex.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/expression-destructure-json.yaml",
+      "name": "examples/expression-destructure-json.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/expression-reusing-verbose-snippets.yaml",
+      "name": "examples/expression-reusing-verbose-snippets.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/expression-tag-template-workflow.yaml",
+      "name": "examples/expression-tag-template-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "task-0",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "pod-0",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/fibonacci-seq-conditional-param.yaml",
+      "name": "examples/fibonacci-seq-conditional-param.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "fibonaccimain",
+            "printresult"
+          ]
+        },
+        {
+          "name": "fibonacci",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "fibonacci-helper"
+          ]
+        },
+        {
+          "name": "fibonaccihelper",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "sub-1",
+            "sub-2",
+            "fib-sub-1",
+            "fib-sub-2",
+            "add"
+          ]
+        },
+        {
+          "name": "return-1",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "do-math",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "printresult",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/forever.yaml",
+      "name": "forever",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/fun-with-gifs.yaml",
+      "name": "examples/fun-with-gifs.yaml",
+      "templates": [
+        {
+          "name": "run-workflow",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "step-1",
+            "step-2",
+            "step-3",
+            "step-4",
+            "step-5",
+            "step-6",
+            "step-7",
+            "step-8"
+          ]
+        },
+        {
+          "name": "create-output-dir",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "download-images",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "create-gif",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "black-and-white",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "combine-horizontal",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "combine-vertical",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "make-bigger",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "bundle-up",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/gc-ttl.yaml",
+      "name": "examples/gc-ttl.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/global-outputs.yaml",
+      "name": "examples/global-outputs.yaml",
+      "templates": [
+        {
+          "name": "generate-globals",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "consume-globals"
+          ]
+        },
+        {
+          "name": "global-output",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "consume-globals",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "consume-global-param",
+            "consume-global-art"
+          ]
+        },
+        {
+          "name": "consume-global-param",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "consume-global-art",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/global-parameters-from-configmap-referenced-as-local-variable.yaml",
+      "name": "examples/global-parameters-from-configmap-referenced-as-local-variable.yaml",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/global-parameters-from-configmap.yaml",
+      "name": "examples/global-parameters-from-configmap.yaml",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/global-parameters.yaml",
+      "name": "examples/global-parameters.yaml",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/handle-large-output-results.yaml",
+      "name": "examples/handle-large-output-results.yaml",
+      "templates": [
+        {
+          "name": "handle-large-output-results",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "get-items",
+            "sequence-param"
+          ]
+        },
+        {
+          "name": "get-items",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/hdfs-artifact.yaml",
+      "name": "examples/hdfs-artifact.yaml",
+      "templates": [
+        {
+          "name": "artifact-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-artifact",
+            "consume-artifact"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-hdfs",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/hello-hybrid.yaml",
+      "name": "examples/hello-hybrid.yaml",
+      "templates": [
+        {
+          "name": "mytemplate",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "step1",
+            "step2"
+          ]
+        },
+        {
+          "name": "hello-win",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "hello-linux",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/hello-windows.yaml",
+      "name": "examples/hello-windows.yaml",
+      "templates": [
+        {
+          "name": "hello-win",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/hello-world.yaml",
+      "name": "examples/hello-world.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/http-hello-world.yaml",
+      "name": "examples/http-hello-world.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "good",
+            "bad"
+          ]
+        },
+        {
+          "name": "http",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/http-success-condition.yaml",
+      "name": "examples/http-success-condition.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "http-status-is-201-succeeds",
+            "http-body-contains-google-succeeds"
+          ]
+        },
+        {
+          "name": "http-status-is-201",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "http-body-contains-google",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "http-headers-contains-cloudflare",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/image-pull-secrets.yaml",
+      "name": "examples/image-pull-secrets.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/influxdb-ci.yaml",
+      "name": "examples/influxdb-ci.yaml",
+      "templates": [
+        {
+          "name": "influxdb-ci",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "checkout",
+            "build",
+            "test-unit",
+            "test-cov",
+            "test-e2e"
+          ]
+        },
+        {
+          "name": "checkout",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "build",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "test-unit",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "test-cov",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "test-cov-query",
+            "test-cov-tsm1"
+          ]
+        },
+        {
+          "name": "test-cov-base",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "test-e2e",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "influxdb-server",
+            "initdb",
+            "producer1",
+            "producer2",
+            "producer3",
+            "consumer"
+          ]
+        },
+        {
+          "name": "influxdb-server",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "influxdb-client",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/init-container.yaml",
+      "name": "examples/init-container.yaml",
+      "templates": [
+        {
+          "name": "init-container-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-azure.yaml",
+      "name": "examples/input-artifact-azure.yaml",
+      "templates": [
+        {
+          "name": "input-artifact-s3-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-gcs.yaml",
+      "name": "examples/input-artifact-gcs.yaml",
+      "templates": [
+        {
+          "name": "input-artifact-gcs-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-git.yaml",
+      "name": "examples/input-artifact-git.yaml",
+      "templates": [
+        {
+          "name": "git-clone",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-http.yaml",
+      "name": "examples/input-artifact-http.yaml",
+      "templates": [
+        {
+          "name": "http-artifact-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-oss.yaml",
+      "name": "examples/input-artifact-oss.yaml",
+      "templates": [
+        {
+          "name": "input-artifact-oss-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-raw.yaml",
+      "name": "examples/input-artifact-raw.yaml",
+      "templates": [
+        {
+          "name": "raw-contents",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/input-artifact-s3.yaml",
+      "name": "examples/input-artifact-s3.yaml",
+      "templates": [
+        {
+          "name": "input-artifact-s3-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/intermediate-parameters.yaml",
+      "name": "examples/intermediate-parameters.yaml",
+      "templates": [
+        {
+          "name": "cicd-pipeline",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "deploy-pre-prod",
+            "approval",
+            "deploy-prod"
+          ]
+        },
+        {
+          "name": "approval",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "deploy",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-jobs.yaml",
+      "name": "examples/k8s-jobs.yaml",
+      "templates": [
+        {
+          "name": "rand-num",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-orchestration.yaml",
+      "name": "examples/k8s-orchestration.yaml",
+      "templates": [
+        {
+          "name": "k8s-orchestrate",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "random-number-job",
+            "print-generated-numbers",
+            "delete-job"
+          ]
+        },
+        {
+          "name": "random-number-job",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-generated-numbers",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "delete-job",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-owner-reference.yaml",
+      "name": "examples/k8s-owner-reference.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-patch-json-pod.yaml",
+      "name": "examples/k8s-patch-json-pod.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-patch-json-workflow.yaml",
+      "name": "examples/k8s-patch-json-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-patch-merge-pod.yaml",
+      "name": "examples/k8s-patch-merge-pod.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-patch-pod.yaml",
+      "name": "examples/k8s-patch-pod.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-resource-log-selector.yaml",
+      "name": "examples/k8s-resource-log-selector.yaml",
+      "templates": [
+        {
+          "name": "tf-jobtmpl",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-set-owner-reference.yaml",
+      "name": "examples/k8s-set-owner-reference.yaml",
+      "templates": [
+        {
+          "name": "k8s-set-owner-reference",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/k8s-wait-wf.yaml",
+      "name": "examples/k8s-wait-wf.yaml",
+      "templates": [
+        {
+          "name": "k8s-wait-wf",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "create-wf",
+            "wait-wf"
+          ]
+        },
+        {
+          "name": "create-wf",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "wait-wf",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/key-only-artifact.yaml",
+      "name": "examples/key-only-artifact.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "generate",
+              "dependencies": []
+            },
+            {
+              "name": "consume",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "generate",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "consume",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/label-value-from-workflow.yaml",
+      "name": "examples/label-value-from-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/life-cycle-hooks-tmpl-level.yaml",
+      "name": "examples/life-cycle-hooks-tmpl-level.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "step-1",
+            "step2"
+          ]
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "http",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/life-cycle-hooks-wf-level.yaml",
+      "name": "examples/life-cycle-hooks-wf-level.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "step1"
+          ]
+        },
+        {
+          "name": "heads",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "http",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops-arbitrary-sequential-steps.yaml",
+      "name": "examples/loops-arbitrary-sequential-steps.yaml",
+      "templates": [
+        {
+          "name": "loop-arbitrary-sequential-steps-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "unit-step"
+          ]
+        },
+        {
+          "name": "unit-step-template",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops-dag.yaml",
+      "name": "examples/loops-dag.yaml",
+      "templates": [
+        {
+          "name": "loops-dag",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops-maps.yaml",
+      "name": "examples/loops-maps.yaml",
+      "templates": [
+        {
+          "name": "loop-map-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "test-linux"
+          ]
+        },
+        {
+          "name": "cat-os-release",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops-param-argument.yaml",
+      "name": "examples/loops-param-argument.yaml",
+      "templates": [
+        {
+          "name": "loop-param-arg-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "test-linux"
+          ]
+        },
+        {
+          "name": "cat-os-release",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops-param-result.yaml",
+      "name": "examples/loops-param-result.yaml",
+      "templates": [
+        {
+          "name": "loop-param-result-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "sleep"
+          ]
+        },
+        {
+          "name": "gen-number-list",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "sleep-n-sec",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops-sequence.yaml",
+      "name": "examples/loops-sequence.yaml",
+      "templates": [
+        {
+          "name": "loops-sequence",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "sequence-count",
+            "sequence-start-end",
+            "sequence-param",
+            "sequence-negative",
+            "sequence-format"
+          ]
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/loops.yaml",
+      "name": "examples/loops.yaml",
+      "templates": [
+        {
+          "name": "loop-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "print-message-loop"
+          ]
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/map-reduce.yaml",
+      "name": "examples/map-reduce.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "split",
+              "dependencies": []
+            },
+            {
+              "name": "map",
+              "dependencies": []
+            },
+            {
+              "name": "reduce",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "split",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "map",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "reduce",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/memoize-simple.yaml",
+      "name": "examples/memoize-simple.yaml",
+      "templates": [
+        {
+          "name": "world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/nested-workflow.yaml",
+      "name": "examples/nested-workflow.yaml",
+      "templates": [
+        {
+          "name": "nested-workflow-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "nested-wf",
+            "consume"
+          ]
+        },
+        {
+          "name": "generate",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "nested-wf",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "consume",
+            "generate"
+          ]
+        },
+        {
+          "name": "consume",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/node-selector.yaml",
+      "name": "examples/node-selector.yaml",
+      "templates": [
+        {
+          "name": "print-arch",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/output-artifact-azure.yaml",
+      "name": "examples/output-artifact-azure.yaml",
+      "templates": [
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/output-artifact-gcs.yaml",
+      "name": "examples/output-artifact-gcs.yaml",
+      "templates": [
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/output-artifact-s3.yaml",
+      "name": "examples/output-artifact-s3.yaml",
+      "templates": [
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/output-parameter.yaml",
+      "name": "examples/output-parameter.yaml",
+      "templates": [
+        {
+          "name": "output-parameter",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate-parameter",
+            "consume-parameter"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parallelism-limit.yaml",
+      "name": "examples/parallelism-limit.yaml",
+      "templates": [
+        {
+          "name": "parallelism-limit",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "sleep"
+          ]
+        },
+        {
+          "name": "sleep",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parallelism-nested-dag.yaml",
+      "name": "examples/parallelism-nested-dag.yaml",
+      "templates": [
+        {
+          "name": "A",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "b1",
+              "dependencies": []
+            },
+            {
+              "name": "b2",
+              "dependencies": []
+            },
+            {
+              "name": "b3",
+              "dependencies": []
+            },
+            {
+              "name": "b4",
+              "dependencies": []
+            },
+            {
+              "name": "b5",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "B",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "c1",
+              "dependencies": []
+            },
+            {
+              "name": "c2",
+              "dependencies": []
+            },
+            {
+              "name": "c3",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "one-job",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parallelism-nested-workflow.yaml",
+      "name": "examples/parallelism-nested-workflow.yaml",
+      "templates": [
+        {
+          "name": "A",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "seq-step"
+          ]
+        },
+        {
+          "name": "B",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "jobs"
+          ]
+        },
+        {
+          "name": "one-job",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parallelism-nested.yaml",
+      "name": "examples/parallelism-nested.yaml",
+      "templates": [
+        {
+          "name": "parallel-worker",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "parallel-worker"
+          ]
+        },
+        {
+          "name": "seq-worker",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "seq-step"
+          ]
+        },
+        {
+          "name": "one-job",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parallelism-template-limit.yaml",
+      "name": "examples/parallelism-template-limit.yaml",
+      "templates": [
+        {
+          "name": "parallelism-template-limit",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "sleep"
+          ]
+        },
+        {
+          "name": "sleep",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parameter-aggregation-dag.yaml",
+      "name": "examples/parameter-aggregation-dag.yaml",
+      "templates": [
+        {
+          "name": "parameter-aggregation",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "odd-or-even",
+              "dependencies": []
+            },
+            {
+              "name": "print-nums",
+              "dependencies": []
+            },
+            {
+              "name": "print-evenness",
+              "dependencies": []
+            },
+            {
+              "name": "divide-by-2",
+              "dependencies": []
+            },
+            {
+              "name": "print",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "odd-or-even",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "divide-by-2",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parameter-aggregation-script.yaml",
+      "name": "examples/parameter-aggregation-script.yaml",
+      "templates": [
+        {
+          "name": "parameter-aggregation",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "odd-or-even",
+            "divide-by-2"
+          ]
+        },
+        {
+          "name": "odd-or-even",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "divide-by-2",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/parameter-aggregation.yaml",
+      "name": "examples/parameter-aggregation.yaml",
+      "templates": [
+        {
+          "name": "parameter-aggregation",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "odd-or-even",
+            "print-nums",
+            "print-evenness",
+            "divide-by-2",
+            "print"
+          ]
+        },
+        {
+          "name": "odd-or-even",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "divide-by-2",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-gc-strategy-with-label-selector.yaml",
+      "name": "examples/pod-gc-strategy-with-label-selector.yaml",
+      "templates": [
+        {
+          "name": "pod-gc-strategy-with-label-selector",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "fail",
+            "succeed-deleted",
+            "succeed-not-deleted"
+          ]
+        },
+        {
+          "name": "fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "succeed-deleted",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "succeed-not-deleted",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-gc-strategy.yaml",
+      "name": "examples/pod-gc-strategy.yaml",
+      "templates": [
+        {
+          "name": "pod-gc-strategy",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "fail",
+            "succeed"
+          ]
+        },
+        {
+          "name": "fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "succeed",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-metadata-wf-field.yaml",
+      "name": "examples/pod-metadata-wf-field.yaml",
+      "templates": [
+        {
+          "name": "hello-hello-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1"
+          ]
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-metadata.yaml",
+      "name": "examples/pod-metadata.yaml",
+      "templates": [
+        {
+          "name": "hello-hello-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1"
+          ]
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-spec-from-previous-step.yaml",
+      "name": "examples/pod-spec-from-previous-step.yaml",
+      "templates": [
+        {
+          "name": "workflow",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "parse-resources",
+              "dependencies": []
+            },
+            {
+              "name": "setup-resources",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "parse-resources-tmpl",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "setup-resources-tmpl",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-spec-patch-wf-tmpl.yaml",
+      "name": "examples/pod-spec-patch-wf-tmpl.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-spec-patch.yaml",
+      "name": "examples/pod-spec-patch.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/pod-spec-yaml-patch.yaml",
+      "name": "examples/pod-spec-yaml-patch.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/recursive-for-loop.yaml",
+      "name": "examples/recursive-for-loop.yaml",
+      "templates": [
+        {
+          "name": "plan",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "recurse"
+          ]
+        },
+        {
+          "name": "loop",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "iterate-counter",
+            "continue"
+          ]
+        },
+        {
+          "name": "counter-iteration",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/resource-delete-with-flags.yaml",
+      "name": "examples/resource-delete-with-flags.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "submit-resource",
+            "delete-resource"
+          ]
+        },
+        {
+          "name": "create-configmap",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "delete-resource",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/resource-flags.yaml",
+      "name": "examples/resource-flags.yaml",
+      "templates": [
+        {
+          "name": "resource-validate-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "submit-resource",
+            "submit-resource-without-validation"
+          ]
+        },
+        {
+          "name": "create-route",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "create-route-without-validation",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/resubmit.yaml",
+      "name": "examples/resubmit.yaml",
+      "templates": [
+        {
+          "name": "rand-fail-dag",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        },
+        {
+          "name": "rand-fail-steps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "randfail1a",
+            "randfail1b",
+            "randfail2a",
+            "randfail2b",
+            "randfail2c",
+            "randfail2d"
+          ]
+        },
+        {
+          "name": "random-fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-backoff.yaml",
+      "name": "examples/retry-backoff.yaml",
+      "templates": [
+        {
+          "name": "retry-backoff",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-conditional.yaml",
+      "name": "examples/retry-conditional.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "safe-to-retry",
+            "retry"
+          ]
+        },
+        {
+          "name": "safe-to-retry",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "retry-script",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-container-to-completion.yaml",
+      "name": "examples/retry-container-to-completion.yaml",
+      "templates": [
+        {
+          "name": "retry-to-completion",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-container.yaml",
+      "name": "examples/retry-container.yaml",
+      "templates": [
+        {
+          "name": "retry-container",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-on-error.yaml",
+      "name": "examples/retry-on-error.yaml",
+      "templates": [
+        {
+          "name": "error-container",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-script.yaml",
+      "name": "examples/retry-script.yaml",
+      "templates": [
+        {
+          "name": "retry-script",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/retry-with-steps.yaml",
+      "name": "examples/retry-with-steps.yaml",
+      "templates": [
+        {
+          "name": "retry-with-steps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1",
+            "hello2a",
+            "hello2b"
+          ]
+        },
+        {
+          "name": "random-fail",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/scripts-bash.yaml",
+      "name": "examples/scripts-bash.yaml",
+      "templates": [
+        {
+          "name": "bash-script-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "print"
+          ]
+        },
+        {
+          "name": "gen-random-int",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/scripts-javascript.yaml",
+      "name": "examples/scripts-javascript.yaml",
+      "templates": [
+        {
+          "name": "javascript-script-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "print"
+          ]
+        },
+        {
+          "name": "gen-random-int",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/scripts-python.yaml",
+      "name": "examples/scripts-python.yaml",
+      "templates": [
+        {
+          "name": "python-script-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "print"
+          ]
+        },
+        {
+          "name": "gen-random-int",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/secrets.yaml",
+      "name": "examples/secrets.yaml",
+      "templates": [
+        {
+          "name": "print-secret",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/sidecar-dind.yaml",
+      "name": "examples/sidecar-dind.yaml",
+      "templates": [
+        {
+          "name": "dind-sidecar-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/sidecar-nginx.yaml",
+      "name": "examples/sidecar-nginx.yaml",
+      "templates": [
+        {
+          "name": "sidecar-nginx-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/sidecar.yaml",
+      "name": "examples/sidecar.yaml",
+      "templates": [
+        {
+          "name": "sidecar-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/status-reference.yaml",
+      "name": "examples/status-reference.yaml",
+      "templates": [
+        {
+          "name": "status-reference",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "flakey-container",
+            "failed",
+            "succeeded"
+          ]
+        },
+        {
+          "name": "flakey-container",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "failed",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "succeeded",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/step-level-timeout.yaml",
+      "name": "examples/step-level-timeout.yaml",
+      "templates": [
+        {
+          "name": "sleep-sleep",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "sleep1",
+            "sleep2"
+          ]
+        },
+        {
+          "name": "sleep",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/steps-daemon-retry-strategy.yaml",
+      "name": "examples/steps-daemon-retry-strategy.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "server",
+            "client"
+          ]
+        },
+        {
+          "name": "server",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "client",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/steps-inline-workflow.yaml",
+      "name": "examples/steps-inline-workflow.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "a"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/steps.yaml",
+      "name": "examples/steps.yaml",
+      "templates": [
+        {
+          "name": "hello-hello-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1",
+            "hello2a",
+            "hello2b"
+          ]
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/suspend-template-outputs.yaml",
+      "name": "suspend-outputs",
+      "templates": [
+        {
+          "name": "suspend",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "approve",
+            "release"
+          ]
+        },
+        {
+          "name": "approve",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/suspend-template.yaml",
+      "name": "examples/suspend-template.yaml",
+      "templates": [
+        {
+          "name": "suspend",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "build",
+            "approve",
+            "delay",
+            "release"
+          ]
+        },
+        {
+          "name": "approve",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "delay",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-db-mutex-tmpl-level.yaml",
+      "name": "examples/synchronization-db-mutex-tmpl-level.yaml",
+      "templates": [
+        {
+          "name": "synchronization-db-tmpl-level-mutex-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "synchronization-acquire-lock",
+            "synchronization-acquire-lock1"
+          ]
+        },
+        {
+          "name": "acquire-lock",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "acquire-lock-1",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-db-mutex-wf-level.yaml",
+      "name": "examples/synchronization-db-mutex-wf-level.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-db-tmpl-level.yaml",
+      "name": "examples/synchronization-db-tmpl-level.yaml",
+      "templates": [
+        {
+          "name": "synchronization-db-tmpl-level-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "synchronization-acquire-lock"
+          ]
+        },
+        {
+          "name": "acquire-lock",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-db-wf-level.yaml",
+      "name": "examples/synchronization-db-wf-level.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-mutex-tmpl-level.yaml",
+      "name": "examples/synchronization-mutex-tmpl-level.yaml",
+      "templates": [
+        {
+          "name": "synchronization-tmpl-level-mutex-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "synchronization-acquire-lock",
+            "synchronization-acquire-lock1"
+          ]
+        },
+        {
+          "name": "acquire-lock",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "acquire-lock-1",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-mutex-wf-level.yaml",
+      "name": "examples/synchronization-mutex-wf-level.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-tmpl-level.yaml",
+      "name": "examples/synchronization-tmpl-level.yaml",
+      "templates": [
+        {
+          "name": "synchronization-tmpl-level-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "synchronization-acquire-lock"
+          ]
+        },
+        {
+          "name": "acquire-lock",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/synchronization-wf-level.yaml",
+      "name": "examples/synchronization-wf-level.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/template-defaults.yaml",
+      "name": "examples/template-defaults.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "retry-backoff",
+            "hello-world"
+          ]
+        },
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "retry-backoff",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/template-on-exit.yaml",
+      "name": "examples/template-on-exit.yaml",
+      "templates": [
+        {
+          "name": "step-template",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "stepA",
+            "stepB"
+          ]
+        },
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "exit-container",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/testvolume.yaml",
+      "name": "my-existing-volume",
+      "templates": []
+    },
+    {
+      "file": "examples/timeouts-step.yaml",
+      "name": "examples/timeouts-step.yaml",
+      "templates": [
+        {
+          "name": "sleep",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/timeouts-workflow.yaml",
+      "name": "examples/timeouts-workflow.yaml",
+      "templates": [
+        {
+          "name": "bunch-of-sleeps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "sleep-one-day",
+            "unschedulable"
+          ]
+        },
+        {
+          "name": "sleep",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "unschedulable",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/title-and-description-with-markdown.yaml",
+      "name": "examples/title-and-description-with-markdown.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/volumes-emptydir.yaml",
+      "name": "examples/volumes-emptydir.yaml",
+      "templates": [
+        {
+          "name": "volumes-emptydir-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/volumes-existing.yaml",
+      "name": "examples/volumes-existing.yaml",
+      "templates": [
+        {
+          "name": "volumes-existing-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "print"
+          ]
+        },
+        {
+          "name": "append-to-accesslog",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-accesslog",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/volumes-pvc.yaml",
+      "name": "examples/volumes-pvc.yaml",
+      "templates": [
+        {
+          "name": "volumes-pvc-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "generate",
+            "print"
+          ]
+        },
+        {
+          "name": "hello-world-to-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "print-message-from-file",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/webhdfs-input-output-artifacts.yaml",
+      "name": "examples/webhdfs-input-output-artifacts.yaml",
+      "templates": [
+        {
+          "name": "input-output-artifact-webhdfs-example",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/withsequence-nested-result.yaml",
+      "name": "examples/withsequence-nested-result.yaml",
+      "templates": [
+        {
+          "name": "hello-entrypoint",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello-a",
+            "hello-b"
+          ]
+        },
+        {
+          "name": "hello-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello-b",
+            "hello-c"
+          ]
+        },
+        {
+          "name": "hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/work-avoidance.yaml",
+      "name": "examples/work-avoidance.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "load-markers",
+            "echo"
+          ]
+        },
+        {
+          "name": "load-markers",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "echo",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "save-markers",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-count-resourcequota.yaml",
+      "name": "workflow-count",
+      "templates": []
+    },
+    {
+      "file": "examples/workflow-event-binding/event-consumer-workfloweventbinding.yaml",
+      "name": "event-consumer",
+      "templates": []
+    },
+    {
+      "file": "examples/workflow-event-binding/event-consumer-workflowtemplate.yaml",
+      "name": "event-consumer",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "a"
+          ]
+        },
+        {
+          "name": "argosay",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-event-binding/github-path-filter-workfloweventbinding.yaml",
+      "name": "github-path-filter",
+      "templates": []
+    },
+    {
+      "file": "examples/workflow-event-binding/github-path-filter-workflowtemplate.yaml",
+      "name": "github-path-filter",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "a"
+          ]
+        },
+        {
+          "name": "argosay",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-of-workflows.yaml",
+      "name": "examples/workflow-of-workflows.yaml",
+      "templates": [
+        {
+          "name": "main",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "workflow1",
+            "workflow2"
+          ]
+        },
+        {
+          "name": "resource-without-argument",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "resource-with-argument",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/dag.yaml",
+      "name": "examples/workflow-template/dag.yaml",
+      "templates": [
+        {
+          "name": "diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "A",
+              "dependencies": []
+            },
+            {
+              "name": "B",
+              "dependencies": []
+            },
+            {
+              "name": "C",
+              "dependencies": []
+            },
+            {
+              "name": "D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/hello-world.yaml",
+      "name": "examples/workflow-template/hello-world.yaml",
+      "templates": [
+        {
+          "name": "hello-world-from-templateRef",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "call-print-message"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/retry-with-steps.yaml",
+      "name": "examples/workflow-template/retry-with-steps.yaml",
+      "templates": [
+        {
+          "name": "retry-with-steps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1",
+            "hello2a",
+            "hello2b"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/steps.yaml",
+      "name": "examples/workflow-template/steps.yaml",
+      "templates": [
+        {
+          "name": "hello-hello-hello",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "hello1",
+            "hello2a",
+            "hello2b"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/templates.yaml",
+      "name": "workflow-template-print-message",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/templates.yaml",
+      "name": "workflow-template-random-fail-template",
+      "templates": [
+        {
+          "name": "random-fail-template",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/templates.yaml",
+      "name": "workflow-template-inner-steps",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "inner-steps",
+          "type": "dag",
+          "tasks": [],
+          "steps": [
+            "inner-hello1",
+            "inner-hello2a",
+            "inner-hello2b"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/templates.yaml",
+      "name": "workflow-template-inner-dag",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        },
+        {
+          "name": "inner-diamond",
+          "type": "dag",
+          "tasks": [
+            {
+              "name": "inner-A",
+              "dependencies": []
+            },
+            {
+              "name": "inner-B",
+              "dependencies": []
+            },
+            {
+              "name": "inner-C",
+              "dependencies": []
+            },
+            {
+              "name": "inner-D",
+              "dependencies": []
+            }
+          ],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/templates.yaml",
+      "name": "workflow-template-submittable",
+      "templates": [
+        {
+          "name": "print-message",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/workflow-archive-logs.yaml",
+      "name": "examples/workflow-template/workflow-archive-logs.yaml",
+      "templates": [
+        {
+          "name": "hello-world",
+          "type": "dag",
+          "tasks": [],
+          "steps": []
+        }
+      ]
+    },
+    {
+      "file": "examples/workflow-template/workflow-template-ref-with-entrypoint-arg-passing.yaml",
+      "name": "examples/workflow-template/workflow-template-ref-with-entrypoint-arg-passing.yaml",
+      "templates": []
+    },
+    {
+      "file": "examples/workflow-template/workflow-template-ref.yaml",
+      "name": "examples/workflow-template/workflow-template-ref.yaml",
+      "templates": []
+    }
+  ]
+}

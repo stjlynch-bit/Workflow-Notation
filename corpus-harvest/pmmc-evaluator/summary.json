@@ -1,0 +1,2436 @@
+{
+  "dataset_name": "PMMC-Evaluator",
+  "source_url": "https://github.com/kristiankolthoff/PMMC-Evaluator",
+  "download_status": "success",
+  "failure_reason": null,
+  "format": "mixed (BPMN XML, EPML, PNML)",
+  "domain": "human",
+  "count": {
+    "models_or_traces": 269,
+    "activities_or_nodes": 9266,
+    "connections_or_events": 9827
+  },
+  "structural_extract": [
+    {
+      "model_id": "src/main/resources/data/dataset1/Cologne_no_layout.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/many2one.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/Cologne.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/FU_Berlin.bpmn",
+      "format": "BPMN",
+      "node_count": 45,
+      "connection_count": 55,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/Frankfurt.bpmn",
+      "format": "BPMN",
+      "node_count": 40,
+      "connection_count": 46,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/Hohenheim.bpmn",
+      "format": "BPMN",
+      "node_count": 55,
+      "connection_count": 59,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/IIS_Erlangen.bpmn",
+      "format": "BPMN",
+      "node_count": 62,
+      "connection_count": 80,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/Muenster.bpmn",
+      "format": "BPMN",
+      "node_count": 88,
+      "connection_count": 104,
+      "has_branching": true,
+      "has_loops": true,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/Potsdam.bpmn",
+      "format": "BPMN",
+      "node_count": 63,
+      "connection_count": 81,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/TU_Munich.bpmn",
+      "format": "BPMN",
+      "node_count": 33,
+      "connection_count": 38,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/models/Wuerzburg.bpmn",
+      "format": "BPMN",
+      "node_count": 36,
+      "connection_count": 42,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/many2One/many2One_original.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/many2One/many2One_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/many2one.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/one2many.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/one2many/one2many_original.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/one2many/one2many_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 12,
+      "connection_count": 14,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/2_tests_addirrelevant/addirrelevant.bpmn",
+      "format": "BPMN",
+      "node_count": 10,
+      "connection_count": 11,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/2_tests_addirrelevant/addirrelevant/addirrelevant_original.bpmn",
+      "format": "BPMN",
+      "node_count": 10,
+      "connection_count": 11,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/2_tests_addirrelevant/addirrelevant/addirrelevant_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 14,
+      "connection_count": 13,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/2_tests_addirrelevant/birthcertificate.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/5_tests_flipping/flipping.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/5_tests_flipping/flipping/flipping_original.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/5_tests_flipping/flipping/flipping_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/6_tests_synonyms/synonyms.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/6_tests_synonyms/synonyms/synonyms_original.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/6_tests_synonyms/synonyms/synonyms_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/7_tests_manipulate/manipulate.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/7_tests_manipulate/manipulate/manipulate_original.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/synthesizer/7_tests_manipulate/manipulate/manipulate_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/test.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/transformed_model.bpmn",
+      "format": "BPMN",
+      "node_count": 30,
+      "connection_count": 34,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/transformed_model_1.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/transformed_model_2.bpmn",
+      "format": "BPMN",
+      "node_count": 32,
+      "connection_count": 36,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset1/transformed_model_3.bpmn",
+      "format": "BPMN",
+      "node_count": 9,
+      "connection_count": 10,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case1/Cologne.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case1/data/data_original.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case1/data/data_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 45,
+      "connection_count": 58,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case2/Cologne.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case2/data/data_original.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case2/data/data_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 38,
+      "connection_count": 41,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case3/Cologne.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case3/data/data_original.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/synthesized/case3/data/data_transformed.bpmn",
+      "format": "BPMN",
+      "node_count": 29,
+      "connection_count": 32,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p246.pnml",
+      "format": "PNML",
+      "node_count": 39,
+      "connection_count": 44,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p247.pnml",
+      "format": "PNML",
+      "node_count": 54,
+      "connection_count": 62,
+      "has_branching": true,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p248.pnml",
+      "format": "PNML",
+      "node_count": 46,
+      "connection_count": 52,
+      "has_branching": true,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p249.pnml",
+      "format": "PNML",
+      "node_count": 37,
+      "connection_count": 42,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p250.pnml",
+      "format": "PNML",
+      "node_count": 57,
+      "connection_count": 66,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p31.pnml",
+      "format": "PNML",
+      "node_count": 59,
+      "connection_count": 70,
+      "has_branching": true,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p32.pnml",
+      "format": "PNML",
+      "node_count": 37,
+      "connection_count": 42,
+      "has_branching": true,
+      "has_loops": true,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p33.pnml",
+      "format": "PNML",
+      "node_count": 63,
+      "connection_count": 72,
+      "has_branching": true,
+      "has_loops": true,
+      "has_parallelism": true
+    },
+    {
+      "model_id": "src/main/resources/data/dataset2/models/birthCertificate_p34.pnml",
+      "format": "PNML",
+      "node_count": 22,
+      "connection_count": 24,
+      "has_branching": true,
+      "has_loops": false,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase1/source-model.epml",
+      "format": "EPML",
+      "node_count": 52,
+      "connection_count": 48,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase1/target-model.epml",
+      "format": "EPML",
+      "node_count": 78,
+      "connection_count": 84,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase10/source-model.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase10/target-model.epml",
+      "format": "EPML",
+      "node_count": 70,
+      "connection_count": 72,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase11/source-model.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase11/target-model.epml",
+      "format": "EPML",
+      "node_count": 117,
+      "connection_count": 125,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase12/source-model.epml",
+      "format": "EPML",
+      "node_count": 31,
+      "connection_count": 39,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase12/target-model.epml",
+      "format": "EPML",
+      "node_count": 43,
+      "connection_count": 55,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase13/source-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase13/target-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase14/source-model.epml",
+      "format": "EPML",
+      "node_count": 70,
+      "connection_count": 72,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase14/target-model.epml",
+      "format": "EPML",
+      "node_count": 52,
+      "connection_count": 52,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase15/source-model.epml",
+      "format": "EPML",
+      "node_count": 11,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase15/target-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase16/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 25,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase16/target-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase17/source-model.epml",
+      "format": "EPML",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase17/target-model.epml",
+      "format": "EPML",
+      "node_count": 37,
+      "connection_count": 37,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase18/source-model.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase18/target-model.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase19/source-model.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase19/target-model.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase2/source-model.epml",
+      "format": "EPML",
+      "node_count": 15,
+      "connection_count": 14,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase2/target-model.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase20/source-model.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase20/target-model.epml",
+      "format": "EPML",
+      "node_count": 19,
+      "connection_count": 18,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase21/source-model.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase21/target-model.epml",
+      "format": "EPML",
+      "node_count": 41,
+      "connection_count": 38,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase22/source-model.epml",
+      "format": "EPML",
+      "node_count": 11,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase22/target-model.epml",
+      "format": "EPML",
+      "node_count": 72,
+      "connection_count": 74,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase23/source-model.epml",
+      "format": "EPML",
+      "node_count": 34,
+      "connection_count": 34,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase23/target-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase24/source-model.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase24/target-model.epml",
+      "format": "EPML",
+      "node_count": 50,
+      "connection_count": 53,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase25/source-model.epml",
+      "format": "EPML",
+      "node_count": 17,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase25/target-model.epml",
+      "format": "EPML",
+      "node_count": 13,
+      "connection_count": 12,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase26/source-model.epml",
+      "format": "EPML",
+      "node_count": 18,
+      "connection_count": 17,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase26/target-model.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 17,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase27/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase27/target-model.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase28/source-model.epml",
+      "format": "EPML",
+      "node_count": 21,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase28/target-model.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 20,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase29/source-model.epml",
+      "format": "EPML",
+      "node_count": 107,
+      "connection_count": 122,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase29/target-model.epml",
+      "format": "EPML",
+      "node_count": 107,
+      "connection_count": 122,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase3/source-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase3/target-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase30/source-model.epml",
+      "format": "EPML",
+      "node_count": 17,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase30/target-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase31/source-model.epml",
+      "format": "EPML",
+      "node_count": 46,
+      "connection_count": 53,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase31/target-model.epml",
+      "format": "EPML",
+      "node_count": 37,
+      "connection_count": 39,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase32/source-model.epml",
+      "format": "EPML",
+      "node_count": 21,
+      "connection_count": 36,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase32/target-model.epml",
+      "format": "EPML",
+      "node_count": 65,
+      "connection_count": 73,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase33/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 23,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase33/target-model.epml",
+      "format": "EPML",
+      "node_count": 74,
+      "connection_count": 78,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase34/source-model.epml",
+      "format": "EPML",
+      "node_count": 46,
+      "connection_count": 55,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase34/target-model.epml",
+      "format": "EPML",
+      "node_count": 40,
+      "connection_count": 41,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase35/source-model.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase35/target-model.epml",
+      "format": "EPML",
+      "node_count": 103,
+      "connection_count": 110,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase36/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase36/target-model.epml",
+      "format": "EPML",
+      "node_count": 32,
+      "connection_count": 33,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase4/source-model.epml",
+      "format": "EPML",
+      "node_count": 24,
+      "connection_count": 23,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase4/target-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 21,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase5/source-model.epml",
+      "format": "EPML",
+      "node_count": 54,
+      "connection_count": 57,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase5/target-model.epml",
+      "format": "EPML",
+      "node_count": 83,
+      "connection_count": 87,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase6/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 25,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase6/target-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 27,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase7/source-model.epml",
+      "format": "EPML",
+      "node_count": 36,
+      "connection_count": 38,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase7/target-model.epml",
+      "format": "EPML",
+      "node_count": 31,
+      "connection_count": 33,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase8/source-model.epml",
+      "format": "EPML",
+      "node_count": 19,
+      "connection_count": 18,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase8/target-model.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 9,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase9/source-model.epml",
+      "format": "EPML",
+      "node_count": 39,
+      "connection_count": 41,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/dataset3-ra/testcase9/target-model.epml",
+      "format": "EPML",
+      "node_count": 24,
+      "connection_count": 27,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_1y63.epml",
+      "format": "EPML",
+      "node_count": 31,
+      "connection_count": 33,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_1yk5.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 9,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_204a.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_2aze.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_2n9n.epml",
+      "format": "EPML",
+      "node_count": 13,
+      "connection_count": 12,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_2xk1.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_34is.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Be_8ri3.epml",
+      "format": "EPML",
+      "node_count": 32,
+      "connection_count": 33,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Er_h8hr.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Er_hhi9.epml",
+      "format": "EPML",
+      "node_count": 107,
+      "connection_count": 122,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Er_hsto.epml",
+      "format": "EPML",
+      "node_count": 74,
+      "connection_count": 78,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Er_i9qm.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 23,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Er_ixso.epml",
+      "format": "EPML",
+      "node_count": 83,
+      "connection_count": 87,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ex_dzq9.epml",
+      "format": "EPML",
+      "node_count": 46,
+      "connection_count": 55,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ex_e8vj.epml",
+      "format": "EPML",
+      "node_count": 40,
+      "connection_count": 41,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ex_egln.epml",
+      "format": "EPML",
+      "node_count": 52,
+      "connection_count": 48,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1In_aklk.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1In_awpb.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1In_b3z3.epml",
+      "format": "EPML",
+      "node_count": 54,
+      "connection_count": 57,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1In_bb6y.epml",
+      "format": "EPML",
+      "node_count": 103,
+      "connection_count": 110,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ku_903f.epml",
+      "format": "EPML",
+      "node_count": 117,
+      "connection_count": 125,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ku_97uj.epml",
+      "format": "EPML",
+      "node_count": 50,
+      "connection_count": 53,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ku_9soy.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ku_9vyx.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ku_aa4c.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_10om.epml",
+      "format": "EPML",
+      "node_count": 43,
+      "connection_count": 55,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_afh-.epml",
+      "format": "EPML",
+      "node_count": 21,
+      "connection_count": 36,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_d1ur.epml",
+      "format": "EPML",
+      "node_count": 78,
+      "connection_count": 84,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_d6dk.epml",
+      "format": "EPML",
+      "node_count": 18,
+      "connection_count": 17,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_dgrn.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_dkfa.epml",
+      "format": "EPML",
+      "node_count": 65,
+      "connection_count": 73,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_dn32.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 17,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Pr_smx-.epml",
+      "format": "EPML",
+      "node_count": 31,
+      "connection_count": 39,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Tr_g68b.epml",
+      "format": "EPML",
+      "node_count": 24,
+      "connection_count": 27,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Tr_gabg.epml",
+      "format": "EPML",
+      "node_count": 39,
+      "connection_count": 41,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Un_japr.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Un_jh6h.epml",
+      "format": "EPML",
+      "node_count": 107,
+      "connection_count": 122,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Un_juwn.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 25,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Un_jzgs.epml",
+      "format": "EPML",
+      "node_count": 37,
+      "connection_count": 39,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Un_k30q.epml",
+      "format": "EPML",
+      "node_count": 46,
+      "connection_count": 53,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Un_k6b1.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 27,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_5kzj.epml",
+      "format": "EPML",
+      "node_count": 19,
+      "connection_count": 18,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_5otm.epml",
+      "format": "EPML",
+      "node_count": 37,
+      "connection_count": 37,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_5ycw.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 21,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_6294.epml",
+      "format": "EPML",
+      "node_count": 52,
+      "connection_count": 52,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_6a59.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_6dlt.epml",
+      "format": "EPML",
+      "node_count": 41,
+      "connection_count": 38,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_6n9a.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_6u91.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 20,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_7c1w.epml",
+      "format": "EPML",
+      "node_count": 72,
+      "connection_count": 74,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_7uuo.epml",
+      "format": "EPML",
+      "node_count": 70,
+      "connection_count": 72,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/1Ve_8bao.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A1 FI.epml",
+      "format": "EPML",
+      "node_count": 19,
+      "connection_count": 18,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A1 d.epml",
+      "format": "EPML",
+      "node_count": 17,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A1 dI.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 25,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A4.epml",
+      "format": "EPML",
+      "node_count": 15,
+      "connection_count": 14,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A6 a.epml",
+      "format": "EPML",
+      "node_count": 34,
+      "connection_count": 34,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A6 c.epml",
+      "format": "EPML",
+      "node_count": 11,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/A7 b IV.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/L3 OM.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/L3 p.epml",
+      "format": "EPML",
+      "node_count": 36,
+      "connection_count": 38,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/L4.epml",
+      "format": "EPML",
+      "node_count": 17,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search1.epml",
+      "format": "EPML",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search10.epml",
+      "format": "EPML",
+      "node_count": 21,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search2.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search3.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search4.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search5.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search6.epml",
+      "format": "EPML",
+      "node_count": 11,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search7.epml",
+      "format": "EPML",
+      "node_count": 70,
+      "connection_count": 72,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search8.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/models/search9.epml",
+      "format": "EPML",
+      "node_count": 24,
+      "connection_count": 23,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase1/source-model.epml",
+      "format": "EPML",
+      "node_count": 52,
+      "connection_count": 48,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase1/target-model.epml",
+      "format": "EPML",
+      "node_count": 78,
+      "connection_count": 84,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase10/source-model.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase10/target-model.epml",
+      "format": "EPML",
+      "node_count": 70,
+      "connection_count": 72,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase11/source-model.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase11/target-model.epml",
+      "format": "EPML",
+      "node_count": 117,
+      "connection_count": 125,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase12/source-model.epml",
+      "format": "EPML",
+      "node_count": 31,
+      "connection_count": 39,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase12/target-model.epml",
+      "format": "EPML",
+      "node_count": 43,
+      "connection_count": 55,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase13/source-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase13/target-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase14/source-model.epml",
+      "format": "EPML",
+      "node_count": 70,
+      "connection_count": 72,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase14/target-model.epml",
+      "format": "EPML",
+      "node_count": 52,
+      "connection_count": 52,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase15/source-model.epml",
+      "format": "EPML",
+      "node_count": 11,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase15/target-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase16/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 25,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase16/target-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase17/source-model.epml",
+      "format": "EPML",
+      "node_count": 5,
+      "connection_count": 4,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase17/target-model.epml",
+      "format": "EPML",
+      "node_count": 37,
+      "connection_count": 37,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase18/source-model.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase18/target-model.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase19/source-model.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase19/target-model.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase2/source-model.epml",
+      "format": "EPML",
+      "node_count": 15,
+      "connection_count": 14,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase2/target-model.epml",
+      "format": "EPML",
+      "node_count": 9,
+      "connection_count": 8,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase20/source-model.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase20/target-model.epml",
+      "format": "EPML",
+      "node_count": 19,
+      "connection_count": 18,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase21/source-model.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase21/target-model.epml",
+      "format": "EPML",
+      "node_count": 41,
+      "connection_count": 38,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase22/source-model.epml",
+      "format": "EPML",
+      "node_count": 11,
+      "connection_count": 10,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase22/target-model.epml",
+      "format": "EPML",
+      "node_count": 72,
+      "connection_count": 74,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase23/source-model.epml",
+      "format": "EPML",
+      "node_count": 34,
+      "connection_count": 34,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase23/target-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase24/source-model.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase24/target-model.epml",
+      "format": "EPML",
+      "node_count": 50,
+      "connection_count": 53,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase25/source-model.epml",
+      "format": "EPML",
+      "node_count": 17,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase25/target-model.epml",
+      "format": "EPML",
+      "node_count": 13,
+      "connection_count": 12,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase26/source-model.epml",
+      "format": "EPML",
+      "node_count": 18,
+      "connection_count": 17,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase26/target-model.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 17,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase27/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase27/target-model.epml",
+      "format": "EPML",
+      "node_count": 30,
+      "connection_count": 29,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase28/source-model.epml",
+      "format": "EPML",
+      "node_count": 21,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase28/target-model.epml",
+      "format": "EPML",
+      "node_count": 20,
+      "connection_count": 20,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase29/source-model.epml",
+      "format": "EPML",
+      "node_count": 107,
+      "connection_count": 122,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase29/target-model.epml",
+      "format": "EPML",
+      "node_count": 107,
+      "connection_count": 122,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase3/source-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase3/target-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 24,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase30/source-model.epml",
+      "format": "EPML",
+      "node_count": 17,
+      "connection_count": 16,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase30/target-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase31/source-model.epml",
+      "format": "EPML",
+      "node_count": 46,
+      "connection_count": 53,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase31/target-model.epml",
+      "format": "EPML",
+      "node_count": 37,
+      "connection_count": 39,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase32/source-model.epml",
+      "format": "EPML",
+      "node_count": 21,
+      "connection_count": 36,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase32/target-model.epml",
+      "format": "EPML",
+      "node_count": 65,
+      "connection_count": 73,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase33/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 23,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase33/target-model.epml",
+      "format": "EPML",
+      "node_count": 74,
+      "connection_count": 78,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase34/source-model.epml",
+      "format": "EPML",
+      "node_count": 46,
+      "connection_count": 55,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase34/target-model.epml",
+      "format": "EPML",
+      "node_count": 40,
+      "connection_count": 41,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase35/source-model.epml",
+      "format": "EPML",
+      "node_count": 57,
+      "connection_count": 60,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase35/target-model.epml",
+      "format": "EPML",
+      "node_count": 103,
+      "connection_count": 110,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase36/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 22,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase36/target-model.epml",
+      "format": "EPML",
+      "node_count": 32,
+      "connection_count": 33,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase4/source-model.epml",
+      "format": "EPML",
+      "node_count": 24,
+      "connection_count": 23,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase4/target-model.epml",
+      "format": "EPML",
+      "node_count": 22,
+      "connection_count": 21,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase5/source-model.epml",
+      "format": "EPML",
+      "node_count": 54,
+      "connection_count": 57,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase5/target-model.epml",
+      "format": "EPML",
+      "node_count": 83,
+      "connection_count": 87,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase6/source-model.epml",
+      "format": "EPML",
+      "node_count": 23,
+      "connection_count": 25,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase6/target-model.epml",
+      "format": "EPML",
+      "node_count": 25,
+      "connection_count": 27,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase7/source-model.epml",
+      "format": "EPML",
+      "node_count": 36,
+      "connection_count": 38,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase7/target-model.epml",
+      "format": "EPML",
+      "node_count": 31,
+      "connection_count": 33,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase8/source-model.epml",
+      "format": "EPML",
+      "node_count": 19,
+      "connection_count": 18,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase8/target-model.epml",
+      "format": "EPML",
+      "node_count": 10,
+      "connection_count": 9,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase9/source-model.epml",
+      "format": "EPML",
+      "node_count": 39,
+      "connection_count": 41,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    },
+    {
+      "model_id": "src/main/resources/data/dataset3/testcase9/target-model.epml",
+      "format": "EPML",
+      "node_count": 24,
+      "connection_count": 27,
+      "has_branching": false,
+      "has_loops": true,
+      "has_parallelism": false
+    }
+  ]
+}

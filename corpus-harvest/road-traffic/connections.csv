@@ -1,0 +1,47 @@
+model_id,source_node,source_type,target_node,target_type,condition
+dfg,Create Fine,activity,Send Fine,activity,6901
+dfg,Send Fine,activity,Insert Fine Notification,activity,5303
+dfg,Insert Fine Notification,activity,Add penalty,activity,4811
+dfg,Add penalty,activity,Send for Credit Collection,activity,3807
+dfg,Create Fine,activity,Payment,activity,3100
+dfg,Add penalty,activity,Payment,activity,1260
+dfg,Payment,activity,Payment,activity,270
+dfg,Insert Fine Notification,activity,Payment,activity,269
+dfg,Payment,activity,Add penalty,activity,269
+dfg,Send Fine,activity,Payment,activity,213
+dfg,Insert Fine Notification,activity,Insert Date Appeal to Prefecture,activity,203
+dfg,Insert Date Appeal to Prefecture,activity,Add penalty,activity,178
+dfg,Add penalty,activity,Send Appeal to Prefecture,activity,175
+dfg,Payment,activity,Send for Credit Collection,activity,106
+dfg,Insert Date Appeal to Prefecture,activity,Send Appeal to Prefecture,activity,64
+dfg,Receive Result Appeal from Prefecture,activity,Notify Result Appeal to Offender,activity,48
+dfg,Add penalty,activity,Insert Date Appeal to Prefecture,activity,34
+dfg,Send Appeal to Prefecture,activity,Receive Result Appeal from Prefecture,activity,28
+dfg,Payment,activity,Send Fine,activity,27
+dfg,Send Appeal to Prefecture,activity,Add penalty,activity,25
+dfg,Insert Fine Notification,activity,Appeal to Judge,activity,24
+dfg,Add penalty,activity,Receive Result Appeal from Prefecture,activity,23
+dfg,Appeal to Judge,activity,Add penalty,activity,21
+dfg,Notify Result Appeal to Offender,activity,Payment,activity,18
+dfg,Notify Result Appeal to Offender,activity,Send for Credit Collection,activity,17
+dfg,Notify Result Appeal to Offender,activity,Appeal to Judge,activity,11
+dfg,Send Fine,activity,Insert Date Appeal to Prefecture,activity,9
+dfg,Add penalty,activity,Appeal to Judge,activity,5
+dfg,Insert Date Appeal to Prefecture,activity,Receive Result Appeal from Prefecture,activity,4
+dfg,Payment,activity,Insert Fine Notification,activity,4
+dfg,Add penalty,activity,Notify Result Appeal to Offender,activity,3
+dfg,Appeal to Judge,activity,Insert Date Appeal to Prefecture,activity,3
+dfg,Appeal to Judge,activity,Payment,activity,3
+dfg,Receive Result Appeal from Prefecture,activity,Add penalty,activity,3
+dfg,Insert Date Appeal to Prefecture,activity,Payment,activity,2
+dfg,Receive Result Appeal from Prefecture,activity,Payment,activity,2
+dfg,Appeal to Judge,activity,Send Appeal to Prefecture,activity,1
+dfg,Appeal to Judge,activity,Send for Credit Collection,activity,1
+dfg,Create Fine,activity,Insert Date Appeal to Prefecture,activity,1
+dfg,Insert Date Appeal to Prefecture,activity,Appeal to Judge,activity,1
+dfg,Insert Date Appeal to Prefecture,activity,Send Fine,activity,1
+dfg,Payment,activity,Send Appeal to Prefecture,activity,1
+dfg,Receive Result Appeal from Prefecture,activity,Send Appeal to Prefecture,activity,1
+dfg,Send Appeal to Prefecture,activity,Payment,activity,1
+dfg,Send Fine,activity,Appeal to Judge,activity,1
+dfg,Send for Credit Collection,activity,Send Appeal to Prefecture,activity,1

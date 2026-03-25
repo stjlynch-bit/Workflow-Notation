@@ -1,0 +1,68 @@
+{
+  "dataset_name": "EA ModelSet",
+  "source_url": "https://github.com/armondo/ea-modelset",
+  "zenodo_record": "https://zenodo.org/records/8192011",
+  "format": "GraphML (ArchiMate)",
+  "domain": "human",
+  "files_collected": 948,
+  "stats": {
+    "total_models": 906,
+    "parse_errors": 42,
+    "total_nodes": 63712,
+    "total_edges": 60960,
+    "top_element_classes": {
+      "ApplicationComponent": 7270,
+      "BusinessProcess": 5657,
+      "BusinessActor": 3589,
+      "BusinessObject": 3458,
+      "ApplicationService": 3428,
+      "DataObject": 3198,
+      "BusinessFunction": 3104,
+      "BusinessRole": 2779,
+      "ApplicationFunction": 2486,
+      "Grouping": 2143,
+      "Node": 2131,
+      "BusinessService": 2062,
+      "Capability": 1854,
+      "SystemSoftware": 1676,
+      "Goal": 1265,
+      "ApplicationInterface": 1219,
+      "Artifact": 1201,
+      "Requirement": 1182,
+      "TechnologyService": 1103,
+      "Device": 950
+    },
+    "archimate_layers": {
+      "IApplicationElement": 19099,
+      "IBusinessElement": 23597,
+      "ITechnologyElement": 8404,
+      "IMotivationElement": 5967,
+      "IPhysicalElement": 315
+    },
+    "top_edge_types": {
+      "target": 60918,
+      "source": 42
+    },
+    "archimate_relationship_types": {
+      "CompositionRelationship": 11839,
+      "AssociationRelationship": 10515,
+      "ServingRelationship": 7416,
+      "RealizationRelationship": 7250,
+      "TriggeringRelationship": 4788,
+      "AssignmentRelationship": 4653,
+      "FlowRelationship": 4626,
+      "AggregationRelationship": 3936,
+      "AccessRelationship": 3477,
+      "SpecializationRelationship": 1522,
+      "InfluenceRelationship": 938
+    }
+  },
+  "harvest_date": "2026-03-25",
+  "status": "done",
+  "download_status": "success",
+  "count": {
+    "models_or_traces": 906,
+    "activities_or_nodes": 63712,
+    "connections_or_events": 60960
+  }
+}

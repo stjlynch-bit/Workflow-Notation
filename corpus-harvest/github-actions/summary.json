@@ -1,0 +1,3114 @@
+{
+  "dataset_name": "GitHub Actions Starter Workflows",
+  "format": "YAML",
+  "domain": "machine",
+  "download_status": "success",
+  "total_workflow_files": 173,
+  "total_jobs": 201,
+  "total_connections": 807,
+  "workflows": [
+    {
+      "file": "automation/greetings.yml",
+      "jobs": [
+        {
+          "job_name": "greeting",
+          "steps_count": 1,
+          "steps": [
+            "actions/first-interaction@v1"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "automation/label.yml",
+      "jobs": [
+        {
+          "job_name": "label",
+          "steps_count": 1,
+          "steps": [
+            "actions/labeler@v4"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "automation/manual.yml",
+      "jobs": [
+        {
+          "job_name": "greet",
+          "steps_count": 1,
+          "steps": [
+            "Send greeting"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "automation/stale.yml",
+      "jobs": [
+        {
+          "job_name": "stale",
+          "steps_count": 1,
+          "steps": [
+            "actions/stale@v5"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "automation/summary.yml",
+      "jobs": [
+        {
+          "job_name": "summary",
+          "steps_count": 3,
+          "steps": [
+            "Checkout repository",
+            "Run AI inference",
+            "Comment with AI summary"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/ada.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "Checkout",
+            "Set up GNAT toolchain",
+            "Build"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/android.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "set up JDK 11",
+            "Grant execute permission for gradlew",
+            "Build with Gradle"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/ant.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 11",
+            "Build with Ant"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/blank.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Run a one-line script",
+            "Run a multi-line script"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/c-cpp.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "configure",
+            "make",
+            "make check",
+            "make distcheck"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/clojure.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Install dependencies",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/cmake-multi-platform.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set reusable strings",
+            "Configure CMake",
+            "Build",
+            "Test"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/cmake-single-platform.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Configure CMake",
+            "Build",
+            "Test"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/crystal.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Install dependencies",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/d.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "dlang-community/setup-dlang@4c99aa991ce7d19dd3064de0a4f2f6b2f152e2d7",
+            "Build & Test"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/dart.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603",
+            "Install dependencies",
+            "Analyze project source",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/datadog-synthetics.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Run Datadog Synthetic tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/deno.yml",
+      "jobs": [
+        {
+          "job_name": "test",
+          "steps_count": 4,
+          "steps": [
+            "Setup repo",
+            "Setup Deno",
+            "Run linter",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/django.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Python ${{ matrix.python-version }}",
+            "Install Dependencies",
+            "Run Tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/docker-image.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Build the Docker image"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/docker-publish.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 7,
+          "steps": [
+            "Checkout repository",
+            "Install cosign",
+            "Set up Docker Buildx",
+            "Log into registry ${{ env.REGISTRY }}",
+            "Extract Docker metadata",
+            "Build and push Docker image",
+            "Sign the published Docker image"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/dotnet-desktop.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 9,
+          "steps": [
+            "Checkout",
+            "Install .NET Core",
+            "Setup MSBuild.exe",
+            "Execute unit tests",
+            "Restore the application",
+            "Decode the pfx",
+            "Create the app package",
+            "Remove the pfx",
+            "Upload build artifacts"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/dotnet.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Setup .NET",
+            "Restore dependencies",
+            "Build",
+            "Test"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/elixir.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Elixir",
+            "Restore dependencies cache",
+            "Install dependencies",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/erlang.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Compile",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/gem-push.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Ruby 2.6",
+            "Publish to GPR",
+            "Publish to RubyGems"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/generator-generic-ossf-slsa3-publish.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Build artifacts",
+            "Generate subject for provenance"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "provenance",
+          "steps_count": 0,
+          "steps": [],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "ci/go-ossf-slsa3-publish.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 0,
+          "steps": [],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/go.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Go",
+            "Build",
+            "Test"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/gradle-publish.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 17",
+            "Setup Gradle",
+            "Build with Gradle",
+            "Publish to GitHub Packages"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/gradle.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 17",
+            "Setup Gradle",
+            "Build with Gradle Wrapper"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "dependency-submission",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 17",
+            "Generate and submit dependency graph"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/haskell.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-haskell@v1",
+            "Cache",
+            "Install dependencies",
+            "Build",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/ios.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "Checkout",
+            "Set Default Scheme",
+            "Build",
+            "Test"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/jekyll-docker.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Build the site in the jekyll/builder container"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/laravel.yml",
+      "jobs": [
+        {
+          "job_name": "laravel-tests",
+          "steps_count": 8,
+          "steps": [
+            "shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e",
+            "actions/checkout@v4",
+            "Copy .env",
+            "Install Dependencies",
+            "Generate key",
+            "Directory Permissions",
+            "Create Database",
+            "Execute tests (Unit and Feature tests) via PHPUnit/Pest"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/makefile.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "configure",
+            "Install dependencies",
+            "Run check",
+            "Run distcheck"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/maven-publish.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 11",
+            "Build with Maven",
+            "Publish to GitHub Packages Apache Maven"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/maven.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 17",
+            "Build with Maven",
+            "Update dependency graph"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/msbuild.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Add MSBuild to PATH",
+            "Restore NuGet packages",
+            "Build"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/node.js.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Use Node.js ${{ matrix.node-version }}",
+            "unnamed",
+            "unnamed",
+            "unnamed"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/npm-publish-github-packages.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-node@v4",
+            "unnamed",
+            "unnamed"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "publish-gpr",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-node@v4",
+            "unnamed",
+            "unnamed"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "ci/npm-publish.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-node@v4",
+            "unnamed",
+            "unnamed"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "publish-npm",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-node@v4",
+            "unnamed",
+            "unnamed"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "ci/objective-c-xcode.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "Checkout",
+            "Set Default Scheme",
+            "Build"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/php.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Validate composer.json and composer.lock",
+            "Cache Composer packages",
+            "Install dependencies"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/pylint.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Python ${{ matrix.python-version }}",
+            "Install dependencies",
+            "Analysing the code with pylint"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/python-app.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Python 3.10",
+            "Install dependencies",
+            "Lint with flake8",
+            "Test with pytest"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/python-package-conda.yml",
+      "jobs": [
+        {
+          "job_name": "build-linux",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Python 3.10",
+            "Add conda to system path",
+            "Install dependencies",
+            "Lint with flake8",
+            "Test with pytest"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/python-package.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Python ${{ matrix.python-version }}",
+            "Install dependencies",
+            "Lint with flake8",
+            "Test with pytest"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/python-publish.yml",
+      "jobs": [
+        {
+          "job_name": "release-build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-python@v5",
+            "Build release distributions",
+            "Upload distributions"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "pypi-publish",
+          "steps_count": 2,
+          "steps": [
+            "Retrieve release distributions",
+            "Publish release distributions to PyPI"
+          ],
+          "needs": [
+            "release-build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "ci/r.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up R ${{ matrix.r-version }}",
+            "Install dependencies",
+            "Check"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/ruby.yml",
+      "jobs": [
+        {
+          "job_name": "test",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Ruby",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/rubyonrails.yml",
+      "jobs": [
+        {
+          "job_name": "test",
+          "steps_count": 4,
+          "steps": [
+            "Checkout code",
+            "Install Ruby and gems",
+            "Set up database schema",
+            "Run tests"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "lint",
+          "steps_count": 6,
+          "steps": [
+            "Checkout code",
+            "Install Ruby and gems",
+            "Generate binstubs",
+            "Security audit dependencies",
+            "Security audit application code",
+            "Lint Ruby files"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/rust.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Build",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/scala.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 11",
+            "Run tests",
+            "Upload dependency graph"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/super-linter.yml",
+      "jobs": [
+        {
+          "job_name": "run-lint",
+          "steps_count": 2,
+          "steps": [
+            "Checkout code",
+            "Lint Code Base"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/swift.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Build",
+            "Run tests"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/symfony.yml",
+      "jobs": [
+        {
+          "job_name": "symfony-tests",
+          "steps_count": 7,
+          "steps": [
+            "shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28",
+            "actions/checkout@v4",
+            "Copy .env.test.local",
+            "Cache Composer packages",
+            "Install Dependencies",
+            "Create Database",
+            "Execute tests (Unit and Feature tests) via PHPUnit"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "ci/webpack.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Use Node.js ${{ matrix.node-version }}",
+            "Build"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/anchore-syft.yml",
+      "jobs": [
+        {
+          "job_name": "Anchore-Build-Scan",
+          "steps_count": 3,
+          "steps": [
+            "Checkout the code",
+            "Build the Docker image",
+            "Scan the image and upload dependency results"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/anchore.yml",
+      "jobs": [
+        {
+          "job_name": "Anchore-Build-Scan",
+          "steps_count": 4,
+          "steps": [
+            "Check out the code",
+            "Build the Docker image",
+            "Run the Anchore Grype scan action",
+            "Upload vulnerability report"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/apisec-scan.yml",
+      "jobs": [
+        {
+          "job_name": "Trigger_APIsec_scan",
+          "steps_count": 2,
+          "steps": [
+            "APIsec scan",
+            "Import results"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/appknox.yml",
+      "jobs": [
+        {
+          "job_name": "appknox",
+          "steps_count": 5,
+          "steps": [
+            "Checkout Code",
+            "Grant execute permission for gradlew",
+            "Build the app",
+            "Appknox GitHub action",
+            "Upload SARIF to GHAS"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/bandit.yml",
+      "jobs": [
+        {
+          "job_name": "bandit",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Bandit Scan"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/bearer.yml",
+      "jobs": [
+        {
+          "job_name": "bearer",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Run Report",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/black-duck-security-scan-ci.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 2,
+          "steps": [
+            "Checkout source",
+            "Black Duck SCA scan"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/brakeman.yml",
+      "jobs": [
+        {
+          "job_name": "brakeman-scan",
+          "steps_count": 5,
+          "steps": [
+            "Checkout",
+            "Setup Ruby",
+            "Setup Brakeman",
+            "Scan",
+            "Upload SARIF"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/checkmarx-one.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "Checkout repository",
+            "Checkmarx One scan",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/checkmarx.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Checkmarx CxFlow Action",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/clj-holmes.yml",
+      "jobs": [
+        {
+          "job_name": "clj-holmes",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Scan code",
+            "Upload analysis results to GitHub Security tab"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/clj-watson.yml",
+      "jobs": [
+        {
+          "job_name": "clj-holmes",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Dependency scan",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/cloudrail.yml",
+      "jobs": [
+        {
+          "job_name": "cloudrail",
+          "steps_count": 7,
+          "steps": [
+            "Clone repo",
+            "hashicorp/setup-terraform@v1",
+            "unnamed",
+            "unnamed",
+            "unnamed",
+            "Run Cloudrail",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/codacy.yml",
+      "jobs": [
+        {
+          "job_name": "codacy-security-scan",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Run Codacy Analysis CLI",
+            "Upload SARIF results file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/codeql.yml",
+      "jobs": [
+        {
+          "job_name": "analyze",
+          "steps_count": 4,
+          "steps": [
+            "Checkout repository",
+            "Initialize CodeQL",
+            "Run manual build steps",
+            "Perform CodeQL Analysis"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/codescan.yml",
+      "jobs": [
+        {
+          "job_name": "CodeScan",
+          "steps_count": 4,
+          "steps": [
+            "Checkout repository",
+            "Cache files",
+            "Run Analysis",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/contrast-scan.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-scan",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Contrast Scan Action",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/crda.yml",
+      "jobs": [
+        {
+          "job_name": "crda-scan",
+          "steps_count": 3,
+          "steps": [
+            "Check out repository",
+            "Install CRDA CLI",
+            "CRDA Scan"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/credo.yml",
+      "jobs": [
+        {
+          "job_name": "security-scan",
+          "steps_count": 7,
+          "steps": [
+            "actions/checkout@v4",
+            "erlef/setup-beam@988e02bfe678367a02564f65ca2e37726dc0268f",
+            "get dependencies",
+            "compile dependencies",
+            "compile",
+            "credo-scan",
+            "upload sarif"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/crunch42.yml",
+      "jobs": [
+        {
+          "job_name": "rest-api-static-security-testing",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "42Crunch REST API Static Security Testing"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/datree.yml",
+      "jobs": [
+        {
+          "job_name": "datree",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Run Datree policy check",
+            "Upload result to GitHub Code Scanning"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/debricked.yml",
+      "jobs": [
+        {
+          "job_name": "vulnerabilities-scan",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "debricked/actions@v4"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/defender-for-devops.yml",
+      "jobs": [
+        {
+          "job_name": "MSDO",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-dotnet@v4",
+            "Run Microsoft Security DevOps",
+            "Upload results to Security tab"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/dependency-review.yml",
+      "jobs": [
+        {
+          "job_name": "dependency-review",
+          "steps_count": 2,
+          "steps": [
+            "Checkout repository",
+            "Dependency Review"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/detekt.yml",
+      "jobs": [
+        {
+          "job_name": "scan",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "Get Detekt download URL",
+            "Setup Detekt",
+            "Run Detekt",
+            "Make artifact location URIs relative",
+            "github/codeql-action/upload-sarif@v3"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/devskim.yml",
+      "jobs": [
+        {
+          "job_name": "lint",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Run DevSkim scanner",
+            "Upload DevSkim scan results to GitHub Security tab"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/endorlabs.yml",
+      "jobs": [
+        {
+          "job_name": "scan",
+          "steps_count": 4,
+          "steps": [
+            "Checkout repository",
+            "Endor Labs scan pull request",
+            "Endor Labs scan monitor",
+            "Upload SARIF to github"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/eslint.yml",
+      "jobs": [
+        {
+          "job_name": "eslint",
+          "steps_count": 4,
+          "steps": [
+            "Checkout code",
+            "Install ESLint",
+            "Run ESLint",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/ethicalcheck.yml",
+      "jobs": [
+        {
+          "job_name": "Trigger_EthicalCheck",
+          "steps_count": 2,
+          "steps": [
+            "EthicalCheck  Free & Automated API Security Testing Service",
+            "Upload sarif file to repository"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/flawfinder.yml",
+      "jobs": [
+        {
+          "job_name": "flawfinder",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "flawfinder_scan",
+            "Upload analysis results to GitHub Security tab"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/fortify.yml",
+      "jobs": [
+        {
+          "job_name": "Fortify-AST-Scan",
+          "steps_count": 2,
+          "steps": [
+            "Check Out Source Code",
+            "Run Fortify Scan"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/frogbot-scan-and-fix.yml",
+      "jobs": [
+        {
+          "job_name": "create-fix-pull-requests",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "jfrog/frogbot@5d9c42c30f1169d8be4ba5510b40e75ffcbbc2a9"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/frogbot-scan-pr.yml",
+      "jobs": [
+        {
+          "job_name": "scan-pull-request",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "jfrog/frogbot@5d9c42c30f1169d8be4ba5510b40e75ffcbbc2a9"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/hadolint.yml",
+      "jobs": [
+        {
+          "job_name": "hadolint",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Run hadolint",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/jfrog-sast.yml",
+      "jobs": [
+        {
+          "job_name": "analyze",
+          "steps_count": 5,
+          "steps": [
+            "Checkout repository",
+            "Setup Node.js",
+            "Install and configure JFrog CLI",
+            "Run JFrog SAST",
+            "Upload output to generate autofix"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/jscrambler-code-integrity.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "actions/setup-node@v4",
+            "unnamed",
+            "unnamed",
+            "Jscrambler Code Integrity"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/kubesec.yml",
+      "jobs": [
+        {
+          "job_name": "lint",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Run kubesec scanner",
+            "Upload Kubesec scan results to GitHub Security tab"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/lintr.yml",
+      "jobs": [
+        {
+          "job_name": "lintr",
+          "steps_count": 5,
+          "steps": [
+            "Checkout code",
+            "Setup R",
+            "Setup lintr",
+            "Run lintr",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/mayhem-for-api.yml",
+      "jobs": [
+        {
+          "job_name": "mayhem-for-api",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Start your API",
+            "Mayhem for API",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/mobsf.yml",
+      "jobs": [
+        {
+          "job_name": "mobile-security",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Setup python",
+            "Run mobsfscan",
+            "Upload mobsfscan report"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/msvc.yml",
+      "jobs": [
+        {
+          "job_name": "analyze",
+          "steps_count": 4,
+          "steps": [
+            "Checkout repository",
+            "Configure CMake",
+            "Initialize MSVC Code Analysis",
+            "Upload SARIF to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/neuralegion.yml",
+      "jobs": [
+        {
+          "job_name": "neuralegion_scan",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Start Nexploit Scan \ud83c\udfc1"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/njsscan.yml",
+      "jobs": [
+        {
+          "job_name": "njsscan",
+          "steps_count": 3,
+          "steps": [
+            "Checkout the code",
+            "nodejsscan scan",
+            "Upload njsscan report"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/ossar.yml",
+      "jobs": [
+        {
+          "job_name": "OSSAR-Scan",
+          "steps_count": 3,
+          "steps": [
+            "Checkout repository",
+            "Run OSSAR",
+            "Upload OSSAR results"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/osv-scanner.yml",
+      "jobs": [
+        {
+          "job_name": "scan-scheduled",
+          "steps_count": 0,
+          "steps": [],
+          "needs": []
+        },
+        {
+          "job_name": "scan-pr",
+          "steps_count": 0,
+          "steps": [],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/phpmd.yml",
+      "jobs": [
+        {
+          "job_name": "PHPMD",
+          "steps_count": 4,
+          "steps": [
+            "Checkout code",
+            "Setup PHP",
+            "Run PHPMD",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/pmd.yml",
+      "jobs": [
+        {
+          "job_name": "pmd-code-scan",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up JDK 11",
+            "Run PMD",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/policy-validator-cfn.yaml",
+      "jobs": [
+        {
+          "job_name": "policy-validator",
+          "steps_count": 10,
+          "steps": [
+            "Checkout",
+            "Configure AWS Credentials",
+            "Run AWS AccessAnalyzer ValidatePolicy check",
+            "Print the result for ValidatePolicy check",
+            "Run AWS AccessAnalyzer CheckAccessNotGranted check",
+            "Print the result for CheckAccessNotGranted check",
+            "Run AWS AccessAnalyzer CheckNoNewAccess check",
+            "Print the result for CheckNoNewAccess check",
+            "Run AWS AccessAnalyzer CheckNoPublicAccess check",
+            "Print the result for CheckNoPublicAccess check"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/policy-validator-tf.yaml",
+      "jobs": [
+        {
+          "job_name": "policy-validator",
+          "steps_count": 10,
+          "steps": [
+            "Checkout",
+            "Configure AWS Credentials",
+            "Run AWS AccessAnalyzer ValidatePolicy check",
+            "Print the result for ValidatePolicy check",
+            "Run AWS AccessAnalyzer CheckAccessNotGranted check",
+            "Print the result for CheckAccessNotGranted check",
+            "Run AWS AccessAnalyzer CheckNoNewAccess check",
+            "Print the result CheckNoNewAccess check",
+            "Run AWS AccessAnalyzer CheckNoPublicAccess check",
+            "Print the result for CheckNoPublicAccess check"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/powershell.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Run PSScriptAnalyzer",
+            "Upload SARIF results file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/prisma.yml",
+      "jobs": [
+        {
+          "job_name": "prisma_cloud_iac_scan",
+          "steps_count": 3,
+          "steps": [
+            "Checkout",
+            "Run Scan on CFT files in the repository",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/psalm.yml",
+      "jobs": [
+        {
+          "job_name": "php-security",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Psalm Security Scan",
+            "Upload Security Analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/puppet-lint.yml",
+      "jobs": [
+        {
+          "job_name": "puppet-lint",
+          "steps_count": 5,
+          "steps": [
+            "Checkout code",
+            "Setup Ruby",
+            "Install puppet-lint",
+            "Run puppet-lint",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/pyre.yml",
+      "jobs": [
+        {
+          "job_name": "pyre",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Run Pyre"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/pysa.yml",
+      "jobs": [
+        {
+          "job_name": "pysa",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Run Pysa"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/rubocop.yml",
+      "jobs": [
+        {
+          "job_name": "rubocop",
+          "steps_count": 6,
+          "steps": [
+            "Checkout repository",
+            "Set up Ruby",
+            "Install Code Scanning integration",
+            "Install dependencies",
+            "Rubocop run",
+            "Upload Sarif output"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/rust-clippy.yml",
+      "jobs": [
+        {
+          "job_name": "rust-clippy-analyze",
+          "steps_count": 5,
+          "steps": [
+            "Checkout code",
+            "Install Rust toolchain",
+            "Install required cargo",
+            "Run rust-clippy",
+            "Upload analysis results to GitHub"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/scorecard.yml",
+      "jobs": [
+        {
+          "job_name": "analysis",
+          "steps_count": 4,
+          "steps": [
+            "Checkout code",
+            "Run analysis",
+            "Upload artifact",
+            "Upload to code-scanning"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/securitycodescan.yml",
+      "jobs": [
+        {
+          "job_name": "SCS",
+          "steps_count": 8,
+          "steps": [
+            "actions/checkout@v4",
+            "nuget/setup-nuget@04b0c2b8d1b97922f67eca497d7cf0bf17b8ffe1",
+            "microsoft/setup-msbuild@v1.0.2",
+            "Set up projects for analysis",
+            "Restore dependencies",
+            "Build",
+            "Convert sarif for uploading to GitHub",
+            "Upload sarif"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/semgrep.yml",
+      "jobs": [
+        {
+          "job_name": "semgrep",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "returntocorp/semgrep-action@fcd5ab7459e8d91cb1777481980d1b18b4fc6735",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/snyk-container.yml",
+      "jobs": [
+        {
+          "job_name": "snyk",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Build a Docker image",
+            "Run Snyk to check Docker image for vulnerabilities",
+            "Upload result to GitHub Code Scanning"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/snyk-infrastructure.yml",
+      "jobs": [
+        {
+          "job_name": "snyk",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Run Snyk to check configuration files for security issues",
+            "Upload result to GitHub Code Scanning"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/snyk-security.yml",
+      "jobs": [
+        {
+          "job_name": "snyk",
+          "steps_count": 8,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Snyk CLI to check for security issues",
+            "Snyk Code test",
+            "Snyk Open Source monitor",
+            "Snyk IaC test and report",
+            "Build a Docker image",
+            "Snyk Container monitor",
+            "Upload result to GitHub Code Scanning"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/sobelow.yml",
+      "jobs": [
+        {
+          "job_name": "security-scan",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "sobelow/action@1afd6d2cae70ae8bd900b58506f54487ed863912",
+            "Upload report"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/sonarcloud.yml",
+      "jobs": [
+        {
+          "job_name": "Analysis",
+          "steps_count": 1,
+          "steps": [
+            "Analyze with SonarCloud"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/sonarqube.yml",
+      "jobs": [
+        {
+          "job_name": "Analysis",
+          "steps_count": 1,
+          "steps": [
+            "Analyze with SonarQube"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/soos-dast-scan.yml",
+      "jobs": [
+        {
+          "job_name": "soos",
+          "steps_count": 3,
+          "steps": [
+            "Run SOOS DAST Analysis",
+            "Find and rename SARIF file since it is unique",
+            "Upload SOOS DAST SARIF Report"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/stackhawk.yml",
+      "jobs": [
+        {
+          "job_name": "stackhawk",
+          "steps_count": 3,
+          "steps": [
+            "Checkout code",
+            "Start your service",
+            "Run HawkScan"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/synopsys-action.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 2,
+          "steps": [
+            "Checkout",
+            "Synopsys Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/synopsys-io.yml",
+      "jobs": [
+        {
+          "job_name": "analyze",
+          "steps_count": 6,
+          "steps": [
+            "Checkout repository",
+            "Synopsys Intelligent Security Scan",
+            "Static Analysis with Polaris",
+            "Software Composition Analysis with Black Duck",
+            "Synopsys Intelligent Security Scan",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/sysdig-scan.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Build the Docker image",
+            "Sysdig Secure Inline Scan",
+            "github/codeql-action/upload-sarif@v3"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/tfsec.yml",
+      "jobs": [
+        {
+          "job_name": "tfsec",
+          "steps_count": 3,
+          "steps": [
+            "Clone repo",
+            "Run tfsec",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/trivy.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "Checkout code",
+            "Build an image from Dockerfile",
+            "Run Trivy vulnerability scanner",
+            "Upload Trivy scan results to GitHub Security tab"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/veracode.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-pipeline-scan",
+          "steps_count": 8,
+          "steps": [
+            "actions/checkout@v4",
+            "unnamed",
+            "unnamed",
+            "unnamed",
+            "actions/setup-java@v4",
+            "unnamed",
+            "Convert pipeline scan output to SARIF format",
+            "github/codeql-action/upload-sarif@v3"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/xanitizer.yml",
+      "jobs": [
+        {
+          "job_name": "xanitizer-security-analysis",
+          "steps_count": 7,
+          "steps": [
+            "Checkout",
+            "Set up JDK 11",
+            "Compile Java code",
+            "Install JavaScript libraries",
+            "Xanitizer Security Analysis",
+            "actions/upload-artifact@v4",
+            "github/codeql-action/upload-sarif@v3"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/zscaler-iac-scan.yml",
+      "jobs": [
+        {
+          "job_name": "zscaler-iac-scan",
+          "steps_count": 3,
+          "steps": [
+            "Code Checkout",
+            "Zscaler IAC Scan",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "code-scanning/zscan.yml",
+      "jobs": [
+        {
+          "job_name": "zscan",
+          "steps_count": 4,
+          "steps": [
+            "Checkout repository",
+            "Execute gradle build",
+            "Run Zimperium zScan",
+            "Upload SARIF file"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/alibabacloud.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 11,
+          "steps": [
+            "Checkout",
+            "Login to ACR with the AccessKey pair",
+            "Build and push image to ACR",
+            "Scan image in ACR",
+            "actions/checkout@v4",
+            "Login to ACR EE with the AccessKey pair",
+            "Build and push image to ACR EE",
+            "Scan image in ACR EE",
+            "Set K8s context",
+            "Set up Kustomize"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/aws.yml",
+      "jobs": [
+        {
+          "job_name": "deploy",
+          "steps_count": 6,
+          "steps": [
+            "Checkout",
+            "Configure AWS credentials",
+            "Login to Amazon ECR",
+            "Build, tag, and push image to Amazon ECR",
+            "Fill in the new image ID in the Amazon ECS task definition",
+            "Deploy Amazon ECS task definition"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-container-webapp.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Docker Buildx",
+            "Log in to GitHub container registry",
+            "Lowercase the repo name and username",
+            "Build and push container image to registry"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Lowercase the repo name and username",
+            "Deploy to Azure Web App"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-container.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 6,
+          "steps": [
+            "Checkout GitHub Action",
+            "Login via Azure CLI",
+            "Docker Login",
+            "Compose Customized Docker Image",
+            "Run Azure Functions Container Action",
+            "Azure logout"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-dotnet.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout GitHub Action",
+            "Setup DotNet ${{ env.DOTNET_VERSION }} Environment",
+            "Resolve Project Dependencies Using Dotnet",
+            "Run Azure Functions Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-java-gradle.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout GitHub Action",
+            "Setup Java Sdk ${{ env.JAVA_VERSION }}",
+            "Restore Project Dependencies Using Gradle Plugin for Azure Functions",
+            "Run Azure Functions Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-java.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout GitHub Action",
+            "Setup Java Sdk ${{ env.JAVA_VERSION }}",
+            "Restore Project Dependencies Using Mvn",
+            "Run Azure Functions Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-nodejs.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout GitHub Action",
+            "Setup Node ${{ env.NODE_VERSION }} Environment",
+            "Resolve Project Dependencies Using Npm",
+            "Run Azure Functions Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-powershell.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 2,
+          "steps": [
+            "Checkout GitHub Action",
+            "Run Azure Functions Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-functions-app-python.yml",
+      "jobs": [
+        {
+          "job_name": "build-and-deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout GitHub Action",
+            "Setup Python ${{ env.PYTHON_VERSION }} Environment",
+            "Resolve Project Dependencies Using Pip",
+            "Run Azure Functions Action"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-kubernetes-service-helm.yml",
+      "jobs": [
+        {
+          "job_name": "buildImage",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Build and push image to ACR"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Set up kubelogin for non-interactive login",
+            "Get K8s context",
+            "Bake deployment",
+            "Deploy application"
+          ],
+          "needs": [
+            "buildImage"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-kubernetes-service-kompose.yml",
+      "jobs": [
+        {
+          "job_name": "buildImage",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Build and push image to ACR"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Set up kubelogin for non-interactive login",
+            "Get K8s context",
+            "Bake deployment",
+            "Deploy application"
+          ],
+          "needs": [
+            "buildImage"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-kubernetes-service-kustomize.yml",
+      "jobs": [
+        {
+          "job_name": "buildImage",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Build and push image to ACR"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Set up kubelogin for non-interactive login",
+            "Get K8s context",
+            "Bake deployment",
+            "Deploy application"
+          ],
+          "needs": [
+            "buildImage"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-kubernetes-service.yml",
+      "jobs": [
+        {
+          "job_name": "buildImage",
+          "steps_count": 3,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Build and push image to ACR"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Azure login",
+            "Set up kubelogin for non-interactive login",
+            "Get K8s context",
+            "Deploys application"
+          ],
+          "needs": [
+            "buildImage"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-staticwebapp.yml",
+      "jobs": [
+        {
+          "job_name": "build_and_deploy_job",
+          "steps_count": 2,
+          "steps": [
+            "actions/checkout@v4",
+            "Build And Deploy"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "close_pull_request_job",
+          "steps_count": 1,
+          "steps": [
+            "Close Pull Request"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-webapps-dotnet-core.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 6,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up .NET Core",
+            "Set up dependency caching for faster builds",
+            "Build with dotnet",
+            "dotnet publish",
+            "Upload artifact for deployment job"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Download artifact from build job",
+            "Deploy to Azure Web App"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-webapps-java-jar-gradle.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Java version",
+            "Build with Gradle",
+            "Upload artifact for deployment job"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Download artifact from build job",
+            "Deploy to Azure Web App"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-webapps-java-jar.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Java version",
+            "Build with Maven",
+            "Upload artifact for deployment job"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Download artifact from build job",
+            "Deploy to Azure Web App"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-webapps-node.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Node.js",
+            "npm install, build, and test",
+            "Upload artifact for deployment job"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Download artifact from build job",
+            "Deploy to Azure WebApp"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-webapps-php.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 7,
+          "steps": [
+            "actions/checkout@v4",
+            "Setup PHP",
+            "Check if composer.json exists",
+            "Get Composer Cache Directory",
+            "Set up dependency caching for faster installs",
+            "Run composer install if composer.json exists",
+            "Upload artifact for deployment job"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Download artifact from build job",
+            "Deploy to Azure Web App"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/azure-webapps-python.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Python version",
+            "Create and start virtual environment",
+            "Install dependencies",
+            "Upload artifact for deployment jobs"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 2,
+          "steps": [
+            "Download artifact from build job",
+            "Deploy to Azure Web App"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/google-cloudrun-docker.yml",
+      "jobs": [
+        {
+          "job_name": "deploy",
+          "steps_count": 6,
+          "steps": [
+            "Checkout",
+            "Authenticate to Google Cloud",
+            "Docker Auth",
+            "Build and Push Container",
+            "Deploy to Cloud Run",
+            "Show output"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/google-cloudrun-source.yml",
+      "jobs": [
+        {
+          "job_name": "deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout",
+            "Authenticate to Google Cloud",
+            "Deploy to Cloud Run",
+            "Show output"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/google.yml",
+      "jobs": [
+        {
+          "job_name": "setup-build-publish-deploy",
+          "steps_count": 7,
+          "steps": [
+            "Checkout",
+            "Authenticate to Google Cloud",
+            "Docker Auth",
+            "Set up GKE credentials",
+            "Build and push Docker container",
+            "Set up Kustomize",
+            "Deploy to GKE"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/ibm.yml",
+      "jobs": [
+        {
+          "job_name": "setup-build-publish-deploy",
+          "steps_count": 6,
+          "steps": [
+            "Checkout",
+            "Install IBM Cloud CLI",
+            "Authenticate with IBM Cloud CLI",
+            "Build with Docker",
+            "Push the image to ICR",
+            "Deploy to IKS"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/octopusdeploy.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Set up Docker Buildx",
+            "Log in to the Container registry",
+            "Extract metadata (tags, labels) for Docker",
+            "Build and push Docker image"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 3,
+          "steps": [
+            "Log in to Octopus Deploy",
+            "Create Release",
+            "Deploy Release"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "deployments/openshift.yml",
+      "jobs": [
+        {
+          "job_name": "openshift-ci-cd",
+          "steps_count": 10,
+          "steps": [
+            "Check for required secrets",
+            "Check out repository",
+            "Determine app name",
+            "Determine image tags",
+            "Build from Dockerfile",
+            "Push to registry",
+            "Install oc",
+            "Log in to OpenShift",
+            "Create and expose app",
+            "Print application URL"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/tencent.yml",
+      "jobs": [
+        {
+          "job_name": "setup-build-publish-deploy",
+          "steps_count": 8,
+          "steps": [
+            "Checkout",
+            "Build Docker image",
+            "Login TKE Registry",
+            "Publish",
+            "Set up Kustomize",
+            "Set up ~/.kube/config for connecting TKE cluster",
+            "Switch to TKE context",
+            "Deploy"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "deployments/terraform.yml",
+      "jobs": [
+        {
+          "job_name": "terraform",
+          "steps_count": 6,
+          "steps": [
+            "Checkout",
+            "Setup Terraform",
+            "Terraform Init",
+            "Terraform Format",
+            "Terraform Plan",
+            "Terraform Apply"
+          ],
+          "needs": []
+        }
+      ]
+    },
+    {
+      "file": "pages/astro.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 7,
+          "steps": [
+            "Checkout",
+            "Detect package manager",
+            "Setup Node",
+            "Setup Pages",
+            "Install dependencies",
+            "Build with Astro",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/gatsby.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 8,
+          "steps": [
+            "Checkout",
+            "Detect package manager",
+            "Setup Node",
+            "Setup Pages",
+            "Restore cache",
+            "Install dependencies",
+            "Build with Gatsby",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/hugo.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 7,
+          "steps": [
+            "Install Hugo CLI",
+            "Install Dart Sass",
+            "Checkout",
+            "Setup Pages",
+            "Install Node.js dependencies",
+            "Build with Hugo",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/jekyll-gh-pages.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 4,
+          "steps": [
+            "Checkout",
+            "Setup Pages",
+            "Build with Jekyll",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/jekyll.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "Checkout",
+            "Setup Ruby",
+            "Setup Pages",
+            "Build with Jekyll",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/mdbook.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 5,
+          "steps": [
+            "actions/checkout@v4",
+            "Install mdBook",
+            "Setup Pages",
+            "Build with mdBook",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/nextjs.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 8,
+          "steps": [
+            "Checkout",
+            "Detect package manager",
+            "Setup Node",
+            "Setup Pages",
+            "Restore cache",
+            "Install dependencies",
+            "Build with Next.js",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/nuxtjs.yml",
+      "jobs": [
+        {
+          "job_name": "build",
+          "steps_count": 8,
+          "steps": [
+            "Checkout",
+            "Detect package manager",
+            "Setup Node",
+            "Setup Pages",
+            "Restore cache",
+            "Install dependencies",
+            "Static HTML export with Nuxt",
+            "Upload artifact"
+          ],
+          "needs": []
+        },
+        {
+          "job_name": "deploy",
+          "steps_count": 1,
+          "steps": [
+            "Deploy to GitHub Pages"
+          ],
+          "needs": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pages/static.yml",
+      "jobs": [
+        {
+          "job_name": "deploy",
+          "steps_count": 4,
+          "steps": [
+            "Checkout",
+            "Setup Pages",
+            "Upload artifact",
+            "Deploy to GitHub Pages"
+          ],
+          "needs": []
+        }
+      ]
+    }
+  ],
+  "count": {
+    "models_or_traces": 173,
+    "activities_or_nodes": 201,
+    "connections_or_events": 807
+  }
+}

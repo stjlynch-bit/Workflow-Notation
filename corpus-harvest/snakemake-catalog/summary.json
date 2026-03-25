@@ -1,0 +1,1047 @@
+{
+  "dataset_name": "Snakemake Workflow Catalog",
+  "source_url": "https://github.com/snakemake/snakemake-workflow-catalog",
+  "format": "other",
+  "domain": "machine",
+  "download_status": "success",
+  "note": "This repo is a catalog/listing of Snakemake workflow repositories (URLs and metadata), not actual Snakefiles. Each entry references an external GitHub repo containing the actual workflow.",
+  "count": {
+    "models_or_traces": 4907,
+    "total_catalog_entries": 4907,
+    "standardized_workflows": 417,
+    "with_release": 1033,
+    "with_description": 2990,
+    "connections_or_events": 3882
+  },
+  "structural_extract": [
+    {
+      "full_name": "11Maroua/massiveData",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "1709mrd/12345",
+      "description": "test",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "1709mrd/1_school_dna-seq-gatk-variant-calling",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "1709mrd/MY",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "1709mrd/New_school_dna-seq-gatk-variant-calling",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "1709mrd/THISschool_dna-seq-gatk-variant-calling",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "1709mrd/school_dna-seq-gatk-variant-calling",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "1768485427/is477-fall20230-final-project",
+      "description": "Private repository for IS477 Fall 2023 final project",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": "v6",
+      "wrappers": null
+    },
+    {
+      "full_name": "1dayac/Novel-X",
+      "description": "Novel insertion detection with 10X reads",
+      "standardized": false,
+      "stargazers_count": 7,
+      "topics": [],
+      "latest_release": "0.3",
+      "wrappers": null
+    },
+    {
+      "full_name": "1zhiwin/bigtree",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "2003cy/Balmer-Decrement-CLEAR",
+      "description": "This is the source code for analyzing the Balmer decrement of galaxies from CLEAR grism data",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [
+        "astronomy-astrophysics",
+        "galaxy",
+        "galaxy-evolution",
+        "hst"
+      ],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "2050plus/2050plus",
+      "description": "energy 2050+",
+      "standardized": false,
+      "stargazers_count": 2,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "2eding/wes-pipeline",
+      "description": "WES analysis pipeline",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "3D-Beacons/3d-beacons-client",
+      "description": "Implementation of the 3D-Beacons client (local 3D model server)",
+      "standardized": false,
+      "stargazers_count": 3,
+      "topics": [
+        "biohackeu20",
+        "python"
+      ],
+      "latest_release": "v2.1.0",
+      "wrappers": {}
+    },
+    {
+      "full_name": "3d-omics/ANMI019_fibre_unite",
+      "description": "Mapping microsamples to the UNITE database to get plant DNA signal",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "3d-omics/hg_genotype",
+      "description": null,
+      "standardized": true,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": "v1.3.0",
+      "wrappers": {}
+    },
+    {
+      "full_name": "3d-omics/ht_quant",
+      "description": "Repository containing bioinformatic code for macro-scale host transcriptomic data processing",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [
+        "pipeline"
+      ],
+      "latest_release": "v0.2.1",
+      "wrappers": null
+    },
+    {
+      "full_name": "3d-omics/mg_annotate",
+      "description": "Just annotate the MAGs as in mg_assembly",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "3d-omics/mg_assembly",
+      "description": "Genome-resolved metagenomics pipeline.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": "v1.6.0",
+      "wrappers": {}
+    },
+    {
+      "full_name": "3d-omics/mg_quant",
+      "description": "Snakemake pipeline for detection limit test",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [
+        "pipeline"
+      ],
+      "latest_release": "v1.6.0",
+      "wrappers": null
+    },
+    {
+      "full_name": "3d-omics/mt_quant",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": "v1.4.0",
+      "wrappers": null
+    },
+    {
+      "full_name": "4less/mahanananopore",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AAFC-BICoE/snakemake-amplicon-metagenomics",
+      "description": "Command line bioinformatics workflows, created with Snakemake workflow management tool.",
+      "standardized": false,
+      "stargazers_count": 3,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AAFC-BICoE/snakemake-mothur",
+      "description": "Example of a snakemake workflow implementation of the mothur MiSEQ SOP",
+      "standardized": false,
+      "stargazers_count": 8,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AAFC-BICoE/snakemake-partial-genome-pipeline",
+      "description": "Snakemake Pipeline for processing BioMob WP2 partial genome sequencing data",
+      "standardized": false,
+      "stargazers_count": 3,
+      "topics": [],
+      "latest_release": "v0.6",
+      "wrappers": null
+    },
+    {
+      "full_name": "AAFC-Bioinfo-AAC/metagenomics-snakemake",
+      "description": "A reproducible, modular Snakemake workflow designed to process, assemble, and analyze Illumina paired-end reads from host-associated metagenomic samples",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [
+        "metagenomics-pipeline",
+        "snakemake-workflow"
+      ],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AAFC-Bioinfo-AAC/metatranscriptomics-snakemake",
+      "description": "A reproducible, modular Snakemake workflow designed to process, assemble, and analyze Illumina paired-end shotgun metatranscriptomic data.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [
+        "metatranscriptomics",
+        "snakemake-workflow"
+      ],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "ABignaud/transcription_T7_analysis",
+      "description": "In this repository, we present the code for the analysis of study of the transcription's impact on Escherichia coli chromosome.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "ACSoupir/SnakeMake",
+      "description": "High throughput Next Generation Sequencing (NGS) data analysis using Python 3 Snakemake",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "ACTN3Bioinformatics/VCC-project",
+      "description": "A reproducible computational pipeline for processing and analyzing single-cell RNA-seq data with CRISPR perturbations (Perturb-seq), designed for the Virtual Cell Challenge 2025. Features automated quality control, normalization, class balancing, and batch integration using Snakemake.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [
+        "bioinformatics",
+        "bioinformatics-analysis",
+        "bioinformatics-pipeline",
+        "crispr",
+        "ngs",
+        "ngs-pipeline",
+        "perturb-seq",
+        "perturbation",
+        "rna-seq",
+        "scrna-seq",
+        "single-cell",
+        "single-cell-rna-seq",
+        "snakemake",
+        "fair-principles"
+      ],
+      "latest_release": "v1.2",
+      "wrappers": {}
+    },
+    {
+      "full_name": "AGGM-AG/pypsa-at",
+      "description": "PyPSA-AT: High resolution, sector-coupled model of the Austrian Energy System ",
+      "standardized": false,
+      "stargazers_count": 10,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AGImkeller/scIGD",
+      "description": "Typing and quantification of immune gene alleles in single cell and spatial transcriptomic data",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AHassanpour88/Evolutionary_Snakemake",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AI-Biome/PRISCREEN",
+      "description": "Software for evaluating ONT custom amplicon data from PRISTINE",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AMalkov07/teloTracker_snakemake",
+      "description": "Snakemake pipeline for yeast telomere analysis using nanopore sequencing",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AToL-Bioinformatics/genome-launcher-workflow",
+      "description": null,
+      "standardized": true,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AU-ENVS-Bioinformatics/IlluminaSnakemake",
+      "description": "A pipeline for processing raw Illumina reads to draft assemblies and annotations.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": "v1.1.0",
+      "wrappers": null
+    },
+    {
+      "full_name": "AU-ENVS-Bioinformatics/TotalRNA-Snakemake",
+      "description": "A pipeline for TotalRNA analysis",
+      "standardized": false,
+      "stargazers_count": 4,
+      "topics": [
+        "metatranscriptomic-pipeline",
+        "metatranscriptomics",
+        "snakemake-workflow"
+      ],
+      "latest_release": "v1.1.0",
+      "wrappers": {
+        "bio/bwa/index": {
+          "wrapper_name": "bio/bwa/index",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/bio/bwa/index.html",
+          "wrapper_version": "v2.6.0"
+        },
+        "bio/multiqc": {
+          "wrapper_name": "bio/multiqc",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/bio/multiqc.html",
+          "wrapper_version": "v2.7.0"
+        },
+        "bio/samtools/idxstats": {
+          "wrapper_name": "bio/samtools/idxstats",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/bio/samtools/idxstats.html",
+          "wrapper_version": "v2.6.0"
+        },
+        "bio/samtools/index": {
+          "wrapper_name": "bio/samtools/index",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/bio/samtools/index.html",
+          "wrapper_version": "v2.6.0"
+        },
+        "bio/trim_galore/pe": {
+          "wrapper_name": "bio/trim_galore/pe",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/bio/trim_galore/pe.html",
+          "wrapper_version": "v2.6.0"
+        },
+        "bio/trinity": {
+          "wrapper_name": "bio/trinity",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/bio/trinity.html",
+          "wrapper_version": "v2.6.0"
+        }
+      }
+    },
+    {
+      "full_name": "AU-ENVS-Bioinformatics/emu-smk",
+      "description": "Snakemake pipeline for running EMU",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AU-ENVS-Bioinformatics/huginn-emu-smk",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AVitriolo/GUS",
+      "description": "A ML framework to correlate and predict gene expression from methylation data",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AaltoRSE/snakemake-triton-example",
+      "description": "An example Snakemake project for Aalto Triton.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AaronFeller/Cinful_v2",
+      "description": "HMMER-based microcin search using full microcin sequences and double-glycine signal region.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [
+        "antimicrobial-peptides",
+        "bacterial-genome-analysis",
+        "bioinformatics-pipeline",
+        "blast",
+        "hidden-markov-model",
+        "hmm",
+        "hmmer",
+        "hmmer3",
+        "search",
+        "microcin"
+      ],
+      "latest_release": "2.1",
+      "wrappers": null
+    },
+    {
+      "full_name": "AbdelrahmanYahia/wes_gatk",
+      "description": "Whole exome sequencing snakemake workflow based on GATK best practice",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [
+        "bioinformatics",
+        "bioinformatics-pipeline",
+        "cli",
+        "ngs-analysis",
+        "ngs-pipeline",
+        "python3",
+        "gatk-bestpractices",
+        "genomics",
+        "snakemake",
+        "snakemake-workflow",
+        "wes"
+      ],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Abishag24/rna-seq-analysis-snakemake-pipeline",
+      "description": "End-to-end RNA-seq differential expression analysis pipeline implemented using Snakemake, covering quality control, read alignment, quantification, and downstream statistical analysis.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Abudyounis/COMP383-pipeline-project",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Achukwunta/germline-variant-calling",
+      "description": "human germline variant calling and variant annotation (GRCh38)",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Achukwunta/soybean-alt-rnaseq",
+      "description": "Dual RNA-seq analysis of soybean and Alternaria alternata",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Achukwunta/wireworm-transcriptomics",
+      "description": "De novo assembly and Comparative Analysis of Hypnoidus abbreviatus",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Addimator/compare_meth",
+      "description": null,
+      "standardized": true,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Addimator/varlociraptor-copy-number-variants",
+      "description": null,
+      "standardized": true,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Adeel3Dgenomics/TE-Analysis-Pipeline",
+      "description": "TE expression quantification ",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Adrianzo/dna-seq-variant-calling",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Aduuur/pypsa-arthur",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AdvancedPythonWorkshop2025/Day6-WorkflowManagement",
+      "description": "A workshop session discussing the seperation between workflow management and data processing",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Ahmedbargheet/Snakemake_RNA_seq",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Ahuiting/DNAPipeline",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AilenAlt/paired_end_fastq_to_bam",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AilenAlt/single_end_fastq_to_bam",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AinaMontalban/CFMH",
+      "description": "Code For Mental Health - Hackathon #bitsxlaMarat\u00f3 2021",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AishaShah/SuspectPeak_Hunter",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Aiswarya-prasad/honeybee-cross-species-metagenomics",
+      "description": "Code repository accompanying the manuscript, Symbiont loss and gain, rather than co-diversification shapes honeybee gut microbiota diversity and function",
+      "standardized": false,
+      "stargazers_count": 2,
+      "topics": [],
+      "latest_release": "v1.0.4",
+      "wrappers": null
+    },
+    {
+      "full_name": "Akinarli/longread-qc-pipeline",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Akinyi-Onyango/rna_seq_pipeline",
+      "description": "RNA-seq Differential Expression Pipeline: A Snakemake workflow for differential gene expression analysis using RNA-seq data, from raw FASTQ to DESeq2 results.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AkshathaPrasanna/Clin-mNGS",
+      "description": "Clin-mNGS: Automated pipeline for pathogen detection from clinical metagenomic data",
+      "standardized": false,
+      "stargazers_count": 8,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlBi-HHU/Drug_Response_Prediction",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlBi-HHU/VUScope",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": "v1.0",
+      "wrappers": {}
+    },
+    {
+      "full_name": "Albinam1/bioinformatics_school",
+      "description": null,
+      "standardized": true,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlejandroAb/CASCABEL",
+      "description": "Automated pipeline for amplicon sequence analysis ",
+      "standardized": false,
+      "stargazers_count": 11,
+      "topics": [
+        "amplicon-sequence-analysis",
+        "snakemake",
+        "illumina-sequencing",
+        "pipeline",
+        "otu-table"
+      ],
+      "latest_release": null,
+      "wrappers": {
+        "utils/datavzrd": {
+          "wrapper_name": "utils/datavzrd",
+          "wrapper_url": "https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/utils/datavzrd.html",
+          "wrapper_version": "v4.7.2"
+        }
+      }
+    },
+    {
+      "full_name": "AlejandroAb/FAnnP",
+      "description": "Functional Annotation Pipeline",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlejoZabala/pypsa-distribution",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlessandroPampado99/pypsa-eur-geotemporal-clustering",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlessandroPampado99/pypsa-eur-reserves",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlessandroPampado99/pypsa-eur-sectorcoupled-it",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlessandroPampado99/pypsa-eur-stochastic",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlessandroPampado99/pypsa-eur-uc",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlessiaMarotta/memod-s",
+      "description": "A standardised workflow to explore and analyse prokaryotic methylation patterns for Nanopore sequencing data",
+      "standardized": false,
+      "stargazers_count": 6,
+      "topics": [
+        "bacteria",
+        "bioinformatics",
+        "epigenomics",
+        "methylation",
+        "microbiology",
+        "snakemake"
+      ],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Alex-Markham/causalspyne-expt",
+      "description": "Snakemake workflow for experiments with the causalspyne Python package.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexAdrian-Hamazaki/Pseudobulk_Function_Pipeline",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexGa/popart-workflow",
+      "description": "Workflow for RNA purification sequence analysis",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexIsAttemptingToCode/sminasnakemake",
+      "description": "Basic workflow for smina using snakemake",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlexanderLabWHOI/EukHeist",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 11,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexanderLabWHOI/eukrhythmic",
+      "description": "A metatranscriptomic pipeline optimized for the study of microeukaryotes.",
+      "standardized": false,
+      "stargazers_count": 17,
+      "topics": [],
+      "latest_release": "v1.0",
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlexanderLabWHOI/tara-download-snakemake",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexanderLabWHOI/tara-euk-metaG",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 3,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexsLemonade/sc-data-integration",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlexsLemonade/scpca-downstream-analyses",
+      "description": "This repository is intended to store our pipeline for marker genes analysis.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": "v0.1.5",
+      "wrappers": null
+    },
+    {
+      "full_name": "AlfredLSG/cfrna-snakemake-pipeline",
+      "description": "A Snakemake pipeline for processing and analysis of cell-free RNA (cfRNA) sequencing data.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlgoLab/MALVIRUS-data",
+      "description": "Datasets accompanying MALVIRUS ",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AlgoLab/celluloid",
+      "description": "Celluloid: clustering single cell sequencing data around centroids",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": "v1.0",
+      "wrappers": null
+    },
+    {
+      "full_name": "AliFurkanOZ/bioinformatics-pipeline",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AliSaadatV/Variant_Calling_Snakemake",
+      "description": "Automated variant calling",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AliTafakkor/snakemake-surfparcellate",
+      "description": "This workflow is intended to parcellate the functional surface data given an atlas and save in .h5 format.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "AliTafakkor/snakemake-vol2surf",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Alice4267/Homeworker",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlinaImtiaz018/Analysis-of-plenary-speeches-from-the-German-Bundestag",
+      "description": "This project aims to analyze and visualize various aspects of plenary speeches delivered in the German Bundestag over the past 70 years.  The analysis will focus on the distribution of topics discussed,  the topic distribution by party, the sentiment of speeches in general as well as partitioned by gender and party.",
+      "standardized": false,
+      "stargazers_count": 1,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": null
+    },
+    {
+      "full_name": "Alirezar98/ctm-extraction",
+      "description": "Automated CTM (Circulating Tumor Microemboli) extraction pipeline from multi-channel immunofluorescence whole-slide images.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "Alki-A/TransformerFRI",
+      "description": " Single-value classifications across functions of different protein given sequence-only data, using Transformer architecture.",
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AllenInstitute/biorealistic-v1-model",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    },
+    {
+      "full_name": "AlsammanAlsamman/directCond",
+      "description": null,
+      "standardized": false,
+      "stargazers_count": 0,
+      "topics": [],
+      "latest_release": null,
+      "wrappers": {}
+    }
+  ],
+  "catalog_fields": [
+    "config_readme",
+    "data_format",
+    "description",
+    "formatting",
+    "full_name",
+    "latest_release",
+    "linting",
+    "mandatory_flags",
+    "non_standardized_reason",
+    "report",
+    "software_stack_deployment",
+    "standardized",
+    "stargazers_count",
+    "subscribers_count",
+    "topics",
+    "updated_at",
+    "wrappers"
+  ]
+}

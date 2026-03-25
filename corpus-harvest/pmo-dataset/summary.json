@@ -1,0 +1,15 @@
+{
+  "dataset_name": "PMo Dataset",
+  "format": "other",
+  "domain": "human",
+  "expected_models": 55,
+  "expected_representations_per_model": 9,
+  "models_downloaded": 0,
+  "download_status": "failed",
+  "failure_reason": "Zenodo (zenodo.org) is blocked by the network proxy (HTTP 403 on CONNECT tunnel). Tried: zenodo.org/api/records/15857589, zenodo.org/records/15857589, doi.org/10.5281/zenodo.15857589 - all returned 403.",
+  "sources_tried": [
+    "https://zenodo.org/api/records/15857589",
+    "https://zenodo.org/records/15857589",
+    "https://doi.org/10.5281/zenodo.15857589"
+  ]
+}

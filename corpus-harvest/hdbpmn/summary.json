@@ -1,0 +1,160 @@
+{
+  "dataset_name": "hdBPMN",
+  "source_url": "https://github.com/dwslab/hdBPMN",
+  "download_status": "success",
+  "format": "BPMN XML",
+  "domain": "human",
+  "count": {
+    "models_or_traces": 704,
+    "activities_or_nodes": 9740,
+    "connections_or_events": 11715
+  },
+  "parse_errors": 0,
+  "total_tasks": 4249,
+  "total_gateways": 2182,
+  "total_events": 3309,
+  "total_flows": 11715,
+  "structural_extract": [
+    {
+      "model_id": "ex00_writer0001",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0002",
+      "tasks": 8,
+      "gateways": 3,
+      "events": 3,
+      "flows": 15
+    },
+    {
+      "model_id": "ex00_writer0005",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0006",
+      "tasks": 7,
+      "gateways": 3,
+      "events": 3,
+      "flows": 14
+    },
+    {
+      "model_id": "ex00_writer0008",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0013",
+      "tasks": 5,
+      "gateways": 3,
+      "events": 3,
+      "flows": 12
+    },
+    {
+      "model_id": "ex00_writer0014",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0015",
+      "tasks": 5,
+      "gateways": 3,
+      "events": 3,
+      "flows": 12
+    },
+    {
+      "model_id": "ex00_writer0016",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0017",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0019",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0020",
+      "tasks": 7,
+      "gateways": 3,
+      "events": 3,
+      "flows": 14
+    },
+    {
+      "model_id": "ex00_writer0024",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0025",
+      "tasks": 8,
+      "gateways": 3,
+      "events": 3,
+      "flows": 15
+    },
+    {
+      "model_id": "ex00_writer0026",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0027",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0028",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0030",
+      "tasks": 8,
+      "gateways": 3,
+      "events": 3,
+      "flows": 15
+    },
+    {
+      "model_id": "ex00_writer0031",
+      "tasks": 6,
+      "gateways": 3,
+      "events": 3,
+      "flows": 13
+    },
+    {
+      "model_id": "ex00_writer0033",
+      "tasks": 5,
+      "gateways": 3,
+      "events": 3,
+      "flows": 12
+    }
+  ],
+  "note": "704 .xml annotation files (non-BPMN) were skipped; all 704 .bpmn files parsed successfully"
+}

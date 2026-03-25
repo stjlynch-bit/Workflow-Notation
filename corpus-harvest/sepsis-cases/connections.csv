@@ -1,0 +1,116 @@
+model_id,source_node,source_type,target_node,target_type,condition
+dfg,Leucocytes,activity,CRP,activity,1778
+dfg,CRP,activity,Leucocytes,activity,1445
+dfg,ER Registration,activity,ER Triage,activity,971
+dfg,ER Triage,activity,ER Sepsis Triage,activity,905
+dfg,CRP,activity,LacticAcid,activity,629
+dfg,LacticAcid,activity,Leucocytes,activity,565
+dfg,IV Liquid,activity,IV Antibiotics,activity,501
+dfg,IV Antibiotics,activity,Admission NC,activity,489
+dfg,Leucocytes,activity,Leucocytes,activity,458
+dfg,Leucocytes,activity,LacticAcid,activity,435
+dfg,Admission NC,activity,Leucocytes,activity,408
+dfg,LacticAcid,activity,CRP,activity,404
+dfg,Admission NC,activity,CRP,activity,369
+dfg,CRP,activity,Release A,activity,322
+dfg,CRP,activity,CRP,activity,317
+dfg,ER Sepsis Triage,activity,IV Liquid,activity,285
+dfg,Release A,activity,Return ER,activity,276
+dfg,ER Sepsis Triage,activity,Leucocytes,activity,269
+dfg,Leucocytes,activity,Release A,activity,225
+dfg,ER Sepsis Triage,activity,CRP,activity,192
+dfg,CRP,activity,Admission NC,activity,187
+dfg,Admission NC,activity,Admission NC,activity,175
+dfg,Leucocytes,activity,Admission NC,activity,153
+dfg,ER Sepsis Triage,activity,LacticAcid,activity,148
+dfg,LacticAcid,activity,IV Liquid,activity,124
+dfg,Admission NC,activity,Release A,activity,117
+dfg,CRP,activity,IV Liquid,activity,111
+dfg,LacticAcid,activity,Admission NC,activity,102
+dfg,Leucocytes,activity,IV Liquid,activity,102
+dfg,LacticAcid,activity,IV Antibiotics,activity,89
+dfg,LacticAcid,activity,LacticAcid,activity,83
+dfg,CRP,activity,IV Antibiotics,activity,81
+dfg,ER Sepsis Triage,activity,IV Antibiotics,activity,76
+dfg,Leucocytes,activity,IV Antibiotics,activity,73
+dfg,IV Antibiotics,activity,IV Liquid,activity,62
+dfg,IV Liquid,activity,Leucocytes,activity,55
+dfg,IV Antibiotics,activity,Leucocytes,activity,53
+dfg,ER Triage,activity,Leucocytes,activity,52
+dfg,IV Liquid,activity,Admission NC,activity,52
+dfg,ER Triage,activity,CRP,activity,48
+dfg,IV Antibiotics,activity,CRP,activity,48
+dfg,IV Antibiotics,activity,Admission IC,activity,46
+dfg,IV Liquid,activity,CRP,activity,46
+dfg,LacticAcid,activity,ER Sepsis Triage,activity,42
+dfg,Admission IC,activity,LacticAcid,activity,41
+dfg,Admission IC,activity,Leucocytes,activity,38
+dfg,IV Liquid,activity,LacticAcid,activity,36
+dfg,Leucocytes,activity,ER Sepsis Triage,activity,36
+dfg,CRP,activity,ER Sepsis Triage,activity,35
+dfg,Admission IC,activity,CRP,activity,32
+dfg,ER Triage,activity,LacticAcid,activity,29
+dfg,IV Antibiotics,activity,LacticAcid,activity,28
+dfg,Admission NC,activity,LacticAcid,activity,27
+dfg,IV Liquid,activity,ER Triage,activity,23
+dfg,Admission NC,activity,IV Liquid,activity,22
+dfg,ER Registration,activity,IV Liquid,activity,22
+dfg,ER Registration,activity,Leucocytes,activity,21
+dfg,Admission NC,activity,Admission IC,activity,20
+dfg,CRP,activity,Release B,activity,19
+dfg,ER Sepsis Triage,activity,Admission NC,activity,19
+dfg,Leucocytes,activity,Admission IC,activity,18
+dfg,Admission NC,activity,Release B,activity,17
+dfg,CRP,activity,Admission IC,activity,17
+dfg,CRP,activity,ER Triage,activity,16
+dfg,IV Liquid,activity,ER Registration,activity,15
+dfg,CRP,activity,ER Registration,activity,14
+dfg,ER Registration,activity,CRP,activity,14
+dfg,LacticAcid,activity,ER Triage,activity,14
+dfg,Leucocytes,activity,ER Registration,activity,14
+dfg,Leucocytes,activity,Release B,activity,14
+dfg,CRP,activity,Release C,activity,13
+dfg,CRP,activity,Release D,activity,12
+dfg,ER Registration,activity,ER Sepsis Triage,activity,11
+dfg,ER Triage,activity,IV Liquid,activity,11
+dfg,Leucocytes,activity,ER Triage,activity,11
+dfg,Leucocytes,activity,Release D,activity,11
+dfg,ER Registration,activity,LacticAcid,activity,10
+dfg,LacticAcid,activity,Admission IC,activity,10
+dfg,Release D,activity,Return ER,activity,10
+dfg,Leucocytes,activity,Release C,activity,8
+dfg,IV Liquid,activity,ER Sepsis Triage,activity,7
+dfg,IV Antibiotics,activity,ER Triage,activity,6
+dfg,Release C,activity,Return ER,activity,6
+dfg,Admission NC,activity,ER Sepsis Triage,activity,5
+dfg,ER Sepsis Triage,activity,ER Registration,activity,5
+dfg,ER Sepsis Triage,activity,ER Triage,activity,5
+dfg,ER Triage,activity,ER Registration,activity,5
+dfg,Admission IC,activity,Admission NC,activity,4
+dfg,Admission NC,activity,Release C,activity,4
+dfg,LacticAcid,activity,Release B,activity,4
+dfg,CRP,activity,Release E,activity,3
+dfg,IV Liquid,activity,Admission IC,activity,3
+dfg,LacticAcid,activity,Release A,activity,3
+dfg,Return ER,activity,CRP,activity,3
+dfg,Admission NC,activity,IV Antibiotics,activity,2
+dfg,IV Antibiotics,activity,Release A,activity,2
+dfg,IV Liquid,activity,Release A,activity,2
+dfg,Leucocytes,activity,Release E,activity,2
+dfg,Admission IC,activity,Admission IC,activity,1
+dfg,Admission IC,activity,ER Sepsis Triage,activity,1
+dfg,Admission NC,activity,ER Triage,activity,1
+dfg,Admission NC,activity,Release D,activity,1
+dfg,ER Registration,activity,Admission IC,activity,1
+dfg,ER Sepsis Triage,activity,Admission IC,activity,1
+dfg,ER Triage,activity,IV Antibiotics,activity,1
+dfg,IV Antibiotics,activity,ER Registration,activity,1
+dfg,IV Antibiotics,activity,Release B,activity,1
+dfg,IV Liquid,activity,Release B,activity,1
+dfg,LacticAcid,activity,ER Registration,activity,1
+dfg,LacticAcid,activity,Release E,activity,1
+dfg,Leucocytes,activity,Return ER,activity,1
+dfg,Release A,activity,CRP,activity,1
+dfg,Release A,activity,Leucocytes,activity,1
+dfg,Release B,activity,Admission NC,activity,1
+dfg,Release E,activity,Return ER,activity,1

@@ -1,0 +1,130 @@
+{
+  "dataset_name": "APQC PCF BPMN Models",
+  "source_url": "https://github.com/freebpmnquality/freebpmnquality.github.io",
+  "format": "BPMN XML",
+  "domain": "human",
+  "files_collected": 18,
+  "stats": {
+    "total_tasks": 146,
+    "total_gateways": 54,
+    "total_sequence_flows": 275,
+    "file_details": [
+      {
+        "file": "SCM.bpmn",
+        "tasks": 6,
+        "gateways": 5,
+        "sequence_flows": 18
+      },
+      {
+        "file": "Order goods.bpmn",
+        "tasks": 9,
+        "gateways": 3,
+        "sequence_flows": 16
+      },
+      {
+        "file": "Sell goods.bpmn",
+        "tasks": 9,
+        "gateways": 5,
+        "sequence_flows": 25
+      },
+      {
+        "file": "APQC.bpmn",
+        "tasks": 12,
+        "gateways": 0,
+        "sequence_flows": 4
+      },
+      {
+        "file": "Receive goods.bpmn",
+        "tasks": 10,
+        "gateways": 11,
+        "sequence_flows": 33
+      },
+      {
+        "file": "Supply chain management.bpmn",
+        "tasks": 16,
+        "gateways": 5,
+        "sequence_flows": 32
+      },
+      {
+        "file": "dual.bpmn",
+        "tasks": 5,
+        "gateways": 2,
+        "sequence_flows": 8
+      },
+      {
+        "file": "process.bpmn",
+        "tasks": 24,
+        "gateways": 6,
+        "sequence_flows": 42
+      },
+      {
+        "file": "staking.bpmn",
+        "tasks": 5,
+        "gateways": 2,
+        "sequence_flows": 8
+      },
+      {
+        "file": "flexible.bpmn",
+        "tasks": 4,
+        "gateways": 0,
+        "sequence_flows": 4
+      },
+      {
+        "file": "liquidity.bpmn",
+        "tasks": 5,
+        "gateways": 0,
+        "sequence_flows": 5
+      },
+      {
+        "file": "locked.bpmn",
+        "tasks": 4,
+        "gateways": 0,
+        "sequence_flows": 4
+      },
+      {
+        "file": "01-tasks.bpmn",
+        "tasks": 9,
+        "gateways": 2,
+        "sequence_flows": 14
+      },
+      {
+        "file": "02-start-events.bpmn",
+        "tasks": 2,
+        "gateways": 1,
+        "sequence_flows": 5
+      },
+      {
+        "file": "05-gateways.bpmn",
+        "tasks": 12,
+        "gateways": 9,
+        "sequence_flows": 27
+      },
+      {
+        "file": "06-activities-semantics.bpmn",
+        "tasks": 2,
+        "gateways": 0,
+        "sequence_flows": 4
+      },
+      {
+        "file": "03-end-events.bpmn",
+        "tasks": 2,
+        "gateways": 1,
+        "sequence_flows": 5
+      },
+      {
+        "file": "04-intermediate-events.bpmn",
+        "tasks": 10,
+        "gateways": 2,
+        "sequence_flows": 21
+      }
+    ]
+  },
+  "harvest_date": "2026-03-25",
+  "status": "done",
+  "download_status": "success",
+  "count": {
+    "models_or_traces": 18,
+    "activities_or_nodes": 200,
+    "connections_or_events": 275
+  }
+}

@@ -1,0 +1,49 @@
+2026-03-25 05:13:17: Corpus harvest started
+Wed Mar 25 05:14:03 UTC 2026: START pet-dataset
+Wed Mar 25 05:14:11 UTC 2026: START hdbpmn
+Wed Mar 25 05:14:18 UTC 2026: START pmmc-evaluator
+Wed Mar 25 05:14:26 UTC 2026: START petri-nets-1000
+2026-03-25 05:16:01: START sap-reference-model
+Wed Mar 25 05:16:18 UTC 2026: DONE pmmc-evaluator
+2026-03-25 05:16:28: START sepsis-cases
+Wed Mar 25 05:16:30 UTC 2026: DONE pet-dataset
+2026-03-25 05:16:31: START snakemake-catalog
+Wed Mar 25 05:16:41 UTC 2026: DONE petri-nets-1000 — 1000 models, 30147 nodes, 32398 edges, status=success
+2026-03-25 05:16:58: START workflowhub
+2026-03-25 05:17:07: COMPLETE sap-reference-model (download_status=failed)
+2026-03-25 05:17:13: START nodered-flows
+2026-03-25 05:17:13: DONE snakemake-catalog
+2026-03-25 05:17:19: START recipenlg
+2026-03-25 05:17:40: COMPLETE workflowhub (FAILED - 403 on all endpoints)
+2026-03-25 05:17:47: START knime-hub
+2026-03-25 05:18:03: COMPLETE knime-hub (FAILED - 403 on all endpoints)
+2026-03-25 05:18:09: START dockstore
+2026-03-25 05:18:19: DONE recipenlg (download_failed)
+2026-03-25 05:18:37: COMPLETE dockstore (FAILED - 403 on all endpoints)
+2026-03-25 05:18:43: START uci-incident
+2026-03-25 05:18:59: COMPLETE nodered-flows (113 flows parsed, 934 nodes, 494 connections)
+2026-03-25 05:19:03: DONE sepsis-cases
+2026-03-25 05:19:03: START road-traffic
+2026-03-25 05:19:03: START pmo-dataset
+2026-03-25 05:19:05: COMPLETE uci-incident (FAILED - 403 proxy block)
+2026-03-25 05:19:19: DONE road-traffic
+2026-03-25 05:19:19: START bpic-2012
+2026-03-25 05:19:36: COMPLETE pmo-dataset (download_status=failed)
+2026-03-25 05:19:53: DONE bpic-2012
+2026-03-25 05:21:41: RETRY hdbpmn
+2026-03-25 05:21:52: RETRY github-actions
+2026-03-25 05:22:10: RETRY ocel-logs
+2026-03-25 05:22:21: DONE github-actions (173 workflows, 807 connections)
+2026-03-25 05:22:28: START argo-workflows
+2026-03-25 05:22:54: DONE argo-workflows (207 files, 218 workflows, 516 connections)
+2026-03-25 05:23:00: START airflow-dags
+2026-03-25 05:23:35: COMPLETED hdbpmn - 704 models, 4249 tasks, 2182 gateways, 3309 events, 11715 flows
+2026-03-25 05:24:38: DONE ocel-logs (4080 events, 4089 objects, 5 files)
+2026-03-25 05:24:48: START apqc-bpmn
+2026-03-25 05:24:57: DONE airflow-dags (27 DAGs, 137 tasks, 58 connections)
+2026-03-25 05:24:58: DONE airflow-dags (49 files, 126 tasks, 82 connections)
+2026-03-25 05:25:20: DONE apqc-bpmn (18 BPMN files, 146 tasks, 54 gateways, 275 flows)
+2026-03-25 05:25:27: START ea-modelset
+2026-03-25 05:27:17: All datasets complete. Generating HARVEST_REPORT.md
+2026-03-25 05:27:40: DONE ea-modelset (906 models, 63712 nodes, 60960 edges, 11 relationship types)
+2026-03-25 05:28:31: HARVEST_REPORT.md generated. Harvest complete.

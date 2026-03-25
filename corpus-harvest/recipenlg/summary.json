@@ -1,0 +1,31 @@
+{
+  "dataset_name": "RecipeNLG (sample)",
+  "source_url": "https://huggingface.co/datasets/mbien/recipe_nlg",
+  "format": "JSON",
+  "domain": "procedural_text",
+  "download_status": "failed",
+  "download_error": "403 Forbidden - dataset requires authentication or network proxy blocked access. Tried: HuggingFace datasets library (streaming), HuggingFace datasets-server API, direct WebFetch.",
+  "note": "RecipeNLG contains ~2.2M recipes. Each recipe has fields: title, ingredients (list), directions (list of steps), link, source, NER. Directions form linear sequential workflows (step1->step2->...->stepN). No branching, loops, or parallelism.",
+  "expected_schema": {
+    "title": "string - recipe name",
+    "ingredients": "list of strings - ingredient descriptions",
+    "directions": "list of strings - sequential cooking steps (these are the workflow nodes)",
+    "link": "string - source URL",
+    "source": "string - source site name",
+    "NER": "list of strings - named entity recognition of ingredients"
+  },
+  "workflow_characteristics": {
+    "has_branching": false,
+    "has_loops": false,
+    "has_parallelism": false,
+    "topology": "linear_sequence",
+    "node_type": "step",
+    "edge_semantics": "sequential (step N output feeds step N+1)"
+  },
+  "count": {
+    "models_or_traces": 0,
+    "activities_or_nodes": 0,
+    "connections_or_events": 0,
+    "target_sample_size": 1000
+  }
+}

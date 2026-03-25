@@ -1,0 +1,11 @@
+{
+  "dataset_name": "WorkflowHub.eu",
+  "format": "other",
+  "domain": "machine",
+  "source_url": "https://workflowhub.eu/workflows",
+  "download_status": "failed",
+  "failure_reason": "All API endpoints returned HTTP 403 Forbidden. Tried: /workflows.json, /workflows?format=json, /api/workflows, /workflows. Site likely requires authentication or blocks automated access.",
+  "harvest_date": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",
+  "workflows_downloaded": 0,
+  "files_parsed": 0
+}

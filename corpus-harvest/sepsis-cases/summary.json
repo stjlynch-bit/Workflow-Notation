@@ -1,0 +1,60 @@
+{
+  "dataset_name": "Sepsis Cases Event Log",
+  "source": "4TU.ResearchData (via GitHub mirror)",
+  "source_url": "https://data.4tu.nl/datasets/33632f3c-5c48-4ade-8b41-757e1a87266e",
+  "download_status": "success",
+  "format": "XES",
+  "domain": "human",
+  "structural_extract": {
+    "type": "directly_follows_graph",
+    "description": "DFG aggregated from all traces in the Sepsis Cases event log"
+  },
+  "count": {
+    "models_or_traces": 1050,
+    "activities_or_nodes": 16,
+    "connections_or_events": 15214,
+    "dfg_edges": 115
+  },
+  "activities": [
+    "Admission IC",
+    "Admission NC",
+    "CRP",
+    "ER Registration",
+    "ER Sepsis Triage",
+    "ER Triage",
+    "IV Antibiotics",
+    "IV Liquid",
+    "LacticAcid",
+    "Leucocytes",
+    "Release A",
+    "Release B",
+    "Release C",
+    "Release D",
+    "Release E",
+    "Return ER"
+  ],
+  "start_activities": {
+    "ER Registration": 995,
+    "IV Liquid": 14,
+    "ER Triage": 6,
+    "CRP": 10,
+    "ER Sepsis Triage": 7,
+    "Leucocytes": 18
+  },
+  "end_activities": {
+    "Release A": 393,
+    "Return ER": 291,
+    "IV Antibiotics": 87,
+    "Release B": 55,
+    "ER Sepsis Triage": 49,
+    "Leucocytes": 44,
+    "IV Liquid": 12,
+    "Release C": 19,
+    "CRP": 41,
+    "LacticAcid": 24,
+    "Release D": 14,
+    "Admission NC": 14,
+    "Release E": 5,
+    "ER Triage": 2
+  }
+}

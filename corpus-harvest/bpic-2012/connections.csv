@@ -1,0 +1,126 @@
+model_id,source_node,source_type,target_node,target_type,condition
+dfg,W_Completeren aanvraag,activity,W_Completeren aanvraag,activity,38004
+dfg,W_Nabellen offertes,activity,W_Nabellen offertes,activity,36084
+dfg,W_Nabellen incomplete dossiers,activity,W_Nabellen incomplete dossiers,activity,18475
+dfg,A_SUBMITTED,activity,A_PARTLYSUBMITTED,activity,13087
+dfg,A_PREACCEPTED,activity,W_Completeren aanvraag,activity,7367
+dfg,O_CREATED,activity,O_SENT,activity,7030
+dfg,W_Afhandelen leads,activity,W_Afhandelen leads,activity,6992
+dfg,O_SENT,activity,W_Nabellen offertes,activity,6633
+dfg,W_Valideren aanvraag,activity,W_Nabellen incomplete dossiers,activity,5911
+dfg,W_Valideren aanvraag,activity,W_Valideren aanvraag,activity,5849
+dfg,W_Nabellen incomplete dossiers,activity,W_Valideren aanvraag,activity,5459
+dfg,W_Completeren aanvraag,activity,A_ACCEPTED,activity,5113
+dfg,W_Nabellen offertes,activity,W_Completeren aanvraag,activity,5018
+dfg,W_Completeren aanvraag,activity,W_Nabellen offertes,activity,5015
+dfg,A_PARTLYSUBMITTED,activity,A_PREACCEPTED,activity,4852
+dfg,A_PARTLYSUBMITTED,activity,W_Afhandelen leads,activity,4739
+dfg,O_SENT_BACK,activity,W_Valideren aanvraag,activity,3454
+dfg,A_PARTLYSUBMITTED,activity,A_DECLINED,activity,3429
+dfg,W_Valideren aanvraag,activity,W_Nabellen offertes,activity,3255
+dfg,W_Nabellen offertes,activity,O_SENT_BACK,activity,3254
+dfg,W_Nabellen offertes,activity,W_Valideren aanvraag,activity,3208
+dfg,O_SELECTED,activity,O_CREATED,activity,3148
+dfg,A_FINALIZED,activity,O_CREATED,activity,2907
+dfg,O_SELECTED,activity,A_FINALIZED,activity,2907
+dfg,A_ACCEPTED,activity,O_SELECTED,activity,2879
+dfg,W_Afhandelen leads,activity,W_Completeren aanvraag,activity,2517
+dfg,W_Completeren aanvraag,activity,W_Afhandelen leads,activity,2517
+dfg,W_Afhandelen leads,activity,A_PREACCEPTED,activity,2515
+dfg,A_DECLINED,activity,W_Afhandelen leads,activity,2234
+dfg,W_Afhandelen leads,activity,A_DECLINED,activity,2234
+dfg,A_FINALIZED,activity,O_SELECTED,activity,2108
+dfg,A_ACCEPTED,activity,A_FINALIZED,activity,2089
+dfg,W_Nabellen offertes,activity,O_CANCELLED,activity,1555
+dfg,W_Valideren aanvraag,activity,O_ACCEPTED,activity,1136
+dfg,W_Completeren aanvraag,activity,A_CANCELLED,activity,1120
+dfg,A_DECLINED,activity,W_Completeren aanvraag,activity,1113
+dfg,W_Completeren aanvraag,activity,A_DECLINED,activity,1088
+dfg,O_CANCELLED,activity,O_SELECTED,activity,1041
+dfg,O_CANCELLED,activity,O_CREATED,activity,974
+dfg,O_SELECTED,activity,O_CANCELLED,activity,974
+dfg,A_ACTIVATED,activity,W_Valideren aanvraag,activity,941
+dfg,A_CANCELLED,activity,O_CANCELLED,activity,864
+dfg,A_APPROVED,activity,A_ACTIVATED,activity,789
+dfg,W_Nabellen offertes,activity,A_CANCELLED,activity,788
+dfg,O_ACCEPTED,activity,A_REGISTERED,activity,771
+dfg,W_Nabellen offertes,activity,O_SELECTED,activity,768
+dfg,O_CANCELLED,activity,A_CANCELLED,activity,767
+dfg,A_CANCELLED,activity,W_Completeren aanvraag,activity,750
+dfg,A_APPROVED,activity,A_REGISTERED,activity,682
+dfg,A_REGISTERED,activity,A_ACTIVATED,activity,670
+dfg,O_ACCEPTED,activity,A_APPROVED,activity,654
+dfg,A_REGISTERED,activity,W_Valideren aanvraag,activity,604
+dfg,A_REGISTERED,activity,A_APPROVED,activity,581
+dfg,O_ACCEPTED,activity,A_ACTIVATED,activity,566
+dfg,A_ACTIVATED,activity,A_REGISTERED,activity,546
+dfg,O_CANCELLED,activity,W_Nabellen offertes,activity,512
+dfg,W_Valideren aanvraag,activity,A_APPROVED,activity,489
+dfg,A_ACTIVATED,activity,A_APPROVED,activity,478
+dfg,A_APPROVED,activity,O_ACCEPTED,activity,474
+dfg,A_CANCELLED,activity,W_Nabellen offertes,activity,467
+dfg,O_DECLINED,activity,A_DECLINED,activity,419
+dfg,O_SENT,activity,W_Nabellen incomplete dossiers,activity,396
+dfg,A_DECLINED,activity,O_DECLINED,activity,383
+dfg,W_Beoordelen fraude,activity,W_Beoordelen fraude,activity,367
+dfg,A_DECLINED,activity,W_Valideren aanvraag,activity,348
+dfg,W_Valideren aanvraag,activity,O_DECLINED,activity,348
+dfg,A_REGISTERED,activity,O_ACCEPTED,activity,332
+dfg,O_DECLINED,activity,W_Valideren aanvraag,activity,320
+dfg,W_Valideren aanvraag,activity,A_DECLINED,activity,320
+dfg,A_APPROVED,activity,W_Valideren aanvraag,activity,275
+dfg,O_ACCEPTED,activity,W_Valideren aanvraag,activity,230
+dfg,W_Valideren aanvraag,activity,A_REGISTERED,activity,228
+dfg,W_Nabellen incomplete dossiers,activity,O_SENT_BACK,activity,200
+dfg,W_Valideren aanvraag,activity,A_ACTIVATED,activity,198
+dfg,A_ACTIVATED,activity,O_ACCEPTED,activity,192
+dfg,W_Nabellen incomplete dossiers,activity,O_CANCELLED,activity,151
+dfg,W_Valideren aanvraag,activity,O_CANCELLED,activity,111
+dfg,W_Nabellen incomplete dossiers,activity,O_ACCEPTED,activity,109
+dfg,W_Valideren aanvraag,activity,O_SELECTED,activity,107
+dfg,W_Nabellen incomplete dossiers,activity,O_SELECTED,activity,99
+dfg,W_Beoordelen fraude,activity,W_Valideren aanvraag,activity,93
+dfg,W_Valideren aanvraag,activity,W_Beoordelen fraude,activity,93
+dfg,A_ACTIVATED,activity,W_Nabellen incomplete dossiers,activity,89
+dfg,W_Beoordelen fraude,activity,W_Afhandelen leads,activity,84
+dfg,A_ACCEPTED,activity,W_Completeren aanvraag,activity,74
+dfg,W_Afhandelen leads,activity,W_Beoordelen fraude,activity,73
+dfg,W_Nabellen incomplete dossiers,activity,A_CANCELLED,activity,72
+dfg,O_CANCELLED,activity,W_Nabellen incomplete dossiers,activity,70
+dfg,A_PARTLYSUBMITTED,activity,W_Beoordelen fraude,activity,67
+dfg,A_REGISTERED,activity,W_Nabellen incomplete dossiers,activity,58
+dfg,A_CANCELLED,activity,W_Nabellen incomplete dossiers,activity,57
+dfg,A_DECLINED,activity,W_Beoordelen fraude,activity,57
+dfg,W_Beoordelen fraude,activity,A_DECLINED,activity,57
+dfg,A_DECLINED,activity,W_Nabellen incomplete dossiers,activity,50
+dfg,W_Nabellen incomplete dossiers,activity,O_DECLINED,activity,50
+dfg,A_ACCEPTED,activity,A_CANCELLED,activity,46
+dfg,W_Nabellen incomplete dossiers,activity,A_APPROVED,activity,44
+dfg,O_DECLINED,activity,W_Nabellen incomplete dossiers,activity,36
+dfg,W_Nabellen incomplete dossiers,activity,A_DECLINED,activity,36
+dfg,W_Completeren aanvraag,activity,O_SELECTED,activity,28
+dfg,O_DECLINED,activity,W_Nabellen offertes,activity,27
+dfg,W_Nabellen offertes,activity,A_DECLINED,activity,27
+dfg,A_APPROVED,activity,W_Nabellen incomplete dossiers,activity,26
+dfg,A_ACCEPTED,activity,A_DECLINED,activity,25
+dfg,W_Nabellen incomplete dossiers,activity,A_ACTIVATED,activity,23
+dfg,O_ACCEPTED,activity,W_Nabellen incomplete dossiers,activity,22
+dfg,A_DECLINED,activity,W_Nabellen offertes,activity,21
+dfg,W_Nabellen offertes,activity,O_DECLINED,activity,21
+dfg,W_Completeren aanvraag,activity,A_FINALIZED,activity,19
+dfg,W_Nabellen incomplete dossiers,activity,A_REGISTERED,activity,19
+dfg,A_CANCELLED,activity,W_Valideren aanvraag,activity,14
+dfg,W_Valideren aanvraag,activity,A_CANCELLED,activity,13
+dfg,O_CANCELLED,activity,W_Valideren aanvraag,activity,12
+dfg,W_Completeren aanvraag,activity,W_Beoordelen fraude,activity,7
+dfg,W_Beoordelen fraude,activity,W_Completeren aanvraag,activity,6
+dfg,W_Wijzigen contractgegevens,activity,W_Wijzigen contractgegevens,activity,5
+dfg,W_Valideren aanvraag,activity,W_Wijzigen contractgegevens,activity,4
+dfg,W_Nabellen offertes,activity,W_Wijzigen contractgegevens,activity,2
+dfg,W_Wijzigen contractgegevens,activity,W_Valideren aanvraag,activity,2
+dfg,O_SELECTED,activity,W_Nabellen offertes,activity,1
+dfg,O_SENT,activity,W_Completeren aanvraag,activity,1
+dfg,W_Afhandelen leads,activity,A_CANCELLED,activity,1
+dfg,W_Nabellen incomplete dossiers,activity,W_Wijzigen contractgegevens,activity,1
+dfg,W_Nabellen offertes,activity,O_CREATED,activity,1
+dfg,W_Wijzigen contractgegevens,activity,W_Nabellen offertes,activity,1

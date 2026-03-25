@@ -1,0 +1,43 @@
+{
+  "dataset_name": "Road Traffic Fine Management",
+  "source": "4TU.ResearchData (via pm4py GitHub mirror)",
+  "source_url": "https://data.4tu.nl/articles/dataset/Road_Traffic_Fine_Management_Process/12683249",
+  "download_status": "success",
+  "format": "XES",
+  "domain": "human",
+  "structural_extract": {
+    "type": "directly_follows_graph",
+    "description": "DFG aggregated from all traces in the Road Traffic Fine Management event log"
+  },
+  "count": {
+    "models_or_traces": 10002,
+    "activities_or_nodes": 11,
+    "connections_or_events": 37255,
+    "dfg_edges": 46
+  },
+  "activities": [
+    "Add penalty",
+    "Appeal to Judge",
+    "Create Fine",
+    "Insert Date Appeal to Prefecture",
+    "Insert Fine Notification",
+    "Notify Result Appeal to Offender",
+    "Payment",
+    "Receive Result Appeal from Prefecture",
+    "Send Appeal to Prefecture",
+    "Send Fine",
+    "Send for Credit Collection"
+  ],
+  "start_activities": {
+    "Create Fine": 10002
+  },
+  "end_activities": {
+    "Send Fine": 1403,
+    "Payment": 4461,
+    "Send for Credit Collection": 3930,
+    "Send Appeal to Prefecture": 189,
+    "Appeal to Judge": 13,
+    "Notify Result Appeal to Offender": 5,
+    "Receive Result Appeal from Prefecture": 1
+  }
+}

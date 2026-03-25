@@ -1,0 +1,60 @@
+{
+  "dataset_name": "BPIC 2012",
+  "source": "4TU.ResearchData (via pm4py GitHub mirror)",
+  "source_url": "https://data.4tu.nl/articles/dataset/BPI_Challenge_2012/12689204",
+  "download_status": "success",
+  "format": "XES",
+  "domain": "human",
+  "structural_extract": {
+    "type": "directly_follows_graph",
+    "description": "DFG aggregated from all traces in the BPIC 2012 event log"
+  },
+  "count": {
+    "models_or_traces": 13087,
+    "activities_or_nodes": 24,
+    "connections_or_events": 262200,
+    "dfg_edges": 125
+  },
+  "activities": [
+    "A_ACCEPTED",
+    "A_ACTIVATED",
+    "A_APPROVED",
+    "A_CANCELLED",
+    "A_DECLINED",
+    "A_FINALIZED",
+    "A_PARTLYSUBMITTED",
+    "A_PREACCEPTED",
+    "A_REGISTERED",
+    "A_SUBMITTED",
+    "O_ACCEPTED",
+    "O_CANCELLED",
+    "O_CREATED",
+    "O_DECLINED",
+    "O_SELECTED",
+    "O_SENT",
+    "O_SENT_BACK",
+    "W_Afhandelen leads",
+    "W_Beoordelen fraude",
+    "W_Completeren aanvraag",
+    "W_Nabellen incomplete dossiers",
+    "W_Nabellen offertes",
+    "W_Valideren aanvraag",
+    "W_Wijzigen contractgegevens"
+  ],
+  "start_activities": {
+    "A_SUBMITTED": 13087
+  },
+  "end_activities": {
+    "W_Valideren aanvraag": 2747,
+    "W_Wijzigen contractgegevens": 4,
+    "A_DECLINED": 3429,
+    "W_Completeren aanvraag": 1939,
+    "A_CANCELLED": 655,
+    "W_Nabellen incomplete dossiers": 452,
+    "W_Afhandelen leads": 2234,
+    "W_Nabellen offertes": 1290,
+    "W_Beoordelen fraude": 57,
+    "O_CANCELLED": 279,
+    "A_REGISTERED": 1
+  }
+}

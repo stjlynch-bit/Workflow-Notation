@@ -1,0 +1,16 @@
+{
+  "dataset_name": "SAP R/3 Reference Model",
+  "format": "EPML",
+  "domain": "human",
+  "expected_models": 604,
+  "models_downloaded": 0,
+  "download_status": "failed",
+  "failure_reason": "EPML files not publicly accessible. Tried: fundamentals-of-bpm.org/process-model-collections/ (403), github.com/pmlab-ukim/SAPModels (404), github.com/Siemens-DISW-Technology/SAP-reference-model (404), GitHub search for SAP EPML/EPC repos (0 results), Zenodo API search (403). The SAP R/3 Reference Model EPML collection does not appear to be hosted at any of the specified or discoverable public URLs.",
+  "sources_tried": [
+    "https://fundamentals-of-bpm.org/process-model-collections/",
+    "https://github.com/pmlab-ukim/SAPModels",
+    "https://github.com/Siemens-DISW-Technology/SAP-reference-model",
+    "GitHub repository search (multiple queries)",
+    "Zenodo API search"
+  ]
+}

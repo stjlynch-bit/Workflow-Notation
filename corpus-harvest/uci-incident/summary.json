@@ -1,0 +1,11 @@
+{
+  "dataset_name": "UCI Incident Management",
+  "format": "CSV",
+  "domain": "human",
+  "source_url": "https://archive.ics.uci.edu/dataset/498/incident+management+process+enriched+event+log",
+  "download_status": "failed",
+  "failure_reason": "HTTP 403 from proxy/firewall. Outbound CONNECT tunnel blocked for archive.ics.uci.edu. Tried dataset page and direct ZIP download URL.",
+  "harvest_date": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",
+  "records_downloaded": 0,
+  "files_parsed": 0
+}

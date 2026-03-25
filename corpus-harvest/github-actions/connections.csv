@@ -1,0 +1,808 @@
+source,target,relation,file
+greeting,actions/first-interaction@v1,has_step,automation/greetings.yml
+label,actions/labeler@v4,has_step,automation/label.yml
+greet,Send greeting,has_step,automation/manual.yml
+stale,actions/stale@v5,has_step,automation/stale.yml
+summary,Checkout repository,has_step,automation/summary.yml
+summary,Run AI inference,has_step,automation/summary.yml
+summary,Comment with AI summary,has_step,automation/summary.yml
+build,Checkout,has_step,ci/ada.yml
+build,Set up GNAT toolchain,has_step,ci/ada.yml
+build,Build,has_step,ci/ada.yml
+build,actions/checkout@v4,has_step,ci/android.yml
+build,set up JDK 11,has_step,ci/android.yml
+build,Grant execute permission for gradlew,has_step,ci/android.yml
+build,Build with Gradle,has_step,ci/android.yml
+build,actions/checkout@v4,has_step,ci/ant.yml
+build,Set up JDK 11,has_step,ci/ant.yml
+build,Build with Ant,has_step,ci/ant.yml
+build,actions/checkout@v4,has_step,ci/blank.yml
+build,Run a one-line script,has_step,ci/blank.yml
+build,Run a multi-line script,has_step,ci/blank.yml
+build,actions/checkout@v4,has_step,ci/c-cpp.yml
+build,configure,has_step,ci/c-cpp.yml
+build,make,has_step,ci/c-cpp.yml
+build,make check,has_step,ci/c-cpp.yml
+build,make distcheck,has_step,ci/c-cpp.yml
+build,actions/checkout@v4,has_step,ci/clojure.yml
+build,Install dependencies,has_step,ci/clojure.yml
+build,Run tests,has_step,ci/clojure.yml
+build,actions/checkout@v4,has_step,ci/cmake-multi-platform.yml
+build,Set reusable strings,has_step,ci/cmake-multi-platform.yml
+build,Configure CMake,has_step,ci/cmake-multi-platform.yml
+build,Build,has_step,ci/cmake-multi-platform.yml
+build,Test,has_step,ci/cmake-multi-platform.yml
+build,actions/checkout@v4,has_step,ci/cmake-single-platform.yml
+build,Configure CMake,has_step,ci/cmake-single-platform.yml
+build,Build,has_step,ci/cmake-single-platform.yml
+build,Test,has_step,ci/cmake-single-platform.yml
+build,actions/checkout@v4,has_step,ci/crystal.yml
+build,Install dependencies,has_step,ci/crystal.yml
+build,Run tests,has_step,ci/crystal.yml
+build,actions/checkout@v4,has_step,ci/d.yml
+build,dlang-community/setup-dlang@4c99aa991ce7d19dd3064de0a4f2f6b2f152e2d7,has_step,ci/d.yml
+build,Build & Test,has_step,ci/d.yml
+build,actions/checkout@v4,has_step,ci/dart.yml
+build,dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603,has_step,ci/dart.yml
+build,Install dependencies,has_step,ci/dart.yml
+build,Analyze project source,has_step,ci/dart.yml
+build,Run tests,has_step,ci/dart.yml
+build,actions/checkout@v4,has_step,ci/datadog-synthetics.yml
+build,Run Datadog Synthetic tests,has_step,ci/datadog-synthetics.yml
+test,Setup repo,has_step,ci/deno.yml
+test,Setup Deno,has_step,ci/deno.yml
+test,Run linter,has_step,ci/deno.yml
+test,Run tests,has_step,ci/deno.yml
+build,actions/checkout@v4,has_step,ci/django.yml
+build,Set up Python ${{ matrix.python-version }},has_step,ci/django.yml
+build,Install Dependencies,has_step,ci/django.yml
+build,Run Tests,has_step,ci/django.yml
+build,actions/checkout@v4,has_step,ci/docker-image.yml
+build,Build the Docker image,has_step,ci/docker-image.yml
+build,Checkout repository,has_step,ci/docker-publish.yml
+build,Install cosign,has_step,ci/docker-publish.yml
+build,Set up Docker Buildx,has_step,ci/docker-publish.yml
+build,Log into registry ${{ env.REGISTRY }},has_step,ci/docker-publish.yml
+build,Extract Docker metadata,has_step,ci/docker-publish.yml
+build,Build and push Docker image,has_step,ci/docker-publish.yml
+build,Sign the published Docker image,has_step,ci/docker-publish.yml
+build,Checkout,has_step,ci/dotnet-desktop.yml
+build,Install .NET Core,has_step,ci/dotnet-desktop.yml
+build,Setup MSBuild.exe,has_step,ci/dotnet-desktop.yml
+build,Execute unit tests,has_step,ci/dotnet-desktop.yml
+build,Restore the application,has_step,ci/dotnet-desktop.yml
+build,Decode the pfx,has_step,ci/dotnet-desktop.yml
+build,Create the app package,has_step,ci/dotnet-desktop.yml
+build,Remove the pfx,has_step,ci/dotnet-desktop.yml
+build,Upload build artifacts,has_step,ci/dotnet-desktop.yml
+build,actions/checkout@v4,has_step,ci/dotnet.yml
+build,Setup .NET,has_step,ci/dotnet.yml
+build,Restore dependencies,has_step,ci/dotnet.yml
+build,Build,has_step,ci/dotnet.yml
+build,Test,has_step,ci/dotnet.yml
+build,actions/checkout@v4,has_step,ci/elixir.yml
+build,Set up Elixir,has_step,ci/elixir.yml
+build,Restore dependencies cache,has_step,ci/elixir.yml
+build,Install dependencies,has_step,ci/elixir.yml
+build,Run tests,has_step,ci/elixir.yml
+build,actions/checkout@v4,has_step,ci/erlang.yml
+build,Compile,has_step,ci/erlang.yml
+build,Run tests,has_step,ci/erlang.yml
+build,actions/checkout@v4,has_step,ci/gem-push.yml
+build,Set up Ruby 2.6,has_step,ci/gem-push.yml
+build,Publish to GPR,has_step,ci/gem-push.yml
+build,Publish to RubyGems,has_step,ci/gem-push.yml
+build,actions/checkout@v4,has_step,ci/generator-generic-ossf-slsa3-publish.yml
+build,Build artifacts,has_step,ci/generator-generic-ossf-slsa3-publish.yml
+build,Generate subject for provenance,has_step,ci/generator-generic-ossf-slsa3-publish.yml
+build,provenance,needs,ci/generator-generic-ossf-slsa3-publish.yml
+build,actions/checkout@v4,has_step,ci/go.yml
+build,Set up Go,has_step,ci/go.yml
+build,Build,has_step,ci/go.yml
+build,Test,has_step,ci/go.yml
+build,actions/checkout@v4,has_step,ci/gradle-publish.yml
+build,Set up JDK 17,has_step,ci/gradle-publish.yml
+build,Setup Gradle,has_step,ci/gradle-publish.yml
+build,Build with Gradle,has_step,ci/gradle-publish.yml
+build,Publish to GitHub Packages,has_step,ci/gradle-publish.yml
+build,actions/checkout@v4,has_step,ci/gradle.yml
+build,Set up JDK 17,has_step,ci/gradle.yml
+build,Setup Gradle,has_step,ci/gradle.yml
+build,Build with Gradle Wrapper,has_step,ci/gradle.yml
+dependency-submission,actions/checkout@v4,has_step,ci/gradle.yml
+dependency-submission,Set up JDK 17,has_step,ci/gradle.yml
+dependency-submission,Generate and submit dependency graph,has_step,ci/gradle.yml
+build,actions/checkout@v4,has_step,ci/haskell.yml
+build,actions/setup-haskell@v1,has_step,ci/haskell.yml
+build,Cache,has_step,ci/haskell.yml
+build,Install dependencies,has_step,ci/haskell.yml
+build,Build,has_step,ci/haskell.yml
+build,Run tests,has_step,ci/haskell.yml
+build,Checkout,has_step,ci/ios.yml
+build,Set Default Scheme,has_step,ci/ios.yml
+build,Build,has_step,ci/ios.yml
+build,Test,has_step,ci/ios.yml
+build,actions/checkout@v4,has_step,ci/jekyll-docker.yml
+build,Build the site in the jekyll/builder container,has_step,ci/jekyll-docker.yml
+laravel-tests,shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e,has_step,ci/laravel.yml
+laravel-tests,actions/checkout@v4,has_step,ci/laravel.yml
+laravel-tests,Copy .env,has_step,ci/laravel.yml
+laravel-tests,Install Dependencies,has_step,ci/laravel.yml
+laravel-tests,Generate key,has_step,ci/laravel.yml
+laravel-tests,Directory Permissions,has_step,ci/laravel.yml
+laravel-tests,Create Database,has_step,ci/laravel.yml
+laravel-tests,Execute tests (Unit and Feature tests) via PHPUnit/Pest,has_step,ci/laravel.yml
+build,actions/checkout@v4,has_step,ci/makefile.yml
+build,configure,has_step,ci/makefile.yml
+build,Install dependencies,has_step,ci/makefile.yml
+build,Run check,has_step,ci/makefile.yml
+build,Run distcheck,has_step,ci/makefile.yml
+build,actions/checkout@v4,has_step,ci/maven-publish.yml
+build,Set up JDK 11,has_step,ci/maven-publish.yml
+build,Build with Maven,has_step,ci/maven-publish.yml
+build,Publish to GitHub Packages Apache Maven,has_step,ci/maven-publish.yml
+build,actions/checkout@v4,has_step,ci/maven.yml
+build,Set up JDK 17,has_step,ci/maven.yml
+build,Build with Maven,has_step,ci/maven.yml
+build,Update dependency graph,has_step,ci/maven.yml
+build,actions/checkout@v4,has_step,ci/msbuild.yml
+build,Add MSBuild to PATH,has_step,ci/msbuild.yml
+build,Restore NuGet packages,has_step,ci/msbuild.yml
+build,Build,has_step,ci/msbuild.yml
+build,actions/checkout@v4,has_step,ci/node.js.yml
+build,Use Node.js ${{ matrix.node-version }},has_step,ci/node.js.yml
+build,unnamed,has_step,ci/node.js.yml
+build,unnamed,has_step,ci/node.js.yml
+build,unnamed,has_step,ci/node.js.yml
+build,actions/checkout@v4,has_step,ci/npm-publish-github-packages.yml
+build,actions/setup-node@v4,has_step,ci/npm-publish-github-packages.yml
+build,unnamed,has_step,ci/npm-publish-github-packages.yml
+build,unnamed,has_step,ci/npm-publish-github-packages.yml
+build,publish-gpr,needs,ci/npm-publish-github-packages.yml
+publish-gpr,actions/checkout@v4,has_step,ci/npm-publish-github-packages.yml
+publish-gpr,actions/setup-node@v4,has_step,ci/npm-publish-github-packages.yml
+publish-gpr,unnamed,has_step,ci/npm-publish-github-packages.yml
+publish-gpr,unnamed,has_step,ci/npm-publish-github-packages.yml
+build,actions/checkout@v4,has_step,ci/npm-publish.yml
+build,actions/setup-node@v4,has_step,ci/npm-publish.yml
+build,unnamed,has_step,ci/npm-publish.yml
+build,unnamed,has_step,ci/npm-publish.yml
+build,publish-npm,needs,ci/npm-publish.yml
+publish-npm,actions/checkout@v4,has_step,ci/npm-publish.yml
+publish-npm,actions/setup-node@v4,has_step,ci/npm-publish.yml
+publish-npm,unnamed,has_step,ci/npm-publish.yml
+publish-npm,unnamed,has_step,ci/npm-publish.yml
+build,Checkout,has_step,ci/objective-c-xcode.yml
+build,Set Default Scheme,has_step,ci/objective-c-xcode.yml
+build,Build,has_step,ci/objective-c-xcode.yml
+build,actions/checkout@v4,has_step,ci/php.yml
+build,Validate composer.json and composer.lock,has_step,ci/php.yml
+build,Cache Composer packages,has_step,ci/php.yml
+build,Install dependencies,has_step,ci/php.yml
+build,actions/checkout@v4,has_step,ci/pylint.yml
+build,Set up Python ${{ matrix.python-version }},has_step,ci/pylint.yml
+build,Install dependencies,has_step,ci/pylint.yml
+build,Analysing the code with pylint,has_step,ci/pylint.yml
+build,actions/checkout@v4,has_step,ci/python-app.yml
+build,Set up Python 3.10,has_step,ci/python-app.yml
+build,Install dependencies,has_step,ci/python-app.yml
+build,Lint with flake8,has_step,ci/python-app.yml
+build,Test with pytest,has_step,ci/python-app.yml
+build-linux,actions/checkout@v4,has_step,ci/python-package-conda.yml
+build-linux,Set up Python 3.10,has_step,ci/python-package-conda.yml
+build-linux,Add conda to system path,has_step,ci/python-package-conda.yml
+build-linux,Install dependencies,has_step,ci/python-package-conda.yml
+build-linux,Lint with flake8,has_step,ci/python-package-conda.yml
+build-linux,Test with pytest,has_step,ci/python-package-conda.yml
+build,actions/checkout@v4,has_step,ci/python-package.yml
+build,Set up Python ${{ matrix.python-version }},has_step,ci/python-package.yml
+build,Install dependencies,has_step,ci/python-package.yml
+build,Lint with flake8,has_step,ci/python-package.yml
+build,Test with pytest,has_step,ci/python-package.yml
+release-build,actions/checkout@v4,has_step,ci/python-publish.yml
+release-build,actions/setup-python@v5,has_step,ci/python-publish.yml
+release-build,Build release distributions,has_step,ci/python-publish.yml
+release-build,Upload distributions,has_step,ci/python-publish.yml
+release-build,pypi-publish,needs,ci/python-publish.yml
+pypi-publish,Retrieve release distributions,has_step,ci/python-publish.yml
+pypi-publish,Publish release distributions to PyPI,has_step,ci/python-publish.yml
+build,actions/checkout@v4,has_step,ci/r.yml
+build,Set up R ${{ matrix.r-version }},has_step,ci/r.yml
+build,Install dependencies,has_step,ci/r.yml
+build,Check,has_step,ci/r.yml
+test,actions/checkout@v4,has_step,ci/ruby.yml
+test,Set up Ruby,has_step,ci/ruby.yml
+test,Run tests,has_step,ci/ruby.yml
+test,Checkout code,has_step,ci/rubyonrails.yml
+test,Install Ruby and gems,has_step,ci/rubyonrails.yml
+test,Set up database schema,has_step,ci/rubyonrails.yml
+test,Run tests,has_step,ci/rubyonrails.yml
+lint,Checkout code,has_step,ci/rubyonrails.yml
+lint,Install Ruby and gems,has_step,ci/rubyonrails.yml
+lint,Generate binstubs,has_step,ci/rubyonrails.yml
+lint,Security audit dependencies,has_step,ci/rubyonrails.yml
+lint,Security audit application code,has_step,ci/rubyonrails.yml
+lint,Lint Ruby files,has_step,ci/rubyonrails.yml
+build,actions/checkout@v4,has_step,ci/rust.yml
+build,Build,has_step,ci/rust.yml
+build,Run tests,has_step,ci/rust.yml
+build,actions/checkout@v4,has_step,ci/scala.yml
+build,Set up JDK 11,has_step,ci/scala.yml
+build,Run tests,has_step,ci/scala.yml
+build,Upload dependency graph,has_step,ci/scala.yml
+run-lint,Checkout code,has_step,ci/super-linter.yml
+run-lint,Lint Code Base,has_step,ci/super-linter.yml
+build,actions/checkout@v4,has_step,ci/swift.yml
+build,Build,has_step,ci/swift.yml
+build,Run tests,has_step,ci/swift.yml
+symfony-tests,shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28,has_step,ci/symfony.yml
+symfony-tests,actions/checkout@v4,has_step,ci/symfony.yml
+symfony-tests,Copy .env.test.local,has_step,ci/symfony.yml
+symfony-tests,Cache Composer packages,has_step,ci/symfony.yml
+symfony-tests,Install Dependencies,has_step,ci/symfony.yml
+symfony-tests,Create Database,has_step,ci/symfony.yml
+symfony-tests,Execute tests (Unit and Feature tests) via PHPUnit,has_step,ci/symfony.yml
+build,actions/checkout@v4,has_step,ci/webpack.yml
+build,Use Node.js ${{ matrix.node-version }},has_step,ci/webpack.yml
+build,Build,has_step,ci/webpack.yml
+Anchore-Build-Scan,Checkout the code,has_step,code-scanning/anchore-syft.yml
+Anchore-Build-Scan,Build the Docker image,has_step,code-scanning/anchore-syft.yml
+Anchore-Build-Scan,Scan the image and upload dependency results,has_step,code-scanning/anchore-syft.yml
+Anchore-Build-Scan,Check out the code,has_step,code-scanning/anchore.yml
+Anchore-Build-Scan,Build the Docker image,has_step,code-scanning/anchore.yml
+Anchore-Build-Scan,Run the Anchore Grype scan action,has_step,code-scanning/anchore.yml
+Anchore-Build-Scan,Upload vulnerability report,has_step,code-scanning/anchore.yml
+Trigger_APIsec_scan,APIsec scan,has_step,code-scanning/apisec-scan.yml
+Trigger_APIsec_scan,Import results,has_step,code-scanning/apisec-scan.yml
+appknox,Checkout Code,has_step,code-scanning/appknox.yml
+appknox,Grant execute permission for gradlew,has_step,code-scanning/appknox.yml
+appknox,Build the app,has_step,code-scanning/appknox.yml
+appknox,Appknox GitHub action,has_step,code-scanning/appknox.yml
+appknox,Upload SARIF to GHAS,has_step,code-scanning/appknox.yml
+bandit,actions/checkout@v4,has_step,code-scanning/bandit.yml
+bandit,Bandit Scan,has_step,code-scanning/bandit.yml
+bearer,actions/checkout@v4,has_step,code-scanning/bearer.yml
+bearer,Run Report,has_step,code-scanning/bearer.yml
+bearer,Upload SARIF file,has_step,code-scanning/bearer.yml
+build,Checkout source,has_step,code-scanning/black-duck-security-scan-ci.yml
+build,Black Duck SCA scan,has_step,code-scanning/black-duck-security-scan-ci.yml
+brakeman-scan,Checkout,has_step,code-scanning/brakeman.yml
+brakeman-scan,Setup Ruby,has_step,code-scanning/brakeman.yml
+brakeman-scan,Setup Brakeman,has_step,code-scanning/brakeman.yml
+brakeman-scan,Scan,has_step,code-scanning/brakeman.yml
+brakeman-scan,Upload SARIF,has_step,code-scanning/brakeman.yml
+build,Checkout repository,has_step,code-scanning/checkmarx-one.yml
+build,Checkmarx One scan,has_step,code-scanning/checkmarx-one.yml
+build,Upload SARIF file,has_step,code-scanning/checkmarx-one.yml
+build,actions/checkout@v4,has_step,code-scanning/checkmarx.yml
+build,Checkmarx CxFlow Action,has_step,code-scanning/checkmarx.yml
+build,Upload SARIF file,has_step,code-scanning/checkmarx.yml
+clj-holmes,Checkout code,has_step,code-scanning/clj-holmes.yml
+clj-holmes,Scan code,has_step,code-scanning/clj-holmes.yml
+clj-holmes,Upload analysis results to GitHub Security tab,has_step,code-scanning/clj-holmes.yml
+clj-holmes,Checkout code,has_step,code-scanning/clj-watson.yml
+clj-holmes,Dependency scan,has_step,code-scanning/clj-watson.yml
+clj-holmes,Upload analysis results to GitHub,has_step,code-scanning/clj-watson.yml
+cloudrail,Clone repo,has_step,code-scanning/cloudrail.yml
+cloudrail,hashicorp/setup-terraform@v1,has_step,code-scanning/cloudrail.yml
+cloudrail,unnamed,has_step,code-scanning/cloudrail.yml
+cloudrail,unnamed,has_step,code-scanning/cloudrail.yml
+cloudrail,unnamed,has_step,code-scanning/cloudrail.yml
+cloudrail,Run Cloudrail,has_step,code-scanning/cloudrail.yml
+cloudrail,Upload SARIF file,has_step,code-scanning/cloudrail.yml
+codacy-security-scan,Checkout code,has_step,code-scanning/codacy.yml
+codacy-security-scan,Run Codacy Analysis CLI,has_step,code-scanning/codacy.yml
+codacy-security-scan,Upload SARIF results file,has_step,code-scanning/codacy.yml
+analyze,Checkout repository,has_step,code-scanning/codeql.yml
+analyze,Initialize CodeQL,has_step,code-scanning/codeql.yml
+analyze,Run manual build steps,has_step,code-scanning/codeql.yml
+analyze,Perform CodeQL Analysis,has_step,code-scanning/codeql.yml
+CodeScan,Checkout repository,has_step,code-scanning/codescan.yml
+CodeScan,Cache files,has_step,code-scanning/codescan.yml
+CodeScan,Run Analysis,has_step,code-scanning/codescan.yml
+CodeScan,Upload SARIF file,has_step,code-scanning/codescan.yml
+build-and-scan,actions/checkout@v4,has_step,code-scanning/contrast-scan.yml
+build-and-scan,Contrast Scan Action,has_step,code-scanning/contrast-scan.yml
+build-and-scan,Upload SARIF file,has_step,code-scanning/contrast-scan.yml
+crda-scan,Check out repository,has_step,code-scanning/crda.yml
+crda-scan,Install CRDA CLI,has_step,code-scanning/crda.yml
+crda-scan,CRDA Scan,has_step,code-scanning/crda.yml
+security-scan,actions/checkout@v4,has_step,code-scanning/credo.yml
+security-scan,erlef/setup-beam@988e02bfe678367a02564f65ca2e37726dc0268f,has_step,code-scanning/credo.yml
+security-scan,get dependencies,has_step,code-scanning/credo.yml
+security-scan,compile dependencies,has_step,code-scanning/credo.yml
+security-scan,compile,has_step,code-scanning/credo.yml
+security-scan,credo-scan,has_step,code-scanning/credo.yml
+security-scan,upload sarif,has_step,code-scanning/credo.yml
+rest-api-static-security-testing,actions/checkout@v4,has_step,code-scanning/crunch42.yml
+rest-api-static-security-testing,42Crunch REST API Static Security Testing,has_step,code-scanning/crunch42.yml
+datree,actions/checkout@v4,has_step,code-scanning/datree.yml
+datree,Run Datree policy check,has_step,code-scanning/datree.yml
+datree,Upload result to GitHub Code Scanning,has_step,code-scanning/datree.yml
+vulnerabilities-scan,actions/checkout@v4,has_step,code-scanning/debricked.yml
+vulnerabilities-scan,debricked/actions@v4,has_step,code-scanning/debricked.yml
+MSDO,actions/checkout@v4,has_step,code-scanning/defender-for-devops.yml
+MSDO,actions/setup-dotnet@v4,has_step,code-scanning/defender-for-devops.yml
+MSDO,Run Microsoft Security DevOps,has_step,code-scanning/defender-for-devops.yml
+MSDO,Upload results to Security tab,has_step,code-scanning/defender-for-devops.yml
+dependency-review,Checkout repository,has_step,code-scanning/dependency-review.yml
+dependency-review,Dependency Review,has_step,code-scanning/dependency-review.yml
+scan,actions/checkout@v4,has_step,code-scanning/detekt.yml
+scan,Get Detekt download URL,has_step,code-scanning/detekt.yml
+scan,Setup Detekt,has_step,code-scanning/detekt.yml
+scan,Run Detekt,has_step,code-scanning/detekt.yml
+scan,Make artifact location URIs relative,has_step,code-scanning/detekt.yml
+scan,github/codeql-action/upload-sarif@v3,has_step,code-scanning/detekt.yml
+lint,Checkout code,has_step,code-scanning/devskim.yml
+lint,Run DevSkim scanner,has_step,code-scanning/devskim.yml
+lint,Upload DevSkim scan results to GitHub Security tab,has_step,code-scanning/devskim.yml
+scan,Checkout repository,has_step,code-scanning/endorlabs.yml
+scan,Endor Labs scan pull request,has_step,code-scanning/endorlabs.yml
+scan,Endor Labs scan monitor,has_step,code-scanning/endorlabs.yml
+scan,Upload SARIF to github,has_step,code-scanning/endorlabs.yml
+eslint,Checkout code,has_step,code-scanning/eslint.yml
+eslint,Install ESLint,has_step,code-scanning/eslint.yml
+eslint,Run ESLint,has_step,code-scanning/eslint.yml
+eslint,Upload analysis results to GitHub,has_step,code-scanning/eslint.yml
+Trigger_EthicalCheck,EthicalCheck  Free & Automated API Security Testing Service,has_step,code-scanning/ethicalcheck.yml
+Trigger_EthicalCheck,Upload sarif file to repository,has_step,code-scanning/ethicalcheck.yml
+flawfinder,Checkout code,has_step,code-scanning/flawfinder.yml
+flawfinder,flawfinder_scan,has_step,code-scanning/flawfinder.yml
+flawfinder,Upload analysis results to GitHub Security tab,has_step,code-scanning/flawfinder.yml
+Fortify-AST-Scan,Check Out Source Code,has_step,code-scanning/fortify.yml
+Fortify-AST-Scan,Run Fortify Scan,has_step,code-scanning/fortify.yml
+create-fix-pull-requests,actions/checkout@v4,has_step,code-scanning/frogbot-scan-and-fix.yml
+create-fix-pull-requests,jfrog/frogbot@5d9c42c30f1169d8be4ba5510b40e75ffcbbc2a9,has_step,code-scanning/frogbot-scan-and-fix.yml
+scan-pull-request,actions/checkout@v4,has_step,code-scanning/frogbot-scan-pr.yml
+scan-pull-request,jfrog/frogbot@5d9c42c30f1169d8be4ba5510b40e75ffcbbc2a9,has_step,code-scanning/frogbot-scan-pr.yml
+hadolint,Checkout code,has_step,code-scanning/hadolint.yml
+hadolint,Run hadolint,has_step,code-scanning/hadolint.yml
+hadolint,Upload analysis results to GitHub,has_step,code-scanning/hadolint.yml
+analyze,Checkout repository,has_step,code-scanning/jfrog-sast.yml
+analyze,Setup Node.js,has_step,code-scanning/jfrog-sast.yml
+analyze,Install and configure JFrog CLI,has_step,code-scanning/jfrog-sast.yml
+analyze,Run JFrog SAST,has_step,code-scanning/jfrog-sast.yml
+analyze,Upload output to generate autofix,has_step,code-scanning/jfrog-sast.yml
+build,actions/checkout@v4,has_step,code-scanning/jscrambler-code-integrity.yml
+build,actions/setup-node@v4,has_step,code-scanning/jscrambler-code-integrity.yml
+build,unnamed,has_step,code-scanning/jscrambler-code-integrity.yml
+build,unnamed,has_step,code-scanning/jscrambler-code-integrity.yml
+build,Jscrambler Code Integrity,has_step,code-scanning/jscrambler-code-integrity.yml
+lint,Checkout code,has_step,code-scanning/kubesec.yml
+lint,Run kubesec scanner,has_step,code-scanning/kubesec.yml
+lint,Upload Kubesec scan results to GitHub Security tab,has_step,code-scanning/kubesec.yml
+lintr,Checkout code,has_step,code-scanning/lintr.yml
+lintr,Setup R,has_step,code-scanning/lintr.yml
+lintr,Setup lintr,has_step,code-scanning/lintr.yml
+lintr,Run lintr,has_step,code-scanning/lintr.yml
+lintr,Upload analysis results to GitHub,has_step,code-scanning/lintr.yml
+mayhem-for-api,actions/checkout@v4,has_step,code-scanning/mayhem-for-api.yml
+mayhem-for-api,Start your API,has_step,code-scanning/mayhem-for-api.yml
+mayhem-for-api,Mayhem for API,has_step,code-scanning/mayhem-for-api.yml
+mayhem-for-api,Upload SARIF file,has_step,code-scanning/mayhem-for-api.yml
+mobile-security,actions/checkout@v4,has_step,code-scanning/mobsf.yml
+mobile-security,Setup python,has_step,code-scanning/mobsf.yml
+mobile-security,Run mobsfscan,has_step,code-scanning/mobsf.yml
+mobile-security,Upload mobsfscan report,has_step,code-scanning/mobsf.yml
+analyze,Checkout repository,has_step,code-scanning/msvc.yml
+analyze,Configure CMake,has_step,code-scanning/msvc.yml
+analyze,Initialize MSVC Code Analysis,has_step,code-scanning/msvc.yml
+analyze,Upload SARIF to GitHub,has_step,code-scanning/msvc.yml
+neuralegion_scan,actions/checkout@v4,has_step,code-scanning/neuralegion.yml
+neuralegion_scan,Start Nexploit Scan 🏁,has_step,code-scanning/neuralegion.yml
+njsscan,Checkout the code,has_step,code-scanning/njsscan.yml
+njsscan,nodejsscan scan,has_step,code-scanning/njsscan.yml
+njsscan,Upload njsscan report,has_step,code-scanning/njsscan.yml
+OSSAR-Scan,Checkout repository,has_step,code-scanning/ossar.yml
+OSSAR-Scan,Run OSSAR,has_step,code-scanning/ossar.yml
+OSSAR-Scan,Upload OSSAR results,has_step,code-scanning/ossar.yml
+PHPMD,Checkout code,has_step,code-scanning/phpmd.yml
+PHPMD,Setup PHP,has_step,code-scanning/phpmd.yml
+PHPMD,Run PHPMD,has_step,code-scanning/phpmd.yml
+PHPMD,Upload analysis results to GitHub,has_step,code-scanning/phpmd.yml
+pmd-code-scan,actions/checkout@v4,has_step,code-scanning/pmd.yml
+pmd-code-scan,Set up JDK 11,has_step,code-scanning/pmd.yml
+pmd-code-scan,Run PMD,has_step,code-scanning/pmd.yml
+pmd-code-scan,Upload SARIF file,has_step,code-scanning/pmd.yml
+policy-validator,Checkout,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Configure AWS Credentials,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Run AWS AccessAnalyzer ValidatePolicy check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Print the result for ValidatePolicy check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Run AWS AccessAnalyzer CheckAccessNotGranted check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Print the result for CheckAccessNotGranted check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Run AWS AccessAnalyzer CheckNoNewAccess check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Print the result for CheckNoNewAccess check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Run AWS AccessAnalyzer CheckNoPublicAccess check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Print the result for CheckNoPublicAccess check,has_step,code-scanning/policy-validator-cfn.yaml
+policy-validator,Checkout,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Configure AWS Credentials,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Run AWS AccessAnalyzer ValidatePolicy check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Print the result for ValidatePolicy check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Run AWS AccessAnalyzer CheckAccessNotGranted check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Print the result for CheckAccessNotGranted check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Run AWS AccessAnalyzer CheckNoNewAccess check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Print the result CheckNoNewAccess check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Run AWS AccessAnalyzer CheckNoPublicAccess check,has_step,code-scanning/policy-validator-tf.yaml
+policy-validator,Print the result for CheckNoPublicAccess check,has_step,code-scanning/policy-validator-tf.yaml
+build,actions/checkout@v4,has_step,code-scanning/powershell.yml
+build,Run PSScriptAnalyzer,has_step,code-scanning/powershell.yml
+build,Upload SARIF results file,has_step,code-scanning/powershell.yml
+prisma_cloud_iac_scan,Checkout,has_step,code-scanning/prisma.yml
+prisma_cloud_iac_scan,Run Scan on CFT files in the repository,has_step,code-scanning/prisma.yml
+prisma_cloud_iac_scan,Upload SARIF file,has_step,code-scanning/prisma.yml
+php-security,Checkout code,has_step,code-scanning/psalm.yml
+php-security,Psalm Security Scan,has_step,code-scanning/psalm.yml
+php-security,Upload Security Analysis results to GitHub,has_step,code-scanning/psalm.yml
+puppet-lint,Checkout code,has_step,code-scanning/puppet-lint.yml
+puppet-lint,Setup Ruby,has_step,code-scanning/puppet-lint.yml
+puppet-lint,Install puppet-lint,has_step,code-scanning/puppet-lint.yml
+puppet-lint,Run puppet-lint,has_step,code-scanning/puppet-lint.yml
+puppet-lint,Upload analysis results to GitHub,has_step,code-scanning/puppet-lint.yml
+pyre,actions/checkout@v4,has_step,code-scanning/pyre.yml
+pyre,Run Pyre,has_step,code-scanning/pyre.yml
+pysa,actions/checkout@v4,has_step,code-scanning/pysa.yml
+pysa,Run Pysa,has_step,code-scanning/pysa.yml
+rubocop,Checkout repository,has_step,code-scanning/rubocop.yml
+rubocop,Set up Ruby,has_step,code-scanning/rubocop.yml
+rubocop,Install Code Scanning integration,has_step,code-scanning/rubocop.yml
+rubocop,Install dependencies,has_step,code-scanning/rubocop.yml
+rubocop,Rubocop run,has_step,code-scanning/rubocop.yml
+rubocop,Upload Sarif output,has_step,code-scanning/rubocop.yml
+rust-clippy-analyze,Checkout code,has_step,code-scanning/rust-clippy.yml
+rust-clippy-analyze,Install Rust toolchain,has_step,code-scanning/rust-clippy.yml
+rust-clippy-analyze,Install required cargo,has_step,code-scanning/rust-clippy.yml
+rust-clippy-analyze,Run rust-clippy,has_step,code-scanning/rust-clippy.yml
+rust-clippy-analyze,Upload analysis results to GitHub,has_step,code-scanning/rust-clippy.yml
+analysis,Checkout code,has_step,code-scanning/scorecard.yml
+analysis,Run analysis,has_step,code-scanning/scorecard.yml
+analysis,Upload artifact,has_step,code-scanning/scorecard.yml
+analysis,Upload to code-scanning,has_step,code-scanning/scorecard.yml
+SCS,actions/checkout@v4,has_step,code-scanning/securitycodescan.yml
+SCS,nuget/setup-nuget@04b0c2b8d1b97922f67eca497d7cf0bf17b8ffe1,has_step,code-scanning/securitycodescan.yml
+SCS,microsoft/setup-msbuild@v1.0.2,has_step,code-scanning/securitycodescan.yml
+SCS,Set up projects for analysis,has_step,code-scanning/securitycodescan.yml
+SCS,Restore dependencies,has_step,code-scanning/securitycodescan.yml
+SCS,Build,has_step,code-scanning/securitycodescan.yml
+SCS,Convert sarif for uploading to GitHub,has_step,code-scanning/securitycodescan.yml
+SCS,Upload sarif,has_step,code-scanning/securitycodescan.yml
+semgrep,actions/checkout@v4,has_step,code-scanning/semgrep.yml
+semgrep,returntocorp/semgrep-action@fcd5ab7459e8d91cb1777481980d1b18b4fc6735,has_step,code-scanning/semgrep.yml
+semgrep,Upload SARIF file,has_step,code-scanning/semgrep.yml
+snyk,actions/checkout@v4,has_step,code-scanning/snyk-container.yml
+snyk,Build a Docker image,has_step,code-scanning/snyk-container.yml
+snyk,Run Snyk to check Docker image for vulnerabilities,has_step,code-scanning/snyk-container.yml
+snyk,Upload result to GitHub Code Scanning,has_step,code-scanning/snyk-container.yml
+snyk,actions/checkout@v4,has_step,code-scanning/snyk-infrastructure.yml
+snyk,Run Snyk to check configuration files for security issues,has_step,code-scanning/snyk-infrastructure.yml
+snyk,Upload result to GitHub Code Scanning,has_step,code-scanning/snyk-infrastructure.yml
+snyk,actions/checkout@v4,has_step,code-scanning/snyk-security.yml
+snyk,Set up Snyk CLI to check for security issues,has_step,code-scanning/snyk-security.yml
+snyk,Snyk Code test,has_step,code-scanning/snyk-security.yml
+snyk,Snyk Open Source monitor,has_step,code-scanning/snyk-security.yml
+snyk,Snyk IaC test and report,has_step,code-scanning/snyk-security.yml
+snyk,Build a Docker image,has_step,code-scanning/snyk-security.yml
+snyk,Snyk Container monitor,has_step,code-scanning/snyk-security.yml
+snyk,Upload result to GitHub Code Scanning,has_step,code-scanning/snyk-security.yml
+security-scan,actions/checkout@v4,has_step,code-scanning/sobelow.yml
+security-scan,sobelow/action@1afd6d2cae70ae8bd900b58506f54487ed863912,has_step,code-scanning/sobelow.yml
+security-scan,Upload report,has_step,code-scanning/sobelow.yml
+Analysis,Analyze with SonarCloud,has_step,code-scanning/sonarcloud.yml
+Analysis,Analyze with SonarQube,has_step,code-scanning/sonarqube.yml
+soos,Run SOOS DAST Analysis,has_step,code-scanning/soos-dast-scan.yml
+soos,Find and rename SARIF file since it is unique,has_step,code-scanning/soos-dast-scan.yml
+soos,Upload SOOS DAST SARIF Report,has_step,code-scanning/soos-dast-scan.yml
+stackhawk,Checkout code,has_step,code-scanning/stackhawk.yml
+stackhawk,Start your service,has_step,code-scanning/stackhawk.yml
+stackhawk,Run HawkScan,has_step,code-scanning/stackhawk.yml
+build,Checkout,has_step,code-scanning/synopsys-action.yml
+build,Synopsys Action,has_step,code-scanning/synopsys-action.yml
+analyze,Checkout repository,has_step,code-scanning/synopsys-io.yml
+analyze,Synopsys Intelligent Security Scan,has_step,code-scanning/synopsys-io.yml
+analyze,Static Analysis with Polaris,has_step,code-scanning/synopsys-io.yml
+analyze,Software Composition Analysis with Black Duck,has_step,code-scanning/synopsys-io.yml
+analyze,Synopsys Intelligent Security Scan,has_step,code-scanning/synopsys-io.yml
+analyze,Upload SARIF file,has_step,code-scanning/synopsys-io.yml
+build,actions/checkout@v4,has_step,code-scanning/sysdig-scan.yml
+build,Build the Docker image,has_step,code-scanning/sysdig-scan.yml
+build,Sysdig Secure Inline Scan,has_step,code-scanning/sysdig-scan.yml
+build,github/codeql-action/upload-sarif@v3,has_step,code-scanning/sysdig-scan.yml
+tfsec,Clone repo,has_step,code-scanning/tfsec.yml
+tfsec,Run tfsec,has_step,code-scanning/tfsec.yml
+tfsec,Upload SARIF file,has_step,code-scanning/tfsec.yml
+build,Checkout code,has_step,code-scanning/trivy.yml
+build,Build an image from Dockerfile,has_step,code-scanning/trivy.yml
+build,Run Trivy vulnerability scanner,has_step,code-scanning/trivy.yml
+build,Upload Trivy scan results to GitHub Security tab,has_step,code-scanning/trivy.yml
+build-and-pipeline-scan,actions/checkout@v4,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,unnamed,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,unnamed,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,unnamed,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,actions/setup-java@v4,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,unnamed,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,Convert pipeline scan output to SARIF format,has_step,code-scanning/veracode.yml
+build-and-pipeline-scan,github/codeql-action/upload-sarif@v3,has_step,code-scanning/veracode.yml
+xanitizer-security-analysis,Checkout,has_step,code-scanning/xanitizer.yml
+xanitizer-security-analysis,Set up JDK 11,has_step,code-scanning/xanitizer.yml
+xanitizer-security-analysis,Compile Java code,has_step,code-scanning/xanitizer.yml
+xanitizer-security-analysis,Install JavaScript libraries,has_step,code-scanning/xanitizer.yml
+xanitizer-security-analysis,Xanitizer Security Analysis,has_step,code-scanning/xanitizer.yml
+xanitizer-security-analysis,actions/upload-artifact@v4,has_step,code-scanning/xanitizer.yml
+xanitizer-security-analysis,github/codeql-action/upload-sarif@v3,has_step,code-scanning/xanitizer.yml
+zscaler-iac-scan,Code Checkout,has_step,code-scanning/zscaler-iac-scan.yml
+zscaler-iac-scan,Zscaler IAC Scan,has_step,code-scanning/zscaler-iac-scan.yml
+zscaler-iac-scan,Upload SARIF file,has_step,code-scanning/zscaler-iac-scan.yml
+zscan,Checkout repository,has_step,code-scanning/zscan.yml
+zscan,Execute gradle build,has_step,code-scanning/zscan.yml
+zscan,Run Zimperium zScan,has_step,code-scanning/zscan.yml
+zscan,Upload SARIF file,has_step,code-scanning/zscan.yml
+build,Checkout,has_step,deployments/alibabacloud.yml
+build,Login to ACR with the AccessKey pair,has_step,deployments/alibabacloud.yml
+build,Build and push image to ACR,has_step,deployments/alibabacloud.yml
+build,Scan image in ACR,has_step,deployments/alibabacloud.yml
+build,actions/checkout@v4,has_step,deployments/alibabacloud.yml
+build,Login to ACR EE with the AccessKey pair,has_step,deployments/alibabacloud.yml
+build,Build and push image to ACR EE,has_step,deployments/alibabacloud.yml
+build,Scan image in ACR EE,has_step,deployments/alibabacloud.yml
+build,Set K8s context,has_step,deployments/alibabacloud.yml
+build,Set up Kustomize,has_step,deployments/alibabacloud.yml
+build,Deploy,has_step,deployments/alibabacloud.yml
+deploy,Checkout,has_step,deployments/aws.yml
+deploy,Configure AWS credentials,has_step,deployments/aws.yml
+deploy,Login to Amazon ECR,has_step,deployments/aws.yml
+deploy,"Build, tag, and push image to Amazon ECR",has_step,deployments/aws.yml
+deploy,Fill in the new image ID in the Amazon ECS task definition,has_step,deployments/aws.yml
+deploy,Deploy Amazon ECS task definition,has_step,deployments/aws.yml
+build,actions/checkout@v4,has_step,deployments/azure-container-webapp.yml
+build,Set up Docker Buildx,has_step,deployments/azure-container-webapp.yml
+build,Log in to GitHub container registry,has_step,deployments/azure-container-webapp.yml
+build,Lowercase the repo name and username,has_step,deployments/azure-container-webapp.yml
+build,Build and push container image to registry,has_step,deployments/azure-container-webapp.yml
+build,deploy,needs,deployments/azure-container-webapp.yml
+deploy,Lowercase the repo name and username,has_step,deployments/azure-container-webapp.yml
+deploy,Deploy to Azure Web App,has_step,deployments/azure-container-webapp.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-container.yml
+build-and-deploy,Login via Azure CLI,has_step,deployments/azure-functions-app-container.yml
+build-and-deploy,Docker Login,has_step,deployments/azure-functions-app-container.yml
+build-and-deploy,Compose Customized Docker Image,has_step,deployments/azure-functions-app-container.yml
+build-and-deploy,Run Azure Functions Container Action,has_step,deployments/azure-functions-app-container.yml
+build-and-deploy,Azure logout,has_step,deployments/azure-functions-app-container.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-dotnet.yml
+build-and-deploy,Setup DotNet ${{ env.DOTNET_VERSION }} Environment,has_step,deployments/azure-functions-app-dotnet.yml
+build-and-deploy,Resolve Project Dependencies Using Dotnet,has_step,deployments/azure-functions-app-dotnet.yml
+build-and-deploy,Run Azure Functions Action,has_step,deployments/azure-functions-app-dotnet.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-java-gradle.yml
+build-and-deploy,Setup Java Sdk ${{ env.JAVA_VERSION }},has_step,deployments/azure-functions-app-java-gradle.yml
+build-and-deploy,Restore Project Dependencies Using Gradle Plugin for Azure Functions,has_step,deployments/azure-functions-app-java-gradle.yml
+build-and-deploy,Run Azure Functions Action,has_step,deployments/azure-functions-app-java-gradle.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-java.yml
+build-and-deploy,Setup Java Sdk ${{ env.JAVA_VERSION }},has_step,deployments/azure-functions-app-java.yml
+build-and-deploy,Restore Project Dependencies Using Mvn,has_step,deployments/azure-functions-app-java.yml
+build-and-deploy,Run Azure Functions Action,has_step,deployments/azure-functions-app-java.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-nodejs.yml
+build-and-deploy,Setup Node ${{ env.NODE_VERSION }} Environment,has_step,deployments/azure-functions-app-nodejs.yml
+build-and-deploy,Resolve Project Dependencies Using Npm,has_step,deployments/azure-functions-app-nodejs.yml
+build-and-deploy,Run Azure Functions Action,has_step,deployments/azure-functions-app-nodejs.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-powershell.yml
+build-and-deploy,Run Azure Functions Action,has_step,deployments/azure-functions-app-powershell.yml
+build-and-deploy,Checkout GitHub Action,has_step,deployments/azure-functions-app-python.yml
+build-and-deploy,Setup Python ${{ env.PYTHON_VERSION }} Environment,has_step,deployments/azure-functions-app-python.yml
+build-and-deploy,Resolve Project Dependencies Using Pip,has_step,deployments/azure-functions-app-python.yml
+build-and-deploy,Run Azure Functions Action,has_step,deployments/azure-functions-app-python.yml
+buildImage,actions/checkout@v4,has_step,deployments/azure-kubernetes-service-helm.yml
+buildImage,Azure login,has_step,deployments/azure-kubernetes-service-helm.yml
+buildImage,Build and push image to ACR,has_step,deployments/azure-kubernetes-service-helm.yml
+buildImage,deploy,needs,deployments/azure-kubernetes-service-helm.yml
+deploy,actions/checkout@v4,has_step,deployments/azure-kubernetes-service-helm.yml
+deploy,Azure login,has_step,deployments/azure-kubernetes-service-helm.yml
+deploy,Set up kubelogin for non-interactive login,has_step,deployments/azure-kubernetes-service-helm.yml
+deploy,Get K8s context,has_step,deployments/azure-kubernetes-service-helm.yml
+deploy,Bake deployment,has_step,deployments/azure-kubernetes-service-helm.yml
+deploy,Deploy application,has_step,deployments/azure-kubernetes-service-helm.yml
+buildImage,actions/checkout@v4,has_step,deployments/azure-kubernetes-service-kompose.yml
+buildImage,Azure login,has_step,deployments/azure-kubernetes-service-kompose.yml
+buildImage,Build and push image to ACR,has_step,deployments/azure-kubernetes-service-kompose.yml
+buildImage,deploy,needs,deployments/azure-kubernetes-service-kompose.yml
+deploy,actions/checkout@v4,has_step,deployments/azure-kubernetes-service-kompose.yml
+deploy,Azure login,has_step,deployments/azure-kubernetes-service-kompose.yml
+deploy,Set up kubelogin for non-interactive login,has_step,deployments/azure-kubernetes-service-kompose.yml
+deploy,Get K8s context,has_step,deployments/azure-kubernetes-service-kompose.yml
+deploy,Bake deployment,has_step,deployments/azure-kubernetes-service-kompose.yml
+deploy,Deploy application,has_step,deployments/azure-kubernetes-service-kompose.yml
+buildImage,actions/checkout@v4,has_step,deployments/azure-kubernetes-service-kustomize.yml
+buildImage,Azure login,has_step,deployments/azure-kubernetes-service-kustomize.yml
+buildImage,Build and push image to ACR,has_step,deployments/azure-kubernetes-service-kustomize.yml
+buildImage,deploy,needs,deployments/azure-kubernetes-service-kustomize.yml
+deploy,actions/checkout@v4,has_step,deployments/azure-kubernetes-service-kustomize.yml
+deploy,Azure login,has_step,deployments/azure-kubernetes-service-kustomize.yml
+deploy,Set up kubelogin for non-interactive login,has_step,deployments/azure-kubernetes-service-kustomize.yml
+deploy,Get K8s context,has_step,deployments/azure-kubernetes-service-kustomize.yml
+deploy,Bake deployment,has_step,deployments/azure-kubernetes-service-kustomize.yml
+deploy,Deploy application,has_step,deployments/azure-kubernetes-service-kustomize.yml
+buildImage,actions/checkout@v4,has_step,deployments/azure-kubernetes-service.yml
+buildImage,Azure login,has_step,deployments/azure-kubernetes-service.yml
+buildImage,Build and push image to ACR,has_step,deployments/azure-kubernetes-service.yml
+buildImage,deploy,needs,deployments/azure-kubernetes-service.yml
+deploy,actions/checkout@v4,has_step,deployments/azure-kubernetes-service.yml
+deploy,Azure login,has_step,deployments/azure-kubernetes-service.yml
+deploy,Set up kubelogin for non-interactive login,has_step,deployments/azure-kubernetes-service.yml
+deploy,Get K8s context,has_step,deployments/azure-kubernetes-service.yml
+deploy,Deploys application,has_step,deployments/azure-kubernetes-service.yml
+build_and_deploy_job,actions/checkout@v4,has_step,deployments/azure-staticwebapp.yml
+build_and_deploy_job,Build And Deploy,has_step,deployments/azure-staticwebapp.yml
+close_pull_request_job,Close Pull Request,has_step,deployments/azure-staticwebapp.yml
+build,actions/checkout@v4,has_step,deployments/azure-webapps-dotnet-core.yml
+build,Set up .NET Core,has_step,deployments/azure-webapps-dotnet-core.yml
+build,Set up dependency caching for faster builds,has_step,deployments/azure-webapps-dotnet-core.yml
+build,Build with dotnet,has_step,deployments/azure-webapps-dotnet-core.yml
+build,dotnet publish,has_step,deployments/azure-webapps-dotnet-core.yml
+build,Upload artifact for deployment job,has_step,deployments/azure-webapps-dotnet-core.yml
+build,deploy,needs,deployments/azure-webapps-dotnet-core.yml
+deploy,Download artifact from build job,has_step,deployments/azure-webapps-dotnet-core.yml
+deploy,Deploy to Azure Web App,has_step,deployments/azure-webapps-dotnet-core.yml
+build,actions/checkout@v4,has_step,deployments/azure-webapps-java-jar-gradle.yml
+build,Set up Java version,has_step,deployments/azure-webapps-java-jar-gradle.yml
+build,Build with Gradle,has_step,deployments/azure-webapps-java-jar-gradle.yml
+build,Upload artifact for deployment job,has_step,deployments/azure-webapps-java-jar-gradle.yml
+build,deploy,needs,deployments/azure-webapps-java-jar-gradle.yml
+deploy,Download artifact from build job,has_step,deployments/azure-webapps-java-jar-gradle.yml
+deploy,Deploy to Azure Web App,has_step,deployments/azure-webapps-java-jar-gradle.yml
+build,actions/checkout@v4,has_step,deployments/azure-webapps-java-jar.yml
+build,Set up Java version,has_step,deployments/azure-webapps-java-jar.yml
+build,Build with Maven,has_step,deployments/azure-webapps-java-jar.yml
+build,Upload artifact for deployment job,has_step,deployments/azure-webapps-java-jar.yml
+build,deploy,needs,deployments/azure-webapps-java-jar.yml
+deploy,Download artifact from build job,has_step,deployments/azure-webapps-java-jar.yml
+deploy,Deploy to Azure Web App,has_step,deployments/azure-webapps-java-jar.yml
+build,actions/checkout@v4,has_step,deployments/azure-webapps-node.yml
+build,Set up Node.js,has_step,deployments/azure-webapps-node.yml
+build,"npm install, build, and test",has_step,deployments/azure-webapps-node.yml
+build,Upload artifact for deployment job,has_step,deployments/azure-webapps-node.yml
+build,deploy,needs,deployments/azure-webapps-node.yml
+deploy,Download artifact from build job,has_step,deployments/azure-webapps-node.yml
+deploy,Deploy to Azure WebApp,has_step,deployments/azure-webapps-node.yml
+build,actions/checkout@v4,has_step,deployments/azure-webapps-php.yml
+build,Setup PHP,has_step,deployments/azure-webapps-php.yml
+build,Check if composer.json exists,has_step,deployments/azure-webapps-php.yml
+build,Get Composer Cache Directory,has_step,deployments/azure-webapps-php.yml
+build,Set up dependency caching for faster installs,has_step,deployments/azure-webapps-php.yml
+build,Run composer install if composer.json exists,has_step,deployments/azure-webapps-php.yml
+build,Upload artifact for deployment job,has_step,deployments/azure-webapps-php.yml
+build,deploy,needs,deployments/azure-webapps-php.yml
+deploy,Download artifact from build job,has_step,deployments/azure-webapps-php.yml
+deploy,Deploy to Azure Web App,has_step,deployments/azure-webapps-php.yml
+build,actions/checkout@v4,has_step,deployments/azure-webapps-python.yml
+build,Set up Python version,has_step,deployments/azure-webapps-python.yml
+build,Create and start virtual environment,has_step,deployments/azure-webapps-python.yml
+build,Install dependencies,has_step,deployments/azure-webapps-python.yml
+build,Upload artifact for deployment jobs,has_step,deployments/azure-webapps-python.yml
+build,deploy,needs,deployments/azure-webapps-python.yml
+deploy,Download artifact from build job,has_step,deployments/azure-webapps-python.yml
+deploy,Deploy to Azure Web App,has_step,deployments/azure-webapps-python.yml
+deploy,Checkout,has_step,deployments/google-cloudrun-docker.yml
+deploy,Authenticate to Google Cloud,has_step,deployments/google-cloudrun-docker.yml
+deploy,Docker Auth,has_step,deployments/google-cloudrun-docker.yml
+deploy,Build and Push Container,has_step,deployments/google-cloudrun-docker.yml
+deploy,Deploy to Cloud Run,has_step,deployments/google-cloudrun-docker.yml
+deploy,Show output,has_step,deployments/google-cloudrun-docker.yml
+deploy,Checkout,has_step,deployments/google-cloudrun-source.yml
+deploy,Authenticate to Google Cloud,has_step,deployments/google-cloudrun-source.yml
+deploy,Deploy to Cloud Run,has_step,deployments/google-cloudrun-source.yml
+deploy,Show output,has_step,deployments/google-cloudrun-source.yml
+setup-build-publish-deploy,Checkout,has_step,deployments/google.yml
+setup-build-publish-deploy,Authenticate to Google Cloud,has_step,deployments/google.yml
+setup-build-publish-deploy,Docker Auth,has_step,deployments/google.yml
+setup-build-publish-deploy,Set up GKE credentials,has_step,deployments/google.yml
+setup-build-publish-deploy,Build and push Docker container,has_step,deployments/google.yml
+setup-build-publish-deploy,Set up Kustomize,has_step,deployments/google.yml
+setup-build-publish-deploy,Deploy to GKE,has_step,deployments/google.yml
+setup-build-publish-deploy,Checkout,has_step,deployments/ibm.yml
+setup-build-publish-deploy,Install IBM Cloud CLI,has_step,deployments/ibm.yml
+setup-build-publish-deploy,Authenticate with IBM Cloud CLI,has_step,deployments/ibm.yml
+setup-build-publish-deploy,Build with Docker,has_step,deployments/ibm.yml
+setup-build-publish-deploy,Push the image to ICR,has_step,deployments/ibm.yml
+setup-build-publish-deploy,Deploy to IKS,has_step,deployments/ibm.yml
+build,actions/checkout@v4,has_step,deployments/octopusdeploy.yml
+build,Set up Docker Buildx,has_step,deployments/octopusdeploy.yml
+build,Log in to the Container registry,has_step,deployments/octopusdeploy.yml
+build,"Extract metadata (tags, labels) for Docker",has_step,deployments/octopusdeploy.yml
+build,Build and push Docker image,has_step,deployments/octopusdeploy.yml
+build,deploy,needs,deployments/octopusdeploy.yml
+deploy,Log in to Octopus Deploy,has_step,deployments/octopusdeploy.yml
+deploy,Create Release,has_step,deployments/octopusdeploy.yml
+deploy,Deploy Release,has_step,deployments/octopusdeploy.yml
+openshift-ci-cd,Check for required secrets,has_step,deployments/openshift.yml
+openshift-ci-cd,Check out repository,has_step,deployments/openshift.yml
+openshift-ci-cd,Determine app name,has_step,deployments/openshift.yml
+openshift-ci-cd,Determine image tags,has_step,deployments/openshift.yml
+openshift-ci-cd,Build from Dockerfile,has_step,deployments/openshift.yml
+openshift-ci-cd,Push to registry,has_step,deployments/openshift.yml
+openshift-ci-cd,Install oc,has_step,deployments/openshift.yml
+openshift-ci-cd,Log in to OpenShift,has_step,deployments/openshift.yml
+openshift-ci-cd,Create and expose app,has_step,deployments/openshift.yml
+openshift-ci-cd,Print application URL,has_step,deployments/openshift.yml
+setup-build-publish-deploy,Checkout,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Build Docker image,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Login TKE Registry,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Publish,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Set up Kustomize,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Set up ~/.kube/config for connecting TKE cluster,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Switch to TKE context,has_step,deployments/tencent.yml
+setup-build-publish-deploy,Deploy,has_step,deployments/tencent.yml
+terraform,Checkout,has_step,deployments/terraform.yml
+terraform,Setup Terraform,has_step,deployments/terraform.yml
+terraform,Terraform Init,has_step,deployments/terraform.yml
+terraform,Terraform Format,has_step,deployments/terraform.yml
+terraform,Terraform Plan,has_step,deployments/terraform.yml
+terraform,Terraform Apply,has_step,deployments/terraform.yml
+build,Checkout,has_step,pages/astro.yml
+build,Detect package manager,has_step,pages/astro.yml
+build,Setup Node,has_step,pages/astro.yml
+build,Setup Pages,has_step,pages/astro.yml
+build,Install dependencies,has_step,pages/astro.yml
+build,Build with Astro,has_step,pages/astro.yml
+build,Upload artifact,has_step,pages/astro.yml
+build,deploy,needs,pages/astro.yml
+deploy,Deploy to GitHub Pages,has_step,pages/astro.yml
+build,Checkout,has_step,pages/gatsby.yml
+build,Detect package manager,has_step,pages/gatsby.yml
+build,Setup Node,has_step,pages/gatsby.yml
+build,Setup Pages,has_step,pages/gatsby.yml
+build,Restore cache,has_step,pages/gatsby.yml
+build,Install dependencies,has_step,pages/gatsby.yml
+build,Build with Gatsby,has_step,pages/gatsby.yml
+build,Upload artifact,has_step,pages/gatsby.yml
+build,deploy,needs,pages/gatsby.yml
+deploy,Deploy to GitHub Pages,has_step,pages/gatsby.yml
+build,Install Hugo CLI,has_step,pages/hugo.yml
+build,Install Dart Sass,has_step,pages/hugo.yml
+build,Checkout,has_step,pages/hugo.yml
+build,Setup Pages,has_step,pages/hugo.yml
+build,Install Node.js dependencies,has_step,pages/hugo.yml
+build,Build with Hugo,has_step,pages/hugo.yml
+build,Upload artifact,has_step,pages/hugo.yml
+build,deploy,needs,pages/hugo.yml
+deploy,Deploy to GitHub Pages,has_step,pages/hugo.yml
+build,Checkout,has_step,pages/jekyll-gh-pages.yml
+build,Setup Pages,has_step,pages/jekyll-gh-pages.yml
+build,Build with Jekyll,has_step,pages/jekyll-gh-pages.yml
+build,Upload artifact,has_step,pages/jekyll-gh-pages.yml
+build,deploy,needs,pages/jekyll-gh-pages.yml
+deploy,Deploy to GitHub Pages,has_step,pages/jekyll-gh-pages.yml
+build,Checkout,has_step,pages/jekyll.yml
+build,Setup Ruby,has_step,pages/jekyll.yml
+build,Setup Pages,has_step,pages/jekyll.yml
+build,Build with Jekyll,has_step,pages/jekyll.yml
+build,Upload artifact,has_step,pages/jekyll.yml
+build,deploy,needs,pages/jekyll.yml
+deploy,Deploy to GitHub Pages,has_step,pages/jekyll.yml
+build,actions/checkout@v4,has_step,pages/mdbook.yml
+build,Install mdBook,has_step,pages/mdbook.yml
+build,Setup Pages,has_step,pages/mdbook.yml
+build,Build with mdBook,has_step,pages/mdbook.yml
+build,Upload artifact,has_step,pages/mdbook.yml
+build,deploy,needs,pages/mdbook.yml
+deploy,Deploy to GitHub Pages,has_step,pages/mdbook.yml
+build,Checkout,has_step,pages/nextjs.yml
+build,Detect package manager,has_step,pages/nextjs.yml
+build,Setup Node,has_step,pages/nextjs.yml
+build,Setup Pages,has_step,pages/nextjs.yml
+build,Restore cache,has_step,pages/nextjs.yml
+build,Install dependencies,has_step,pages/nextjs.yml
+build,Build with Next.js,has_step,pages/nextjs.yml
+build,Upload artifact,has_step,pages/nextjs.yml
+build,deploy,needs,pages/nextjs.yml
+deploy,Deploy to GitHub Pages,has_step,pages/nextjs.yml
+build,Checkout,has_step,pages/nuxtjs.yml
+build,Detect package manager,has_step,pages/nuxtjs.yml
+build,Setup Node,has_step,pages/nuxtjs.yml
+build,Setup Pages,has_step,pages/nuxtjs.yml
+build,Restore cache,has_step,pages/nuxtjs.yml
+build,Install dependencies,has_step,pages/nuxtjs.yml
+build,Static HTML export with Nuxt,has_step,pages/nuxtjs.yml
+build,Upload artifact,has_step,pages/nuxtjs.yml
+build,deploy,needs,pages/nuxtjs.yml
+deploy,Deploy to GitHub Pages,has_step,pages/nuxtjs.yml
+deploy,Checkout,has_step,pages/static.yml
+deploy,Setup Pages,has_step,pages/static.yml
+deploy,Upload artifact,has_step,pages/static.yml
+deploy,Deploy to GitHub Pages,has_step,pages/static.yml

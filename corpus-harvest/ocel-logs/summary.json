@@ -1,0 +1,74 @@
+{
+  "dataset_name": "OCEL Standard Logs",
+  "source_url": "https://github.com/Javert899/ocel-support",
+  "format": "JSON/XML (OCEL 1.0)",
+  "domain": "hybrid",
+  "files_collected": [
+    "log.xmlocel",
+    "minimal.xmlocel",
+    "minimal.jsonocel",
+    "schema.json",
+    "schema.xml"
+  ],
+  "stats": {
+    "total_event_logs": 3,
+    "xml_events": 4080,
+    "xml_objects": 4089,
+    "json_log_keys": [
+      "ocel:global-log",
+      "ocel:global-event",
+      "ocel:global-object",
+      "ocel:events",
+      "ocel:objects"
+    ],
+    "event_types_found": [
+      "Anticipate Billing Date",
+      "Changed ARKTX",
+      "Changed CMPRE",
+      "Changed CMPRE_FLT",
+      "Changed GBSTK",
+      "Changed MATNR",
+      "Changed NETPR",
+      "Changed SPE_WAUHR_IST",
+      "Changed SPE_WAZONE_IST",
+      "Changed TAXM1",
+      "Create Delivery",
+      "Create Goods movement",
+      "Create Inquiry",
+      "Create Invoice",
+      "Create Order",
+      "Create Quotation",
+      "Create Shipment",
+      "Create WMS transfer order",
+      "Delivery Uncompletion: Completely processed",
+      "Delivery Uncompletion: Partially processed",
+      "Insert Order Item",
+      "Manual price change carried out",
+      "Pick Confirmation: Completely Processed",
+      "Picking: Completely Processed",
+      "Remove Order Item",
+      "Set Actual Goods Movement Date",
+      "Set Order Status: Partially Processed",
+      "Total Goods Movement: Completely processed",
+      "Warehouse Management: Completely Processed"
+    ],
+    "object_types_found": [
+      "DOCTYPE_Delivery",
+      "DOCTYPE_Goods movement",
+      "DOCTYPE_Inquiry",
+      "DOCTYPE_Invoice",
+      "DOCTYPE_Order",
+      "DOCTYPE_Quotation",
+      "DOCTYPE_Shipment",
+      "DOCTYPE_WMS transfer order"
+    ]
+  },
+  "harvest_date": "2026-03-25",
+  "status": "done",
+  "download_status": "success",
+  "count": {
+    "models_or_traces": 3,
+    "activities_or_nodes": 8169,
+    "connections_or_events": 0
+  }
+}

@@ -1,0 +1,233 @@
+source,target,relation,dataset
+Anticipate Billing Date,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Anticipate Billing Date,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed ARKTX,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed CMPRE,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed CMPRE_FLT,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed GBSTK,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed MATNR,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed NETPR,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAUHR_IST,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed SPE_WAZONE_IST,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Changed TAXM1,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Delivery,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Goods movement,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Inquiry,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Invoice,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Order,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Quotation,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create Shipment,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Create WMS transfer order,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Completely processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Delivery Uncompletion: Partially processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Insert Order Item,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Manual price change carried out,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Pick Confirmation: Completely Processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Picking: Completely Processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Remove Order Item,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Set Actual Goods Movement Date,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Set Order Status: Partially Processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Total Goods Movement: Completely processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Delivery,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Goods movement,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Inquiry,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Invoice,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Order,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Quotation,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_Shipment,event_references_object_type,OCEL Standard Logs
+Warehouse Management: Completely Processed,DOCTYPE_WMS transfer order,event_references_object_type,OCEL Standard Logs

@@ -1,0 +1,580 @@
+{
+  "dataset_name": "Apache Airflow Example DAGs",
+  "format": "other",
+  "domain": "machine",
+  "download_status": "success",
+  "total_dag_files": 49,
+  "total_tasks_found": 126,
+  "total_connections": 82,
+  "dags": [
+    {
+      "file": "airflow-core/src/airflow/example_dags/__init__.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_asset_alias.py",
+      "dag_ids": [
+        "asset_s3_bucket_producer",
+        "asset_alias_example_alias_producer",
+        "asset_s3_bucket_consumer",
+        "asset_alias_example_alias_consumer"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_asset_alias_with_no_taskflow.py",
+      "dag_ids": [
+        "asset_s3_bucket_producer_with_no_taskflow",
+        "asset_alias_example_alias_producer_with_no_taskflow",
+        "asset_s3_bucket_consumer_with_no_taskflow",
+        "asset_alias_example_alias_consumer_with_no_taskflow"
+      ],
+      "task_ids": [
+        "produce_asset_events",
+        "produce_asset_events_through_asset_alias_with_no_taskflow",
+        "consume_asset_event",
+        "consume_asset_event_from_asset_alias"
+      ],
+      "task_count": 4,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_asset_decorator.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_asset_partition.py",
+      "dag_ids": [
+        "ingest_team_a_player_stats",
+        "clean_and_combine_player_stats",
+        "player_odds_quality_check_wont_ever_to_trigger",
+        "ingest_regional_sales",
+        "aggregate_regional_sales",
+        "ingest_region_stats"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_asset_with_watchers.py",
+      "dag_ids": [
+        "example_asset_with_watchers"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_assets.py",
+      "dag_ids": [
+        "asset_produces_1",
+        "asset_produces_2",
+        "asset_consumes_1",
+        "asset_consumes_1_and_2",
+        "asset_consumes_1_never_scheduled",
+        "asset_consumes_unknown_never_scheduled",
+        "consume_1_and_2_with_asset_expressions",
+        "consume_1_or_2_with_asset_expressions",
+        "consume_1_or_both_2_and_3_with_asset_expressions",
+        "conditional_asset_and_time_based_timetable"
+      ],
+      "task_ids": [
+        "producing_task_1",
+        "producing_task_2",
+        "consuming_1",
+        "consuming_2",
+        "consuming_3",
+        "unrelated_task",
+        "consume_1_and_2_with_asset_expressions",
+        "consume_1_or_2_with_asset_expressions",
+        "consume_1_or_both_2_and_3_with_asset_expressions",
+        "conditional_asset_and_time_based_timetable"
+      ],
+      "task_count": 10,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_branch_labels.py",
+      "dag_ids": [],
+      "task_ids": [
+        "ingest",
+        "analyze",
+        "check_integrity",
+        "describe_integrity",
+        "email_error",
+        "save",
+        "report"
+      ],
+      "task_count": 7,
+      "dependency_edges": 5
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_branch_python_dop_operator_3.py",
+      "dag_ids": [
+        "example_branch_dop_operator_v3"
+      ],
+      "task_ids": [
+        "empty_task_1",
+        "empty_task_2"
+      ],
+      "task_count": 2,
+      "dependency_edges": 2
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_complex.py",
+      "dag_ids": [
+        "example_complex"
+      ],
+      "task_ids": [
+        "create_entry_group",
+        "create_entry_group_result",
+        "create_entry_group_result2",
+        "create_entry_gcs",
+        "create_entry_gcs_result",
+        "create_entry_gcs_result2",
+        "create_tag",
+        "create_tag_result",
+        "create_tag_result2",
+        "create_tag_template",
+        "create_tag_template_result",
+        "create_tag_template_result2",
+        "create_tag_template_field",
+        "create_tag_template_field_result",
+        "create_tag_template_field_result2",
+        "delete_entry",
+        "delete_entry_group",
+        "delete_tag",
+        "delete_tag_template_field",
+        "delete_tag_template",
+        "get_entry_group",
+        "get_entry_group_result",
+        "get_entry",
+        "get_entry_result",
+        "get_tag_template",
+        "get_tag_template_result",
+        "list_tags",
+        "list_tags_result",
+        "lookup_entry",
+        "lookup_entry_result",
+        "rename_tag_template_field",
+        "search_catalog",
+        "search_catalog_result",
+        "update_entry",
+        "update_tag",
+        "update_tag_template",
+        "update_tag_template_field"
+      ],
+      "task_count": 37,
+      "dependency_edges": 34
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_custom_weight.py",
+      "dag_ids": [
+        "example_custom_weight"
+      ],
+      "task_ids": [
+        "start",
+        "task_1",
+        "task_2",
+        "task_non_custom"
+      ],
+      "task_count": 4,
+      "dependency_edges": 3
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_dag_decorator.py",
+      "dag_ids": [],
+      "task_ids": [
+        "get_ip",
+        "echo_ip_info"
+      ],
+      "task_count": 2,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_display_name.py",
+      "dag_ids": [],
+      "task_ids": [
+        "sample_task_1"
+      ],
+      "task_count": 1,
+      "dependency_edges": 1
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_dynamic_task_mapping.py",
+      "dag_ids": [
+        "example_dynamic_task_mapping",
+        "example_task_mapping_second_order",
+        "example_task_group_mapping"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_dynamic_task_mapping_with_no_taskflow_operators.py",
+      "dag_ids": [
+        "example_dynamic_task_mapping_with_no_taskflow_operators"
+      ],
+      "task_ids": [
+        "add_one",
+        "sum_it"
+      ],
+      "task_count": 2,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_failed_dag.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_inlet_event_extra.py",
+      "dag_ids": [
+        "read_asset_event",
+        "read_asset_event_from_classic"
+      ],
+      "task_ids": [
+        "read_asset_event_from_classic"
+      ],
+      "task_count": 1,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_kubernetes_executor.py",
+      "dag_ids": [
+        "example_kubernetes_executor"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 2
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_latest_only_with_trigger.py",
+      "dag_ids": [
+        "latest_only_with_trigger"
+      ],
+      "task_ids": [
+        "latest_only",
+        "task1",
+        "task2",
+        "task3",
+        "task4"
+      ],
+      "task_count": 5,
+      "dependency_edges": 3
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_local_kubernetes_executor.py",
+      "dag_ids": [
+        "example_local_kubernetes_executor"
+      ],
+      "task_ids": [
+        "task_with_kubernetes_executor",
+        "task_with_local_executor"
+      ],
+      "task_count": 2,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_nested_branch_dag.py",
+      "dag_ids": [
+        "example_nested_branch_dag"
+      ],
+      "task_ids": [
+        "branch_1",
+        "join_1",
+        "true_1",
+        "false_1",
+        "branch_2",
+        "join_2",
+        "true_2",
+        "false_2",
+        "false_3"
+      ],
+      "task_count": 9,
+      "dependency_edges": 5
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_outlet_event_extra.py",
+      "dag_ids": [
+        "asset_with_extra_by_yield",
+        "asset_with_extra_by_context",
+        "asset_with_extra_from_classic_operator"
+      ],
+      "task_ids": [
+        "asset_with_extra_from_classic_operator"
+      ],
+      "task_count": 1,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_params_trigger_ui.py",
+      "dag_ids": [],
+      "task_ids": [
+        "get_names",
+        "select_languages",
+        "generate_english_greeting",
+        "generate_german_greeting",
+        "generate_french_greeting",
+        "print_greetings"
+      ],
+      "task_count": 6,
+      "dependency_edges": 3
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_params_ui_tutorial.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_passing_params_via_test_command.py",
+      "dag_ids": [],
+      "task_ids": [
+        "run_this",
+        "env_var_test_task",
+        "also_run_this"
+      ],
+      "task_count": 3,
+      "dependency_edges": 1
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_setup_teardown.py",
+      "dag_ids": [
+        "example_setup_teardown"
+      ],
+      "task_ids": [
+        "root_setup",
+        "normal",
+        "root_teardown",
+        "taskgroup_setup",
+        "normal",
+        "taskgroup_teardown"
+      ],
+      "task_count": 6,
+      "dependency_edges": 3
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_setup_teardown_taskflow.py",
+      "dag_ids": [
+        "example_setup_teardown_taskflow"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 4
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_simplest_dag.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_skip_dag.py",
+      "dag_ids": [
+        "example_skip_dag"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 3
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_task_group.py",
+      "dag_ids": [
+        "example_task_group"
+      ],
+      "task_ids": [
+        "start",
+        "task_1",
+        "task_2",
+        "task_3",
+        "task_1",
+        "task_2",
+        "task_3",
+        "task_4",
+        "end"
+      ],
+      "task_count": 9,
+      "dependency_edges": 6
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_task_group_decorator.py",
+      "dag_ids": [
+        "example_task_group_decorator"
+      ],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 1
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_time_delta_sensor_async.py",
+      "dag_ids": [
+        "example_time_delta_sensor_async"
+      ],
+      "task_ids": [
+        "wait",
+        "finish"
+      ],
+      "task_count": 2,
+      "dependency_edges": 1
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_trigger_target_dag.py",
+      "dag_ids": [
+        "example_trigger_target_dag"
+      ],
+      "task_ids": [
+        "run_this",
+        "bash_task"
+      ],
+      "task_count": 2,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_workday_timetable.py",
+      "dag_ids": [
+        "example_workday_timetable"
+      ],
+      "task_ids": [
+        "run_this"
+      ],
+      "task_count": 1,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_xcom.py",
+      "dag_ids": [],
+      "task_ids": [
+        "bash_push",
+        "bash_pull"
+      ],
+      "task_count": 2,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/example_xcomargs.py",
+      "dag_ids": [
+        "example_xcom_args"
+      ],
+      "task_ids": [
+        "c",
+        "d"
+      ],
+      "task_count": 2,
+      "dependency_edges": 2
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/libs/__init__.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/libs/helper.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/plugins/__init__.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/plugins/decreasing_priority_weight_strategy.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/plugins/event_listener.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/plugins/listener_plugin.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/plugins/workday.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/tutorial.py",
+      "dag_ids": [],
+      "task_ids": [
+        "print_date",
+        "sleep",
+        "templated"
+      ],
+      "task_count": 3,
+      "dependency_edges": 2
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/tutorial_dag.py",
+      "dag_ids": [],
+      "task_ids": [
+        "extract",
+        "transform",
+        "load"
+      ],
+      "task_count": 3,
+      "dependency_edges": 1
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/tutorial_objectstorage.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/tutorial_taskflow_api.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/tutorial_taskflow_api_virtualenv.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    },
+    {
+      "file": "airflow-core/src/airflow/example_dags/tutorial_taskflow_templates.py",
+      "dag_ids": [],
+      "task_ids": [],
+      "task_count": 0,
+      "dependency_edges": 0
+    }
+  ]
+}
